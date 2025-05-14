@@ -1,0 +1,2 @@
+cd FluxStore
+yarn test:coverage

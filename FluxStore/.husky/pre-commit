@@ -1,0 +1,2 @@
+cd FluxStore
+npx lint-staged
