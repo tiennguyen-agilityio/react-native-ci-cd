@@ -1,0 +1,76 @@
+import {Theme} from '@/interfaces';
+import {colors} from './colors';
+
+export const lightThemes: Theme = {
+  transparent: 'transparent',
+  primary: colors.black[500],
+  secondary: colors.white[700],
+  tertiary: colors.black[300],
+  error: colors.red[500],
+  success: colors.green[500],
+  link: colors.green[200],
+  text: {
+    default: colors.black[500],
+    light: colors.white[500],
+    primary: colors.black[600],
+    secondary: colors.gray[800],
+    tertiary: colors.gray[700],
+    quaternary: colors.gray.A300,
+    quinary: colors.black[50],
+    senary: colors.gray[500],
+    link: colors.green[200],
+    error: colors.red[500],
+    success: colors.green[500],
+  },
+  background: {
+    default: colors.white[500],
+    primary: colors.black[300],
+    secondary: colors.gray[600],
+    tertiary: colors.white.A900,
+    quaternary: colors.white[400],
+    input: colors.white[800],
+  },
+  border: {
+    default: colors.black.A50,
+    primary: colors.gray[50],
+    secondary: colors.gray.A50,
+    tertiary: colors.white[500],
+  },
+};
+
+export const darkThemes: Theme = {
+  transparent: 'transparent',
+  primary: colors.white[500],
+  secondary: colors.black[800],
+  tertiary: colors.white[600],
+  error: colors.red[500],
+  success: colors.green[500],
+  link: colors.green[200],
+  text: {
+    default: colors.white[500],
+    light: colors.black[500],
+    primary: colors.white[600],
+    secondary: colors.gray.A100,
+    tertiary: colors.gray[200],
+    quaternary: colors.gray[200],
+    quinary: colors.gray.A200,
+    senary: colors.gray.A200,
+    link: colors.green[200],
+    error: colors.red[500],
+    success: colors.green[500],
+  },
+  background: {
+    default: colors.black.A100,
+    primary: colors.white[600],
+    secondary: colors.black[800],
+    tertiary: colors.black[800],
+    quaternary: colors.black[800],
+    input: colors.gray.A400,
+  },
+  border: {
+    default: colors.white[600],
+    primary: colors.gray[200],
+    secondary: colors.gray[800],
+    tertiary: colors.white[500],
+  },
+};
