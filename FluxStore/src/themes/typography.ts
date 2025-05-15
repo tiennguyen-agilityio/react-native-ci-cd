@@ -1,3 +1,17 @@
+export const fontFamilies = {
+  productSans: {
+    regular: 'ProductSansRegular',
+    medium: 'ProductSansMedium',
+    bold: 'ProductSansBold',
+  },
+  roboto: {
+    regular: 'RobotoRegular',
+  },
+  nunito: {
+    semiBold: 'NunitoSemiBold',
+  },
+};
+
 export const fontWeights = {
   regular: '400',
   medium: '500',
@@ -5,7 +19,7 @@ export const fontWeights = {
   bold: '700',
 } as const;
 
-export const fontSize = {
+export const fontSizes = {
   xxl: 26,
   xl: 25,
   lg: 24,
@@ -17,4 +31,14 @@ export const fontSize = {
   tiny: 12,
   micro: 11,
   mini: 10,
+};
+
+export const lineHeights = {
+  xl: 48,
+  lg: 34,
+  md: 24,
+  base: 20,
+  sm: 17,
+  xs: 16,
+  tiny: 12,
 };
