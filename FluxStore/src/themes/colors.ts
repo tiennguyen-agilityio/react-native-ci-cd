@@ -1,6 +1,7 @@
 export const colors = {
   transparent: 'transparent',
   white: {
+    300: '#f4f5f6',
     400: '#fafafa',
     500: '#fff',
     600: '#fcfcfd',
@@ -39,6 +40,7 @@ export const colors = {
     A200: '#e8e8ec',
     A300: '#737680',
     A400: '#707070',
+    A500: '#bebfc4',
   },
   red: {
     200: '#f08c7d',

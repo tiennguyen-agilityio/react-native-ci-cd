@@ -31,11 +31,13 @@ export interface Theme {
     tertiary: string;
     quaternary: string;
     input: string;
+    radio: string;
   };
   border: {
     default: string;
     primary: string;
     secondary: string;
     tertiary: string;
+    quaternary: string;
   };
 }

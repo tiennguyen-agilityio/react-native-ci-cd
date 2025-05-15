@@ -29,12 +29,14 @@ export const lightThemes: Theme = {
     tertiary: colors.white.A900,
     quaternary: colors.white[400],
     input: colors.white[800],
+    radio: colors.green[200],
   },
   border: {
     default: colors.black.A50,
     primary: colors.gray[50],
     secondary: colors.gray.A50,
     tertiary: colors.white[500],
+    quaternary: colors.gray.A500,
   },
 };
 
@@ -66,11 +68,13 @@ export const darkThemes: Theme = {
     tertiary: colors.black[800],
     quaternary: colors.black[800],
     input: colors.gray.A400,
+    radio: colors.green[200],
   },
   border: {
     default: colors.white[600],
     primary: colors.gray[200],
     secondary: colors.gray[800],
     tertiary: colors.white[500],
+    quaternary: colors.white[300],
   },
 };
