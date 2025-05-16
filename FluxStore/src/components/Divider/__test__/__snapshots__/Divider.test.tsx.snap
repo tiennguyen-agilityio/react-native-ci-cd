@@ -1,0 +1,25 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Divider should render default props 1`] = `
+<View
+  style={
+    {
+      "backgroundColor": "#f3f3f6",
+      "height": 1,
+      "width": "100%",
+    }
+  }
+/>
+`;
+
+exports[`Divider should render with customize props 1`] = `
+<View
+  style={
+    {
+      "backgroundColor": "#5ece7b",
+      "height": 5,
+      "width": 300,
+    }
+  }
+/>
+`;

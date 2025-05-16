@@ -44,6 +44,7 @@ export interface Theme {
     secondary: string;
     tertiary: string;
     quaternary: string;
+    quinary: string;
     input: string;
     radio: string;
     checkbox: string;
