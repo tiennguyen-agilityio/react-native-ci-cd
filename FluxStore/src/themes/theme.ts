@@ -59,6 +59,10 @@ export const lightThemes: Theme = {
     tertiary: colors.white[500],
     quaternary: colors.gray.A500,
     quinary: colors.green[500],
+    senary: colors.black[400],
+  },
+  icon: {
+    default: colors.black[400],
   },
 };
 
@@ -119,5 +123,9 @@ export const darkThemes: Theme = {
     tertiary: colors.white[500],
     quaternary: colors.white[300],
     quinary: colors.green[500],
+    senary: colors.gray.A50,
+  },
+  icon: {
+    default: colors.gray.A50,
   },
 };
