@@ -1,5 +1,6 @@
 import {Theme} from '@/interfaces';
 import {colors} from './colors';
+import {fontFamilies} from './typography';
 
 export const lightThemes: Theme = {
   transparent: 'transparent',
@@ -9,6 +10,24 @@ export const lightThemes: Theme = {
   error: colors.red[500],
   success: colors.green[500],
   link: colors.green[200],
+  fonts: {
+    default: {
+      bold: fontFamilies.productSans.bold,
+      medium: fontFamilies.productSans.medium,
+      regular: fontFamilies.productSans.regular,
+    },
+    primary: {
+      bold: fontFamilies.productSans.bold,
+      medium: fontFamilies.productSans.medium,
+      regular: fontFamilies.productSans.regular,
+    },
+    secondary: {
+      medium: fontFamilies.nunito.semiBold,
+    },
+    tertiary: {
+      regular: fontFamilies.roboto.regular,
+    },
+  },
   text: {
     default: colors.black[500],
     light: colors.white[500],
@@ -50,6 +69,24 @@ export const darkThemes: Theme = {
   error: colors.red[500],
   success: colors.green[500],
   link: colors.green[200],
+  fonts: {
+    default: {
+      bold: fontFamilies.productSans.bold,
+      medium: fontFamilies.productSans.medium,
+      regular: fontFamilies.productSans.regular,
+    },
+    primary: {
+      bold: fontFamilies.productSans.bold,
+      medium: fontFamilies.productSans.medium,
+      regular: fontFamilies.productSans.regular,
+    },
+    secondary: {
+      medium: fontFamilies.nunito.semiBold,
+    },
+    tertiary: {
+      regular: fontFamilies.roboto.regular,
+    },
+  },
   text: {
     default: colors.white[500],
     light: colors.black[500],

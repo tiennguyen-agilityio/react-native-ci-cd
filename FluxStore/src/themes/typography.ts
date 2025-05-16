@@ -20,7 +20,8 @@ export const fontWeights = {
 } as const;
 
 export const fontSizes = {
-  xxl: 26,
+  '3xl': 40,
+  '2xl': 26,
   xl: 25,
   lg: 24,
   md: 20,

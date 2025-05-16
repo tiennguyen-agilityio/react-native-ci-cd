@@ -3,6 +3,14 @@ export enum THEMES {
   LIGHT = 'light',
 }
 
+export interface FontsOptional {
+  bold?: string;
+  medium?: string;
+  regular?: string;
+}
+
+export type Fonts = Required<FontsOptional>;
+
 export interface Theme {
   transparent: string;
   primary: string;
@@ -11,6 +19,12 @@ export interface Theme {
   error: string;
   success: string;
   link: string;
+  fonts: {
+    default: Fonts;
+    primary: FontsOptional;
+    secondary: FontsOptional;
+    tertiary: FontsOptional;
+  };
   text: {
     default: string;
     light: string;
