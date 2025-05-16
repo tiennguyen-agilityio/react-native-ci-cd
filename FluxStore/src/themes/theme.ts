@@ -30,6 +30,7 @@ export const lightThemes: Theme = {
     quaternary: colors.white[400],
     input: colors.white[800],
     radio: colors.green[200],
+    checkbox: colors.green[500],
   },
   border: {
     default: colors.black.A50,
@@ -37,6 +38,7 @@ export const lightThemes: Theme = {
     secondary: colors.gray.A50,
     tertiary: colors.white[500],
     quaternary: colors.gray.A500,
+    quinary: colors.green[500],
   },
 };
 
@@ -69,6 +71,7 @@ export const darkThemes: Theme = {
     quaternary: colors.black[800],
     input: colors.gray.A400,
     radio: colors.green[200],
+    checkbox: colors.green[500],
   },
   border: {
     default: colors.white[600],
@@ -76,5 +79,6 @@ export const darkThemes: Theme = {
     secondary: colors.gray[800],
     tertiary: colors.white[500],
     quaternary: colors.white[300],
+    quinary: colors.green[500],
   },
 };

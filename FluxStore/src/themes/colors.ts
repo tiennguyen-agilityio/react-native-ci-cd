@@ -41,6 +41,7 @@ export const colors = {
     A300: '#737680',
     A400: '#707070',
     A500: '#bebfc4',
+    A600: '#8e8e8e',
   },
   red: {
     200: '#f08c7d',
