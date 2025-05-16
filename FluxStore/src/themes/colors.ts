@@ -1,6 +1,7 @@
 export const colors = {
   transparent: 'transparent',
   white: {
+    200: '#f3f3f6',
     300: '#f4f5f6',
     400: '#fafafa',
     500: '#fff',
