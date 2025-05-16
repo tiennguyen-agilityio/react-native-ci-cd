@@ -1,3 +1,5 @@
+import {ViewStyle} from 'react-native';
+
 export enum THEMES {
   DARK = 'dark',
   LIGHT = 'light',
@@ -56,5 +58,19 @@ export interface Theme {
     tertiary: string;
     quaternary: string;
     quinary: string;
+    senary: string;
   };
+  icon: {
+    default: string;
+  };
+}
+
+export interface IconProps {
+  width?: number;
+  height?: number;
+  color?: string;
+  style?: ViewStyle;
+  disabled?: boolean;
+  isActive?: boolean;
+  onPress?: () => void;
 }
