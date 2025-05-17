@@ -21,4 +21,9 @@ describe('Button', () => {
 
     expect(toJSON()).toMatchSnapshot();
   });
+
+  it('renders with selected true', () => {
+    const {toJSON} = render(<Radio {...props} selected />);
+    expect(toJSON()).toMatchSnapshot();
+  });
 });

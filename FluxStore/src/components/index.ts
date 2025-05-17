@@ -6,3 +6,4 @@ export {default as Text} from './Text';
 export {default as Divider} from './Divider';
 export {default as Quantity} from './Quantity';
 export {default as Rating} from './Rating';
+export {default as Flex} from './Flex';
