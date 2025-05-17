@@ -1,4 +1,4 @@
-import {ViewStyle} from 'react-native';
+import {DimensionValue, ViewStyle} from 'react-native';
 
 export enum THEMES {
   DARK = 'dark',
@@ -36,6 +36,7 @@ export interface Theme {
     quaternary: string;
     quinary: string;
     senary: string;
+    septenary: string;
     link: string;
     error: string;
     success: string;
@@ -73,4 +74,49 @@ export interface IconProps {
   disabled?: boolean;
   isActive?: boolean;
   onPress?: () => void;
+}
+
+// Spacing
+export interface SpaceProps {
+  paddingTop?: number;
+  paddingBottom?: number;
+  paddingLeft?: number;
+  paddingRight?: number;
+  paddingVertical?: number;
+  paddingHorizontal?: number;
+  marginTop?: number;
+  marginBottom?: number;
+  marginLeft?: DimensionValue;
+  marginRight?: DimensionValue;
+}
+
+// Position
+export interface PositionProps {
+  position?: 'absolute' | 'relative';
+}
+
+// Border
+export type BorderRadiusSize = 'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl';
+export interface BorderProps {
+  borderRadius?: number;
+  borderTopRightRadius?: number;
+  borderBottomRightRadius?: number;
+}
+
+// BackGround
+export interface BackgroundProps {
+  backgroundColor?: string;
+}
+
+export interface CSSProps extends SpaceProps, BorderProps, BackgroundProps, PositionProps {}
+
+export interface FlexOptions extends CSSProps {
+  direction?: 'row' | 'row-reverse' | 'column' | 'column-reverse';
+  justify?: 'center' | 'between' | 'start' | 'end' | 'around' | 'evenly';
+  align?: 'start' | 'end' | 'stretch' | 'center' | 'baseline';
+  wrap?: 'wrap' | 'nowrap' | 'wrap-reverse';
+  flex?: number;
+  rowGap?: number;
+  columnGap?: number;
+  gap?: number;
 }
