@@ -51,6 +51,7 @@ export interface Theme {
     input: string;
     radio: string;
     checkbox: string;
+    icon: string;
   };
   border: {
     default: string;
@@ -93,6 +94,10 @@ export interface SpaceProps {
 // Position
 export interface PositionProps {
   position?: 'absolute' | 'relative';
+  top?: string | number;
+  left?: string | number;
+  right?: string | number;
+  bottom?: string | number;
 }
 
 // Border
