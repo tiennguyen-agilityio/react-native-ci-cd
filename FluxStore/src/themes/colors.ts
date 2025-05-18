@@ -43,9 +43,11 @@ export const colors = {
     A400: '#707070',
     A500: '#bebfc4',
     A600: '#8e8e8e',
+    A700: '#d8d8d8',
   },
   red: {
     200: '#f08c7d',
+    400: '#ff6e6e',
     500: '#981b1f',
   },
   green: {
