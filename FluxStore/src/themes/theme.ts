@@ -52,6 +52,7 @@ export const lightThemes: Theme = {
     input: colors.white[800],
     radio: colors.green[200],
     checkbox: colors.green[500],
+    icon: colors.white[500],
   },
   border: {
     default: colors.black.A50,
@@ -117,6 +118,7 @@ export const darkThemes: Theme = {
     input: colors.gray.A400,
     radio: colors.green[200],
     checkbox: colors.green[500],
+    icon: colors.white[600],
   },
   border: {
     default: colors.white[600],
