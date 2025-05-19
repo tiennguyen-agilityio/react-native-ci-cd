@@ -11,6 +11,21 @@ export interface FontsOptional {
   regular?: string;
 }
 
+export interface Dimensions {
+  xs: number;
+  sm: number;
+  md: number;
+  lg: number;
+  xl: number;
+  xxl: number;
+}
+
+export interface Metrics {
+  screenWidth: number;
+  screenHeight: number;
+  dimensions: Dimensions;
+}
+
 export type Fonts = Required<FontsOptional>;
 
 export interface Theme {
