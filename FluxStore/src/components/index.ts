@@ -8,3 +8,4 @@ export {default as Quantity} from './Quantity';
 export {default as Rating} from './Rating';
 export {default as Flex} from './Flex';
 export {default as ProductCard} from './ProductCard';
+export {default as Collapse} from './Collapse';

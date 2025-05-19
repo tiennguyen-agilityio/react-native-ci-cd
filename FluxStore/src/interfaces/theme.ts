@@ -124,4 +124,13 @@ export interface FlexOptions extends CSSProps {
   rowGap?: number;
   columnGap?: number;
   gap?: number;
+  width?: DimensionValue;
+  height?: DimensionValue;
+}
+
+export enum DIRECTION {
+  UP = 'up',
+  DOWN = 'down',
+  LEFT = 'left',
+  RIGHT = 'right',
 }
