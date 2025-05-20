@@ -64,11 +64,13 @@ const Dot = ({color, hasBorder, size = 34, onSelect}: DotProps) => {
 
   const press = Gesture.Pan()
     .onBegin(() => {
+      'worklet';
       if (!hasBorder) {
         handleSelect();
       }
     })
     ?.onEnd(() => {
+      'worklet';
       scale.value = withSpring(1, {duration: 180});
     });
 
