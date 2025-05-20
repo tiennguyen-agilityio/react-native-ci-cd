@@ -66,6 +66,8 @@ export const lightThemes: Theme = {
   icon: {
     default: colors.black[400],
     checkbox: colors.gray.A600,
+    primary: colors.black[100],
+    tertiary: colors.gray[600],
   },
 };
 
@@ -133,5 +135,7 @@ export const darkThemes: Theme = {
   icon: {
     default: colors.gray.A50,
     checkbox: colors.gray[200],
+    primary: colors.white[600],
+    tertiary: colors.gray[200],
   },
 };
