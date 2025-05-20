@@ -13,3 +13,4 @@ export {default as BannerCard} from './BannerCard';
 export {default as Dot} from './Dot';
 export {default as ColorPicker} from './ColorPicker';
 export {default as ReviewCard} from './ReviewCard';
+export {default as CartItem} from './CartItem';
