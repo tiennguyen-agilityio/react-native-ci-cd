@@ -615,7 +615,7 @@ exports[`ReviewCard should render ReviewCard component 1`] = `
           ]
         }
       >
-        46m ago
+        7h ago
       </Text>
     </View>
   </View>

@@ -7,4 +7,6 @@ export interface Product {
   discount?: number;
   reviewCount?: number;
   description?: string;
+  sizes?: string[];
+  colors?: string[];
 }

@@ -79,6 +79,7 @@ export interface Theme {
   };
   icon: {
     default: string;
+    checkbox: string;
   };
 }
 

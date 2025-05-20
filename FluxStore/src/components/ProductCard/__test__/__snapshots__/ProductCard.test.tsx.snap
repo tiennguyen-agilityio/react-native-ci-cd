@@ -286,7 +286,7 @@ exports[`ProductCard should render ProductCard component 1`] = `
           ]
         }
       >
-        $ 9
+        $ 9.00
       </Text>
       <Text
         style={
@@ -311,7 +311,7 @@ exports[`ProductCard should render ProductCard component 1`] = `
           ]
         }
       >
-        $ 90
+        $ 90.02
       </Text>
     </View>
     <View
@@ -1799,7 +1799,7 @@ exports[`ProductCard should render Tertiary 1`] = `
           ]
         }
       >
-        $ 9
+        $ 9.00
       </Text>
       <Text
         style={
@@ -1824,7 +1824,7 @@ exports[`ProductCard should render Tertiary 1`] = `
           ]
         }
       >
-        $ 90
+        $ 90.02
       </Text>
     </View>
   </View>
@@ -2117,7 +2117,7 @@ exports[`ProductCard should render isFavorite 1`] = `
           ]
         }
       >
-        $ 9
+        $ 9.00
       </Text>
       <Text
         style={
@@ -2142,7 +2142,7 @@ exports[`ProductCard should render isFavorite 1`] = `
           ]
         }
       >
-        $ 90
+        $ 90.02
       </Text>
     </View>
     <View
@@ -2822,7 +2822,7 @@ exports[`ProductCard should render type Secondary 1`] = `
           ]
         }
       >
-        $ 9
+        $ 9.00
       </Text>
       <Text
         style={
@@ -2847,7 +2847,7 @@ exports[`ProductCard should render type Secondary 1`] = `
           ]
         }
       >
-        $ 90
+        $ 90.02
       </Text>
     </View>
   </View>
