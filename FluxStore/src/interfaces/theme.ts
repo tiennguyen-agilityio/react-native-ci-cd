@@ -80,6 +80,8 @@ export interface Theme {
   icon: {
     default: string;
     checkbox: string;
+    primary: string;
+    tertiary: string;
   };
 }
 
