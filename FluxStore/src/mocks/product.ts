@@ -1,6 +1,7 @@
 import {Product} from '@/interfaces';
+import {colors} from '@/themes';
 
-export const PRODUCT_COLORS = ['#fff', '#b4916c', '#e4cbad'];
+export const COLORS = [colors.red[200], colors.black[500], colors.red[500]];
 
 export const PRODUCTS: Product[] = [
   {
