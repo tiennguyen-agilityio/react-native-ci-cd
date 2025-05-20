@@ -10,3 +10,5 @@ export {default as Flex} from './Flex';
 export {default as ProductCard} from './ProductCard';
 export {default as Collapse} from './Collapse';
 export {default as BannerCard} from './BannerCard';
+export {default as Dot} from './Dot';
+export {default as ColorPicker} from './ColorPicker';

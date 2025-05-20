@@ -1,0 +1,463 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ColorPicker Component renders correctly 1`] = `
+<View
+  style={
+    [
+      {
+        "flexDirection": "column",
+      },
+      {
+        "justifyContent": "flex-start",
+      },
+      {
+        "alignItems": "stretch",
+      },
+      {
+        "flexWrap": "nowrap",
+      },
+      undefined,
+      {},
+    ]
+  }
+  testID="flex"
+>
+  <Text
+    style={
+      [
+        {
+          "textAlign": "left",
+          "textAlignVertical": "center",
+        },
+        {
+          "color": "#737680",
+          "fontFamily": "ProductSansRegular",
+          "fontSize": 14,
+        },
+        {},
+        [
+          {
+            "color": "#717B8F",
+            "fontSize": 16,
+            "fontWeight": "600",
+            "marginBottom": 8,
+          },
+          {
+            "color": "#777e90",
+          },
+        ],
+      ]
+    }
+  >
+    Color
+  </Text>
+  <View
+    style={
+      [
+        {
+          "flexDirection": "column",
+        },
+        {
+          "justifyContent": "flex-start",
+        },
+        {
+          "alignItems": "stretch",
+        },
+        {
+          "flexWrap": "nowrap",
+        },
+        {
+          "alignItems": "center",
+          "columnGap": 4,
+          "flexDirection": "row",
+        },
+        {},
+      ]
+    }
+    testID="flex"
+  >
+    <View
+      style={
+        [
+          {
+            "flexDirection": "column",
+          },
+          {
+            "justifyContent": "center",
+          },
+          {
+            "alignItems": "center",
+          },
+          {
+            "flexWrap": "nowrap",
+          },
+          undefined,
+          {
+            "height": 34,
+            "width": 34,
+          },
+        ]
+      }
+      testID="flex"
+    >
+      <View
+        style={
+          [
+            {
+              "backgroundColor": "#f08c7d",
+              "borderColor": "#fff",
+              "borderRadius": "50%",
+              "borderWidth": 5,
+              "elevation": 4,
+              "height": 34,
+              "shadowColor": "#000",
+              "shadowOffset": {
+                "height": 3,
+                "width": 0,
+              },
+              "shadowOpacity": 0.2,
+              "shadowRadius": 6,
+              "width": 34,
+            },
+            {
+              "transform": [
+                {
+                  "scale": 1,
+                },
+              ],
+            },
+          ]
+        }
+        testID="dot-#f08c7d"
+      />
+    </View>
+    <View
+      style={
+        [
+          {
+            "flexDirection": "column",
+          },
+          {
+            "justifyContent": "center",
+          },
+          {
+            "alignItems": "center",
+          },
+          {
+            "flexWrap": "nowrap",
+          },
+          undefined,
+          {
+            "height": 34,
+            "width": 34,
+          },
+        ]
+      }
+      testID="flex"
+    >
+      <View
+        style={
+          [
+            {
+              "backgroundColor": "#000",
+              "borderColor": "none",
+              "borderRadius": "50%",
+              "borderWidth": 0,
+              "height": 24,
+              "shadowColor": "#000",
+              "width": 24,
+            },
+            {
+              "transform": [
+                {
+                  "scale": 1,
+                },
+              ],
+            },
+          ]
+        }
+        testID="dot-#000"
+      />
+    </View>
+    <View
+      style={
+        [
+          {
+            "flexDirection": "column",
+          },
+          {
+            "justifyContent": "center",
+          },
+          {
+            "alignItems": "center",
+          },
+          {
+            "flexWrap": "nowrap",
+          },
+          undefined,
+          {
+            "height": 34,
+            "width": 34,
+          },
+        ]
+      }
+      testID="flex"
+    >
+      <View
+        style={
+          [
+            {
+              "backgroundColor": "#981b1f",
+              "borderColor": "none",
+              "borderRadius": "50%",
+              "borderWidth": 0,
+              "height": 24,
+              "shadowColor": "#000",
+              "width": 24,
+            },
+            {
+              "transform": [
+                {
+                  "scale": 1,
+                },
+              ],
+            },
+          ]
+        }
+        testID="dot-#981b1f"
+      />
+    </View>
+  </View>
+</View>
+`;
+
+exports[`ColorPicker Component renders correctly with defaultIndex 1 1`] = `
+<View
+  style={
+    [
+      {
+        "flexDirection": "column",
+      },
+      {
+        "justifyContent": "flex-start",
+      },
+      {
+        "alignItems": "stretch",
+      },
+      {
+        "flexWrap": "nowrap",
+      },
+      undefined,
+      {},
+    ]
+  }
+  testID="flex"
+>
+  <Text
+    style={
+      [
+        {
+          "textAlign": "left",
+          "textAlignVertical": "center",
+        },
+        {
+          "color": "#737680",
+          "fontFamily": "ProductSansRegular",
+          "fontSize": 14,
+        },
+        {},
+        [
+          {
+            "color": "#717B8F",
+            "fontSize": 16,
+            "fontWeight": "600",
+            "marginBottom": 8,
+          },
+          {
+            "color": "#777e90",
+          },
+        ],
+      ]
+    }
+  >
+    Color
+  </Text>
+  <View
+    style={
+      [
+        {
+          "flexDirection": "column",
+        },
+        {
+          "justifyContent": "flex-start",
+        },
+        {
+          "alignItems": "stretch",
+        },
+        {
+          "flexWrap": "nowrap",
+        },
+        {
+          "alignItems": "center",
+          "columnGap": 4,
+          "flexDirection": "row",
+        },
+        {},
+      ]
+    }
+    testID="flex"
+  >
+    <View
+      style={
+        [
+          {
+            "flexDirection": "column",
+          },
+          {
+            "justifyContent": "center",
+          },
+          {
+            "alignItems": "center",
+          },
+          {
+            "flexWrap": "nowrap",
+          },
+          undefined,
+          {
+            "height": 34,
+            "width": 34,
+          },
+        ]
+      }
+      testID="flex"
+    >
+      <View
+        style={
+          [
+            {
+              "backgroundColor": "#f08c7d",
+              "borderColor": "none",
+              "borderRadius": "50%",
+              "borderWidth": 0,
+              "height": 24,
+              "shadowColor": "#000",
+              "width": 24,
+            },
+            {
+              "transform": [
+                {
+                  "scale": 1,
+                },
+              ],
+            },
+          ]
+        }
+        testID="dot-#f08c7d"
+      />
+    </View>
+    <View
+      style={
+        [
+          {
+            "flexDirection": "column",
+          },
+          {
+            "justifyContent": "center",
+          },
+          {
+            "alignItems": "center",
+          },
+          {
+            "flexWrap": "nowrap",
+          },
+          undefined,
+          {
+            "height": 34,
+            "width": 34,
+          },
+        ]
+      }
+      testID="flex"
+    >
+      <View
+        style={
+          [
+            {
+              "backgroundColor": "#000",
+              "borderColor": "#fff",
+              "borderRadius": "50%",
+              "borderWidth": 5,
+              "elevation": 4,
+              "height": 34,
+              "shadowColor": "#000",
+              "shadowOffset": {
+                "height": 3,
+                "width": 0,
+              },
+              "shadowOpacity": 0.2,
+              "shadowRadius": 6,
+              "width": 34,
+            },
+            {
+              "transform": [
+                {
+                  "scale": 1,
+                },
+              ],
+            },
+          ]
+        }
+        testID="dot-#000"
+      />
+    </View>
+    <View
+      style={
+        [
+          {
+            "flexDirection": "column",
+          },
+          {
+            "justifyContent": "center",
+          },
+          {
+            "alignItems": "center",
+          },
+          {
+            "flexWrap": "nowrap",
+          },
+          undefined,
+          {
+            "height": 34,
+            "width": 34,
+          },
+        ]
+      }
+      testID="flex"
+    >
+      <View
+        style={
+          [
+            {
+              "backgroundColor": "#981b1f",
+              "borderColor": "none",
+              "borderRadius": "50%",
+              "borderWidth": 0,
+              "height": 24,
+              "shadowColor": "#000",
+              "width": 24,
+            },
+            {
+              "transform": [
+                {
+                  "scale": 1,
+                },
+              ],
+            },
+          ]
+        }
+        testID="dot-#981b1f"
+      />
+    </View>
+  </View>
+</View>
+`;
