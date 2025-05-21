@@ -1,21 +1,21 @@
 import {memo, useMemo} from 'react';
 import {TouchableOpacity} from 'react-native';
 import Svg, {Path} from 'react-native-svg';
+import Animated, {useAnimatedStyle, withTiming} from 'react-native-reanimated';
 
 import {useThemeStore} from '@/hooks';
 import {DIRECTION, IconProps} from '@/interfaces';
-import Animated, {useAnimatedStyle, withTiming} from 'react-native-reanimated';
 
-interface ChevronIconProps extends IconProps {
+interface ArrowIconProps extends IconProps {
   direction?: DIRECTION;
   rotate?: number;
   duration?: number;
 }
 
-export const ChevronIcon = memo(
+export const ArrowIcon = memo(
   ({
-    width = 14,
-    height = 9,
+    width = 10,
+    height = 6,
     color,
     direction = DIRECTION.RIGHT,
     rotate,
@@ -23,7 +23,7 @@ export const ChevronIcon = memo(
     disabled = false,
     style,
     onPress,
-  }: ChevronIconProps) => {
+  }: ArrowIconProps) => {
     const {
       theme: {text},
     } = useThemeStore();
@@ -55,14 +55,17 @@ export const ChevronIcon = memo(
 
     return (
       <TouchableOpacity
-        testID="chevron-icon"
+        testID="arrow-icon"
         activeOpacity={0.8}
         onPress={onPress}
         disabled={disabled}
         style={style}>
         <Animated.View style={[animatedStyle, {width, height}]}>
-          <Svg width={width} height={height} viewBox="0 0 14 9" fill="none">
-            <Path d="M13 1L7 7 1 1" stroke={color || text.primary} strokeWidth={2} />
+          <Svg width={width} height={height} viewBox="0 0 10 6" fill="none">
+            <Path
+              d="M4.808 5.77L1.093 1.312A.8.8 0 011.708 0h6.584a.8.8 0 01.615 1.312L5.192 5.77a.25.25 0 01-.384 0z"
+              fill={color || text.primary}
+            />
           </Svg>
         </Animated.View>
       </TouchableOpacity>

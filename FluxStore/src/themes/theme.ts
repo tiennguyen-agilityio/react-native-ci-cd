@@ -67,6 +67,7 @@ export const lightThemes: Theme = {
     default: colors.black[400],
     checkbox: colors.gray.A600,
     primary: colors.black[100],
+    secondary: colors.gray.A200,
     tertiary: colors.gray[600],
   },
 };
@@ -136,6 +137,7 @@ export const darkThemes: Theme = {
     default: colors.gray.A50,
     checkbox: colors.gray[200],
     primary: colors.white[600],
+    secondary: colors.gray.A500,
     tertiary: colors.gray[200],
   },
 };

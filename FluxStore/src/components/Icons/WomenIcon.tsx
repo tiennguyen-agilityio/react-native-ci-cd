@@ -1,8 +1,9 @@
-import {useThemeStore} from '@/hooks';
-import {IconProps} from '@/interfaces';
-import {memo, useMemo} from 'react';
+import {memo} from 'react';
 import {TouchableOpacity} from 'react-native';
 import Svg, {Path} from 'react-native-svg';
+
+import {IconProps} from '@/interfaces';
+import {useThemeStore} from '@/hooks';
 
 export const WomenIcon = memo(
   ({
@@ -18,11 +19,6 @@ export const WomenIcon = memo(
       theme: {icon, text},
     } = useThemeStore();
 
-    const fillColor = useMemo(() => {
-      if (color) return color;
-      return isActive ? text.light : icon.tertiary;
-    }, [color, isActive, text, icon]);
-
     return (
       <TouchableOpacity
         testID="women-icon"
@@ -35,7 +31,7 @@ export const WomenIcon = memo(
             fillRule="evenodd"
             clipRule="evenodd"
             d="M6.25 1.25a5 5 0 100 10 5 5 0 000-10zM0 6.25a6.25 6.25 0 116.875 6.219v2.53h2.5a.625.625 0 010 1.25h-2.5v3.126a.625.625 0 11-1.25 0V16.25h-2.5a.625.625 0 110-1.25h2.5v-2.531A6.25 6.25 0 010 6.249z"
-            fill={fillColor}
+            fill={color ?? isActive ? text.light : icon.tertiary}
           />
         </Svg>
       </TouchableOpacity>

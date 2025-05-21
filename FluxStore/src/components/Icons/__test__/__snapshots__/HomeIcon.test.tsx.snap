@@ -1,0 +1,181 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`HomeIcon renders correctly (matches snapshot) 1`] = `
+<View
+  accessibilityState={
+    {
+      "busy": undefined,
+      "checked": undefined,
+      "disabled": false,
+      "expanded": undefined,
+      "selected": undefined,
+    }
+  }
+  accessibilityValue={
+    {
+      "max": undefined,
+      "min": undefined,
+      "now": undefined,
+      "text": undefined,
+    }
+  }
+  accessible={true}
+  collapsable={false}
+  focusable={false}
+  onClick={[Function]}
+  onResponderGrant={[Function]}
+  onResponderMove={[Function]}
+  onResponderRelease={[Function]}
+  onResponderTerminate={[Function]}
+  onResponderTerminationRequest={[Function]}
+  onStartShouldSetResponder={[Function]}
+  style={
+    {
+      "opacity": 1,
+    }
+  }
+  testID="home-icon"
+>
+  <RNSVGSvgView
+    align="xMidYMid"
+    bbHeight={22}
+    bbWidth={21}
+    fill="none"
+    focusable={false}
+    height={22}
+    meetOrSlice={0}
+    minX={0}
+    minY={0}
+    style={
+      [
+        {
+          "backgroundColor": "transparent",
+          "borderWidth": 0,
+        },
+        {
+          "flex": 0,
+          "height": 22,
+          "width": 21,
+        },
+      ]
+    }
+    vbHeight={22}
+    vbWidth={21}
+    width={21}
+  >
+    <RNSVGGroup
+      fill={null}
+      propList={
+        [
+          "fill",
+        ]
+      }
+    >
+      <RNSVGPath
+        d="M21 8.25L13.565.862c-1.143-1.15-4.993-1.15-6.135 0L0 8.25v11.688C0 21.076.916 22 2.047 22h4.526a.88.88 0 00.877-.884v-6.479a.88.88 0 01.877-.883h4.34a.88.88 0 01.877.883v6.48a.88.88 0 00.877.883h4.532C20.084 22 21 21.076 21 19.938V8.25zm-1.755 11.688a.291.291 0 01-.292.294h-3.655v-5.595a2.641 2.641 0 00-2.631-2.65h-4.34a2.641 2.641 0 00-2.631 2.65v5.596H2.04a.294.294 0 01-.293-.295V9.082l6.922-6.97c.463-.447 3.191-.447 3.654 0l6.922 6.97v10.856z"
+        fill={
+          {
+            "payload": 4293454060,
+            "type": 0,
+          }
+        }
+        propList={
+          [
+            "fill",
+          ]
+        }
+      />
+    </RNSVGGroup>
+  </RNSVGSvgView>
+</View>
+`;
+
+exports[`HomeIcon renders correctly (matches snapshot) with isActive 1`] = `
+<View
+  accessibilityState={
+    {
+      "busy": undefined,
+      "checked": undefined,
+      "disabled": false,
+      "expanded": undefined,
+      "selected": undefined,
+    }
+  }
+  accessibilityValue={
+    {
+      "max": undefined,
+      "min": undefined,
+      "now": undefined,
+      "text": undefined,
+    }
+  }
+  accessible={true}
+  collapsable={false}
+  focusable={false}
+  onClick={[Function]}
+  onResponderGrant={[Function]}
+  onResponderMove={[Function]}
+  onResponderRelease={[Function]}
+  onResponderTerminate={[Function]}
+  onResponderTerminationRequest={[Function]}
+  onStartShouldSetResponder={[Function]}
+  style={
+    {
+      "opacity": 1,
+    }
+  }
+  testID="home-icon"
+>
+  <RNSVGSvgView
+    align="xMidYMid"
+    bbHeight={22}
+    bbWidth={21}
+    fill="none"
+    focusable={false}
+    height={22}
+    meetOrSlice={0}
+    minX={0}
+    minY={0}
+    style={
+      [
+        {
+          "backgroundColor": "transparent",
+          "borderWidth": 0,
+        },
+        {
+          "flex": 0,
+          "height": 22,
+          "width": 21,
+        },
+      ]
+    }
+    vbHeight={22}
+    vbWidth={21}
+    width={21}
+  >
+    <RNSVGGroup
+      fill={null}
+      propList={
+        [
+          "fill",
+        ]
+      }
+    >
+      <RNSVGPath
+        d="M21 8.25L13.565.862c-1.143-1.15-4.993-1.15-6.135 0L0 8.25v11.688C0 21.076.916 22 2.047 22h4.526a.88.88 0 00.877-.884v-6.479a.88.88 0 01.877-.883h4.34a.88.88 0 01.877.883v6.48a.88.88 0 00.877.883h4.532C20.084 22 21 21.076 21 19.938V8.25zm-1.755 11.688a.291.291 0 01-.292.294h-3.655v-5.595a2.641 2.641 0 00-2.631-2.65h-4.34a2.641 2.641 0 00-2.631 2.65v5.596H2.04a.294.294 0 01-.293-.295V9.082l6.922-6.97c.463-.447 3.191-.447 3.654 0l6.922 6.97v10.856z"
+        fill={
+          {
+            "payload": 4278190080,
+            "type": 0,
+          }
+        }
+        propList={
+          [
+            "fill",
+          ]
+        }
+      />
+    </RNSVGGroup>
+  </RNSVGSvgView>
+</View>
+`;

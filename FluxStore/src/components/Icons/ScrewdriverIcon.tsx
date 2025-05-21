@@ -1,15 +1,14 @@
 import {memo} from 'react';
 import {TouchableOpacity} from 'react-native';
-import Svg, {Path, Rect} from 'react-native-svg';
+import Svg, {Path} from 'react-native-svg';
 
 import {IconProps} from '@/interfaces';
 import {useThemeStore} from '@/hooks';
-import {colors} from '@/themes';
 
-export const CheckBoxIcon = memo(
+export const ScrewdriverIcon = memo(
   ({
-    width = 19,
-    height = 20,
+    width = 6,
+    height = 22,
     color,
     disabled = false,
     isActive = false,
@@ -22,23 +21,15 @@ export const CheckBoxIcon = memo(
 
     return (
       <TouchableOpacity
-        testID="checkbox-icon"
+        testID="screwdriver-icon"
         activeOpacity={0.8}
         onPress={onPress}
         disabled={disabled}
         style={style}>
-        <Svg width={width} height={height} viewBox="0 0 19 20" fill="none">
-          <Rect
-            x={0.592896}
-            width={18.2891}
-            height={20}
-            rx={4}
-            fill={color ?? isActive ? colors.green[200] : icon.checkbox}
-          />
+        <Svg width={width} height={height} viewBox="0 0 6 22" fill="none">
           <Path
-            d="M5.165 9.47L8.014 13l5.381-6"
-            stroke={text.light}
-            strokeWidth={2}
+            d="M3 13V5M1 13h4v6a2 2 0 11-4 0v-6zM1 1h4L4 5H2L1 1z"
+            stroke={color ?? isActive ? text.light : icon.tertiary}
             strokeLinecap="round"
             strokeLinejoin="round"
           />
