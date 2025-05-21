@@ -9,7 +9,7 @@ import {
 } from 'react-native';
 
 // Themes
-import {fontSizes, fontWeights} from '@/themes';
+import {fontSizes, fontWeights, letterSpacings} from '@/themes';
 import {useThemeStore} from '@/hooks';
 
 type TextVariant = 'heading' | 'title' | 'subTitle' | 'description' | 'default';
@@ -17,6 +17,7 @@ type TextVariant = 'heading' | 'title' | 'subTitle' | 'description' | 'default';
 const textBasicStyle: TextStyle = {
   textAlign: 'left',
   textAlignVertical: 'center',
+  letterSpacing: letterSpacings.base,
 };
 
 export interface TextProps extends RNTextProps {

@@ -1,7 +1,7 @@
 export const BANNERS = [
   {
     id: '01',
-    title: 'Clother Collection 2025',
+    title: 'Clothing Collection 2025',
     imageUrl: 'https://i.ibb.co/wZv2s1T6/Frame-33149.png',
   },
   {

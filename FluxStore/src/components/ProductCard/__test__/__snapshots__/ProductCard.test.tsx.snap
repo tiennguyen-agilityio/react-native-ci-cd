@@ -221,6 +221,7 @@ exports[`ProductCard should render ProductCard component 1`] = `
       style={
         [
           {
+            "letterSpacing": 0,
             "textAlign": "left",
             "textAlignVertical": "center",
           },
@@ -268,6 +269,7 @@ exports[`ProductCard should render ProductCard component 1`] = `
         style={
           [
             {
+              "letterSpacing": 0,
               "textAlign": "left",
               "textAlignVertical": "center",
             },
@@ -292,6 +294,7 @@ exports[`ProductCard should render ProductCard component 1`] = `
         style={
           [
             {
+              "letterSpacing": 0,
               "textAlign": "left",
               "textAlignVertical": "center",
             },
@@ -800,6 +803,7 @@ exports[`ProductCard should render ProductCard component 1`] = `
         style={
           [
             {
+              "letterSpacing": 0,
               "textAlign": "left",
               "textAlignVertical": "center",
             },
@@ -1044,6 +1048,7 @@ exports[`ProductCard should render ProductCard has not discount 1`] = `
       style={
         [
           {
+            "letterSpacing": 0,
             "textAlign": "left",
             "textAlignVertical": "center",
           },
@@ -1091,6 +1096,7 @@ exports[`ProductCard should render ProductCard has not discount 1`] = `
         style={
           [
             {
+              "letterSpacing": 0,
               "textAlign": "left",
               "textAlignVertical": "center",
             },
@@ -1609,6 +1615,7 @@ exports[`ProductCard should render ProductCard has not discount 1`] = `
         style={
           [
             {
+              "letterSpacing": 0,
               "textAlign": "left",
               "textAlignVertical": "center",
             },
@@ -1734,6 +1741,7 @@ exports[`ProductCard should render Tertiary 1`] = `
       style={
         [
           {
+            "letterSpacing": 0,
             "textAlign": "left",
             "textAlignVertical": "center",
           },
@@ -1781,6 +1789,7 @@ exports[`ProductCard should render Tertiary 1`] = `
         style={
           [
             {
+              "letterSpacing": 0,
               "textAlign": "left",
               "textAlignVertical": "center",
             },
@@ -1805,6 +1814,7 @@ exports[`ProductCard should render Tertiary 1`] = `
         style={
           [
             {
+              "letterSpacing": 0,
               "textAlign": "left",
               "textAlignVertical": "center",
             },
@@ -2052,6 +2062,7 @@ exports[`ProductCard should render isFavorite 1`] = `
       style={
         [
           {
+            "letterSpacing": 0,
             "textAlign": "left",
             "textAlignVertical": "center",
           },
@@ -2099,6 +2110,7 @@ exports[`ProductCard should render isFavorite 1`] = `
         style={
           [
             {
+              "letterSpacing": 0,
               "textAlign": "left",
               "textAlignVertical": "center",
             },
@@ -2123,6 +2135,7 @@ exports[`ProductCard should render isFavorite 1`] = `
         style={
           [
             {
+              "letterSpacing": 0,
               "textAlign": "left",
               "textAlignVertical": "center",
             },
@@ -2631,6 +2644,7 @@ exports[`ProductCard should render isFavorite 1`] = `
         style={
           [
             {
+              "letterSpacing": 0,
               "textAlign": "left",
               "textAlignVertical": "center",
             },
@@ -2757,6 +2771,7 @@ exports[`ProductCard should render type Secondary 1`] = `
       style={
         [
           {
+            "letterSpacing": 0,
             "textAlign": "left",
             "textAlignVertical": "center",
           },
@@ -2804,6 +2819,7 @@ exports[`ProductCard should render type Secondary 1`] = `
         style={
           [
             {
+              "letterSpacing": 0,
               "textAlign": "left",
               "textAlignVertical": "center",
             },
@@ -2828,6 +2844,7 @@ exports[`ProductCard should render type Secondary 1`] = `
         style={
           [
             {
+              "letterSpacing": 0,
               "textAlign": "left",
               "textAlignVertical": "center",
             },

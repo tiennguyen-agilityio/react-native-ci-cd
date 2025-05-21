@@ -123,6 +123,7 @@ exports[`Quantity should render quantity component 1`] = `
     style={
       [
         {
+          "letterSpacing": 0,
           "textAlign": "left",
           "textAlignVertical": "center",
         },

@@ -5,6 +5,7 @@ exports[`Text renders default 1`] = `
   style={
     [
       {
+        "letterSpacing": 0,
         "textAlign": "left",
         "textAlignVertical": "center",
       },
@@ -27,6 +28,7 @@ exports[`Text renders with custom color, fontsize 1`] = `
   style={
     [
       {
+        "letterSpacing": 0,
         "textAlign": "left",
         "textAlignVertical": "center",
       },
@@ -52,6 +54,7 @@ exports[`Text renders with variant description 1`] = `
   style={
     [
       {
+        "letterSpacing": 0,
         "textAlign": "left",
         "textAlignVertical": "center",
       },
@@ -74,6 +77,7 @@ exports[`Text renders with variant heading 1`] = `
   style={
     [
       {
+        "letterSpacing": 0,
         "textAlign": "left",
         "textAlignVertical": "center",
       },
@@ -97,6 +101,7 @@ exports[`Text renders with variant subTitle 1`] = `
   style={
     [
       {
+        "letterSpacing": 0,
         "textAlign": "left",
         "textAlignVertical": "center",
       },
@@ -120,6 +125,7 @@ exports[`Text renders with variant title 1`] = `
   style={
     [
       {
+        "letterSpacing": 0,
         "textAlign": "left",
         "textAlignVertical": "center",
       },

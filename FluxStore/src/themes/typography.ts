@@ -43,3 +43,12 @@ export const lineHeights = {
   xs: 16,
   tiny: 12,
 };
+
+export const letterSpacings = {
+  xl: 1.4,
+  lg: 0.06,
+  md: 0.02,
+  base: 0,
+  sm: -0.05,
+  xs: -0.12,
+};

@@ -110,6 +110,7 @@ exports[`CartItem should render CartItem component 1`] = `
         style={
           [
             {
+              "letterSpacing": 0,
               "textAlign": "left",
               "textAlignVertical": "center",
             },
@@ -132,6 +133,7 @@ exports[`CartItem should render CartItem component 1`] = `
         style={
           [
             {
+              "letterSpacing": 0,
               "textAlign": "left",
               "textAlignVertical": "center",
             },
@@ -154,6 +156,7 @@ exports[`CartItem should render CartItem component 1`] = `
         style={
           [
             {
+              "letterSpacing": 0,
               "textAlign": "left",
               "textAlignVertical": "center",
             },
@@ -435,6 +438,7 @@ exports[`CartItem should render CartItem component 1`] = `
           style={
             [
               {
+                "letterSpacing": 0,
                 "textAlign": "left",
                 "textAlignVertical": "center",
               },
@@ -666,6 +670,7 @@ exports[`CartItem should render CartItem with isChecked true 1`] = `
         style={
           [
             {
+              "letterSpacing": 0,
               "textAlign": "left",
               "textAlignVertical": "center",
             },
@@ -688,6 +693,7 @@ exports[`CartItem should render CartItem with isChecked true 1`] = `
         style={
           [
             {
+              "letterSpacing": 0,
               "textAlign": "left",
               "textAlignVertical": "center",
             },
@@ -710,6 +716,7 @@ exports[`CartItem should render CartItem with isChecked true 1`] = `
         style={
           [
             {
+              "letterSpacing": 0,
               "textAlign": "left",
               "textAlignVertical": "center",
             },
@@ -991,6 +998,7 @@ exports[`CartItem should render CartItem with isChecked true 1`] = `
           style={
             [
               {
+                "letterSpacing": 0,
                 "textAlign": "left",
                 "textAlignVertical": "center",
               },

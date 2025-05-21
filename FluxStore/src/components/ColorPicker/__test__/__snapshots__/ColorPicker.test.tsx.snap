@@ -26,6 +26,7 @@ exports[`ColorPicker Component renders correctly 1`] = `
     style={
       [
         {
+          "letterSpacing": 0,
           "textAlign": "left",
           "textAlignVertical": "center",
         },
@@ -257,6 +258,7 @@ exports[`ColorPicker Component renders correctly with defaultIndex 1 1`] = `
     style={
       [
         {
+          "letterSpacing": 0,
           "textAlign": "left",
           "textAlignVertical": "center",
         },

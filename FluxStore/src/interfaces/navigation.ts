@@ -6,6 +6,8 @@ export enum SCREENS {
   SIGN_UP = 'SignUp',
   HOME = 'Home',
   PROFILE = 'Profile',
+  WELCOME = 'Welcome',
+  INTRO = 'Intro',
 }
 
 export type AppStackParamList = {
@@ -13,6 +15,8 @@ export type AppStackParamList = {
   [SCREENS.MAIN_TAB]?: undefined;
   [SCREENS.PROFILES_STACK]?: undefined;
   [SCREENS.PROFILE]?: undefined;
+  [SCREENS.WELCOME]?: undefined;
+  [SCREENS.INTRO]?: undefined;
 };
 
 export type BottomTabs = {

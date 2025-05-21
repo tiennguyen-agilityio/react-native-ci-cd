@@ -26,6 +26,7 @@ exports[`Flex should render component 1`] = `
     style={
       [
         {
+          "letterSpacing": 0,
           "textAlign": "left",
           "textAlignVertical": "center",
         },
@@ -45,6 +46,7 @@ exports[`Flex should render component 1`] = `
     style={
       [
         {
+          "letterSpacing": 0,
           "textAlign": "left",
           "textAlignVertical": "center",
         },
@@ -89,6 +91,7 @@ exports[`Flex should render component with align items stretch 1`] = `
     style={
       [
         {
+          "letterSpacing": 0,
           "textAlign": "left",
           "textAlignVertical": "center",
         },
@@ -108,6 +111,7 @@ exports[`Flex should render component with align items stretch 1`] = `
     style={
       [
         {
+          "letterSpacing": 0,
           "textAlign": "left",
           "textAlignVertical": "center",
         },
@@ -152,6 +156,7 @@ exports[`Flex should render component with direction row 1`] = `
     style={
       [
         {
+          "letterSpacing": 0,
           "textAlign": "left",
           "textAlignVertical": "center",
         },
@@ -171,6 +176,7 @@ exports[`Flex should render component with direction row 1`] = `
     style={
       [
         {
+          "letterSpacing": 0,
           "textAlign": "left",
           "textAlignVertical": "center",
         },
