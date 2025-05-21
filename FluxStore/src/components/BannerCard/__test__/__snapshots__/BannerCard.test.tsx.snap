@@ -73,6 +73,7 @@ exports[`BannerCard should render BannerCard component 1`] = `
       style={
         [
           {
+            "letterSpacing": 0,
             "textAlign": "left",
             "textAlignVertical": "center",
           },

@@ -90,6 +90,7 @@ exports[`ReviewCard should render ReviewCard component 1`] = `
         style={
           [
             {
+              "letterSpacing": 0,
               "textAlign": "left",
               "textAlignVertical": "center",
             },
@@ -597,6 +598,7 @@ exports[`ReviewCard should render ReviewCard component 1`] = `
         style={
           [
             {
+              "letterSpacing": 0,
               "textAlign": "left",
               "textAlignVertical": "center",
             },
@@ -623,6 +625,7 @@ exports[`ReviewCard should render ReviewCard component 1`] = `
     style={
       [
         {
+          "letterSpacing": 0,
           "textAlign": "left",
           "textAlignVertical": "center",
         },
