@@ -49,6 +49,9 @@ export const colors = {
     400: '#ff6e6e',
     500: '#981b1f',
   },
+  pink: {
+    900: '#ef466f',
+  },
   green: {
     200: '#508a7b',
     500: '#5ece7b',

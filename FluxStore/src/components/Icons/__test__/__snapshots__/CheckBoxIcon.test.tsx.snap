@@ -1,0 +1,241 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CheckBoxIcon renders correctly (matches snapshot) 1`] = `
+<View
+  accessibilityState={
+    {
+      "busy": undefined,
+      "checked": undefined,
+      "disabled": false,
+      "expanded": undefined,
+      "selected": undefined,
+    }
+  }
+  accessibilityValue={
+    {
+      "max": undefined,
+      "min": undefined,
+      "now": undefined,
+      "text": undefined,
+    }
+  }
+  accessible={true}
+  collapsable={false}
+  focusable={false}
+  onClick={[Function]}
+  onResponderGrant={[Function]}
+  onResponderMove={[Function]}
+  onResponderRelease={[Function]}
+  onResponderTerminate={[Function]}
+  onResponderTerminationRequest={[Function]}
+  onStartShouldSetResponder={[Function]}
+  style={
+    {
+      "opacity": 1,
+    }
+  }
+  testID="checkbox-icon"
+>
+  <RNSVGSvgView
+    align="xMidYMid"
+    bbHeight={20}
+    bbWidth={19}
+    fill="none"
+    focusable={false}
+    height={20}
+    meetOrSlice={0}
+    minX={0}
+    minY={0}
+    style={
+      [
+        {
+          "backgroundColor": "transparent",
+          "borderWidth": 0,
+        },
+        {
+          "flex": 0,
+          "height": 20,
+          "width": 19,
+        },
+      ]
+    }
+    vbHeight={20}
+    vbWidth={19}
+    width={19}
+  >
+    <RNSVGGroup
+      fill={null}
+      propList={
+        [
+          "fill",
+        ]
+      }
+    >
+      <RNSVGRect
+        fill={
+          {
+            "payload": 4287532686,
+            "type": 0,
+          }
+        }
+        height={20}
+        propList={
+          [
+            "fill",
+          ]
+        }
+        rx={4}
+        width={18.2891}
+        x={0.592896}
+        y={0}
+      />
+      <RNSVGPath
+        d="M5.165 9.47L8.014 13l5.381-6"
+        fill={
+          {
+            "payload": 4278190080,
+            "type": 0,
+          }
+        }
+        propList={
+          [
+            "stroke",
+            "strokeWidth",
+            "strokeLinecap",
+            "strokeLinejoin",
+          ]
+        }
+        stroke={
+          {
+            "payload": 4294967295,
+            "type": 0,
+          }
+        }
+        strokeLinecap={1}
+        strokeLinejoin={1}
+        strokeWidth={2}
+      />
+    </RNSVGGroup>
+  </RNSVGSvgView>
+</View>
+`;
+
+exports[`CheckBoxIcon renders correctly (matches snapshot) with isActive true 1`] = `
+<View
+  accessibilityState={
+    {
+      "busy": undefined,
+      "checked": undefined,
+      "disabled": false,
+      "expanded": undefined,
+      "selected": undefined,
+    }
+  }
+  accessibilityValue={
+    {
+      "max": undefined,
+      "min": undefined,
+      "now": undefined,
+      "text": undefined,
+    }
+  }
+  accessible={true}
+  collapsable={false}
+  focusable={false}
+  onClick={[Function]}
+  onResponderGrant={[Function]}
+  onResponderMove={[Function]}
+  onResponderRelease={[Function]}
+  onResponderTerminate={[Function]}
+  onResponderTerminationRequest={[Function]}
+  onStartShouldSetResponder={[Function]}
+  style={
+    {
+      "opacity": 1,
+    }
+  }
+  testID="checkbox-icon"
+>
+  <RNSVGSvgView
+    align="xMidYMid"
+    bbHeight={20}
+    bbWidth={19}
+    fill="none"
+    focusable={false}
+    height={20}
+    meetOrSlice={0}
+    minX={0}
+    minY={0}
+    style={
+      [
+        {
+          "backgroundColor": "transparent",
+          "borderWidth": 0,
+        },
+        {
+          "flex": 0,
+          "height": 20,
+          "width": 19,
+        },
+      ]
+    }
+    vbHeight={20}
+    vbWidth={19}
+    width={19}
+  >
+    <RNSVGGroup
+      fill={null}
+      propList={
+        [
+          "fill",
+        ]
+      }
+    >
+      <RNSVGRect
+        fill={
+          {
+            "payload": 4283468411,
+            "type": 0,
+          }
+        }
+        height={20}
+        propList={
+          [
+            "fill",
+          ]
+        }
+        rx={4}
+        width={18.2891}
+        x={0.592896}
+        y={0}
+      />
+      <RNSVGPath
+        d="M5.165 9.47L8.014 13l5.381-6"
+        fill={
+          {
+            "payload": 4278190080,
+            "type": 0,
+          }
+        }
+        propList={
+          [
+            "stroke",
+            "strokeWidth",
+            "strokeLinecap",
+            "strokeLinejoin",
+          ]
+        }
+        stroke={
+          {
+            "payload": 4294967295,
+            "type": 0,
+          }
+        }
+        strokeLinecap={1}
+        strokeLinejoin={1}
+        strokeWidth={2}
+      />
+    </RNSVGGroup>
+  </RNSVGSvgView>
+</View>
+`;

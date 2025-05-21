@@ -81,6 +81,7 @@ export interface Theme {
     default: string;
     checkbox: string;
     primary: string;
+    secondary: string;
     tertiary: string;
   };
 }
