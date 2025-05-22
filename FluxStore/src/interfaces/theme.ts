@@ -117,6 +117,7 @@ export interface PositionProps {
   left?: string | number;
   right?: string | number;
   bottom?: string | number;
+  zIndex?: number;
 }
 
 // Border
