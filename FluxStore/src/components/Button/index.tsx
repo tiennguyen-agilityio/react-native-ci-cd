@@ -19,16 +19,18 @@ export interface ButtonProps extends PressableProps {
   size?: 'sm' | 'md' | 'lg';
   color?: ColorValue;
   width?: DimensionValue;
+  fontSize?: number;
 }
 
 const Button = ({
   text,
   variant = 'solid',
   size = 'md',
-  width = '100%',
+  width = variant === 'ghost' ? 'auto' : '100%',
   disabled,
-  onPress,
   color,
+  fontSize,
+  onPress,
 }: ButtonProps) => {
   const {theme, isDark} = useThemeStore();
 
@@ -68,6 +70,7 @@ const Button = ({
           {
             ...(textColor && textColor),
             ...(color && {color}),
+            ...(fontSize && {fontSize}),
           },
         ]}>
         {text}
