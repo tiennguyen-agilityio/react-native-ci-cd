@@ -8,15 +8,16 @@ import {HomeScreen} from '@/screens';
 
 const Tab = createBottomTabNavigator();
 
-const MainTab = () => (
-  <Tab.Navigator
-    initialRouteName={SCREENS.HOME}
-    screenOptions={{
-      headerShown: false,
-      tabBarShowLabel: false,
-    }}>
-    <Tab.Screen name={SCREENS.HOME} component={HomeScreen} />
-  </Tab.Navigator>
-);
+const MainTab = () => {
+  return (
+    <Tab.Navigator
+      initialRouteName={SCREENS.HOME}
+      screenOptions={{
+        headerShown: false,
+      }}>
+      <Tab.Screen name={SCREENS.HOME} component={HomeScreen} />
+    </Tab.Navigator>
+  );
+};
 
 export default MainTab;

@@ -63,6 +63,8 @@ export interface Theme {
     tertiary: string;
     quaternary: string;
     quinary: string;
+    senary: string;
+    septenary: string;
     input: string;
     radio: string;
     checkbox: string;
@@ -118,6 +120,7 @@ export interface PositionProps {
   right?: string | number;
   bottom?: string | number;
   zIndex?: number;
+  overflow?: string;
 }
 
 // Border
@@ -131,6 +134,7 @@ export interface BorderProps {
 // BackGround
 export interface BackgroundProps {
   backgroundColor?: string;
+  opacity?: number;
 }
 
 export interface CSSProps extends SpaceProps, BorderProps, BackgroundProps, PositionProps {}

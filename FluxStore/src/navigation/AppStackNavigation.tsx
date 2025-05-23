@@ -12,7 +12,7 @@ const AppStack = createNativeStackNavigator<AppStackParamList>();
 export const AppStackNavigation = () => {
   return (
     <AppStack.Navigator
-      initialRouteName={SCREENS.INTRO}
+      initialRouteName={SCREENS.MAIN_TAB}
       screenOptions={{
         headerShown: false,
       }}>

@@ -22,6 +22,6 @@ export const metrics: Metrics = {
     md: 15,
     lg: 20,
     xl: 25,
-    xxl: 30,
+    xxl: 32,
   },
 };
