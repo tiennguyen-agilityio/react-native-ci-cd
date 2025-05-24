@@ -5,7 +5,7 @@ import {Product} from '@/interfaces';
 import {CURRENCY_UNIT} from '@/constants';
 import {useThemeStore} from '@/hooks';
 import {formatAmount} from '@/utils';
-import {borderRadius, fontSizes, fontWeights} from '@/themes';
+import {borderRadius, colors, fontSizes, fontWeights} from '@/themes';
 
 import {HeartIcon} from '../Icons';
 import Text from '../Text';
@@ -24,8 +24,6 @@ export interface ProductCardProps {
   width?: DimensionValue;
   height?: DimensionValue;
   type?: ProductCardType;
-  widthImage?: number;
-  heightImage?: number;
   onPress?: (item: Product) => void;
 }
 
@@ -35,27 +33,62 @@ const ProductCard = ({
   width = '100%',
   height = '100%',
   type = ProductCardType.Primary,
-  widthImage,
-  heightImage,
   onPress,
 }: ProductCardProps) => {
-  const {theme} = useThemeStore();
+  const {isDark, theme} = useThemeStore();
 
   const {image, name, price, discount, rating, reviewCount} = item;
   const isSecondaryType = type === ProductCardType.Secondary;
   const isPrimaryType = type === ProductCardType.Primary;
+  const isPTertiaryType = type === ProductCardType.Tertiary;
+
+  const imageSize = useMemo(() => {
+    switch (type) {
+      case ProductCardType.Secondary: {
+        return {
+          width: 66,
+          height: height,
+        };
+      }
+
+      case ProductCardType.Tertiary: {
+        return {
+          width: width,
+          height: 172,
+        };
+      }
+
+      case ProductCardType.Primary:
+      default: {
+        return {
+          width: width,
+          height: 186,
+        };
+      }
+    }
+  }, [type, height, width]);
 
   const themeStyles = useMemo(
     () =>
       StyleSheet.create({
         wrapper: {
-          backgroundColor: theme.transparent,
+          backgroundColor: theme.background.default,
           gap: 10,
           width,
           height,
           ...(isSecondaryType && {
             flexDirection: 'row',
             gap: 8,
+          }),
+          ...(isSecondaryType && {
+            shadowColor: isDark ? colors.transparent : colors.black[500],
+            borderColor: theme.border.secondary,
+            borderWidth: 1,
+            shadowOffset: {width: 0, height: 1},
+            shadowOpacity: 0.05,
+            shadowRadius: 1,
+            borderRadius: 8,
+            elevation: 1.2,
           }),
         },
         icon: {
@@ -70,9 +103,9 @@ const ProductCard = ({
           backgroundColor: theme.background.icon,
         },
         image: {
-          width: widthImage || 141,
-          height: heightImage || 'auto',
-          borderRadius: isSecondaryType ? borderRadius.xs : borderRadius.sm,
+          width: imageSize.width || 141,
+          height: imageSize.height || 'auto',
+          borderRadius: isSecondaryType || isPTertiaryType ? borderRadius.xs : borderRadius.sm,
           position: 'relative',
           overflow: 'hidden',
         },
@@ -108,19 +141,14 @@ const ProductCard = ({
         },
       }),
     [
-      theme.transparent,
-      theme.background.icon,
-      theme.fonts.primary?.medium,
-      theme.fonts.primary.bold,
-      theme.fonts.default.medium,
-      theme.fonts.default.bold,
-      theme.text.primary,
-      theme.text.septenary,
+      theme,
       width,
       height,
       isSecondaryType,
-      widthImage,
-      heightImage,
+      isDark,
+      imageSize.width,
+      imageSize.height,
+      isPTertiaryType,
     ],
   );
 
@@ -147,8 +175,8 @@ const ProductCard = ({
           source={{
             uri: image,
           }}
-          width={widthImage}
-          height={heightImage}
+          width={imageSize.width as number}
+          height={imageSize.height as number}
         />
         {type === ProductCardType.Primary && (
           <Flex style={themeStyles.icon}>

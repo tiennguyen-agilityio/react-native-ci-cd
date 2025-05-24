@@ -10,10 +10,7 @@ import {AppStackParamList} from '@/interfaces';
 // Hooks
 import {useThemeStore} from '@/hooks';
 
-// Themes
-
 // Components
-import Flex from '../Flex';
 import Header from '../Header';
 
 interface MainLayoutProps {
@@ -30,7 +27,6 @@ const MainLayout = ({children, route}: MainLayoutProps) => {
   const styles = useMemo(
     () => ({
       wrapper: {
-        flex: 1,
         backgroundColor: background.default,
       },
     }),
@@ -44,9 +40,7 @@ const MainLayout = ({children, route}: MainLayoutProps) => {
         barStyle={isDark ? 'light-content' : 'dark-content'}
       />
       <Header route={route} />
-      <Flex flex={1} marginTop={0} paddingTop={0}>
-        {children}
-      </Flex>
+      {children}
     </SafeAreaView>
   );
 };

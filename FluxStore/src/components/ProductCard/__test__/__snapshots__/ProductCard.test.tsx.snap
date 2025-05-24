@@ -31,7 +31,7 @@ exports[`ProductCard should render ProductCard component 1`] = `
   onStartShouldSetResponder={[Function]}
   style={
     {
-      "backgroundColor": "transparent",
+      "backgroundColor": "#fff",
       "gap": 10,
       "height": "100%",
       "opacity": 1,
@@ -57,10 +57,10 @@ exports[`ProductCard should render ProductCard component 1`] = `
         },
         {
           "borderRadius": 10,
-          "height": "auto",
+          "height": 186,
           "overflow": "hidden",
           "position": "relative",
-          "width": 141,
+          "width": "100%",
         },
         {
           "position": "relative",
@@ -70,11 +70,13 @@ exports[`ProductCard should render ProductCard component 1`] = `
     testID="flex"
   >
     <Image
+      height={186}
       source={
         {
           "uri": "https://i.ibb.co/SD47BZNp/Mask-Group-1.png",
         }
       }
+      width="100%"
     />
     <View
       style={
@@ -235,7 +237,7 @@ exports[`ProductCard should render ProductCard component 1`] = `
             "color": "#1d1f22",
             "fontFamily": "ProductSansMedium",
             "fontSize": 12,
-            "fontWeight": "600",
+            "fontWeight": 600,
           },
         ]
       }
@@ -283,7 +285,7 @@ exports[`ProductCard should render ProductCard component 1`] = `
               "color": "#1d1f22",
               "fontFamily": "ProductSansBold",
               "fontSize": 16,
-              "fontWeight": "700",
+              "fontWeight": 700,
             },
           ]
         }
@@ -307,7 +309,7 @@ exports[`ProductCard should render ProductCard component 1`] = `
             {
               "color": "#bebfc4",
               "fontSize": 12,
-              "fontWeight": "400",
+              "fontWeight": 400,
               "marginLeft": 8,
               "textDecorationLine": "line-through",
             },
@@ -858,7 +860,7 @@ exports[`ProductCard should render ProductCard has not discount 1`] = `
   onStartShouldSetResponder={[Function]}
   style={
     {
-      "backgroundColor": "transparent",
+      "backgroundColor": "#fff",
       "gap": 10,
       "height": "100%",
       "opacity": 1,
@@ -884,10 +886,10 @@ exports[`ProductCard should render ProductCard has not discount 1`] = `
         },
         {
           "borderRadius": 10,
-          "height": "auto",
+          "height": 186,
           "overflow": "hidden",
           "position": "relative",
-          "width": 141,
+          "width": "100%",
         },
         {
           "position": "relative",
@@ -897,11 +899,13 @@ exports[`ProductCard should render ProductCard has not discount 1`] = `
     testID="flex"
   >
     <Image
+      height={186}
       source={
         {
           "uri": "https://i.ibb.co/Jw9tjsj3/Mask-Group-2.png",
         }
       }
+      width="100%"
     />
     <View
       style={
@@ -1062,7 +1066,7 @@ exports[`ProductCard should render ProductCard has not discount 1`] = `
             "color": "#1d1f22",
             "fontFamily": "ProductSansMedium",
             "fontSize": 12,
-            "fontWeight": "600",
+            "fontWeight": 600,
           },
         ]
       }
@@ -1110,7 +1114,7 @@ exports[`ProductCard should render ProductCard has not discount 1`] = `
               "color": "#1d1f22",
               "fontFamily": "ProductSansBold",
               "fontSize": 16,
-              "fontWeight": "700",
+              "fontWeight": 700,
             },
           ]
         }
@@ -1670,7 +1674,7 @@ exports[`ProductCard should render Tertiary 1`] = `
   onStartShouldSetResponder={[Function]}
   style={
     {
-      "backgroundColor": "transparent",
+      "backgroundColor": "#fff",
       "gap": 10,
       "height": "100%",
       "opacity": 1,
@@ -1695,11 +1699,11 @@ exports[`ProductCard should render Tertiary 1`] = `
           "flexWrap": "nowrap",
         },
         {
-          "borderRadius": 10,
-          "height": "auto",
+          "borderRadius": 8,
+          "height": 172,
           "overflow": "hidden",
           "position": "relative",
-          "width": 141,
+          "width": "100%",
         },
         {
           "position": "relative",
@@ -1709,11 +1713,13 @@ exports[`ProductCard should render Tertiary 1`] = `
     testID="flex"
   >
     <Image
+      height={172}
       source={
         {
           "uri": "https://i.ibb.co/SD47BZNp/Mask-Group-1.png",
         }
       }
+      width="100%"
     />
   </View>
   <View
@@ -1755,7 +1761,7 @@ exports[`ProductCard should render Tertiary 1`] = `
             "color": "#1d1f22",
             "fontFamily": "ProductSansMedium",
             "fontSize": 12,
-            "fontWeight": "600",
+            "fontWeight": 600,
           },
         ]
       }
@@ -1803,7 +1809,7 @@ exports[`ProductCard should render Tertiary 1`] = `
               "color": "#1d1f22",
               "fontFamily": "ProductSansBold",
               "fontSize": 16,
-              "fontWeight": "700",
+              "fontWeight": 700,
             },
           ]
         }
@@ -1827,7 +1833,7 @@ exports[`ProductCard should render Tertiary 1`] = `
             {
               "color": "#bebfc4",
               "fontSize": 12,
-              "fontWeight": "400",
+              "fontWeight": 400,
               "marginLeft": 8,
               "textDecorationLine": "line-through",
             },
@@ -1872,7 +1878,7 @@ exports[`ProductCard should render isFavorite 1`] = `
   onStartShouldSetResponder={[Function]}
   style={
     {
-      "backgroundColor": "transparent",
+      "backgroundColor": "#fff",
       "gap": 10,
       "height": "100%",
       "opacity": 1,
@@ -1898,10 +1904,10 @@ exports[`ProductCard should render isFavorite 1`] = `
         },
         {
           "borderRadius": 10,
-          "height": "auto",
+          "height": 186,
           "overflow": "hidden",
           "position": "relative",
-          "width": 141,
+          "width": "100%",
         },
         {
           "position": "relative",
@@ -1911,11 +1917,13 @@ exports[`ProductCard should render isFavorite 1`] = `
     testID="flex"
   >
     <Image
+      height={186}
       source={
         {
           "uri": "https://i.ibb.co/SD47BZNp/Mask-Group-1.png",
         }
       }
+      width="100%"
     />
     <View
       style={
@@ -2076,7 +2084,7 @@ exports[`ProductCard should render isFavorite 1`] = `
             "color": "#1d1f22",
             "fontFamily": "ProductSansMedium",
             "fontSize": 12,
-            "fontWeight": "600",
+            "fontWeight": 600,
           },
         ]
       }
@@ -2124,7 +2132,7 @@ exports[`ProductCard should render isFavorite 1`] = `
               "color": "#1d1f22",
               "fontFamily": "ProductSansBold",
               "fontSize": 16,
-              "fontWeight": "700",
+              "fontWeight": 700,
             },
           ]
         }
@@ -2148,7 +2156,7 @@ exports[`ProductCard should render isFavorite 1`] = `
             {
               "color": "#bebfc4",
               "fontSize": 12,
-              "fontWeight": "400",
+              "fontWeight": 400,
               "marginLeft": 8,
               "textDecorationLine": "line-through",
             },
@@ -2699,11 +2707,22 @@ exports[`ProductCard should render type Secondary 1`] = `
   onStartShouldSetResponder={[Function]}
   style={
     {
-      "backgroundColor": "transparent",
+      "backgroundColor": "#fff",
+      "borderColor": "#e6e8ec",
+      "borderRadius": 8,
+      "borderWidth": 1,
+      "elevation": 1.2,
       "flexDirection": "row",
       "gap": 8,
       "height": "100%",
       "opacity": 1,
+      "shadowColor": "#000",
+      "shadowOffset": {
+        "height": 1,
+        "width": 0,
+      },
+      "shadowOpacity": 0.05,
+      "shadowRadius": 1,
       "width": "100%",
     }
   }
@@ -2726,10 +2745,10 @@ exports[`ProductCard should render type Secondary 1`] = `
         },
         {
           "borderRadius": 8,
-          "height": "auto",
+          "height": "100%",
           "overflow": "hidden",
           "position": "relative",
-          "width": 141,
+          "width": 66,
         },
         {
           "position": "relative",
@@ -2739,11 +2758,13 @@ exports[`ProductCard should render type Secondary 1`] = `
     testID="flex"
   >
     <Image
+      height="100%"
       source={
         {
           "uri": "https://i.ibb.co/SD47BZNp/Mask-Group-1.png",
         }
       }
+      width={66}
     />
   </View>
   <View
@@ -2785,7 +2806,7 @@ exports[`ProductCard should render type Secondary 1`] = `
             "color": "#1d1f22",
             "fontFamily": "ProductSansMedium",
             "fontSize": 12,
-            "fontWeight": "600",
+            "fontWeight": 600,
           },
         ]
       }
@@ -2833,7 +2854,7 @@ exports[`ProductCard should render type Secondary 1`] = `
               "color": "#1d1f22",
               "fontFamily": "ProductSansBold",
               "fontSize": 16,
-              "fontWeight": "700",
+              "fontWeight": 700,
             },
           ]
         }
@@ -2857,7 +2878,7 @@ exports[`ProductCard should render type Secondary 1`] = `
             {
               "color": "#bebfc4",
               "fontSize": 12,
-              "fontWeight": "400",
+              "fontWeight": 400,
               "marginLeft": 8,
               "textDecorationLine": "line-through",
             },

@@ -10,7 +10,7 @@ export const Carousels = {
 };
 
 export const Banners = {
-  colection: require('@/assets/images/banners/colection.png'),
+  collection: require('@/assets/images/banners/collection.png'),
   beauty: require('@/assets/images/banners/beauty.png'),
   fabulous: require('@/assets/images/banners/fabulous.png'),
   shirts: require('@/assets/images/banners/shirts.png'),
