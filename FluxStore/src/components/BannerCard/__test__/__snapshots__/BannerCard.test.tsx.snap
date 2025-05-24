@@ -81,7 +81,7 @@ exports[`BannerCard should render BannerCard component 1`] = `
             "color": "#000",
             "fontFamily": "ProductSansBold",
             "fontSize": 24,
-            "fontWeight": "700",
+            "fontWeight": 700,
           },
           {
             "color": "#fff",

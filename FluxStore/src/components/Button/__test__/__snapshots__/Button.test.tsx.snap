@@ -47,7 +47,7 @@ exports[`Button should render button component with default props 1`] = `
         {
           "borderRadius": 25,
           "fontFamily": "ProductSansBold",
-          "fontWeight": "700",
+          "fontWeight": 700,
           "textAlign": "center",
         },
         {
@@ -112,7 +112,7 @@ exports[`Button should render button component with disabled 1`] = `
         {
           "borderRadius": 25,
           "fontFamily": "ProductSansBold",
-          "fontWeight": "700",
+          "fontWeight": 700,
           "textAlign": "center",
         },
         {

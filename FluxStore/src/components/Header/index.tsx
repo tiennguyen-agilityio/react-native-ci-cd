@@ -1,33 +1,20 @@
 import {ReactNode, useCallback, useMemo} from 'react';
 import {StyleSheet} from 'react-native';
-import {BottomTabHeaderProps} from '@react-navigation/bottom-tabs';
-import {NativeStackHeaderProps} from '@react-navigation/native-stack';
-import {RouteProp} from '@react-navigation/native';
+import {useNavigation, useRoute} from '@react-navigation/native';
 
 // Types
-import {AppStackParamList, SCREENS} from '@/interfaces';
+import {DIRECTION, SCREENS} from '@/interfaces';
 
 // Hooks | Stores
 import {useThemeStore} from '@/hooks';
 
-// Components
-import {MenuIcon, NotificationIcon} from '../Icons';
-import Flex from '../Flex';
-import Text from '../Text';
+// Themes
 import {metrics} from '@/themes';
 
-const styles = StyleSheet.create({
-  icon: {
-    minWidth: 50,
-  },
-});
-
-type HeaderProps =
-  | NativeStackHeaderProps
-  | BottomTabHeaderProps
-  | {
-      route: RouteProp<AppStackParamList, keyof AppStackParamList>;
-    };
+// Components
+import {ChevronIcon, MenuIcon, NotificationIcon} from '../Icons';
+import Flex from '../Flex';
+import Text from '../Text';
 
 interface HeaderItem {
   title?: string;
@@ -35,14 +22,41 @@ interface HeaderItem {
   rightIcon?: ReactNode;
 }
 
-const Header = ({route}: HeaderProps) => {
+const Header = () => {
+  const navigation = useNavigation();
+  const route = useRoute();
+
   const {
-    theme: {background},
+    theme: {background, text},
   } = useThemeStore();
   const {name = ''} = route;
 
   const handleShowMenu = useCallback(() => null, []);
   const handleShowNotification = useCallback(() => null, []);
+  const handleGoToBack = useCallback(() => navigation.goBack(), [navigation]);
+
+  const styles = useMemo(
+    () =>
+      StyleSheet.create({
+        icon: {
+          minWidth: 50,
+        },
+        iconBack: {
+          width: 36,
+          height: 36,
+          borderRadius: 36,
+          justifyContent: 'center',
+          alignItems: 'center',
+          shadowColor: text.primary,
+          backgroundColor: background.default,
+          shadowOffset: {width: 0, height: 3},
+          shadowOpacity: 0.2,
+          shadowRadius: 6,
+          elevation: 4,
+        },
+      }),
+    [text, background],
+  );
 
   const {
     title = '',
@@ -54,8 +68,24 @@ const Header = ({route}: HeaderProps) => {
         return {
           title: 'Fluxstore',
           leftIcon: <MenuIcon onPress={handleShowMenu} />,
-          onClickLeftIcon: handleShowMenu,
           rightIcon: <NotificationIcon onPress={handleShowNotification} />,
+        };
+      }
+
+      case SCREENS.PRODUCTS: {
+        return {
+          title: '',
+          leftIcon: (
+            <Flex direction="row" align="center" gap={20}>
+              <ChevronIcon
+                direction={DIRECTION.LEFT}
+                style={styles.iconBack}
+                onPress={handleGoToBack}
+              />
+              <Text>Dresses</Text>
+            </Flex>
+          ),
+          onClickLeftIcon: handleShowMenu,
         };
       }
 
@@ -63,7 +93,7 @@ const Header = ({route}: HeaderProps) => {
         return {};
       }
     }
-  }, [handleShowMenu, handleShowNotification, name]);
+  }, [handleGoToBack, handleShowMenu, handleShowNotification, name, styles.iconBack]);
 
   return (
     <Flex

@@ -118,7 +118,7 @@ exports[`CartItem should render CartItem component 1`] = `
               "color": "#000",
               "fontFamily": "NunitoSemiBold",
               "fontSize": 20,
-              "fontWeight": "700",
+              "fontWeight": 700,
             },
             {
               "fontSize": 13,
@@ -141,7 +141,7 @@ exports[`CartItem should render CartItem component 1`] = `
               "color": "#000",
               "fontFamily": "RobotoRegular",
               "fontSize": 16,
-              "fontWeight": "700",
+              "fontWeight": 700,
             },
             {},
             {
@@ -678,7 +678,7 @@ exports[`CartItem should render CartItem with isChecked true 1`] = `
               "color": "#000",
               "fontFamily": "NunitoSemiBold",
               "fontSize": 20,
-              "fontWeight": "700",
+              "fontWeight": 700,
             },
             {
               "fontSize": 13,
@@ -701,7 +701,7 @@ exports[`CartItem should render CartItem with isChecked true 1`] = `
               "color": "#000",
               "fontFamily": "RobotoRegular",
               "fontSize": 16,
-              "fontWeight": "700",
+              "fontWeight": 700,
             },
             {},
             {
