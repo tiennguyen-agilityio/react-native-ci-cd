@@ -4,8 +4,8 @@ import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {AppStackParamList, SCREENS} from '@/interfaces';
 
 // Screens | Tabs
+import {IntroScreen, ProductsScreen, WelcomeScreen} from '@/screens';
 import MainTab from './MainTab';
-import {IntroScreen, WelcomeScreen} from '@/screens';
 
 const AppStack = createNativeStackNavigator<AppStackParamList>();
 
@@ -18,6 +18,7 @@ export const AppStackNavigation = () => {
       }}>
       <AppStack.Screen name={SCREENS.MAIN_TAB} component={MainTab} />
       <AppStack.Screen name={SCREENS.WELCOME} component={WelcomeScreen} />
+      <AppStack.Screen name={SCREENS.PRODUCTS} component={ProductsScreen} />
       <AppStack.Screen name={SCREENS.INTRO} component={IntroScreen} />
     </AppStack.Navigator>
   );

@@ -107,7 +107,7 @@ const Home = ({navigation, route}: LandingScreenProps) => {
   }, []);
 
   return (
-    <MainLayout route={route}>
+    <MainLayout>
       <ScrollView showsVerticalScrollIndicator={false}>
         <Flex justify="start" marginTop={32} paddingBottom={metrics.dimensions.xxl}>
           <Flex justify="start" gap={20} paddingHorizontal={metrics.dimensions.xxl}>

@@ -103,7 +103,7 @@ exports[`ReviewCard should render ReviewCard component 1`] = `
             {
               "fontFamily": "ProductSansBold",
               "fontSize": 13,
-              "fontWeight": "700",
+              "fontWeight": 700,
             },
           ]
         }
@@ -612,12 +612,12 @@ exports[`ReviewCard should render ReviewCard component 1`] = `
               "color": "#bebfc4",
               "fontFamily": "NunitoSemiBold",
               "fontSize": 11,
-              "fontWeight": "500",
+              "fontWeight": 500,
             },
           ]
         }
       >
-        1d ago
+        4d ago
       </Text>
     </View>
   </View>
