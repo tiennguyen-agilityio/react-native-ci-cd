@@ -13,31 +13,36 @@ import {Flex, ProductCard, ProductCardType} from '@/components';
 
 interface ProductListProps {
   data: Product[];
+  productCardType: ProductCardType;
+  horizontal?: boolean;
   onLoadMore: () => void;
 }
 
-const ProductList = ({data, onLoadMore}: ProductListProps) => {
+const ProductList = ({data, productCardType, onLoadMore}: ProductListProps) => {
   const navigation = useNavigation();
 
   const getKeyExtractor = useCallback(({id}: Product) => id, []);
 
-  const renderItemProduct = useCallback(({item}: ListRenderItemInfo<Product>) => {
-    const handleViewProductDetail = () =>
-      // navigation.navigate(SCREENS.PRODUCT_DETAIL, {product: item});
-      console.log('navigation product detail');
+  const renderItemProduct = useCallback(
+    ({item}: ListRenderItemInfo<Product>) => {
+      const isTertiaryType = productCardType === ProductCardType.Tertiary;
 
-    return (
-      <ProductCard
-        width={126}
-        height={227}
-        widthImage={126}
-        heightImage={172}
-        item={item}
-        type={ProductCardType.Tertiary}
-        onPress={handleViewProductDetail}
-      />
-    );
-  }, []);
+      const handleViewProductDetail = () =>
+        // navigation.navigate(SCREENS.PRODUCT_DETAIL, {product: item});
+        console.log('navigation product detail');
+
+      return (
+        <ProductCard
+          width={isTertiaryType ? 126 : 203}
+          height={isTertiaryType ? 227 : 66}
+          item={item}
+          type={productCardType}
+          onPress={handleViewProductDetail}
+        />
+      );
+    },
+    [productCardType],
+  );
 
   const renderItemSeparatorComponent = useCallback(
     () => <Flex width={metrics.dimensions.lg} />,

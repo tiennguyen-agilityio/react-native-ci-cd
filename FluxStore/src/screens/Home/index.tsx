@@ -11,7 +11,7 @@ import {AppStackScreenProps, Category, SCREENS} from '@/interfaces';
 import {useThemeStore} from '@/hooks';
 
 // Themes
-import {metrics, Banners, fontSizes} from '@/themes';
+import {metrics, fontSizes, Banners} from '@/themes';
 
 // Component
 import {
@@ -20,12 +20,15 @@ import {
   Flex,
   MainLayout,
   MenIcon,
+  ProductCardType,
   PromoBanner,
   ScrewdriverIcon,
   Text,
   WomenIcon,
+  PromoBannerType,
+  ProductList,
 } from '@/components';
-import {Carousel, Categories, ProductList} from './components';
+import {Carousel, Categories} from './components';
 
 const CATEGORIES: Category[] = [
   {
@@ -83,10 +86,30 @@ const Home = ({navigation, route}: LandingScreenProps) => {
     console.log('--Press Collection banner');
   }, []);
 
+  const handlePressBeautyBanner = useCallback(() => {
+    console.log('--Press Beauty banner');
+  }, []);
+
+  const handlePressShirtsBanner = useCallback(() => {
+    console.log('--Press T-Shirts banner');
+  }, []);
+
+  const handlePressDressesBanner = useCallback(() => {
+    console.log('--Press Dresses banner');
+  }, []);
+
+  const handleShowAllProductRecommend = useCallback(() => {
+    console.log('--Press Show all Recommend');
+  }, []);
+
+  const handleShowAllTopCollection = useCallback(() => {
+    console.log('--Press Show all Top Collection');
+  }, []);
+
   return (
     <MainLayout route={route}>
       <ScrollView showsVerticalScrollIndicator={false}>
-        <Flex justify="start" marginTop={32}>
+        <Flex justify="start" marginTop={32} paddingBottom={metrics.dimensions.xxl}>
           <Flex justify="start" gap={20} paddingHorizontal={metrics.dimensions.xxl}>
             <Categories
               list={CATEGORIES}
@@ -107,18 +130,104 @@ const Home = ({navigation, route}: LandingScreenProps) => {
               />
             </Flex>
           </Flex>
-          <ProductList data={products} onLoadMore={handleLoadMoreProduct} />
+          <ProductList
+            data={products}
+            productCardType={ProductCardType.Tertiary}
+            onLoadMore={handleLoadMoreProduct}
+          />
 
           <Flex marginTop={metrics.dimensions.lg} height={158}>
             <PromoBanner
               title={`HANG OUT \n& PARTY`}
               tag="|  NEW COLLECTION"
-              image={Banners.colection}
+              image={Banners.collection}
               height={158}
               widthImage={119}
               heightImage={158}
               onPress={handlePressCollection}
             />
+          </Flex>
+
+          <Flex
+            direction="row"
+            align="center"
+            justify="between"
+            paddingHorizontal={metrics.dimensions.xxl}
+            marginTop={30}
+            marginBottom={25}>
+            <Text variant="title">Recommended</Text>
+            <Button
+              variant="ghost"
+              text="Show all"
+              color={text.senary}
+              fontSize={fontSizes.xxs}
+              onPress={handleShowAllProductRecommend}
+            />
+          </Flex>
+          <ProductList
+            data={products}
+            productCardType={ProductCardType.Secondary}
+            onLoadMore={handleLoadMoreProduct}
+          />
+          <Flex
+            direction="row"
+            align="center"
+            justify="between"
+            paddingHorizontal={metrics.dimensions.xxl}
+            marginVertical={32}>
+            <Text variant="title">Top Collection</Text>
+            <Button
+              variant="ghost"
+              text="Show all"
+              color={text.senary}
+              fontSize={fontSizes.xxs}
+              onPress={handleShowAllTopCollection}
+            />
+          </Flex>
+          <Flex paddingHorizontal={metrics.dimensions.xxl} gap={metrics.dimensions.md}>
+            <PromoBanner
+              title={`FOR SLIM\n& BEAUTY`}
+              tag="|  Sale up to 40%"
+              image={Banners.beauty}
+              height={141}
+              widthImage={128}
+              heightImage={141}
+              type={PromoBannerType.Secondary}
+              onPress={handlePressBeautyBanner}
+            />
+            <PromoBanner
+              title={`Most sexy\n& fabulous\ndesign`}
+              tag="|  Summer Collection 2025"
+              image={Banners.fabulous}
+              height={210}
+              widthImage={128}
+              heightImage={210}
+              type={PromoBannerType.Tertiary}
+              onPress={handlePressBeautyBanner}
+            />
+            <Flex direction="row" justify="between" gap={10}>
+              <PromoBanner
+                title={`The\nOffice\nLife`}
+                tag="T-Shirts"
+                image={Banners.shirts}
+                height={194}
+                widthImage={110}
+                heightImage={194}
+                isReversed
+                type={PromoBannerType.Quaternary}
+                onPress={handlePressShirtsBanner}
+              />
+              <PromoBanner
+                title={`Elegant\nDesign`}
+                tag="Dresses"
+                image={Banners.dresses}
+                height={194}
+                widthImage={110}
+                heightImage={194}
+                type={PromoBannerType.Quaternary}
+                onPress={handlePressDressesBanner}
+              />
+            </Flex>
           </Flex>
         </Flex>
       </ScrollView>

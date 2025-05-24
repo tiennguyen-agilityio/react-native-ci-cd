@@ -110,6 +110,8 @@ export interface SpaceProps {
   marginBottom?: number;
   marginLeft?: DimensionValue;
   marginRight?: DimensionValue;
+  marginVertical?: DimensionValue;
+  marginHorizontal?: DimensionValue;
 }
 
 // Position

@@ -1,5 +1,6 @@
 export * from './Icons';
 export {ProductCardType} from './ProductCard';
+export {PromoBannerType} from './PromoBanner';
 export {default as Button} from './Button';
 export {default as Radio} from './Radio';
 export {default as Checkbox} from './Checkbox';
@@ -9,6 +10,7 @@ export {default as Quantity} from './Quantity';
 export {default as Rating} from './Rating';
 export {default as Flex} from './Flex';
 export {default as ProductCard} from './ProductCard';
+export {default as ProductList} from './ProductList';
 export {default as Collapse} from './Collapse';
 export {default as BannerCard} from './BannerCard';
 export {default as Dot} from './Dot';
