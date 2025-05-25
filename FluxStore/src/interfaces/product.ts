@@ -9,4 +9,5 @@ export interface Product {
   description?: string;
   sizes?: string[];
   colors?: string[];
+  carouselImages?: string[];
 }

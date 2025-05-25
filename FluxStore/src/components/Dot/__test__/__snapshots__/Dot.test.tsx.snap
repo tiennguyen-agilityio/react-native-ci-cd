@@ -29,7 +29,7 @@ exports[`Dot Component renders correctly with border 1`] = `
     style={
       [
         {
-          "backgroundColor": "#f08c7d",
+          "backgroundColor": "black",
           "borderColor": "#fff",
           "borderRadius": "50%",
           "borderWidth": 5,
@@ -53,7 +53,7 @@ exports[`Dot Component renders correctly with border 1`] = `
         },
       ]
     }
-    testID="dot-#f08c7d"
+    testID="dot-black"
   />
 </View>
 `;
@@ -87,7 +87,7 @@ exports[`Dot Component renders correctly with no border 1`] = `
     style={
       [
         {
-          "backgroundColor": "#f08c7d",
+          "backgroundColor": "black",
           "borderColor": "none",
           "borderRadius": "50%",
           "borderWidth": 0,
@@ -104,7 +104,7 @@ exports[`Dot Component renders correctly with no border 1`] = `
         },
       ]
     }
-    testID="dot-#f08c7d"
+    testID="dot-black"
   />
 </View>
 `;

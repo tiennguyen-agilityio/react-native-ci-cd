@@ -12,7 +12,7 @@ import {useThemeStore} from '@/hooks';
 import {metrics} from '@/themes';
 
 // Components
-import {ChevronIcon, MenuIcon, NotificationIcon} from '../Icons';
+import {ChevronIcon, HeartIcon, MenuIcon, NotificationIcon} from '../Icons';
 import Flex from '../Flex';
 import Text from '../Text';
 
@@ -34,6 +34,10 @@ const Header = () => {
   const handleShowMenu = useCallback(() => null, []);
   const handleShowNotification = useCallback(() => null, []);
   const handleGoToBack = useCallback(() => navigation.goBack(), [navigation]);
+  const handleChangeFavorite = useCallback(() => {
+    const {id = ''} = route?.params || {};
+    console.log('----Product id', id);
+  }, [route]);
 
   const styles = useMemo(
     () =>
@@ -85,7 +89,20 @@ const Header = () => {
               <Text>Dresses</Text>
             </Flex>
           ),
-          onClickLeftIcon: handleShowMenu,
+        };
+      }
+
+      case SCREENS.PRODUCT_DETAIL: {
+        return {
+          title: '',
+          leftIcon: (
+            <ChevronIcon
+              direction={DIRECTION.LEFT}
+              style={styles.iconBack}
+              onPress={handleGoToBack}
+            />
+          ),
+          rightIcon: <HeartIcon onPress={handleChangeFavorite} />,
         };
       }
 
@@ -93,7 +110,14 @@ const Header = () => {
         return {};
       }
     }
-  }, [handleGoToBack, handleShowMenu, handleShowNotification, name, styles.iconBack]);
+  }, [
+    name,
+    styles.iconBack,
+    handleGoToBack,
+    handleShowMenu,
+    handleChangeFavorite,
+    handleShowNotification,
+  ]);
 
   return (
     <Flex

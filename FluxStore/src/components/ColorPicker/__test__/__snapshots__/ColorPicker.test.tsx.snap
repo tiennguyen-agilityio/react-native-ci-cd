@@ -36,17 +36,9 @@ exports[`ColorPicker Component renders correctly 1`] = `
           "fontSize": 14,
         },
         {},
-        [
-          {
-            "color": "#717B8F",
-            "fontSize": 16,
-            "fontWeight": "600",
-            "marginBottom": 8,
-          },
-          {
-            "color": "#777e90",
-          },
-        ],
+        {
+          "color": "#777e90",
+        },
       ]
     }
   >
@@ -56,7 +48,7 @@ exports[`ColorPicker Component renders correctly 1`] = `
     style={
       [
         {
-          "flexDirection": "column",
+          "flexDirection": "row",
         },
         {
           "justifyContent": "flex-start",
@@ -67,12 +59,11 @@ exports[`ColorPicker Component renders correctly 1`] = `
         {
           "flexWrap": "nowrap",
         },
+        undefined,
         {
-          "alignItems": "center",
-          "columnGap": 4,
-          "flexDirection": "row",
+          "gap": 8,
+          "marginTop": 10,
         },
-        {},
       ]
     }
     testID="flex"
@@ -105,20 +96,13 @@ exports[`ColorPicker Component renders correctly 1`] = `
         style={
           [
             {
-              "backgroundColor": "#f08c7d",
-              "borderColor": "#fff",
+              "backgroundColor": "black",
+              "borderColor": "none",
               "borderRadius": "50%",
-              "borderWidth": 5,
-              "elevation": 4,
-              "height": 34,
+              "borderWidth": 0,
+              "height": 24,
               "shadowColor": "#000",
-              "shadowOffset": {
-                "height": 3,
-                "width": 0,
-              },
-              "shadowOpacity": 0.2,
-              "shadowRadius": 6,
-              "width": 34,
+              "width": 24,
             },
             {
               "transform": [
@@ -129,7 +113,7 @@ exports[`ColorPicker Component renders correctly 1`] = `
             },
           ]
         }
-        testID="dot-#f08c7d"
+        testID="dot-black"
       />
     </View>
     <View
@@ -160,7 +144,7 @@ exports[`ColorPicker Component renders correctly 1`] = `
         style={
           [
             {
-              "backgroundColor": "#000",
+              "backgroundColor": "red",
               "borderColor": "none",
               "borderRadius": "50%",
               "borderWidth": 0,
@@ -177,7 +161,7 @@ exports[`ColorPicker Component renders correctly 1`] = `
             },
           ]
         }
-        testID="dot-#000"
+        testID="dot-red"
       />
     </View>
     <View
@@ -208,7 +192,7 @@ exports[`ColorPicker Component renders correctly 1`] = `
         style={
           [
             {
-              "backgroundColor": "#981b1f",
+              "backgroundColor": "blue",
               "borderColor": "none",
               "borderRadius": "50%",
               "borderWidth": 0,
@@ -225,7 +209,7 @@ exports[`ColorPicker Component renders correctly 1`] = `
             },
           ]
         }
-        testID="dot-#981b1f"
+        testID="dot-blue"
       />
     </View>
   </View>
@@ -268,17 +252,9 @@ exports[`ColorPicker Component renders correctly with defaultIndex 1 1`] = `
           "fontSize": 14,
         },
         {},
-        [
-          {
-            "color": "#717B8F",
-            "fontSize": 16,
-            "fontWeight": "600",
-            "marginBottom": 8,
-          },
-          {
-            "color": "#777e90",
-          },
-        ],
+        {
+          "color": "#777e90",
+        },
       ]
     }
   >
@@ -288,7 +264,7 @@ exports[`ColorPicker Component renders correctly with defaultIndex 1 1`] = `
     style={
       [
         {
-          "flexDirection": "column",
+          "flexDirection": "row",
         },
         {
           "justifyContent": "flex-start",
@@ -299,12 +275,11 @@ exports[`ColorPicker Component renders correctly with defaultIndex 1 1`] = `
         {
           "flexWrap": "nowrap",
         },
+        undefined,
         {
-          "alignItems": "center",
-          "columnGap": 4,
-          "flexDirection": "row",
+          "gap": 8,
+          "marginTop": 10,
         },
-        {},
       ]
     }
     testID="flex"
@@ -337,55 +312,7 @@ exports[`ColorPicker Component renders correctly with defaultIndex 1 1`] = `
         style={
           [
             {
-              "backgroundColor": "#f08c7d",
-              "borderColor": "none",
-              "borderRadius": "50%",
-              "borderWidth": 0,
-              "height": 24,
-              "shadowColor": "#000",
-              "width": 24,
-            },
-            {
-              "transform": [
-                {
-                  "scale": 1,
-                },
-              ],
-            },
-          ]
-        }
-        testID="dot-#f08c7d"
-      />
-    </View>
-    <View
-      style={
-        [
-          {
-            "flexDirection": "column",
-          },
-          {
-            "justifyContent": "center",
-          },
-          {
-            "alignItems": "center",
-          },
-          {
-            "flexWrap": "nowrap",
-          },
-          undefined,
-          {
-            "height": 34,
-            "width": 34,
-          },
-        ]
-      }
-      testID="flex"
-    >
-      <View
-        style={
-          [
-            {
-              "backgroundColor": "#000",
+              "backgroundColor": "black",
               "borderColor": "#fff",
               "borderRadius": "50%",
               "borderWidth": 5,
@@ -409,7 +336,7 @@ exports[`ColorPicker Component renders correctly with defaultIndex 1 1`] = `
             },
           ]
         }
-        testID="dot-#000"
+        testID="dot-black"
       />
     </View>
     <View
@@ -440,7 +367,7 @@ exports[`ColorPicker Component renders correctly with defaultIndex 1 1`] = `
         style={
           [
             {
-              "backgroundColor": "#981b1f",
+              "backgroundColor": "red",
               "borderColor": "none",
               "borderRadius": "50%",
               "borderWidth": 0,
@@ -457,7 +384,55 @@ exports[`ColorPicker Component renders correctly with defaultIndex 1 1`] = `
             },
           ]
         }
-        testID="dot-#981b1f"
+        testID="dot-red"
+      />
+    </View>
+    <View
+      style={
+        [
+          {
+            "flexDirection": "column",
+          },
+          {
+            "justifyContent": "center",
+          },
+          {
+            "alignItems": "center",
+          },
+          {
+            "flexWrap": "nowrap",
+          },
+          undefined,
+          {
+            "height": 34,
+            "width": 34,
+          },
+        ]
+      }
+      testID="flex"
+    >
+      <View
+        style={
+          [
+            {
+              "backgroundColor": "blue",
+              "borderColor": "none",
+              "borderRadius": "50%",
+              "borderWidth": 0,
+              "height": 24,
+              "shadowColor": "#000",
+              "width": 24,
+            },
+            {
+              "transform": [
+                {
+                  "scale": 1,
+                },
+              ],
+            },
+          ]
+        }
+        testID="dot-blue"
       />
     </View>
   </View>
