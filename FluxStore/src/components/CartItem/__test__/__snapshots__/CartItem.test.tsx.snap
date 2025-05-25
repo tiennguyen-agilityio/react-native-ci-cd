@@ -173,7 +173,7 @@ exports[`CartItem should render CartItem component 1`] = `
           ]
         }
       >
-        Size: s, M | Color: Black
+        Size: s, M | Color: black
       </Text>
     </View>
     <View
@@ -733,7 +733,7 @@ exports[`CartItem should render CartItem with isChecked true 1`] = `
           ]
         }
       >
-        Size: s, M | Color: Black
+        Size: s, M | Color: black
       </Text>
     </View>
     <View

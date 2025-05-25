@@ -14,10 +14,9 @@ export default meta;
 type Story = StoryObj<typeof ColorPicker>;
 
 const defaultProps = {
-  label: 'Colors',
   colors: COLORS,
-  defaultIndex: 1,
-  onValueChange: (color: string) => Alert.alert('Current color', color),
+  defaultValue: [COLORS[0]],
+  onValueChange: (colors: string[]) => Alert.alert('Current colors', colors.join(', ')),
 };
 
 export const Default: Story = {

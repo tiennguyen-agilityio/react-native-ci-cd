@@ -4,11 +4,10 @@ import {COLORS} from '@/mocks';
 import ColorPicker from '..';
 
 describe('ColorPicker Component', () => {
-  const onChangeValue = jest.fn();
+  const onValueChange = jest.fn();
   const props = {
-    label: 'Color',
     colors: COLORS,
-    onChangeValue,
+    onValueChange,
   };
   it('renders correctly', () => {
     const {toJSON} = render(<ColorPicker {...props} />);
@@ -17,7 +16,7 @@ describe('ColorPicker Component', () => {
   });
 
   it('renders correctly with defaultIndex 1', () => {
-    const {toJSON} = render(<ColorPicker {...props} defaultIndex={1} />);
+    const {toJSON} = render(<ColorPicker {...props} defaultValue={[COLORS[0]]} />);
 
     expect(toJSON()).toMatchSnapshot();
   });

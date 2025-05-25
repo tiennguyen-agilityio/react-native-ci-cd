@@ -1,0 +1,679 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SizeSelect Component renders correctly 1`] = `
+<View
+  style={
+    [
+      {
+        "flexDirection": "column",
+      },
+      {
+        "justifyContent": "flex-start",
+      },
+      {
+        "alignItems": "stretch",
+      },
+      {
+        "flexWrap": "nowrap",
+      },
+      undefined,
+      {},
+    ]
+  }
+  testID="flex"
+>
+  <Text
+    style={
+      [
+        {
+          "letterSpacing": 0,
+          "textAlign": "left",
+          "textAlignVertical": "center",
+        },
+        {
+          "color": "#737680",
+          "fontFamily": "ProductSansRegular",
+          "fontSize": 14,
+        },
+        {},
+        {
+          "color": "#777e90",
+        },
+      ]
+    }
+  >
+    Size
+  </Text>
+  <View
+    style={
+      [
+        {
+          "flexDirection": "row",
+        },
+        {
+          "justifyContent": "flex-start",
+        },
+        {
+          "alignItems": "stretch",
+        },
+        {
+          "flexWrap": "nowrap",
+        },
+        undefined,
+        {
+          "gap": 8,
+          "marginTop": 10,
+        },
+      ]
+    }
+    testID="flex"
+  >
+    <View
+      accessibilityState={
+        {
+          "busy": undefined,
+          "checked": undefined,
+          "disabled": undefined,
+          "expanded": undefined,
+          "selected": undefined,
+        }
+      }
+      accessibilityValue={
+        {
+          "max": undefined,
+          "min": undefined,
+          "now": undefined,
+          "text": undefined,
+        }
+      }
+      accessible={true}
+      collapsable={false}
+      focusable={true}
+      onClick={[Function]}
+      onResponderGrant={[Function]}
+      onResponderMove={[Function]}
+      onResponderRelease={[Function]}
+      onResponderTerminate={[Function]}
+      onResponderTerminationRequest={[Function]}
+      onStartShouldSetResponder={[Function]}
+      style={
+        {
+          "opacity": 1,
+        }
+      }
+    >
+      <View
+        style={
+          [
+            {
+              "flexDirection": "column",
+            },
+            {
+              "justifyContent": "center",
+            },
+            {
+              "alignItems": "center",
+            },
+            {
+              "flexWrap": "nowrap",
+            },
+            undefined,
+            {
+              "backgroundColor": "#f3f3f3",
+              "borderRadius": 33,
+              "height": 33,
+              "width": 33,
+            },
+          ]
+        }
+        testID="flex"
+      >
+        <Text
+          style={
+            [
+              {
+                "letterSpacing": 0,
+                "textAlign": "left",
+                "textAlignVertical": "center",
+              },
+              {
+                "color": "#737680",
+                "fontFamily": "ProductSansRegular",
+                "fontSize": 14,
+              },
+              {},
+              [
+                {
+                  "textTransform": "capitalize",
+                },
+                {
+                  "color": "#777e90",
+                },
+              ],
+            ]
+          }
+        >
+          S
+        </Text>
+      </View>
+    </View>
+    <View
+      accessibilityState={
+        {
+          "busy": undefined,
+          "checked": undefined,
+          "disabled": undefined,
+          "expanded": undefined,
+          "selected": undefined,
+        }
+      }
+      accessibilityValue={
+        {
+          "max": undefined,
+          "min": undefined,
+          "now": undefined,
+          "text": undefined,
+        }
+      }
+      accessible={true}
+      collapsable={false}
+      focusable={true}
+      onClick={[Function]}
+      onResponderGrant={[Function]}
+      onResponderMove={[Function]}
+      onResponderRelease={[Function]}
+      onResponderTerminate={[Function]}
+      onResponderTerminationRequest={[Function]}
+      onStartShouldSetResponder={[Function]}
+      style={
+        {
+          "opacity": 1,
+        }
+      }
+    >
+      <View
+        style={
+          [
+            {
+              "flexDirection": "column",
+            },
+            {
+              "justifyContent": "center",
+            },
+            {
+              "alignItems": "center",
+            },
+            {
+              "flexWrap": "nowrap",
+            },
+            undefined,
+            {
+              "backgroundColor": "#f3f3f3",
+              "borderRadius": 33,
+              "height": 33,
+              "width": 33,
+            },
+          ]
+        }
+        testID="flex"
+      >
+        <Text
+          style={
+            [
+              {
+                "letterSpacing": 0,
+                "textAlign": "left",
+                "textAlignVertical": "center",
+              },
+              {
+                "color": "#737680",
+                "fontFamily": "ProductSansRegular",
+                "fontSize": 14,
+              },
+              {},
+              [
+                {
+                  "textTransform": "capitalize",
+                },
+                {
+                  "color": "#777e90",
+                },
+              ],
+            ]
+          }
+        >
+          M
+        </Text>
+      </View>
+    </View>
+    <View
+      accessibilityState={
+        {
+          "busy": undefined,
+          "checked": undefined,
+          "disabled": undefined,
+          "expanded": undefined,
+          "selected": undefined,
+        }
+      }
+      accessibilityValue={
+        {
+          "max": undefined,
+          "min": undefined,
+          "now": undefined,
+          "text": undefined,
+        }
+      }
+      accessible={true}
+      collapsable={false}
+      focusable={true}
+      onClick={[Function]}
+      onResponderGrant={[Function]}
+      onResponderMove={[Function]}
+      onResponderRelease={[Function]}
+      onResponderTerminate={[Function]}
+      onResponderTerminationRequest={[Function]}
+      onStartShouldSetResponder={[Function]}
+      style={
+        {
+          "opacity": 1,
+        }
+      }
+    >
+      <View
+        style={
+          [
+            {
+              "flexDirection": "column",
+            },
+            {
+              "justifyContent": "center",
+            },
+            {
+              "alignItems": "center",
+            },
+            {
+              "flexWrap": "nowrap",
+            },
+            undefined,
+            {
+              "backgroundColor": "#f3f3f3",
+              "borderRadius": 33,
+              "height": 33,
+              "width": 33,
+            },
+          ]
+        }
+        testID="flex"
+      >
+        <Text
+          style={
+            [
+              {
+                "letterSpacing": 0,
+                "textAlign": "left",
+                "textAlignVertical": "center",
+              },
+              {
+                "color": "#737680",
+                "fontFamily": "ProductSansRegular",
+                "fontSize": 14,
+              },
+              {},
+              [
+                {
+                  "textTransform": "capitalize",
+                },
+                {
+                  "color": "#777e90",
+                },
+              ],
+            ]
+          }
+        >
+          L
+        </Text>
+      </View>
+    </View>
+  </View>
+</View>
+`;
+
+exports[`SizeSelect Component renders correctly with defaultIndex 1`] = `
+<View
+  style={
+    [
+      {
+        "flexDirection": "column",
+      },
+      {
+        "justifyContent": "flex-start",
+      },
+      {
+        "alignItems": "stretch",
+      },
+      {
+        "flexWrap": "nowrap",
+      },
+      undefined,
+      {},
+    ]
+  }
+  testID="flex"
+>
+  <Text
+    style={
+      [
+        {
+          "letterSpacing": 0,
+          "textAlign": "left",
+          "textAlignVertical": "center",
+        },
+        {
+          "color": "#737680",
+          "fontFamily": "ProductSansRegular",
+          "fontSize": 14,
+        },
+        {},
+        {
+          "color": "#777e90",
+        },
+      ]
+    }
+  >
+    Size
+  </Text>
+  <View
+    style={
+      [
+        {
+          "flexDirection": "row",
+        },
+        {
+          "justifyContent": "flex-start",
+        },
+        {
+          "alignItems": "stretch",
+        },
+        {
+          "flexWrap": "nowrap",
+        },
+        undefined,
+        {
+          "gap": 8,
+          "marginTop": 10,
+        },
+      ]
+    }
+    testID="flex"
+  >
+    <View
+      accessibilityState={
+        {
+          "busy": undefined,
+          "checked": undefined,
+          "disabled": undefined,
+          "expanded": undefined,
+          "selected": undefined,
+        }
+      }
+      accessibilityValue={
+        {
+          "max": undefined,
+          "min": undefined,
+          "now": undefined,
+          "text": undefined,
+        }
+      }
+      accessible={true}
+      collapsable={false}
+      focusable={true}
+      onClick={[Function]}
+      onResponderGrant={[Function]}
+      onResponderMove={[Function]}
+      onResponderRelease={[Function]}
+      onResponderTerminate={[Function]}
+      onResponderTerminationRequest={[Function]}
+      onStartShouldSetResponder={[Function]}
+      style={
+        {
+          "opacity": 1,
+        }
+      }
+    >
+      <View
+        style={
+          [
+            {
+              "flexDirection": "column",
+            },
+            {
+              "justifyContent": "center",
+            },
+            {
+              "alignItems": "center",
+            },
+            {
+              "flexWrap": "nowrap",
+            },
+            undefined,
+            {
+              "backgroundColor": "#343434",
+              "borderRadius": 33,
+              "height": 33,
+              "width": 33,
+            },
+          ]
+        }
+        testID="flex"
+      >
+        <Text
+          style={
+            [
+              {
+                "letterSpacing": 0,
+                "textAlign": "left",
+                "textAlignVertical": "center",
+              },
+              {
+                "color": "#737680",
+                "fontFamily": "ProductSansRegular",
+                "fontSize": 14,
+              },
+              {},
+              [
+                {
+                  "textTransform": "capitalize",
+                },
+                {
+                  "color": "#fff",
+                },
+              ],
+            ]
+          }
+        >
+          S
+        </Text>
+      </View>
+    </View>
+    <View
+      accessibilityState={
+        {
+          "busy": undefined,
+          "checked": undefined,
+          "disabled": undefined,
+          "expanded": undefined,
+          "selected": undefined,
+        }
+      }
+      accessibilityValue={
+        {
+          "max": undefined,
+          "min": undefined,
+          "now": undefined,
+          "text": undefined,
+        }
+      }
+      accessible={true}
+      collapsable={false}
+      focusable={true}
+      onClick={[Function]}
+      onResponderGrant={[Function]}
+      onResponderMove={[Function]}
+      onResponderRelease={[Function]}
+      onResponderTerminate={[Function]}
+      onResponderTerminationRequest={[Function]}
+      onStartShouldSetResponder={[Function]}
+      style={
+        {
+          "opacity": 1,
+        }
+      }
+    >
+      <View
+        style={
+          [
+            {
+              "flexDirection": "column",
+            },
+            {
+              "justifyContent": "center",
+            },
+            {
+              "alignItems": "center",
+            },
+            {
+              "flexWrap": "nowrap",
+            },
+            undefined,
+            {
+              "backgroundColor": "#f3f3f3",
+              "borderRadius": 33,
+              "height": 33,
+              "width": 33,
+            },
+          ]
+        }
+        testID="flex"
+      >
+        <Text
+          style={
+            [
+              {
+                "letterSpacing": 0,
+                "textAlign": "left",
+                "textAlignVertical": "center",
+              },
+              {
+                "color": "#737680",
+                "fontFamily": "ProductSansRegular",
+                "fontSize": 14,
+              },
+              {},
+              [
+                {
+                  "textTransform": "capitalize",
+                },
+                {
+                  "color": "#777e90",
+                },
+              ],
+            ]
+          }
+        >
+          M
+        </Text>
+      </View>
+    </View>
+    <View
+      accessibilityState={
+        {
+          "busy": undefined,
+          "checked": undefined,
+          "disabled": undefined,
+          "expanded": undefined,
+          "selected": undefined,
+        }
+      }
+      accessibilityValue={
+        {
+          "max": undefined,
+          "min": undefined,
+          "now": undefined,
+          "text": undefined,
+        }
+      }
+      accessible={true}
+      collapsable={false}
+      focusable={true}
+      onClick={[Function]}
+      onResponderGrant={[Function]}
+      onResponderMove={[Function]}
+      onResponderRelease={[Function]}
+      onResponderTerminate={[Function]}
+      onResponderTerminationRequest={[Function]}
+      onStartShouldSetResponder={[Function]}
+      style={
+        {
+          "opacity": 1,
+        }
+      }
+    >
+      <View
+        style={
+          [
+            {
+              "flexDirection": "column",
+            },
+            {
+              "justifyContent": "center",
+            },
+            {
+              "alignItems": "center",
+            },
+            {
+              "flexWrap": "nowrap",
+            },
+            undefined,
+            {
+              "backgroundColor": "#f3f3f3",
+              "borderRadius": 33,
+              "height": 33,
+              "width": 33,
+            },
+          ]
+        }
+        testID="flex"
+      >
+        <Text
+          style={
+            [
+              {
+                "letterSpacing": 0,
+                "textAlign": "left",
+                "textAlignVertical": "center",
+              },
+              {
+                "color": "#737680",
+                "fontFamily": "ProductSansRegular",
+                "fontSize": 14,
+              },
+              {},
+              [
+                {
+                  "textTransform": "capitalize",
+                },
+                {
+                  "color": "#777e90",
+                },
+              ],
+            ]
+          }
+        >
+          L
+        </Text>
+      </View>
+    </View>
+  </View>
+</View>
+`;
