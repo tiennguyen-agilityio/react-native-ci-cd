@@ -78,6 +78,7 @@ export interface Theme {
     quaternary: string;
     quinary: string;
     senary: string;
+    error: string;
   };
   icon: {
     default: string;

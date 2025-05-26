@@ -24,6 +24,8 @@ export interface TextProps extends RNTextProps {
   children: string | ReactNode;
   variant?: TextVariant;
   fontSize?: number | string;
+  fontWeight?: number | string;
+  lineHeight?: number;
   textAlign?: string;
   color?: ColorValue;
   style?: StyleProp<TextStyle>;
@@ -34,6 +36,8 @@ const Text = ({
   variant = 'default',
   textAlign,
   fontSize,
+  fontWeight,
+  lineHeight,
   color,
   style,
   ...props
@@ -89,6 +93,8 @@ const Text = ({
         {
           ...(color && {color}),
           ...(fontSize && {fontSize}),
+          ...(fontWeight && {fontWeight}),
+          ...(lineHeight && {lineHeight}),
           ...(textAlign && {textAlign}),
         } as TextStyle,
         style,
