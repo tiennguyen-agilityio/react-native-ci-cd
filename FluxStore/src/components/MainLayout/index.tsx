@@ -21,6 +21,7 @@ const MainLayout = ({children}: MainLayoutProps) => {
   const styles = useMemo(
     () => ({
       wrapper: {
+        flex: 1,
         backgroundColor: background.default,
       },
     }),

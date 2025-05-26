@@ -12,7 +12,10 @@ import {borderRadius, fontSizes, metrics} from '@/themes';
 
 // Components
 import {
+  Button,
   Carousel,
+  CartIcon,
+  CartIconType,
   ChevronIcon,
   Collapse,
   ColorPicker,
@@ -80,10 +83,10 @@ const ProductDetailScreen = ({navigation, route}: ProductDetailScreenProps) => {
           backgroundColor: background.default,
           borderRadius: borderRadius.lg,
           shadowColor: text.primary,
-          shadowOffset: {width: 0, height: 0},
+          shadowOffset: {width: 0, height: 4},
           shadowOpacity: 0.5,
-          shadowRadius: 20,
-          elevation: 4,
+          shadowRadius: 6,
+          elevation: 10,
         },
         price: {
           fontFamily: fonts.secondary?.medium || fonts.default.medium,
@@ -120,8 +123,8 @@ const ProductDetailScreen = ({navigation, route}: ProductDetailScreenProps) => {
     console.log('---handleChangSizes', sizes);
   }, []);
 
-  const handleLoadMore = useCallback(() => {
-    console.log('--- handle load more');
+  const handleAddToCart = useCallback(() => {
+    console.log('--- handle add to cart');
   }, []);
 
   return (
@@ -196,6 +199,12 @@ const ProductDetailScreen = ({navigation, route}: ProductDetailScreenProps) => {
           />
         </Flex>
       </ScrollView>
+      <Button
+        text="Add to cart"
+        height={77}
+        startIcon={<CartIcon type={CartIconType.Secondary} />}
+        onPress={handleAddToCart}
+      />
     </Flex>
   );
 };
