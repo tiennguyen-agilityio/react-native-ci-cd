@@ -18,3 +18,4 @@ export * from './FilterIcon';
 export * from './CloseIcon';
 export * from './DeleteIcon';
 export * from './ArrowIcon';
+export * from './PencilIcon';

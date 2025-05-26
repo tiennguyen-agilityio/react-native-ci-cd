@@ -57,9 +57,9 @@ const CATEGORIES: Category[] = [
   },
 ];
 
-type LandingScreenProps = AppStackScreenProps<typeof SCREENS.HOME>;
+type HomeScreenProps = AppStackScreenProps<typeof SCREENS.HOME>;
 
-const Home = ({navigation, route}: LandingScreenProps) => {
+const HomeScreen = ({navigation, route}: HomeScreenProps) => {
   const {toggleTheme, theme} = useThemeStore();
   const {text} = theme;
   const [categoryKey, setCategoryKey] = useState(CATEGORIES[0]);
@@ -115,6 +115,21 @@ const Home = ({navigation, route}: LandingScreenProps) => {
               list={CATEGORIES}
               keyActivated={categoryKey.key}
               onChange={handleChangeCategory}
+            />
+            <Button text="Toggle theme" onPress={toggleTheme} />
+            <Button
+              text="Products"
+              onPress={() => {
+                navigation.navigate(SCREENS.PRODUCTS);
+              }}
+            />
+            <Button
+              text="Products detail"
+              onPress={() => {
+                navigation.navigate(SCREENS.PRODUCT_DETAIL, {
+                  id: '01',
+                });
+              }}
             />
             <Flex height={168}>
               <Carousel />
@@ -235,4 +250,4 @@ const Home = ({navigation, route}: LandingScreenProps) => {
   );
 };
 
-export default memo(Home);
+export default memo(HomeScreen);

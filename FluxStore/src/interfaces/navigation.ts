@@ -9,6 +9,7 @@ export enum SCREENS {
   WELCOME = 'Welcome',
   INTRO = 'Intro',
   PRODUCTS = 'Products',
+  PRODUCT_DETAIL = 'ProductDetail',
 }
 
 export type AppStackParamList = {
@@ -22,6 +23,9 @@ export type AppStackParamList = {
   [SCREENS.WELCOME]?: undefined;
   [SCREENS.INTRO]?: undefined;
   [SCREENS.PRODUCTS]?: undefined;
+  [SCREENS.PRODUCT_DETAIL]: {
+    id?: string;
+  };
 };
 
 export type BottomTabs = {
