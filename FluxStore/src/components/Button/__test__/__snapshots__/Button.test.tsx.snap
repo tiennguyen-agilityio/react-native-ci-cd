@@ -31,8 +31,12 @@ exports[`Button should render button component with default props 1`] = `
   onStartShouldSetResponder={[Function]}
   style={
     {
+      "alignContent": "center",
+      "alignItems": "center",
       "backgroundColor": "#000",
       "borderRadius": 25,
+      "flexDirection": "row",
+      "gap": 15,
       "height": 51,
       "justifyContent": "center",
       "opacity": 1,
@@ -96,8 +100,12 @@ exports[`Button should render button component with disabled 1`] = `
   onStartShouldSetResponder={[Function]}
   style={
     {
+      "alignContent": "center",
+      "alignItems": "center",
       "backgroundColor": "#000",
       "borderRadius": 25,
+      "flexDirection": "row",
+      "gap": 15,
       "height": 51,
       "justifyContent": "center",
       "opacity": 1,

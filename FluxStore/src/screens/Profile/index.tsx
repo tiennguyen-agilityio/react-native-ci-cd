@@ -1,12 +1,18 @@
 import {memo} from 'react';
-import {Text} from 'react-native';
-import {SafeAreaView} from 'react-native-safe-area-context';
+
+// Components
+import {MainLayout, Text, Flex} from '@/components';
+
+// Themes
+import {metrics} from '@/themes';
 
 const ProfileScreen = () => {
   return (
-    <SafeAreaView>
-      <Text>Profile Screen</Text>
-    </SafeAreaView>
+    <MainLayout>
+      <Flex paddingHorizontal={metrics.dimensions.xxl}>
+        <Text variant="heading">Profile Screen</Text>
+      </Flex>
+    </MainLayout>
   );
 };
 

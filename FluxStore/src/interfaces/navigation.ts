@@ -5,6 +5,8 @@ export enum SCREENS {
   PROFILES_STACK = 'ProfilesStack',
   SIGN_UP = 'SignUp',
   HOME = 'Home',
+  SEARCH = 'Search',
+  CART = 'Cart',
   PROFILE = 'Profile',
   WELCOME = 'Welcome',
   INTRO = 'Intro',
@@ -14,6 +16,8 @@ export enum SCREENS {
 
 export type AppStackParamList = {
   [SCREENS.HOME]?: undefined;
+  [SCREENS.SEARCH]?: undefined;
+  [SCREENS.CART]?: undefined;
   [SCREENS.MAIN_TAB]?: {
     screen: SCREENS;
     params?: object;
@@ -30,6 +34,8 @@ export type AppStackParamList = {
 
 export type BottomTabs = {
   [SCREENS.HOME]?: undefined;
+  [SCREENS.SEARCH]?: undefined;
+  [SCREENS.CART]?: undefined;
   [SCREENS.PROFILE]?: undefined;
 };
 
@@ -39,7 +45,6 @@ export interface TabBarIcon {
   size: number;
 }
 
-// AppStack
 export type AppStackScreenProps<Screen extends keyof AppStackParamList> = NativeStackScreenProps<
   AppStackParamList,
   Screen

@@ -109,7 +109,7 @@ const HomeScreen = ({navigation, route}: HomeScreenProps) => {
   return (
     <MainLayout>
       <ScrollView showsVerticalScrollIndicator={false}>
-        <Flex justify="start" marginTop={32} paddingBottom={metrics.dimensions.xxl}>
+        <Flex justify="start" marginTop={32} paddingBottom={70}>
           <Flex justify="start" gap={20} paddingHorizontal={metrics.dimensions.xxl}>
             <Categories
               list={CATEGORIES}
@@ -134,7 +134,11 @@ const HomeScreen = ({navigation, route}: HomeScreenProps) => {
             <Flex height={168}>
               <Carousel />
             </Flex>
-            <Flex direction="row" align="center" justify="between">
+            <Flex
+              direction="row"
+              align="center"
+              justify="between"
+              marginBottom={metrics.dimensions.lg}>
               <Text variant="title">Feature Products</Text>
               <Button
                 variant="ghost"
