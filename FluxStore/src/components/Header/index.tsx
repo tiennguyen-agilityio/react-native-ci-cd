@@ -119,6 +119,19 @@ const Header = () => {
         };
       }
 
+      case SCREENS.SHIPPING_ADDRESS: {
+        return {
+          title: 'Check out',
+          leftIcon: (
+            <ChevronIcon
+              direction={DIRECTION.LEFT}
+              style={styles.iconBack}
+              onPress={handleGoToBack}
+            />
+          ),
+        };
+      }
+
       default: {
         return {};
       }

@@ -64,6 +64,7 @@ export const lightThemes: Theme = {
     quaternary: colors.gray.A500,
     quinary: colors.green[500],
     senary: colors.black[400],
+    error: colors.red[200],
   },
   icon: {
     default: colors.black[400],
@@ -136,6 +137,7 @@ export const darkThemes: Theme = {
     quaternary: colors.white[300],
     quinary: colors.green[500],
     senary: colors.gray.A50,
+    error: colors.red[200],
   },
   icon: {
     default: colors.gray.A50,
