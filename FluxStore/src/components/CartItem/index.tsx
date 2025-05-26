@@ -65,7 +65,7 @@ const CartItem = ({
         },
         text: {
           textTransform: 'capitalize',
-          fontSize: fontSizes.tiny,
+          fontSize: fontSizes.mini,
         },
         price: {
           fontFamily: fonts.primary.bold,
@@ -78,12 +78,16 @@ const CartItem = ({
     <Flex style={styles.wrapper} backgroundColor={background.default}>
       <Image source={{uri: image}} style={styles.image} resizeMode="cover" />
       <Flex style={styles.info}>
-        <Flex justify="between">
-          <Text variant="title" fontSize={fontSizes.xxs}>
+        <Flex flex={1} justify="between">
+          <Text variant="title" fontSize={fontSizes.xxs} numberOfLines={1} ellipsizeMode="tail">
             {name}
           </Text>
-          <Text style={styles.price} variant="subTitle">{`${CURRENCY_UNIT} ${price}`}</Text>
-          <Text style={styles.text}>{`Size: ${sizes} | Color: ${colors}`}</Text>
+          <Text style={styles.price} variant="subTitle" numberOfLines={1} ellipsizeMode="tail">
+            {`${CURRENCY_UNIT} ${price}`}
+          </Text>
+          <Text numberOfLines={1} ellipsizeMode="tail" style={styles.text}>
+            {`Size: ${sizes} | Color: ${colors}`}
+          </Text>
         </Flex>
         <Flex justify="between" align="end" marginRight={0}>
           <CheckBoxIcon isActive={isChecked} onPress={onChangeChecked} />

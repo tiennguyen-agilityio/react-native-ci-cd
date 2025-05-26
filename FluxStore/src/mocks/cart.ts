@@ -22,7 +22,7 @@ export const CARTS = [
       name: PRODUCTS[1].name,
       price: PRODUCTS[1].price,
     },
-    sizes: [PRODUCTS[1]?.sizes?.[0], PRODUCTS[1]?.sizes?.[1]].join(', '),
+    sizes: [PRODUCTS[1]?.sizes?.[0]].join(', '),
     colors: [PRODUCTS[1]?.colors?.[0], PRODUCTS[1]?.colors?.[1]].join(', '),
     quantity: 1,
     isChecked: false,

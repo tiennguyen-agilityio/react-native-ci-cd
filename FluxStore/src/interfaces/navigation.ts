@@ -6,7 +6,9 @@ export enum SCREENS {
   SIGN_UP = 'SignUp',
   HOME = 'Home',
   SEARCH = 'Search',
+  CART_STACK = 'CartStack',
   CART = 'Cart',
+  SHIPPING_ADDRESS = 'ShippingAddress',
   PROFILE = 'Profile',
   WELCOME = 'Welcome',
   INTRO = 'Intro',
@@ -17,11 +19,16 @@ export enum SCREENS {
 export type AppStackParamList = {
   [SCREENS.HOME]?: undefined;
   [SCREENS.SEARCH]?: undefined;
-  [SCREENS.CART]?: undefined;
   [SCREENS.MAIN_TAB]?: {
     screen: SCREENS;
     params?: object;
   };
+  [SCREENS.CART_STACK]?: {
+    screen: SCREENS;
+    params?: object;
+  };
+  [SCREENS.CART]?: undefined;
+  [SCREENS.SHIPPING_ADDRESS]?: undefined;
   [SCREENS.PROFILES_STACK]?: undefined;
   [SCREENS.PROFILE]?: undefined;
   [SCREENS.WELCOME]?: undefined;

@@ -106,6 +106,19 @@ const Header = () => {
         };
       }
 
+      case SCREENS.CART: {
+        return {
+          title: 'Your Cart',
+          leftIcon: (
+            <ChevronIcon
+              direction={DIRECTION.LEFT}
+              style={styles.iconBack}
+              onPress={handleGoToBack}
+            />
+          ),
+        };
+      }
+
       default: {
         return {};
       }

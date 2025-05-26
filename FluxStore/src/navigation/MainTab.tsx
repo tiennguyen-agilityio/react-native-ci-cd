@@ -9,7 +9,8 @@ import {SCREENS, TabBarIcon} from '@/interfaces';
 import {useThemeStore} from '@/hooks';
 
 // Screens || Stack
-import {CartScreen, HomeScreen, ProfileScreen, SearchScreen} from '@/screens';
+import {HomeScreen, ProfileScreen, SearchScreen} from '@/screens';
+import CartStack from './CartStack';
 
 // Components
 import {CartIcon, HomeIcon, SearchIcon, UserIcon} from '@/components';
@@ -45,7 +46,9 @@ const renderTabBarIcon =
       case SCREENS.SEARCH:
         return <SearchIcon disabled isActive={focused} />;
 
+      case SCREENS.CART_STACK:
       case SCREENS.CART:
+      case SCREENS.SHIPPING_ADDRESS:
         return <CartIcon isActive={focused} disabled />;
 
       case SCREENS.PROFILE:
@@ -71,7 +74,7 @@ const MainTab = () => {
 
   return (
     <Tab.Navigator
-      initialRouteName={SCREENS.HOME}
+      initialRouteName={SCREENS.CART_STACK}
       screenOptions={({route}) => ({
         headerShown: false,
         tabBarShowLabel: false,
@@ -83,7 +86,13 @@ const MainTab = () => {
       })}>
       <Tab.Screen name={SCREENS.HOME} component={HomeScreen} />
       <Tab.Screen name={SCREENS.SEARCH} component={SearchScreen} />
-      <Tab.Screen name={SCREENS.CART} component={CartScreen} />
+      <Tab.Screen
+        name={SCREENS.CART_STACK}
+        component={CartStack}
+        options={{
+          tabBarStyle: {display: 'none'},
+        }}
+      />
       <Tab.Screen name={SCREENS.PROFILE} component={ProfileScreen} />
     </Tab.Navigator>
   );
