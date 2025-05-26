@@ -11,3 +11,12 @@ export const formatAmount = (number: number) => {
   }
   return 0;
 };
+
+export const toggleItem = (array: string[], item: string): string[] => {
+  const index = array.indexOf(item);
+  if (index !== -1) {
+    return array.filter((_, i) => i !== index);
+  } else {
+    return [...array, item];
+  }
+};

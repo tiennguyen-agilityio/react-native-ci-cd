@@ -13,12 +13,16 @@ import {Flex, ProductCard, ProductCardType} from '@/components';
 
 interface ProductListProps {
   data: Product[];
-  productCardType: ProductCardType;
+  productCardType?: ProductCardType;
   horizontal?: boolean;
   onLoadMore: () => void;
 }
 
-const ProductList = ({data, productCardType, onLoadMore}: ProductListProps) => {
+const ProductList = ({
+  data,
+  productCardType = ProductCardType.Primary,
+  onLoadMore,
+}: ProductListProps) => {
   const navigation = useNavigation();
 
   const getKeyExtractor = useCallback(({id}: Product) => id, []);

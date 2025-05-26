@@ -24,11 +24,20 @@ export interface TextProps extends RNTextProps {
   children: string | ReactNode;
   variant?: TextVariant;
   fontSize?: number | string;
+  textAlign?: string;
   color?: ColorValue;
   style?: StyleProp<TextStyle>;
 }
 
-const Text = ({children, variant = 'default', fontSize, color, style, ...props}: TextProps) => {
+const Text = ({
+  children,
+  variant = 'default',
+  textAlign,
+  fontSize,
+  color,
+  style,
+  ...props
+}: TextProps) => {
   const {theme} = useThemeStore();
 
   const {fonts, text} = theme;
@@ -80,6 +89,7 @@ const Text = ({children, variant = 'default', fontSize, color, style, ...props}:
         {
           ...(color && {color}),
           ...(fontSize && {fontSize}),
+          ...(textAlign && {textAlign}),
         } as TextStyle,
         style,
       ]}
