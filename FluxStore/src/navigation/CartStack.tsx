@@ -8,7 +8,7 @@ const Stack = createNativeStackNavigator<AppStackParamList>();
 const CartStack = () => {
   return (
     <Stack.Navigator
-      initialRouteName={SCREENS.CART}
+      initialRouteName={SCREENS.SHIPPING_ADDRESS}
       screenOptions={{
         headerShown: false,
         animation: 'slide_from_right',

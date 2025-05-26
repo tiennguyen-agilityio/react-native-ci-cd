@@ -3,13 +3,13 @@ import {View, TouchableOpacity, ViewStyle} from 'react-native';
 import {useThemeStore} from '@/hooks';
 
 interface RadioProps {
-  selected: boolean;
+  selected?: boolean;
   size?: number;
   borderWidth?: number;
-  onPress: () => void;
+  onPress?: () => void;
 }
 
-const Radio = ({selected, onPress, size = 23, borderWidth = 7}: RadioProps) => {
+const Radio = ({selected = false, onPress, size = 23, borderWidth = 7}: RadioProps) => {
   const {theme} = useThemeStore();
 
   const radioStyles: ViewStyle = useMemo(
