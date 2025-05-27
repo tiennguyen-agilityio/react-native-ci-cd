@@ -101,14 +101,14 @@ export interface IconProps {
 
 // Spacing
 export interface SpaceProps {
-  paddingTop?: number;
-  paddingBottom?: number;
-  paddingLeft?: number;
-  paddingRight?: number;
-  paddingVertical?: number;
-  paddingHorizontal?: number;
-  marginTop?: number;
-  marginBottom?: number;
+  paddingTop?: DimensionValue;
+  paddingBottom?: DimensionValue;
+  paddingLeft?: DimensionValue;
+  paddingRight?: DimensionValue;
+  paddingVertical?: DimensionValue;
+  paddingHorizontal?: DimensionValue;
+  marginTop?: DimensionValue;
+  marginBottom?: DimensionValue;
   marginLeft?: DimensionValue;
   marginRight?: DimensionValue;
   marginVertical?: DimensionValue;

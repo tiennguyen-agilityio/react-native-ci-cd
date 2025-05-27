@@ -3,7 +3,7 @@ import {NativeStackScreenProps} from '@react-navigation/native-stack';
 export enum SCREENS {
   MAIN_TAB = 'MainTab',
   PROFILES_STACK = 'ProfilesStack',
-  SIGN_UP = 'SignUp',
+  LOGIN = 'Login',
   HOME = 'Home',
   SEARCH = 'Search',
   CART_STACK = 'CartStack',
@@ -35,6 +35,7 @@ export type AppStackParamList = {
   [SCREENS.PROFILE]?: undefined;
   [SCREENS.WELCOME]?: undefined;
   [SCREENS.INTRO]?: undefined;
+  [SCREENS.LOGIN]?: undefined;
   [SCREENS.PRODUCTS]?: undefined;
   [SCREENS.PRODUCT_DETAIL]: {
     id?: string;

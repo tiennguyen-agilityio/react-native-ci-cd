@@ -100,6 +100,7 @@ export interface ButtonProps extends PressableProps {
   width?: DimensionValue;
   height?: DimensionValue;
   fontSize?: number;
+  textDecorationLine?: string;
   startIcon?: ReactNode;
   style?: ViewStyle;
   onPress?: () => void;
@@ -116,6 +117,7 @@ const Button = ({
   fontSize,
   startIcon,
   style,
+  textDecorationLine = 'none',
   onPress,
 }: ButtonProps) => {
   const {theme, isDark} = useThemeStore();
@@ -163,7 +165,8 @@ const Button = ({
             ...(textColor && textColor),
             ...(color && {color}),
             ...(fontSize && {fontSize}),
-          },
+            ...(textDecorationLine && {textDecorationLine}),
+          } as TextStyle,
         ]}>
         {text}
       </Text>
