@@ -9,6 +9,7 @@ export enum SCREENS {
   CART_STACK = 'CartStack',
   CART = 'Cart',
   SHIPPING_ADDRESS = 'ShippingAddress',
+  ORDER_COMPLETED = 'OrderCompleted',
   PROFILE = 'Profile',
   WELCOME = 'Welcome',
   INTRO = 'Intro',
@@ -29,6 +30,7 @@ export type AppStackParamList = {
   };
   [SCREENS.CART]?: undefined;
   [SCREENS.SHIPPING_ADDRESS]?: undefined;
+  [SCREENS.ORDER_COMPLETED]?: undefined;
   [SCREENS.PROFILES_STACK]?: undefined;
   [SCREENS.PROFILE]?: undefined;
   [SCREENS.WELCOME]?: undefined;
