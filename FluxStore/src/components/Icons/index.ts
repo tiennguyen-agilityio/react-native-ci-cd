@@ -10,6 +10,7 @@ export * from './MenIcon';
 export * from './EyeglassesIcon';
 export * from './ScrewdriverIcon';
 export * from './NotificationIcon';
+export * from './CartCompletedIcon';
 export * from './HomeIcon';
 export * from './SearchIcon';
 export * from './CartIcon';

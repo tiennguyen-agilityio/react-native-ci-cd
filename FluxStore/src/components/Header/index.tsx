@@ -119,7 +119,8 @@ const Header = () => {
         };
       }
 
-      case SCREENS.SHIPPING_ADDRESS: {
+      case SCREENS.SHIPPING_ADDRESS:
+      case SCREENS.ORDER_COMPLETED: {
         return {
           title: 'Check out',
           leftIcon: (

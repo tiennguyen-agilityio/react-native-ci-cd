@@ -140,7 +140,21 @@ export interface BackgroundProps {
   opacity?: number;
 }
 
-export interface CSSProps extends SpaceProps, BorderProps, BackgroundProps, PositionProps {}
+export interface SizesProps {
+  width?: DimensionValue;
+  minWidth?: DimensionValue;
+  maxWidth?: DimensionValue;
+  height?: DimensionValue;
+  minHeight?: DimensionValue;
+  maxHeight?: DimensionValue;
+}
+
+export interface CSSProps
+  extends SpaceProps,
+    BorderProps,
+    BackgroundProps,
+    PositionProps,
+    SizesProps {}
 
 export interface FlexOptions extends CSSProps {
   direction?: 'row' | 'row-reverse' | 'column' | 'column-reverse';
@@ -151,8 +165,6 @@ export interface FlexOptions extends CSSProps {
   rowGap?: number;
   columnGap?: number;
   gap?: number;
-  width?: DimensionValue;
-  height?: DimensionValue;
 }
 
 export enum DIRECTION {

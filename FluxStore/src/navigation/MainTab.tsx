@@ -74,7 +74,7 @@ const MainTab = () => {
 
   return (
     <Tab.Navigator
-      initialRouteName={SCREENS.CART_STACK}
+      initialRouteName={SCREENS.HOME}
       screenOptions={({route}) => ({
         headerShown: false,
         tabBarShowLabel: false,

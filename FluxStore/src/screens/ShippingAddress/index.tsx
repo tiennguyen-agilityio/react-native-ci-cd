@@ -39,8 +39,8 @@ const ShippingAddressScreen = ({navigation}: ShippingAddressProps) => {
   }, []);
 
   const handleSubmit = useCallback(() => {
-    console.log('--handleToggleCheckbox');
-  }, []);
+    navigation.navigate(SCREENS.ORDER_COMPLETED);
+  }, [navigation]);
 
   return (
     <MainLayout>
