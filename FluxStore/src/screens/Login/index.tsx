@@ -1,15 +1,17 @@
-import {RefObject, useCallback, useRef} from 'react';
+import {RefObject, useCallback, useRef, useState} from 'react';
+import {Controller, useForm} from 'react-hook-form';
 import {ScrollView} from 'react-native-gesture-handler';
 import {useSafeAreaInsets} from 'react-native-safe-area-context';
 import {TextInput} from 'react-native';
 
 // Interfaces
-import {AppStackScreenProps, SCREENS} from '@/interfaces';
+import {AppStackScreenProps, LoginPayLoad, SCREENS, User} from '@/interfaces';
 
 // Constants
+import {ERROR_MESSAGES, SCHEMA} from '@/constants';
 
 // Hooks
-import {useThemeStore} from '@/hooks';
+import {useAuth, useThemeStore} from '@/hooks';
 
 // Themes
 import {fontSizes, fontWeights, metrics} from '@/themes';
@@ -25,39 +27,68 @@ import {
   Text,
   FacebookIcon,
 } from '@/components';
+import {userStore} from '@/stores';
 
 type LoginScreenProps = AppStackScreenProps<typeof SCREENS.ORDER_COMPLETED>;
 
 const LoginScreen = ({navigation}: LoginScreenProps) => {
   const insets = useSafeAreaInsets();
+  const {
+    theme: {text},
+  } = useThemeStore();
 
+  const setUser = userStore(state => state.setUser);
+
+  const [errorMessage, setErrorMessage] = useState('');
   const passwordRef = useRef<TextInput>();
 
   const {
-    toggleTheme,
-    theme: {text, icon},
-  } = useThemeStore();
+    logIn: {mutate},
+  } = useAuth();
 
-  const handleChangeInput = (value: string, field?: string) => {
-    console.log('value', value, field);
-  };
+  const {
+    control,
+    handleSubmit,
+    reset,
+    formState: {isSubmitting},
+  } = useForm<LoginPayLoad>({
+    defaultValues: {
+      email: '',
+      password: '',
+    },
+    mode: 'onBlur',
+  });
 
   const handleFocusNextField = (input: RefObject<TextInput>) => {
     input.current.focus();
   };
 
-  const handleLogin = useCallback(() => {
-    navigation.navigate(SCREENS.MAIN_TAB, {
-      screen: SCREENS.HOME,
-    });
-  }, [navigation]);
-
-  const handleForgotPassword = useCallback(() => {}, []);
+  const handleLogin = useCallback(
+    (data: LoginPayLoad) =>
+      mutate(data, {
+        onSuccess: (users: User[]) => {
+          if (users?.length) {
+            setUser(users[0]);
+            navigation.navigate(SCREENS.MAIN_TAB, {
+              screen: SCREENS.HOME,
+            });
+            reset();
+            setErrorMessage('');
+          } else {
+            setErrorMessage(ERROR_MESSAGES.LOGIN_FAILED);
+          }
+        },
+        onError: (error: Error) => {
+          setErrorMessage(ERROR_MESSAGES.LOGIN_FAILED);
+        },
+      }),
+    [mutate, navigation, reset, setUser],
+  );
 
   return (
     <MainLayout>
       <ScrollView showsVerticalScrollIndicator={false}>
-        <Flex minHeight="100%" paddingHorizontal={metrics.dimensions.xxl}>
+        <Flex flex={1} paddingHorizontal={metrics.dimensions.xxl} justify="between">
           <Text
             variant="heading"
             fontSize={fontSizes.xl}
@@ -65,19 +96,39 @@ const LoginScreen = ({navigation}: LoginScreenProps) => {
             fontWeight={fontWeights.semiBold}>
             {`Log into\nyour account`}
           </Text>
-          <Flex gap={20}>
-            <Input
-              isRequired
-              nextField={passwordRef}
-              placeholder="Email address"
-              onChangeText={handleChangeInput}
-              onSubmit={handleFocusNextField}
+          <Flex gap={20} marginTop={48}>
+            <Controller
+              name="email"
+              control={control}
+              rules={SCHEMA.email}
+              render={({field: {onChange, ...props}, fieldState: {error}}) => (
+                <Input
+                  {...props}
+                  field="email"
+                  nextField={passwordRef}
+                  placeholder="Email address"
+                  returnKeyType="next"
+                  errorMessage={error?.message}
+                  onChangeText={onChange}
+                  onSubmit={handleFocusNextField}
+                />
+              )}
             />
-            <Input
-              isRequired
-              ref={passwordRef}
-              placeholder="Password"
-              onChangeText={handleChangeInput}
+
+            <Controller
+              name="password"
+              control={control}
+              rules={SCHEMA.password}
+              render={({field: {onChange, ref, ...props}, fieldState: {error}}) => (
+                <Input
+                  {...props}
+                  ref={passwordRef}
+                  secureTextEntry
+                  placeholder="Password"
+                  errorMessage={error?.message}
+                  onChangeText={onChange}
+                />
+              )}
             />
           </Flex>
           <Flex marginTop={28} justify="end" align="end">
@@ -87,11 +138,17 @@ const LoginScreen = ({navigation}: LoginScreenProps) => {
               variant="ghost"
               color={text.quaternary}
               fontSize={fontSizes.tiny}
-              onPress={handleForgotPassword}
+              onPress={() => {}}
             />
           </Flex>
-          <Flex align="center" marginTop={35} gap={24} marginBottom={insets.bottom}>
-            <Button text="Login" width={147} onPress={handleLogin} />
+          <Flex flex={1} align="center" marginTop={35} gap={24} marginBottom={insets.bottom}>
+            {errorMessage && <Text color={text.error}>{errorMessage}</Text>}
+            <Button
+              text="Login"
+              width={147}
+              isLoading={isSubmitting}
+              onPress={handleSubmit(handleLogin)}
+            />
             <Text fontSize={fontSizes.tiny} color={text.quaternary} fontWeight={200}>
               or log in with
             </Text>
@@ -101,7 +158,13 @@ const LoginScreen = ({navigation}: LoginScreenProps) => {
               <FacebookIcon />
             </Flex>
           </Flex>
-          <Flex marginTop="auto" direction="row" align="center" justify="center" gap={7}>
+          <Flex
+            marginTop={108}
+            marginBottom={0}
+            direction="row"
+            align="center"
+            justify="center"
+            gap={7}>
             <Text fontSize={fontSizes.xs} color={text.primary}>
               Don’t have an account?
             </Text>
@@ -112,7 +175,7 @@ const LoginScreen = ({navigation}: LoginScreenProps) => {
               color={text.primary}
               fontSize={fontSizes.xs}
               textDecorationLine="underline"
-              onPress={handleForgotPassword}
+              onPress={() => {}}
             />
           </Flex>
         </Flex>

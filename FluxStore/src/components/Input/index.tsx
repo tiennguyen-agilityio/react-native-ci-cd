@@ -40,7 +40,7 @@ const Input = ({
   placeholder = '',
   errorMessage = '',
   editable = true,
-  isRequired = true,
+  isRequired = false,
   defaultValue,
   nextField,
   onFocus,
@@ -75,8 +75,6 @@ const Input = ({
         error: {
           fontSize: fontSizes.tiny,
           color: colors.red[500],
-          position: 'absolute',
-          bottom: -20,
         },
       }),
     [text, value],
