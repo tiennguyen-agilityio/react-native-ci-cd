@@ -18,7 +18,7 @@ const IntroScreen = ({navigation}: IntroScreenProps) => {
   const insets = useSafeAreaInsets();
 
   const handleNextStep = useCallback(() => {
-    navigation.navigate(SCREENS.MAIN_TAB, {screen: SCREENS.HOME});
+    navigation.navigate(SCREENS.LOGIN);
   }, [navigation]);
 
   return (

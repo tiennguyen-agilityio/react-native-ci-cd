@@ -8,6 +8,7 @@ import {
   ViewStyle,
   StyleSheet,
   TextStyle,
+  ActivityIndicator,
 } from 'react-native';
 
 // Hooks
@@ -94,6 +95,7 @@ export const buttonTextBasicStyles: TextStyle = {
 export interface ButtonProps extends PressableProps {
   text: string;
   disabled?: boolean;
+  isLoading?: boolean;
   variant?: 'solid' | 'outlined' | 'ghost';
   size?: 'sm' | 'md' | 'lg';
   color?: ColorValue;
@@ -118,6 +120,7 @@ const Button = ({
   startIcon,
   style,
   textDecorationLine = 'none',
+  isLoading = false,
   onPress,
 }: ButtonProps) => {
   const {theme, isDark} = useThemeStore();
@@ -170,6 +173,7 @@ const Button = ({
         ]}>
         {text}
       </Text>
+      {isLoading && <ActivityIndicator size="small" color={theme.secondary} style={{}} />}
     </TouchableOpacity>
   );
 };

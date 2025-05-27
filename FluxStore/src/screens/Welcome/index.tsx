@@ -1,5 +1,5 @@
 import {memo, useCallback} from 'react';
-import {ImageBackground, StyleSheet, View} from 'react-native';
+import {ImageBackground, StyleSheet} from 'react-native';
 import {useSafeAreaInsets} from 'react-native-safe-area-context';
 
 // Interfaces
@@ -15,7 +15,6 @@ const styles = StyleSheet.create({
   wrapper: {
     flex: 1,
     position: 'relative',
-    backgroundColor: 'red',
   },
   content: {
     width: metrics.screenWidth,
@@ -44,8 +43,8 @@ const WelcomeScreen = ({navigation}: WelcomeScreenProps) => {
   }, [navigation]);
 
   return (
-    <View style={styles.wrapper}>
-      <ImageBackground resizeMode="stretch" source={Images.welcome}>
+    <Flex style={styles.wrapper}>
+      <ImageBackground resizeMode="cover" source={Images.welcome}>
         <Flex
           gap={60}
           justify="end"
@@ -61,7 +60,7 @@ const WelcomeScreen = ({navigation}: WelcomeScreenProps) => {
           <Button text="Get Started" variant="outlined" width={193} onPress={handleGetStarted} />
         </Flex>
       </ImageBackground>
-    </View>
+    </Flex>
   );
 };
 
