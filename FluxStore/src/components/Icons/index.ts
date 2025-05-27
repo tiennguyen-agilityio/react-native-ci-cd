@@ -20,3 +20,6 @@ export * from './CloseIcon';
 export * from './DeleteIcon';
 export * from './ArrowIcon';
 export * from './PencilIcon';
+export * from './AppleIcon';
+export * from './GoogleIcon';
+export * from './FacebookIcon';
