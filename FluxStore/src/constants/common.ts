@@ -7,3 +7,7 @@ export const REGEX = {
   CHECK_UPPERCASE: /[A-Z]/,
   CHECK_SYMBOL: /.*[!@#$%^&+=*].*/,
 };
+
+export const INIT_PAGE = 1;
+
+export const PAGE_SIZE = 10;
