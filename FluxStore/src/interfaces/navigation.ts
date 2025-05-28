@@ -18,8 +18,11 @@ export enum SCREENS {
 }
 
 export type AppStackParamList = {
-  [SCREENS.MAIN_TAB]: undefined;
+  [SCREENS.MAIN_TAB]: {
+    screen?: SCREENS;
+  };
   [SCREENS.WELCOME]: undefined;
+  [SCREENS.LOGIN]: undefined;
   [SCREENS.INTRO]: undefined;
   [SCREENS.PRODUCTS]: undefined;
   [SCREENS.PRODUCT_DETAIL]: {id: string};

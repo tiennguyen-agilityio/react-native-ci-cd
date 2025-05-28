@@ -174,7 +174,7 @@ const ProductDetailScreen = ({navigation, route}: ProductDetailScreenProps) => {
                 <Text variant="heading" style={styles.price}>
                   {`${CURRENCY_UNIT} ${promoPrice || originalPrice}`}
                 </Text>
-                {promoPrice && (
+                {!!promoPrice && (
                   <Text style={styles.originalPrice}>{`${CURRENCY_UNIT} ${originalPrice}`}</Text>
                 )}
               </Flex>

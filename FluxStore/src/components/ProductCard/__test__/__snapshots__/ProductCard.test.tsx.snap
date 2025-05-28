@@ -1121,7 +1121,6 @@ exports[`ProductCard should render ProductCard has not discount 1`] = `
       >
         $ 82
       </Text>
-      0
     </View>
     <View
       style={

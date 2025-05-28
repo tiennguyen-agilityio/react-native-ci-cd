@@ -190,7 +190,7 @@ const ProductCard = ({
           <Text style={themeStyles.promoPrice}>
             {`${CURRENCY_UNIT} ${promoPrice || originalPrice}`}
           </Text>
-          {promoPrice && (
+          {!!promoPrice && (
             <Text style={themeStyles.originalPrice}>{`${CURRENCY_UNIT} ${originalPrice}`}</Text>
           )}
         </Flex>

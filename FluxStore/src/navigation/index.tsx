@@ -3,18 +3,25 @@ import {NavigationContainer} from '@react-navigation/native';
 import {GestureHandlerRootView} from 'react-native-gesture-handler';
 import {KeyboardProvider} from 'react-native-keyboard-controller';
 import {QueryClient, QueryClientProvider} from '@tanstack/react-query';
-import messaging from '@react-native-firebase/messaging';
+import messaging, {FirebaseMessagingTypes} from '@react-native-firebase/messaging';
+import Toast from 'react-native-toast-message';
 
 import {AppStackNavigation} from './AppStackNavigation';
 import {linking} from './Linking';
 
 export const Navigation = () => {
   const queryClient = new QueryClient();
+
   useEffect(() => {
-    const unsubscribe = messaging().onMessage(async remoteMessage => {
-      console.log('Foreground message received:', remoteMessage);
-      // Handle the notification or data here
-    });
+    const unsubscribe = messaging().onMessage(
+      async ({notification}: FirebaseMessagingTypes.RemoteMessage) => {
+        Toast.show({
+          type: 'info',
+          text1: notification?.title,
+          text2: notification?.body,
+        });
+      },
+    );
 
     return unsubscribe;
   }, []);
@@ -25,6 +32,7 @@ export const Navigation = () => {
         <NavigationContainer linking={linking}>
           <GestureHandlerRootView>
             <AppStackNavigation />
+            <Toast />
           </GestureHandlerRootView>
         </NavigationContainer>
       </KeyboardProvider>
