@@ -1,4 +1,4 @@
-import {useInfiniteQuery} from '@tanstack/react-query';
+import {useInfiniteQuery, useQuery} from '@tanstack/react-query';
 
 // Constants
 import {API_PATH, PAGE_SIZE} from '@/constants';
@@ -23,5 +23,12 @@ export const useProducts = () => {
     });
   };
 
-  return {useFetchProducts};
+  const useProductDetail = (id: string) =>
+    useQuery({
+      queryKey: [API_PATH.PRODUCT + id],
+      queryFn: () => GET<Product>(`${API_PATH.PRODUCT}/${id}`),
+      enabled: !!id,
+    });
+
+  return {useFetchProducts, useProductDetail};
 };

@@ -67,15 +67,14 @@ const ProductsScreen = ({navigation, route}: LandingScreenProps) => {
   const getKeyExtractor = useCallback(({id}: Product) => id, []);
 
   const getItemLayout = useCallback(
-    (_item, index: number) => ({length: height, offset: height * index, index}),
+    (_, index: number) => ({length: height, offset: height * index, index}),
     [height],
   );
 
   const renderItemProduct = useCallback(
     ({item}: ListRenderItemInfo<Product>) => {
       const handleViewProductDetail = () =>
-        // navigation.navigate(SCREENS.PRODUCT_DETAIL, {product: item});
-        console.log('navigation product detail');
+        navigation.navigate(SCREENS.PRODUCT_DETAIL, {id: item.id});
 
       return (
         <ProductCard
@@ -89,7 +88,7 @@ const ProductsScreen = ({navigation, route}: LandingScreenProps) => {
         />
       );
     },
-    [width, height, favoritesProduct],
+    [width, height, favoritesProduct, navigation],
   );
 
   const renderItemSeparatorComponent = useCallback(
@@ -116,7 +115,8 @@ const ProductsScreen = ({navigation, route}: LandingScreenProps) => {
               borderRadius={60}
               width={97}
               height={40}
-              style={{borderWidth: 2, borderColor: border.default}}>
+              borderWidth={2}
+              borderColor={border.default}>
               <Text>Filter</Text>
               <ArrowIcon direction={DIRECTION.DOWN} />
             </Flex>

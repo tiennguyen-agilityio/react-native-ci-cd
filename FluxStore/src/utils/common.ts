@@ -30,3 +30,12 @@ export const getData = <T>(pages = []) => {
 
   return result;
 };
+
+export const getQueryString = (filters: object = {}): string =>
+  Object.entries(filters)
+    .filter(([, v]) => v !== undefined && v !== null && v !== '')
+    .map(
+      ([k, v]) =>
+        `${encodeURIComponent(k)}=${encodeURIComponent(typeof v === 'string' ? v.trim() : v)}`,
+    )
+    .join('&');

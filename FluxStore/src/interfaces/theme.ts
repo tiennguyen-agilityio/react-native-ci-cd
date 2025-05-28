@@ -129,6 +129,8 @@ export interface PositionProps {
 // Border
 export type BorderRadiusSize = 'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl';
 export interface BorderProps {
+  borderWidth?: DimensionValue;
+  borderColor?: string;
   borderRadius?: number;
   borderTopRightRadius?: number;
   borderBottomRightRadius?: number;
