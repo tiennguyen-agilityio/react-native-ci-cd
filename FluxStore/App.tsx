@@ -4,6 +4,11 @@ import {DevSettings} from 'react-native';
 // Navigation
 import {Navigation} from '@/navigation';
 
+// Utils
+import {createNotificationChannel} from '@/utils';
+
+createNotificationChannel();
+
 const App = () => {
   const [showStorybook, setShowStorybook] = useState(false);
 
