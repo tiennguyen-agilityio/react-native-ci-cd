@@ -1,9 +1,9 @@
 export const API_PATH = {
   USER: '/users',
-  PRODUCT: '/products',
+  PRODUCT: '/books',
   CART: '/carts',
   ADDRESSES: '/addresses',
-  ORDER: '/orders',
+  ORDER: '/tasks',
   REVIEW: '/reviews',
 };
 

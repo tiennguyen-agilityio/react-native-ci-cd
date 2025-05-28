@@ -20,3 +20,13 @@ export const toggleItem = (array: string[], item: string): string[] => {
     return [...array, item];
   }
 };
+
+export const getData = <T>(pages = []) => {
+  let result: T[] = [];
+
+  pages?.map(item => {
+    result = result.concat(item);
+  });
+
+  return result;
+};

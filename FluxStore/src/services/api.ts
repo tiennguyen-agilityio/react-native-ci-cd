@@ -1,6 +1,7 @@
 import axios, {AxiosRequestConfig} from 'axios';
 
-const API_URL = 'https://react-native-zce1.onrender.com/';
+// const API_URL = 'https://react-native-zce1.onrender.com/';
+const API_URL = 'https://61b189803c954f001722a9e5.mockapi.io/api/';
 
 const defaultOptions = {
   baseURL: API_URL,

@@ -2,16 +2,19 @@ import {memo, useCallback, useMemo} from 'react';
 import {FlatList, ListRenderItemInfo, StyleSheet, TouchableOpacity} from 'react-native';
 
 // Constants
-import {PRODUCTS} from '@/mocks';
+import {INIT_PAGE} from '@/constants';
 
 // Interfaces
 import {AppStackScreenProps, DIRECTION, Product, SCREENS} from '@/interfaces';
 
 // Hooks
-import {useMedia, useThemeStore} from '@/hooks';
+import {useMedia, useProducts, useThemeStore} from '@/hooks';
 
 // Themes
 import {metrics} from '@/themes';
+
+// Utils
+import {getData} from '@/utils';
 
 // Component
 import {ArrowIcon, Flex, MainLayout, ProductCard, ProductCardType, Text} from '@/components';
@@ -26,27 +29,30 @@ const styles = StyleSheet.create({
 type LandingScreenProps = AppStackScreenProps<typeof SCREENS.HOME>;
 
 const ProductsScreen = ({navigation, route}: LandingScreenProps) => {
+  const {useFetchProducts} = useProducts();
+  const {data, fetchNextPage, hasNextPage, isFetchingNextPage} = useFetchProducts(INIT_PAGE);
+
+  const pages = useMemo(() => data?.pages || [], [data?.pages]);
+  const products = useMemo(
+    () => (pages.length > 0 && getData<Product>(pages as never[])) || [],
+    [pages],
+  );
+
   const {isTablet} = useMedia();
   const {theme} = useThemeStore();
 
   const {border} = theme;
-  const numColumns = isTablet ? 4 : 2;
-
-  const products = [...Array(50).keys()].map(value => ({
-    ...PRODUCTS[0],
-    id: value.toString(),
-    isFavorite: value % 2 === 0,
-  }));
+  const numColumns = useMemo(() => (isTablet ? 4 : 2), [isTablet]);
 
   const favoritesProduct = useMemo(() => ['3', '4', '7', '10', '13'], []);
 
-  const handleShowFilter = useCallback(() => {
-    console.log('------Handle show filter: ');
-  }, []);
+  const handleShowFilter = useCallback(() => {}, []);
 
-  const handleLoadMoreProduct = useCallback(() => {
-    console.log('------Load more Product: ');
-  }, []);
+  const handleLoadMore = useCallback(() => {
+    if (hasNextPage && !isFetchingNextPage) {
+      fetchNextPage();
+    }
+  }, [fetchNextPage, hasNextPage, isFetchingNextPage]);
 
   const {width, height} = useMemo(() => {
     const spacingPadding = 32;
@@ -94,6 +100,7 @@ const ProductsScreen = ({navigation, route}: LandingScreenProps) => {
   return (
     <MainLayout>
       <Flex
+        flex={1}
         justify="start"
         marginTop={32}
         paddingHorizontal={metrics.dimensions.xxl}
@@ -121,7 +128,7 @@ const ProductsScreen = ({navigation, route}: LandingScreenProps) => {
           showsVerticalScrollIndicator={false}
           initialNumToRender={isTablet ? 12 : 6}
           numColumns={numColumns}
-          onEndReached={handleLoadMoreProduct}
+          onEndReached={handleLoadMore}
           keyExtractor={getKeyExtractor}
           renderItem={renderItemProduct}
           ItemSeparatorComponent={renderItemSeparatorComponent}
