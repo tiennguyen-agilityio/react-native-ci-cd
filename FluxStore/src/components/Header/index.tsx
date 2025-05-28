@@ -3,7 +3,7 @@ import {StyleSheet} from 'react-native';
 import {useNavigation, useRoute} from '@react-navigation/native';
 
 // Types
-import {DIRECTION, SCREENS} from '@/interfaces';
+import {AppStackParamList, DIRECTION, SCREENS} from '@/interfaces';
 
 // Hooks | Stores
 import {useThemeStore} from '@/hooks';
@@ -15,6 +15,8 @@ import {metrics} from '@/themes';
 import {ChevronIcon, HeartIcon, MenuIcon, NotificationIcon} from '../Icons';
 import Flex from '../Flex';
 import Text from '../Text';
+import {userStore} from '@/stores';
+import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 
 interface HeaderItem {
   title?: string;
@@ -23,8 +25,10 @@ interface HeaderItem {
 }
 
 const Header = () => {
-  const navigation = useNavigation();
+  const navigation =
+    useNavigation<NativeStackNavigationProp<AppStackParamList, keyof AppStackParamList>>();
   const route = useRoute();
+  const {user} = userStore();
 
   const {
     theme: {background, text},
@@ -33,7 +37,18 @@ const Header = () => {
 
   const handleShowMenu = useCallback(() => null, []);
   const handleShowNotification = useCallback(() => null, []);
-  const handleGoToBack = useCallback(() => navigation.goBack(), [navigation]);
+  const handleGoToBack = useCallback(() => {
+    console.log('-----navigation.canGoBack()', navigation.canGoBack());
+    if (navigation.canGoBack()) {
+      return navigation.goBack();
+    } else if (user?.id) {
+      return navigation.navigate(SCREENS.MAIN_TAB, {
+        screen: SCREENS.HOME,
+      });
+    }
+    return navigation.navigate(SCREENS.LOGIN);
+  }, [navigation, user?.id]);
+
   const handleChangeFavorite = useCallback(() => {
     const {id = ''} = route?.params || {};
     console.log('----Product id', id);

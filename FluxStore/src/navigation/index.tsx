@@ -1,9 +1,10 @@
 import {NavigationContainer} from '@react-navigation/native';
 import {GestureHandlerRootView} from 'react-native-gesture-handler';
 import {KeyboardProvider} from 'react-native-keyboard-controller';
+import {QueryClient, QueryClientProvider} from '@tanstack/react-query';
 
 import {AppStackNavigation} from './AppStackNavigation';
-import {QueryClient, QueryClientProvider} from '@tanstack/react-query';
+import {linking} from './Linking';
 
 export const Navigation = () => {
   const queryClient = new QueryClient();
@@ -11,7 +12,7 @@ export const Navigation = () => {
   return (
     <QueryClientProvider client={queryClient}>
       <KeyboardProvider>
-        <NavigationContainer>
+        <NavigationContainer linking={linking}>
           <GestureHandlerRootView>
             <AppStackNavigation />
           </GestureHandlerRootView>
