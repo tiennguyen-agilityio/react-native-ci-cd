@@ -16,7 +16,7 @@ describe('ColorPicker Component', () => {
   });
 
   it('renders correctly with defaultIndex 1', () => {
-    const {toJSON} = render(<ColorPicker {...props} defaultValue={[COLORS[0]]} />);
+    const {toJSON} = render(<ColorPicker {...props} defaultValue={COLORS[0]} />);
 
     expect(toJSON()).toMatchSnapshot();
   });

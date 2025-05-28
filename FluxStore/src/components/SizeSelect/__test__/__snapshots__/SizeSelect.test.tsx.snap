@@ -73,7 +73,7 @@ exports[`SizeSelect Component renders correctly 1`] = `
         {
           "busy": undefined,
           "checked": undefined,
-          "disabled": undefined,
+          "disabled": false,
           "expanded": undefined,
           "selected": undefined,
         }
@@ -162,7 +162,7 @@ exports[`SizeSelect Component renders correctly 1`] = `
         {
           "busy": undefined,
           "checked": undefined,
-          "disabled": undefined,
+          "disabled": false,
           "expanded": undefined,
           "selected": undefined,
         }
@@ -251,7 +251,7 @@ exports[`SizeSelect Component renders correctly 1`] = `
         {
           "busy": undefined,
           "checked": undefined,
-          "disabled": undefined,
+          "disabled": false,
           "expanded": undefined,
           "selected": undefined,
         }
@@ -412,7 +412,7 @@ exports[`SizeSelect Component renders correctly with defaultIndex 1`] = `
         {
           "busy": undefined,
           "checked": undefined,
-          "disabled": undefined,
+          "disabled": true,
           "expanded": undefined,
           "selected": undefined,
         }
@@ -427,7 +427,7 @@ exports[`SizeSelect Component renders correctly with defaultIndex 1`] = `
       }
       accessible={true}
       collapsable={false}
-      focusable={true}
+      focusable={false}
       onClick={[Function]}
       onResponderGrant={[Function]}
       onResponderMove={[Function]}
@@ -501,7 +501,7 @@ exports[`SizeSelect Component renders correctly with defaultIndex 1`] = `
         {
           "busy": undefined,
           "checked": undefined,
-          "disabled": undefined,
+          "disabled": false,
           "expanded": undefined,
           "selected": undefined,
         }
@@ -590,7 +590,7 @@ exports[`SizeSelect Component renders correctly with defaultIndex 1`] = `
         {
           "busy": undefined,
           "checked": undefined,
-          "disabled": undefined,
+          "disabled": false,
           "expanded": undefined,
           "selected": undefined,
         }

@@ -23,7 +23,7 @@ describe('SizeSelect Component', () => {
   });
 
   it('renders correctly with defaultIndex', () => {
-    const {toJSON} = render(<SizeSelect {...props} defaultValue={[SIZES[0]]} />);
+    const {toJSON} = render(<SizeSelect {...props} defaultValue={SIZES[0]} />);
 
     expect(toJSON()).toMatchSnapshot();
   });
@@ -40,12 +40,12 @@ describe('SizeSelect Component', () => {
     fireEvent.press(screen.getByText('M'));
 
     // Should call onValueChange with ['M']
-    expect(onValueChange).toHaveBeenCalledWith(['M']);
+    expect(onValueChange).toHaveBeenCalledWith('M');
 
     // Press again to deselect
     fireEvent.press(screen.getByText('M'));
 
     // Should call onValueChange with []
-    expect(onValueChange).toHaveBeenCalledWith([]);
+    expect(onValueChange).toHaveBeenCalledWith('M');
   });
 });
