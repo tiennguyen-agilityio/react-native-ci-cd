@@ -18,28 +18,20 @@ export enum SCREENS {
 }
 
 export type AppStackParamList = {
-  [SCREENS.HOME]?: undefined;
-  [SCREENS.SEARCH]?: undefined;
-  [SCREENS.MAIN_TAB]?: {
-    screen: SCREENS;
-    params?: object;
-  };
-  [SCREENS.CART_STACK]?: {
-    screen: SCREENS;
-    params?: object;
-  };
-  [SCREENS.CART]?: undefined;
-  [SCREENS.SHIPPING_ADDRESS]?: undefined;
-  [SCREENS.ORDER_COMPLETED]?: undefined;
-  [SCREENS.PROFILES_STACK]?: undefined;
-  [SCREENS.PROFILE]?: undefined;
-  [SCREENS.WELCOME]?: undefined;
-  [SCREENS.INTRO]?: undefined;
-  [SCREENS.LOGIN]?: undefined;
-  [SCREENS.PRODUCTS]?: undefined;
-  [SCREENS.PRODUCT_DETAIL]: {
-    id?: string;
-  };
+  [SCREENS.MAIN_TAB]: undefined;
+  [SCREENS.WELCOME]: undefined;
+  [SCREENS.INTRO]: undefined;
+  [SCREENS.PRODUCTS]: undefined;
+  [SCREENS.PRODUCT_DETAIL]: {id: string};
+
+  [SCREENS.HOME]: undefined;
+  [SCREENS.SEARCH]: undefined;
+  [SCREENS.PROFILE]: undefined;
+
+  [SCREENS.CART_STACK]: undefined;
+  [SCREENS.CART]: undefined;
+  [SCREENS.SHIPPING_ADDRESS]: undefined;
+  [SCREENS.ORDER_COMPLETED]: undefined;
 };
 
 export type BottomTabs = {

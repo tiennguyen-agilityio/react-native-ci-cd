@@ -43,6 +43,7 @@ const ProductDetailScreen = ({navigation, route}: ProductDetailScreenProps) => {
 
   const {useProductDetail} = useProducts();
   const {data: product} = useProductDetail(id);
+
   const {
     name,
     carouselImages,
@@ -146,7 +147,7 @@ const ProductDetailScreen = ({navigation, route}: ProductDetailScreenProps) => {
         <ChevronIcon direction={DIRECTION.LEFT} style={styles.iconBack} onPress={handleGoToBack} />
         <HeartIcon style={styles.iconBack} onPress={handleChangeFavorite} />
       </Flex>
-      <ScrollView showsVerticalScrollIndicator={false} style={{flex: 1}}>
+      <ScrollView showsVerticalScrollIndicator={false}>
         <Flex
           backgroundColor={background.default}
           position="relative"
