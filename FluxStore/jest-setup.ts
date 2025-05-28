@@ -38,3 +38,38 @@ jest.mock('react-native-gesture-handler', () => {
     },
   };
 });
+
+// Mock Firebase
+jest.mock('@react-native-firebase/app', () => {
+  return {
+    firebase: {
+      app: jest.fn(() => ({
+        messaging: jest.fn(),
+      })),
+    },
+  };
+});
+
+jest.mock('@react-native-firebase/messaging', () => {
+  return () => ({
+    requestPermission: jest.fn(),
+    getToken: jest.fn(),
+    onMessage: jest.fn(),
+    setBackgroundMessageHandler: jest.fn(),
+    onNotificationOpenedApp: jest.fn(),
+    getInitialNotification: jest.fn(),
+  });
+});
+
+// Mock Notifee
+jest.mock('@notifee/react-native', () => ({
+  requestPermission: jest.fn(),
+  createChannel: jest.fn(),
+  displayNotification: jest.fn(),
+  onForegroundEvent: jest.fn(),
+  getNotificationSettings: jest.fn(() =>
+    Promise.resolve({
+      authorizationStatus: 1,
+    }),
+  ),
+}));
