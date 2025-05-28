@@ -5,10 +5,10 @@ import {Image, ScrollView, StyleSheet} from 'react-native';
 import {AppStackScreenProps, CarouselCard, DIRECTION, SCREENS} from '@/interfaces';
 
 // Constants
-import {PRODUCTS, REVIEWS} from '@/mocks';
+import {REVIEWS} from '@/mocks';
 
 // Themes
-import {borderRadius, fontSizes, metrics} from '@/themes';
+import {borderRadius, fontSizes, fontWeights, metrics} from '@/themes';
 
 // Components
 import {
@@ -27,9 +27,10 @@ import {
   Text,
 } from '@/components';
 import {useSafeAreaInsets} from 'react-native-safe-area-context';
-import {useThemeStore} from '@/hooks';
+import {useProducts, useThemeStore} from '@/hooks';
 import {CURRENCY_UNIT} from '@/constants';
 import {ReviewSection} from './components';
+import {formatAmount} from '@/utils';
 
 type ProductDetailScreenProps = AppStackScreenProps<typeof SCREENS.PRODUCT_DETAIL>;
 
@@ -38,14 +39,15 @@ const ProductDetailScreen = ({navigation, route}: ProductDetailScreenProps) => {
   const {
     theme: {text, background, fonts},
   } = useThemeStore();
-
   const {id = ''} = route?.params || {};
 
-  const product = PRODUCTS.find(item => item.id === id);
+  const {useProductDetail} = useProducts();
+  const {data: product} = useProductDetail(id);
   const {
     name,
     carouselImages,
-    price,
+    price = 0,
+    discount,
     rating = 0,
     reviewCount,
     colors: colorsPrd = [],
@@ -56,6 +58,14 @@ const ProductDetailScreen = ({navigation, route}: ProductDetailScreenProps) => {
     id: index.toString(),
     image: url,
   }));
+
+  const {originalPrice, promoPrice} = useMemo(
+    () => ({
+      promoPrice: discount ? formatAmount((price * discount) / 100) : 0,
+      originalPrice: formatAmount(price),
+    }),
+    [price, discount],
+  );
 
   const styles = useMemo(
     () =>
@@ -81,7 +91,8 @@ const ProductDetailScreen = ({navigation, route}: ProductDetailScreenProps) => {
           paddingBottom: insets.bottom + 30,
           paddingTop: 57,
           backgroundColor: background.default,
-          borderRadius: borderRadius.lg,
+          borderTopLeftRadius: borderRadius.lg,
+          borderTopRightRadius: borderRadius.lg,
           shadowColor: text.primary,
           shadowOffset: {width: 0, height: 4},
           shadowOpacity: 0.5,
@@ -90,6 +101,11 @@ const ProductDetailScreen = ({navigation, route}: ProductDetailScreenProps) => {
         },
         price: {
           fontFamily: fonts.secondary?.medium || fonts.default.medium,
+        },
+        originalPrice: {
+          fontWeight: fontWeights.regular,
+          color: text.septenary,
+          textDecorationLine: 'line-through',
         },
         reviewCount: {
           fontSize: fontSizes.tiny,
@@ -101,9 +117,6 @@ const ProductDetailScreen = ({navigation, route}: ProductDetailScreenProps) => {
 
   const renderItemCarousel = useCallback(({image}: CarouselCard) => {
     const source = typeof image === 'string' ? {uri: image} : image;
-
-    console.log('-----metrics.screenWidth', metrics.screenWidth);
-
     return <Image source={source} width={metrics.screenWidth} height={406} resizeMode="contain" />;
   }, []);
 
@@ -111,21 +124,13 @@ const ProductDetailScreen = ({navigation, route}: ProductDetailScreenProps) => {
     navigation.goBack();
   }, [navigation]);
 
-  const handleChangeFavorite = useCallback(() => {
-    console.log('----handleChangeFavorite id', id);
-  }, [id]);
+  const handleChangeFavorite = useCallback(() => {}, []);
 
-  const handleChangeColor = useCallback((colors: string[]) => {
-    console.log('---handleChangeColor', colors);
-  }, []);
+  const handleChangeColor = useCallback((color: string) => {}, []);
 
-  const handleChangeSizes = useCallback((sizes: string[]) => {
-    console.log('---handleChangSizes', sizes);
-  }, []);
+  const handleChangeSizes = useCallback((size: string) => {}, []);
 
-  const handleAddToCart = useCallback(() => {
-    console.log('--- handle add to cart');
-  }, []);
+  const handleAddToCart = useCallback(() => {}, []);
 
   return (
     <Flex flex={1} position="relative" backgroundColor={background.default}>
@@ -141,7 +146,7 @@ const ProductDetailScreen = ({navigation, route}: ProductDetailScreenProps) => {
         <ChevronIcon direction={DIRECTION.LEFT} style={styles.iconBack} onPress={handleGoToBack} />
         <HeartIcon style={styles.iconBack} onPress={handleChangeFavorite} />
       </Flex>
-      <ScrollView showsVerticalScrollIndicator={false}>
+      <ScrollView showsVerticalScrollIndicator={false} style={{flex: 1}}>
         <Flex
           backgroundColor={background.default}
           position="relative"
@@ -155,34 +160,40 @@ const ProductDetailScreen = ({navigation, route}: ProductDetailScreenProps) => {
           />
           <Flex style={styles.content}>
             <Flex direction="row" justify="between">
-              <Text variant="title" fontSize={fontSizes.base} color={text.primary}>
-                {name}
-              </Text>
-              <Text variant="heading" style={styles.price}>
-                {`${CURRENCY_UNIT} ${price}`}
-              </Text>
-            </Flex>
-            <Flex direction="row" marginTop={17}>
-              <Rating size={18} value={rating} />
-              <Text style={styles.reviewCount}>{` (${reviewCount})`}</Text>
+              <Flex>
+                <Text variant="title" fontSize={fontSizes.base} color={text.primary}>
+                  {name}
+                </Text>
+                <Flex direction="row" marginTop={17}>
+                  <Rating size={18} value={rating} />
+                  <Text style={styles.reviewCount}>{` (${reviewCount})`}</Text>
+                </Flex>
+              </Flex>
+              <Flex align="end">
+                <Text variant="heading" style={styles.price}>
+                  {`${CURRENCY_UNIT} ${promoPrice || originalPrice}`}
+                </Text>
+                {promoPrice && (
+                  <Text style={styles.originalPrice}>{`${CURRENCY_UNIT} ${originalPrice}`}</Text>
+                )}
+              </Flex>
             </Flex>
             <Flex direction="row" justify="between" marginTop={36}>
               <ColorPicker
                 colors={colorsPrd}
-                defaultValue={[colorsPrd[0]]}
+                defaultValue={colorsPrd[0]}
                 onValueChange={handleChangeColor}
               />
-
               <SizeSelect
                 sizes={sizesPrd}
-                defaultValue={[sizesPrd[0]]}
+                defaultValue={sizesPrd[0]}
                 onValueChange={handleChangeSizes}
               />
             </Flex>
             <Flex marginTop={32}>
               <Divider />
               <Collapse label="Description">
-                <Flex>
+                <Flex width="100%">
                   <Text>{description}</Text>
                 </Flex>
               </Collapse>

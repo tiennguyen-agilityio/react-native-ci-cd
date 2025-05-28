@@ -1,6 +1,5 @@
 import {memo, useCallback} from 'react';
 import {FlatList, ListRenderItemInfo} from 'react-native';
-import {useNavigation} from '@react-navigation/native';
 
 // Interfaces
 import {Product} from '@/interfaces';
@@ -15,25 +14,23 @@ interface ProductListProps {
   data: Product[];
   productCardType?: ProductCardType;
   horizontal?: boolean;
+  onPressItem: (item: Product) => void;
   onLoadMore: () => void;
 }
 
 const ProductList = ({
   data,
   productCardType = ProductCardType.Primary,
+  onPressItem,
   onLoadMore,
 }: ProductListProps) => {
-  const navigation = useNavigation();
-
   const getKeyExtractor = useCallback(({id}: Product) => id, []);
 
   const renderItemProduct = useCallback(
     ({item}: ListRenderItemInfo<Product>) => {
       const isTertiaryType = productCardType === ProductCardType.Tertiary;
 
-      const handleViewProductDetail = () =>
-        // navigation.navigate(SCREENS.PRODUCT_DETAIL, {product: item});
-        console.log('navigation product detail');
+      const handleViewProductDetail = () => onPressItem(item);
 
       return (
         <ProductCard
@@ -45,7 +42,7 @@ const ProductList = ({
         />
       );
     },
-    [productCardType],
+    [onPressItem, productCardType],
   );
 
   const renderItemSeparatorComponent = useCallback(

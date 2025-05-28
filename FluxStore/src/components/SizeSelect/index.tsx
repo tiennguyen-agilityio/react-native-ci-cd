@@ -4,9 +4,6 @@ import {StyleSheet, TouchableOpacity} from 'react-native';
 // Hooks
 import {useThemeStore} from '@/hooks';
 
-// Utils
-import {toggleItem} from '@/utils';
-
 // Components
 import Flex from '../Flex';
 import Text from '../Text';
@@ -19,31 +16,35 @@ const styles = StyleSheet.create({
 
 interface SizeSelectProps {
   sizes: string[];
-  defaultValue?: string[];
-  onValueChange: (size: string[]) => void;
+  defaultValue?: string;
+  onValueChange: (size: string) => void;
 }
 
-const SizeSelect = ({sizes, defaultValue = [], onValueChange}: SizeSelectProps) => {
+const SizeSelect = ({sizes, defaultValue = '', onValueChange}: SizeSelectProps) => {
   const {
     theme: {text, background},
   } = useThemeStore();
-  const [values, setValues] = useState<string[]>(defaultValue);
+  const [value, setValue] = useState<string>(defaultValue);
 
   return (
     <Flex>
       <Text style={{color: text.tertiary}}>Size</Text>
       <Flex marginTop={10} direction="row" gap={8}>
         {sizes.map(size => {
-          const isSelected = values.includes(size);
+          const isSelected = value === size;
           const handleToggleSelect = () => {
-            const newValue = toggleItem(values, size);
-
-            setValues(newValue);
-            onValueChange(newValue);
+            if (size !== value) {
+              setValue(size);
+              onValueChange(size);
+            }
           };
 
           return (
-            <TouchableOpacity key={size} onPress={handleToggleSelect} style={styles.item}>
+            <TouchableOpacity
+              key={size}
+              disabled={isSelected}
+              onPress={handleToggleSelect}
+              style={styles.item}>
               <Flex
                 justify="center"
                 align="center"

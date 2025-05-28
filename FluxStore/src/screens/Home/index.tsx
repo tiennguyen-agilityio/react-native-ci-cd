@@ -1,14 +1,17 @@
 import {ScrollView} from 'react-native-gesture-handler';
-import {memo, useCallback, useState} from 'react';
+import {memo, useCallback, useMemo, useState} from 'react';
 
 // Constants
-import {PRODUCTS} from '@/mocks';
+import {INIT_PAGE} from '@/constants';
 
 // Interfaces
-import {AppStackScreenProps, Category, SCREENS} from '@/interfaces';
+import {AppStackScreenProps, Category, Product, SCREENS} from '@/interfaces';
 
 // Hooks
-import {useThemeStore} from '@/hooks';
+import {useProducts, useThemeStore} from '@/hooks';
+
+// Utils
+import {getData} from '@/utils';
 
 // Themes
 import {metrics, fontSizes, Banners} from '@/themes';
@@ -59,52 +62,51 @@ const CATEGORIES: Category[] = [
 
 type HomeScreenProps = AppStackScreenProps<typeof SCREENS.HOME>;
 
-const HomeScreen = ({navigation, route}: HomeScreenProps) => {
-  const {toggleTheme, theme} = useThemeStore();
-  const {text} = theme;
-  const [categoryKey, setCategoryKey] = useState(CATEGORIES[0]);
+const HomeScreen = ({navigation}: HomeScreenProps) => {
+  const {theme} = useThemeStore();
 
-  const products = [...Array(50).keys()].map(value => ({
-    ...PRODUCTS[0],
-    id: value.toString(),
-  }));
+  const {useFetchProducts} = useProducts();
+  const {data, fetchNextPage, hasNextPage, isFetchingNextPage} = useFetchProducts(INIT_PAGE);
+
+  const pages = useMemo(() => data?.pages || [], [data?.pages]);
+  const products = useMemo(
+    () => (pages.length > 0 && getData<Product>(pages as never[])) || [],
+    [pages],
+  );
+
+  const [categoryKey, setCategoryKey] = useState(CATEGORIES[0]);
+  const {text} = theme;
 
   const handleChangeCategory = useCallback((value: Category) => {
-    console.log('------Change category: ', value);
     setCategoryKey(value);
   }, []);
 
   const handleShowAllProduct = useCallback(() => {
-    console.log('-----navigation  show all Product');
-  }, []);
+    navigation.navigate(SCREENS.PRODUCTS);
+  }, [navigation]);
+
+  const handlePressProduct = useCallback(
+    ({id}: Product) => {
+      navigation.navigate(SCREENS.PRODUCT_DETAIL, {id});
+    },
+    [navigation],
+  );
 
   const handleLoadMoreProduct = useCallback(() => {
-    console.log('-----Load more product');
-  }, []);
+    if (hasNextPage && !isFetchingNextPage) {
+      fetchNextPage();
+    }
+  }, [fetchNextPage, hasNextPage, isFetchingNextPage]);
 
-  const handlePressCollection = useCallback(() => {
-    console.log('--Press Collection banner');
-  }, []);
+  const handlePressCollection = useCallback(() => {}, []);
 
-  const handlePressBeautyBanner = useCallback(() => {
-    console.log('--Press Beauty banner');
-  }, []);
+  const handlePressBeautyBanner = useCallback(() => {}, []);
 
-  const handlePressShirtsBanner = useCallback(() => {
-    console.log('--Press T-Shirts banner');
-  }, []);
+  const handlePressShirtsBanner = useCallback(() => {}, []);
 
-  const handlePressDressesBanner = useCallback(() => {
-    console.log('--Press Dresses banner');
-  }, []);
+  const handlePressDressesBanner = useCallback(() => {}, []);
 
-  const handleShowAllProductRecommend = useCallback(() => {
-    console.log('--Press Show all Recommend');
-  }, []);
-
-  const handleShowAllTopCollection = useCallback(() => {
-    console.log('--Press Show all Top Collection');
-  }, []);
+  const handleShowAllTopCollection = useCallback(() => {}, []);
 
   return (
     <MainLayout>
@@ -115,13 +117,6 @@ const HomeScreen = ({navigation, route}: HomeScreenProps) => {
               list={CATEGORIES}
               keyActivated={categoryKey.key}
               onChange={handleChangeCategory}
-            />
-            <Button text="Toggle theme" onPress={toggleTheme} />
-            <Button
-              text="Products"
-              onPress={() => {
-                navigation.navigate(SCREENS.PRODUCTS);
-              }}
             />
             <Button
               text="Products detail"
@@ -152,6 +147,7 @@ const HomeScreen = ({navigation, route}: HomeScreenProps) => {
           <ProductList
             data={products}
             productCardType={ProductCardType.Tertiary}
+            onPressItem={handlePressProduct}
             onLoadMore={handleLoadMoreProduct}
           />
 
@@ -180,12 +176,13 @@ const HomeScreen = ({navigation, route}: HomeScreenProps) => {
               text="Show all"
               color={text.senary}
               fontSize={fontSizes.xxs}
-              onPress={handleShowAllProductRecommend}
+              onPress={handleShowAllProduct}
             />
           </Flex>
           <ProductList
             data={products}
             productCardType={ProductCardType.Secondary}
+            onPressItem={handlePressProduct}
             onLoadMore={handleLoadMoreProduct}
           />
           <Flex
