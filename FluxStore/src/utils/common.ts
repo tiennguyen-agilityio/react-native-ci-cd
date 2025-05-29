@@ -1,3 +1,5 @@
+import {Cart} from '@/interfaces';
+
 export const formatAmount = (number: number) => {
   if (number) {
     if (Number.isInteger(number)) {
@@ -39,3 +41,11 @@ export const getQueryString = (filters: object = {}): string =>
         `${encodeURIComponent(k)}=${encodeURIComponent(typeof v === 'string' ? v.trim() : v)}`,
     )
     .join('&');
+
+export const calcTotalPrice = (carts: Cart[]) => {
+  const total = carts
+    .filter(c => c.isChecked)
+    .reduce((sum, c) => sum + c.product.price * c.quantity, 0);
+
+  return formatAmount(total);
+};

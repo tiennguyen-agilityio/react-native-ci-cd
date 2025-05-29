@@ -9,4 +9,5 @@ export const API_PATH = {
 
 export const AUTH_STORE_KEY = 'auth-storage';
 
+export const CART_STORE_KEY = 'cart-storage';
 export const HAS_LAUNCHED_KEY = 'hasLaunched';

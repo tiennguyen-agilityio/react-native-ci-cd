@@ -1,11 +1,21 @@
-import {memo, useCallback, useMemo} from 'react';
+import {memo, useCallback, useEffect, useMemo, useState} from 'react';
 import {Image, ScrollView, StyleSheet} from 'react-native';
+import Toast from 'react-native-toast-message';
+import {useSafeAreaInsets} from 'react-native-safe-area-context';
 
 // Interfaces
 import {AppStackScreenProps, CarouselCard, DIRECTION, SCREENS} from '@/interfaces';
 
 // Constants
 import {REVIEWS} from '@/mocks';
+import {CURRENCY_UNIT} from '@/constants';
+
+// Hooks | Stores
+import {cartStore, userStore} from '@/stores';
+import {useProducts, useThemeStore} from '@/hooks';
+
+// Utils
+import {formatAmount} from '@/utils';
 
 // Themes
 import {borderRadius, fontSizes, fontWeights, metrics} from '@/themes';
@@ -26,11 +36,7 @@ import {
   SizeSelect,
   Text,
 } from '@/components';
-import {useSafeAreaInsets} from 'react-native-safe-area-context';
-import {useProducts, useThemeStore} from '@/hooks';
-import {CURRENCY_UNIT} from '@/constants';
 import {ReviewSection} from './components';
-import {formatAmount} from '@/utils';
 
 type ProductDetailScreenProps = AppStackScreenProps<typeof SCREENS.PRODUCT_DETAIL>;
 
@@ -39,10 +45,13 @@ const ProductDetailScreen = ({navigation, route}: ProductDetailScreenProps) => {
   const {
     theme: {text, background, fonts},
   } = useThemeStore();
-  const {id = ''} = route?.params || {};
+  const {id = ''} = route.params || {};
 
   const {useProductDetail} = useProducts();
-  const {data: product} = useProductDetail(id);
+  const {data: product, isFetched} = useProductDetail(id);
+
+  const {addNewCart} = cartStore();
+  const {user} = userStore();
 
   const {
     name,
@@ -55,6 +64,10 @@ const ProductDetailScreen = ({navigation, route}: ProductDetailScreenProps) => {
     sizes: sizesPrd = [],
     description,
   } = product || {};
+
+  const [color, setColor] = useState(colorsPrd[0]);
+  const [size, setSize] = useState(sizesPrd[0]);
+
   const images = carouselImages?.map((url, index) => ({
     id: index.toString(),
     image: url,
@@ -127,11 +140,40 @@ const ProductDetailScreen = ({navigation, route}: ProductDetailScreenProps) => {
 
   const handleChangeFavorite = useCallback(() => {}, []);
 
-  const handleChangeColor = useCallback((color: string) => {}, []);
+  const handleChangeColor = useCallback((value: string) => {
+    setColor(value);
+  }, []);
 
-  const handleChangeSizes = useCallback((size: string) => {}, []);
+  const handleChangeSizes = useCallback((value: string) => {
+    setSize(value);
+  }, []);
 
-  const handleAddToCart = useCallback(() => {}, []);
+  const handleAddToCart = useCallback(() => {
+    if (product) {
+      addNewCart({
+        id: product.id,
+        product,
+        colors: color,
+        sizes: size,
+        quantity: 1,
+        isChecked: user?.favorites?.includes(product.id) || false,
+      });
+      Toast.show({
+        type: 'success',
+        text1: 'Added to cart',
+      });
+      navigation.navigate(SCREENS.CART_STACK, {
+        screen: SCREENS.CART,
+      });
+    }
+  }, [product, color, size, navigation, user?.favorites, addNewCart]);
+
+  useEffect(() => {
+    if (isFetched) {
+      setColor(colorsPrd[0]);
+      setSize(sizesPrd[0]);
+    }
+  }, [isFetched, colorsPrd, sizesPrd]);
 
   return (
     <Flex flex={1} position="relative" backgroundColor={background.default}>
