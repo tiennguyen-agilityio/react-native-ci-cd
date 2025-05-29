@@ -31,7 +31,9 @@ export type AppStackParamList = {
   [SCREENS.SEARCH]: undefined;
   [SCREENS.PROFILE]: undefined;
 
-  [SCREENS.CART_STACK]: undefined;
+  [SCREENS.CART_STACK]: {
+    screen?: SCREENS;
+  };
   [SCREENS.CART]: undefined;
   [SCREENS.SHIPPING_ADDRESS]: undefined;
   [SCREENS.ORDER_COMPLETED]: undefined;

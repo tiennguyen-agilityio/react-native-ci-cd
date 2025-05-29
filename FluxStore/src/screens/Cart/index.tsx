@@ -7,11 +7,11 @@ import {useSafeAreaInsets} from 'react-native-safe-area-context';
 import {AppStackScreenProps, SCREENS} from '@/interfaces';
 
 // Constants
-import {CARTS} from '@/mocks';
 import {CURRENCY_UNIT} from '@/constants';
 
 // Hooks
 import {useThemeStore} from '@/hooks';
+import {cartStore} from '@/stores';
 
 // Themes
 import {metrics} from '@/themes';
@@ -38,6 +38,7 @@ type CartScreenProps = AppStackScreenProps<typeof SCREENS.CART>;
 const CartScreen = ({navigation}: CartScreenProps) => {
   const insets = useSafeAreaInsets();
 
+  const {carts, totalPrice, updateCartItem} = cartStore();
   const {
     theme: {background, text},
   } = useThemeStore();
@@ -62,13 +63,13 @@ const CartScreen = ({navigation}: CartScreenProps) => {
         <ScrollView showsVerticalScrollIndicator={false}>
           <Flex justify="start" marginTop={24}>
             <Flex flex={1} gap={20} paddingHorizontal={metrics.dimensions.xxl} paddingBottom={20}>
-              {CARTS.map(item => {
+              {carts?.map(item => {
                 const handleChangeChecked = () => {
-                  console.log('---handleChangeChecked: ', item.id, !item.isChecked);
+                  updateCartItem({...item, isChecked: !item.isChecked});
                 };
 
                 const handleChangeQuantity = (value: number) => {
-                  console.log('---handleChangeQuantity: ', item.id, value);
+                  updateCartItem({...item, quantity: value});
                 };
 
                 return (
@@ -86,7 +87,7 @@ const CartScreen = ({navigation}: CartScreenProps) => {
         <Flex style={[styles.content, contentStyle]}>
           <Flex direction="row" justify="between" paddingVertical={15}>
             <Text>Product price</Text>
-            <Text variant="subTitle">{`${CURRENCY_UNIT} 100.00`}</Text>
+            <Text variant="subTitle">{`${CURRENCY_UNIT} ${totalPrice}`}</Text>
           </Flex>
           <Divider />
           <Flex direction="row" justify="between" paddingVertical={15}>
@@ -96,7 +97,7 @@ const CartScreen = ({navigation}: CartScreenProps) => {
           <Divider />
           <Flex direction="row" justify="between" marginBottom={10} paddingVertical={15}>
             <Text>Subtotal</Text>
-            <Text variant="title">{`${CURRENCY_UNIT} 100.00`}</Text>
+            <Text variant="title">{`${CURRENCY_UNIT} ${totalPrice}`}</Text>
           </Flex>
           <Flex
             height={insets.bottom}
