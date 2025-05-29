@@ -8,7 +8,7 @@ import {INIT_PAGE} from '@/constants';
 import {AppStackScreenProps, Category, Product, SCREENS} from '@/interfaces';
 
 // Hooks
-import {useProducts, useThemeStore} from '@/hooks';
+import {useProducts, useScreenTrace, useThemeStore} from '@/hooks';
 
 // Utils
 import {getData} from '@/utils';
@@ -63,6 +63,7 @@ const CATEGORIES: Category[] = [
 type HomeScreenProps = AppStackScreenProps<typeof SCREENS.HOME>;
 
 const HomeScreen = ({navigation}: HomeScreenProps) => {
+  useScreenTrace(SCREENS.HOME);
   const {theme} = useThemeStore();
 
   const {useFetchProducts} = useProducts();
@@ -117,14 +118,6 @@ const HomeScreen = ({navigation}: HomeScreenProps) => {
               list={CATEGORIES}
               keyActivated={categoryKey.key}
               onChange={handleChangeCategory}
-            />
-            <Button
-              text="Products detail"
-              onPress={() => {
-                navigation.navigate(SCREENS.PRODUCT_DETAIL, {
-                  id: '01',
-                });
-              }}
             />
             <Flex height={168}>
               <Carousel />

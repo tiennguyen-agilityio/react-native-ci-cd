@@ -8,7 +8,7 @@ import {INIT_PAGE} from '@/constants';
 import {AppStackScreenProps, DIRECTION, Product, SCREENS} from '@/interfaces';
 
 // Hooks
-import {useMedia, useProducts, useThemeStore} from '@/hooks';
+import {useMedia, useProducts, useScreenTrace, useThemeStore} from '@/hooks';
 
 // Themes
 import {metrics} from '@/themes';
@@ -29,6 +29,8 @@ const styles = StyleSheet.create({
 type LandingScreenProps = AppStackScreenProps<typeof SCREENS.HOME>;
 
 const ProductsScreen = ({navigation, route}: LandingScreenProps) => {
+  useScreenTrace(SCREENS.PRODUCTS);
+
   const {useFetchProducts} = useProducts();
   const {data, fetchNextPage, hasNextPage, isFetchingNextPage} = useFetchProducts(INIT_PAGE);
 

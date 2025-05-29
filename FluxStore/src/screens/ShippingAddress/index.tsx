@@ -12,10 +12,13 @@ import {fontSizes, metrics} from '@/themes';
 // Components
 import {Button, Checkbox, Flex, Input, MainLayout, Text} from '@/components';
 import {ShippingMethod} from './components';
+import {useScreenTrace} from '@/hooks';
 
 type ShippingAddressProps = AppStackScreenProps<typeof SCREENS.SHIPPING_ADDRESS>;
 
 const ShippingAddressScreen = ({navigation}: ShippingAddressProps) => {
+  useScreenTrace(SCREENS.SHIPPING_ADDRESS);
+
   const insets = useSafeAreaInsets();
 
   const lastNameRef = useRef<TextInput>();

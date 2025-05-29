@@ -1,3 +1,4 @@
+import perf from '@react-native-firebase/perf';
 import axios, {AxiosRequestConfig} from 'axios';
 
 // const API_URL = 'https://react-native-zce1.onrender.com/';
@@ -13,11 +14,20 @@ const defaultOptions = {
 const instanceAxios = axios.create(defaultOptions);
 
 export const GET = async <T>(url: string, config?: AxiosRequestConfig) => {
+  const trace = await perf().newHttpMetric(API_URL + url, 'GET');
   try {
+    await trace.start();
     const response = await instanceAxios.get<T>(url, config);
 
+    trace.setHttpResponseCode(response.status);
+    trace.setResponseContentType(response.headers['content-type']);
+    trace.stop();
     return response?.data;
   } catch (error) {
+    // trace.setHttpResponseCode(error?.response?.status || 500);
+    trace.putAttribute('error', JSON.stringify(trace));
+    trace.stop();
+
     if (axios.isAxiosError(error)) {
       throw error;
     }
@@ -27,10 +37,22 @@ export const GET = async <T>(url: string, config?: AxiosRequestConfig) => {
 };
 
 export const POST = async <T, P>(url: string, payload: P, config?: AxiosRequestConfig) => {
+  const trace = await perf().newHttpMetric(API_URL + url, 'POST');
   try {
-    const {data} = await instanceAxios.post<T>(url, payload, config);
-    return data;
+    await trace.start();
+
+    const response = await instanceAxios.post<T>(url, payload, config);
+
+    trace.setHttpResponseCode(response?.status);
+    trace.setResponseContentType(response?.headers['content-type']);
+    trace.stop();
+
+    return response?.data;
   } catch (error: unknown) {
+    trace.setHttpResponseCode(error?.response?.status || 500);
+    trace.putAttribute('error', JSON.stringify(trace));
+    trace.stop();
+
     if (axios.isAxiosError(error)) {
       throw error;
     }
@@ -40,11 +62,23 @@ export const POST = async <T, P>(url: string, payload: P, config?: AxiosRequestC
 };
 
 export const PATCH = async <T, P>(url: string, payload: P, config?: AxiosRequestConfig) => {
-  try {
-    const {data} = await instanceAxios.patch<T>(API_URL + url, payload, config);
+  const trace = await perf().newHttpMetric(API_URL + url, 'PATCH');
 
-    return data;
+  try {
+    await trace.start();
+
+    const response = await instanceAxios.patch<T>(API_URL + url, payload, config);
+
+    trace.setHttpResponseCode(response.status);
+    trace.setResponseContentType(response.headers['content-type']);
+    trace.stop();
+
+    return response?.data;
   } catch (error) {
+    trace.setHttpResponseCode(error?.response?.status || 500);
+    trace.putAttribute('error', JSON.stringify(trace));
+    trace.stop();
+
     if (axios.isAxiosError(error)) {
       throw error;
     }

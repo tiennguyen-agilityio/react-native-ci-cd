@@ -8,7 +8,7 @@ import {AppStackScreenProps, SCREENS} from '@/interfaces';
 // Constants
 
 // Hooks
-import {useThemeStore} from '@/hooks';
+import {useThemeStore, useScreenTrace} from '@/hooks';
 
 // Themes
 import {fontSizes, metrics} from '@/themes';
@@ -19,6 +19,8 @@ import {Button, CartCompletedIcon, Flex, MainLayout, Text} from '@/components';
 type OrderCompletedScreenProps = AppStackScreenProps<typeof SCREENS.ORDER_COMPLETED>;
 
 const OrderCompletedScreen = ({navigation}: OrderCompletedScreenProps) => {
+  useScreenTrace(SCREENS.ORDER_COMPLETED);
+
   const insets = useSafeAreaInsets();
 
   const {
