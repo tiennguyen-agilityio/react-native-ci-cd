@@ -38,7 +38,6 @@ const Header = () => {
   const handleShowMenu = useCallback(() => null, []);
   const handleShowNotification = useCallback(() => null, []);
   const handleGoToBack = useCallback(() => {
-    console.log('-----navigation.canGoBack()', navigation.canGoBack());
     if (navigation.canGoBack()) {
       return navigation.goBack();
     } else if (user?.id) {
@@ -51,7 +50,6 @@ const Header = () => {
 
   const handleChangeFavorite = useCallback(() => {
     const {id = ''} = route?.params || {};
-    console.log('----Product id', id);
   }, [route]);
 
   const styles = useMemo(
