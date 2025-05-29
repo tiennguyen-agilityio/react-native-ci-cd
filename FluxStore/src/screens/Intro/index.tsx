@@ -5,6 +5,9 @@ import {useSafeAreaInsets} from 'react-native-safe-area-context';
 // Interfaces
 import {AppStackScreenProps, SCREENS} from '@/interfaces';
 
+// Hooks
+import {useScreenTrace} from '@/hooks';
+
 // Components
 import {Button, Flex} from '@/components';
 import {Carousel} from './components';
@@ -15,6 +18,7 @@ import {colors, metrics} from '@/themes';
 type IntroScreenProps = AppStackScreenProps<typeof SCREENS.INTRO>;
 
 const IntroScreen = ({navigation}: IntroScreenProps) => {
+  useScreenTrace(SCREENS.INTRO);
   const insets = useSafeAreaInsets();
 
   const handleNextStep = useCallback(() => {

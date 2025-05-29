@@ -90,6 +90,7 @@ const MainTab = () => {
         name={SCREENS.CART_STACK}
         component={CartStack}
         options={{
+          tabBarIcon: undefined,
           tabBarStyle: {display: 'none'},
         }}
       />

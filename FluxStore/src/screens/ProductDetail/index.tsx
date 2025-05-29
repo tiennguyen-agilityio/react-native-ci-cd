@@ -12,7 +12,7 @@ import {CURRENCY_UNIT} from '@/constants';
 
 // Hooks | Stores
 import {cartStore, userStore} from '@/stores';
-import {useProducts, useThemeStore} from '@/hooks';
+import {useProducts, useScreenTrace, useThemeStore} from '@/hooks';
 
 // Utils
 import {formatAmount} from '@/utils';
@@ -41,6 +41,8 @@ import {ReviewSection} from './components';
 type ProductDetailScreenProps = AppStackScreenProps<typeof SCREENS.PRODUCT_DETAIL>;
 
 const ProductDetailScreen = ({navigation, route}: ProductDetailScreenProps) => {
+  useScreenTrace(SCREENS.PRODUCT_DETAIL);
+
   const insets = useSafeAreaInsets();
   const {
     theme: {text, background, fonts},

@@ -3,6 +3,7 @@ import {Controller, useForm} from 'react-hook-form';
 import {ScrollView} from 'react-native-gesture-handler';
 import {useSafeAreaInsets} from 'react-native-safe-area-context';
 import {TextInput} from 'react-native';
+import crashlytics from '@react-native-firebase/crashlytics';
 
 // Interfaces
 import {AppStackScreenProps, LoginPayLoad, SCREENS, User} from '@/interfaces';
@@ -11,7 +12,7 @@ import {AppStackScreenProps, LoginPayLoad, SCREENS, User} from '@/interfaces';
 import {ERROR_MESSAGES, SCHEMA} from '@/constants';
 
 // Hooks
-import {useAuth, useThemeStore} from '@/hooks';
+import {useAuth, useScreenTrace, useThemeStore} from '@/hooks';
 
 // Themes
 import {fontSizes, fontWeights, metrics} from '@/themes';
@@ -32,6 +33,7 @@ import {userStore} from '@/stores';
 type LoginScreenProps = AppStackScreenProps<typeof SCREENS.ORDER_COMPLETED>;
 
 const LoginScreen = ({navigation}: LoginScreenProps) => {
+  useScreenTrace(SCREENS.LOGIN);
   const insets = useSafeAreaInsets();
   const {
     theme: {text},
@@ -64,7 +66,9 @@ const LoginScreen = ({navigation}: LoginScreenProps) => {
   };
 
   const handleLogin = useCallback(
-    (data: LoginPayLoad) =>
+    (data: LoginPayLoad) => {
+      crashlytics().log('User login attempt.');
+
       mutate(data, {
         onSuccess: (users: User[]) => {
           if (users?.length) {
@@ -73,6 +77,7 @@ const LoginScreen = ({navigation}: LoginScreenProps) => {
               screen: SCREENS.HOME,
             });
             reset();
+            crashlytics().log('User login success.');
             setErrorMessage('');
           } else {
             setErrorMessage(ERROR_MESSAGES.LOGIN_FAILED);
@@ -80,8 +85,10 @@ const LoginScreen = ({navigation}: LoginScreenProps) => {
         },
         onError: (error: Error) => {
           setErrorMessage(ERROR_MESSAGES.LOGIN_FAILED);
+          crashlytics().recordError(error);
         },
-      }),
+      });
+    },
     [mutate, navigation, reset, setUser],
   );
 

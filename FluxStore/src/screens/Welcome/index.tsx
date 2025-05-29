@@ -5,6 +5,9 @@ import {useSafeAreaInsets} from 'react-native-safe-area-context';
 // Interfaces
 import {AppStackScreenProps, SCREENS} from '@/interfaces';
 
+// Hooks
+import {useScreenTrace} from '@/hooks';
+
 // Components
 import {Button, Flex, Text} from '@/components';
 
@@ -36,6 +39,8 @@ const styles = StyleSheet.create({
 type WelcomeScreenProps = AppStackScreenProps<typeof SCREENS.WELCOME>;
 
 const WelcomeScreen = ({navigation}: WelcomeScreenProps) => {
+  useScreenTrace(SCREENS.LOGIN);
+
   const insets = useSafeAreaInsets();
 
   const handleGetStarted = useCallback(() => {

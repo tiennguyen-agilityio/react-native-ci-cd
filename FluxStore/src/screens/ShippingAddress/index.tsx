@@ -1,7 +1,7 @@
 import {RefObject, useCallback, useRef} from 'react';
 import {TextInput} from 'react-native';
 import {useSafeAreaInsets} from 'react-native-safe-area-context';
-import {ScrollView} from 'react-native-gesture-handler';
+import {KeyboardAwareScrollView} from 'react-native-keyboard-controller';
 
 // Interfaces
 import {AppStackScreenProps, SCREENS} from '@/interfaces';
@@ -12,10 +12,13 @@ import {fontSizes, metrics} from '@/themes';
 // Components
 import {Button, Checkbox, Flex, Input, MainLayout, Text} from '@/components';
 import {ShippingMethod} from './components';
+import {useScreenTrace} from '@/hooks';
 
 type ShippingAddressProps = AppStackScreenProps<typeof SCREENS.SHIPPING_ADDRESS>;
 
 const ShippingAddressScreen = ({navigation}: ShippingAddressProps) => {
+  useScreenTrace(SCREENS.SHIPPING_ADDRESS);
+
   const insets = useSafeAreaInsets();
 
   const lastNameRef = useRef<TextInput>();
@@ -44,7 +47,9 @@ const ShippingAddressScreen = ({navigation}: ShippingAddressProps) => {
 
   return (
     <MainLayout>
-      <ScrollView>
+      <KeyboardAwareScrollView
+        showsVerticalScrollIndicator={false}
+        keyboardShouldPersistTaps="handled">
         <Flex
           flex={1}
           marginTop={22}
@@ -131,7 +136,7 @@ const ShippingAddressScreen = ({navigation}: ShippingAddressProps) => {
           </Flex>
           <Button text="Continue to payment" onPress={handleSubmit} />
         </Flex>
-      </ScrollView>
+      </KeyboardAwareScrollView>
     </MainLayout>
   );
 };

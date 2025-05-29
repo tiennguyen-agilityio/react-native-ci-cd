@@ -10,7 +10,7 @@ import {AppStackScreenProps, SCREENS} from '@/interfaces';
 import {CURRENCY_UNIT} from '@/constants';
 
 // Hooks
-import {useThemeStore} from '@/hooks';
+import {useThemeStore, useScreenTrace} from '@/hooks';
 import {cartStore} from '@/stores';
 
 // Themes
@@ -36,6 +36,7 @@ const styles = StyleSheet.create({
 type CartScreenProps = AppStackScreenProps<typeof SCREENS.CART>;
 
 const CartScreen = ({navigation}: CartScreenProps) => {
+  useScreenTrace(SCREENS.CART);
   const insets = useSafeAreaInsets();
 
   const {carts, totalPrice, updateCartItem} = cartStore();
