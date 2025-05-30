@@ -15,7 +15,7 @@ import {cartStore, userStore} from '@/stores';
 import {useProducts, useScreenTrace, useThemeStore} from '@/hooks';
 
 // Utils
-import {formatAmount} from '@/utils';
+import {customTrace, formatAmount} from '@/utils';
 
 // Themes
 import {borderRadius, fontSizes, fontWeights, metrics} from '@/themes';
@@ -104,7 +104,7 @@ const ProductDetailScreen = ({navigation, route}: ProductDetailScreenProps) => {
           paddingHorizontal: metrics.dimensions.xxl,
           zIndex: 3,
           marginTop: 10,
-          paddingBottom: insets.bottom + 30,
+          paddingBottom: 40,
           paddingTop: 57,
           backgroundColor: background.default,
           borderTopLeftRadius: borderRadius.lg,
@@ -113,7 +113,7 @@ const ProductDetailScreen = ({navigation, route}: ProductDetailScreenProps) => {
           shadowOffset: {width: 0, height: 4},
           shadowOpacity: 0.5,
           shadowRadius: 6,
-          elevation: 10,
+          elevation: 6,
         },
         price: {
           fontFamily: fonts.secondary?.medium || fonts.default.medium,
@@ -127,8 +127,12 @@ const ProductDetailScreen = ({navigation, route}: ProductDetailScreenProps) => {
           fontSize: fontSizes.tiny,
           color: text.primary,
         },
+        button: {
+          borderBottomLeftRadius: 0,
+          borderBottomRightRadius: 0,
+        },
       }),
-    [text, background, fonts, insets],
+    [text, background, fonts],
   );
 
   const renderItemCarousel = useCallback(({image}: CarouselCard) => {
@@ -150,7 +154,8 @@ const ProductDetailScreen = ({navigation, route}: ProductDetailScreenProps) => {
     setSize(value);
   }, []);
 
-  const handleAddToCart = useCallback(() => {
+  const handleAddToCart = useCallback(async () => {
+    const {trace, traceStop} = await customTrace(SCREENS.LOGIN);
     if (product) {
       addNewCart({
         id: product.id,
@@ -164,6 +169,8 @@ const ProductDetailScreen = ({navigation, route}: ProductDetailScreenProps) => {
         type: 'success',
         text1: 'Added to cart',
       });
+      trace.putAttribute('Added to cart', 'success');
+      await traceStop();
       navigation.navigate(SCREENS.CART_STACK, {
         screen: SCREENS.CART,
       });
@@ -178,7 +185,7 @@ const ProductDetailScreen = ({navigation, route}: ProductDetailScreenProps) => {
   }, [isFetched, colorsPrd, sizesPrd]);
 
   return (
-    <Flex flex={1} position="relative" backgroundColor={background.default}>
+    <Flex flex={1} position="relative" backgroundColor={background.default} paddingBottom={77}>
       <Flex
         direction="row"
         justify="between"
@@ -244,23 +251,25 @@ const ProductDetailScreen = ({navigation, route}: ProductDetailScreenProps) => {
               </Collapse>
             </Flex>
             <ReviewSection reviews={REVIEWS} rating={rating} />
+            <Flex
+              position="absolute"
+              bottom={-40}
+              width={metrics.screenWidth}
+              height={40}
+              backgroundColor={background.default}
+            />
           </Flex>
-          <Flex
-            position="absolute"
-            zIndex={3}
-            bottom={-insets.bottom}
-            width="100%"
-            height={insets.bottom + 30}
-            backgroundColor={background.default}
-          />
         </Flex>
       </ScrollView>
-      <Button
-        text="Add to cart"
-        height={77}
-        startIcon={<CartIcon type={CartIconType.Secondary} />}
-        onPress={handleAddToCart}
-      />
+      <Flex position="absolute" width="100%" height={77} bottom={0}>
+        <Button
+          text="Add to cart"
+          height={77}
+          style={styles.button}
+          startIcon={<CartIcon type={CartIconType.Secondary} />}
+          onPress={handleAddToCart}
+        />
+      </Flex>
     </Flex>
   );
 };

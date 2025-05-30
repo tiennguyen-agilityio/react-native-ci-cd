@@ -39,7 +39,7 @@ const styles = StyleSheet.create({
 type WelcomeScreenProps = AppStackScreenProps<typeof SCREENS.WELCOME>;
 
 const WelcomeScreen = ({navigation}: WelcomeScreenProps) => {
-  useScreenTrace(SCREENS.LOGIN);
+  useScreenTrace(SCREENS.WELCOME);
 
   const insets = useSafeAreaInsets();
 

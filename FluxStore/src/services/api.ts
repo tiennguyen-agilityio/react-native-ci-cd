@@ -21,12 +21,12 @@ export const GET = async <T>(url: string, config?: AxiosRequestConfig) => {
 
     trace.setHttpResponseCode(response.status);
     trace.setResponseContentType(response.headers['content-type']);
-    trace.stop();
+    await trace.stop();
     return response?.data;
   } catch (error) {
-    // trace.setHttpResponseCode(error?.response?.status || 500);
+    trace.setHttpResponseCode(error?.response?.status || 500);
     trace.putAttribute('error', JSON.stringify(trace));
-    trace.stop();
+    await trace.stop();
 
     if (axios.isAxiosError(error)) {
       throw error;
@@ -45,13 +45,13 @@ export const POST = async <T, P>(url: string, payload: P, config?: AxiosRequestC
 
     trace.setHttpResponseCode(response?.status);
     trace.setResponseContentType(response?.headers['content-type']);
-    trace.stop();
+    await trace.stop();
 
     return response?.data;
   } catch (error: unknown) {
     trace.setHttpResponseCode(error?.response?.status || 500);
     trace.putAttribute('error', JSON.stringify(trace));
-    trace.stop();
+    await trace.stop();
 
     if (axios.isAxiosError(error)) {
       throw error;
@@ -71,13 +71,13 @@ export const PATCH = async <T, P>(url: string, payload: P, config?: AxiosRequest
 
     trace.setHttpResponseCode(response.status);
     trace.setResponseContentType(response.headers['content-type']);
-    trace.stop();
+    await trace.stop();
 
     return response?.data;
   } catch (error) {
     trace.setHttpResponseCode(error?.response?.status || 500);
     trace.putAttribute('error', JSON.stringify(trace));
-    trace.stop();
+    await trace.stop();
 
     if (axios.isAxiosError(error)) {
       throw error;
