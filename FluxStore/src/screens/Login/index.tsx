@@ -67,7 +67,7 @@ const LoginScreen = ({navigation}: LoginScreenProps) => {
 
   const handleLogin = useCallback(
     (data: LoginPayLoad) => {
-      crashlytics().log('User login attempt.');
+      crashlytics().log('User login.');
 
       mutate(data, {
         onSuccess: (users: User[]) => {

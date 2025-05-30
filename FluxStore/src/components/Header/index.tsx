@@ -1,12 +1,14 @@
-import {ReactNode, useCallback, useMemo} from 'react';
+import {useCallback, useMemo} from 'react';
 import {StyleSheet} from 'react-native';
 import {useNavigation, useRoute} from '@react-navigation/native';
+import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 
 // Types
 import {AppStackParamList, DIRECTION, SCREENS} from '@/interfaces';
 
 // Hooks | Stores
 import {useThemeStore} from '@/hooks';
+import {userStore} from '@/stores';
 
 // Themes
 import {metrics} from '@/themes';
@@ -15,14 +17,6 @@ import {metrics} from '@/themes';
 import {ChevronIcon, HeartIcon, MenuIcon, NotificationIcon} from '../Icons';
 import Flex from '../Flex';
 import Text from '../Text';
-import {userStore} from '@/stores';
-import {NativeStackNavigationProp} from '@react-navigation/native-stack';
-
-interface HeaderItem {
-  title?: string;
-  leftIcon?: ReactNode;
-  rightIcon?: ReactNode;
-}
 
 const Header = () => {
   const navigation =
@@ -75,11 +69,7 @@ const Header = () => {
     [text, background],
   );
 
-  const {
-    title = '',
-    leftIcon = null,
-    rightIcon = null,
-  }: HeaderItem = useMemo(() => {
+  const header = useMemo(() => {
     switch (name) {
       case SCREENS.HOME: {
         return {
@@ -147,7 +137,7 @@ const Header = () => {
       }
 
       default: {
-        return {};
+        return undefined;
       }
     }
   }, [
@@ -158,6 +148,12 @@ const Header = () => {
     handleChangeFavorite,
     handleShowNotification,
   ]);
+
+  if (!header) {
+    return null;
+  }
+
+  const {title = '', leftIcon = null, rightIcon = null} = header || {};
 
   return (
     <Flex
