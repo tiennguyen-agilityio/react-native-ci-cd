@@ -9,14 +9,13 @@ import perf from '@react-native-firebase/perf';
 
 import {AppStackNavigation} from './AppStackNavigation';
 import {linking} from './Linking';
+// import { getDeviceToken } from '@/utils';
 
 export const Navigation = () => {
   const queryClient = new QueryClient();
 
   useEffect(() => {
-    // messaging()
-    //   .getToken()
-    //   .then(token => console.log('FCM Token:', token));
+    // getDeviceToken()
 
     const unsubscribe = messaging().onMessage(
       async ({notification}: FirebaseMessagingTypes.RemoteMessage) => {

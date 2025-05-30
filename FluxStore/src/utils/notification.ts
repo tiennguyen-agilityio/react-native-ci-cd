@@ -1,11 +1,14 @@
-import messaging from '@react-native-firebase/messaging';
-import notifee, {AndroidImportance} from '@notifee/react-native';
 import {Platform} from 'react-native';
+import {getApp} from '@react-native-firebase/app';
+import {getMessaging} from '@react-native-firebase/messaging';
+import notifee, {AndroidImportance} from '@notifee/react-native';
 
-export const handleGetDeviceToken = async () => {
+export const getDeviceToken = async () => {
   try {
-    const token = await messaging().getToken();
+    const messagingInstance = getMessaging(getApp());
+    const token = await messagingInstance.getToken();
 
+    console.log('Token', token);
     return token;
   } catch (error) {
     console.log('Error getting FCM Token', error);

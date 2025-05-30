@@ -14,7 +14,7 @@ export const useScreenTrace = (screenName: SCREENS) => {
         try {
           trace = await perf().startScreenTrace(screenName);
         } catch (e) {
-          console.warn('startScreenTrace failed', e);
+          console.warn(`Start Screen ${screenName} Trace  failed`, e);
         }
       };
 
@@ -23,7 +23,7 @@ export const useScreenTrace = (screenName: SCREENS) => {
           try {
             await trace.stop();
           } catch (e) {
-            console.warn('stopScreenTrace failed', e);
+            console.warn(`End Screen ${screenName} Trace  failed`, e);
           }
         }
       };
