@@ -3,7 +3,7 @@ import {TouchableOpacity} from 'react-native';
 import Svg, {Circle, Path} from 'react-native-svg';
 
 import {IconProps} from '@/interfaces';
-import {useThemeStore} from '@/hooks';
+import {useThemeStore} from '@/stores';
 import {colors} from '@/themes';
 
 interface NotificationIconProps extends IconProps {

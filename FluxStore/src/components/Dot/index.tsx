@@ -5,10 +5,15 @@ import Animated, {
   useSharedValue,
   withSpring,
 } from 'react-native-reanimated';
-
-import {useThemeStore} from '@/hooks';
-import {colors} from '@/themes';
 import {Gesture, GestureDetector} from 'react-native-gesture-handler';
+
+// Stores
+import {useThemeStore} from '@/stores';
+
+// Themes
+import {colors} from '@/themes';
+
+// Components
 import Flex from '../Flex';
 
 interface DotProps {

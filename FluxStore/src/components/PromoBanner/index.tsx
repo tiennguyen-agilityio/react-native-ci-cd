@@ -8,7 +8,7 @@ import {
 } from 'react-native';
 
 // Hooks
-import {useThemeStore} from '@/hooks';
+import {useThemeStore} from '@/stores';
 
 // Themes
 import {borderRadius, fontSizes, fontWeights, lineHeights} from '@/themes';

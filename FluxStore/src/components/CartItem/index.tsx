@@ -1,11 +1,19 @@
 import {memo, useMemo} from 'react';
 import {Image, StyleSheet} from 'react-native';
 
-import {CURRENCY_UNIT} from '@/constants';
-import {borderRadius, fontSizes, colors as TColors} from '@/themes';
+// Interfaces
 import {Cart} from '@/interfaces';
-import {useThemeStore} from '@/hooks';
 
+// Constants
+import {CURRENCY_UNIT} from '@/constants';
+
+// Themes
+import {borderRadius, fontSizes, colors as TColors} from '@/themes';
+
+// Stores
+import {useThemeStore} from '@/stores';
+
+// Components
 import {CheckBoxIcon} from '../Icons';
 import Quantity from '../Quantity';
 import Flex from '../Flex';

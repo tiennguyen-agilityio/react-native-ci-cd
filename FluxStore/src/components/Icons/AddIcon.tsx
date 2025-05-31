@@ -1,8 +1,12 @@
-import {useThemeStore} from '@/hooks';
-import {IconProps} from '@/interfaces';
 import {memo} from 'react';
 import {TouchableOpacity} from 'react-native';
 import Svg, {Path} from 'react-native-svg';
+
+// Interfaces
+import {IconProps} from '@/interfaces';
+
+// Stores
+import {useThemeStore} from '@/stores';
 
 export const AddIcon = memo(
   ({width = 8, height = 8, color, disabled = false, style, onPress}: IconProps) => {

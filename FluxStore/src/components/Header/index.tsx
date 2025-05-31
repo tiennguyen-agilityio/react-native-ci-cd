@@ -7,8 +7,9 @@ import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 import {AppStackParamList, DIRECTION, SCREENS} from '@/interfaces';
 
 // Hooks | Stores
-import {useThemeStore} from '@/hooks';
-import {userStore} from '@/stores';
+import {useThemeStore} from '@/stores';
+
+import {useUserStore} from '@/stores';
 
 // Themes
 import {metrics} from '@/themes';
@@ -22,7 +23,7 @@ const Header = () => {
   const navigation =
     useNavigation<NativeStackNavigationProp<AppStackParamList, keyof AppStackParamList>>();
   const route = useRoute();
-  const {user} = userStore();
+  const {user} = useUserStore();
 
   const {
     theme: {background, text},

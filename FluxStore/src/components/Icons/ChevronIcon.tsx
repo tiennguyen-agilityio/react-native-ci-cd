@@ -2,7 +2,7 @@ import {memo, useMemo} from 'react';
 import {TouchableOpacity} from 'react-native';
 import Svg, {Path} from 'react-native-svg';
 
-import {useThemeStore} from '@/hooks';
+import {useThemeStore} from '@/stores';
 import {DIRECTION, IconProps} from '@/interfaces';
 import Animated, {useAnimatedStyle, withTiming} from 'react-native-reanimated';
 

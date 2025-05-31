@@ -3,8 +3,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 
 import {THEMES, Theme} from '@/interfaces';
 import {darkThemes, lightThemes} from '@/themes';
-
-const THEME_KEY = 'APP_THEME';
+import {STORAGE_KEYS} from '@/constants';
 
 interface ThemeState {
   isDark: boolean;
@@ -18,7 +17,7 @@ export const useThemeStore = create<ThemeState>((set, get) => ({
   theme: lightThemes,
   initializeTheme: async () => {
     try {
-      const storedTheme = await AsyncStorage.getItem(THEME_KEY);
+      const storedTheme = await AsyncStorage.getItem(STORAGE_KEYS.THEME);
       const isDark = storedTheme === THEMES.DARK;
 
       set({isDark});
@@ -32,7 +31,7 @@ export const useThemeStore = create<ThemeState>((set, get) => ({
     const newValue = !current;
 
     try {
-      await AsyncStorage.setItem(THEME_KEY, newValue ? THEMES.DARK : THEMES.LIGHT);
+      await AsyncStorage.setItem(STORAGE_KEYS.THEME, newValue ? THEMES.DARK : THEMES.LIGHT);
 
       set({isDark: newValue});
       set({theme: newValue ? darkThemes : lightThemes});

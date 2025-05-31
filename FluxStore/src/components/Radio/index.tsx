@@ -1,6 +1,6 @@
 import {memo, useMemo} from 'react';
 import {View, TouchableOpacity, ViewStyle} from 'react-native';
-import {useThemeStore} from '@/hooks';
+import {useThemeStore} from '@/stores';
 
 interface RadioProps {
   selected?: boolean;

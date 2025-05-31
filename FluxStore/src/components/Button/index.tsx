@@ -11,8 +11,8 @@ import {
   ActivityIndicator,
 } from 'react-native';
 
-// Hooks
-import {useThemeStore} from '@/hooks';
+// Stores
+import {useThemeStore} from '@/stores';
 
 // Themes
 import {colors, fontSizes, fontWeights, fontFamilies} from '@/themes';

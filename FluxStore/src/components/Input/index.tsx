@@ -10,7 +10,7 @@ import {
 import Animated, {useAnimatedStyle, useSharedValue, withTiming} from 'react-native-reanimated';
 
 // Hooks
-import {useThemeStore} from '@/hooks';
+import {useThemeStore} from '@/stores';
 
 // Themes
 import {colors, fontSizes, fontWeights} from '@/themes';

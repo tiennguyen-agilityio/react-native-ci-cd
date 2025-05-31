@@ -2,7 +2,7 @@ import {memo} from 'react';
 import {TouchableOpacity} from 'react-native';
 import Svg, {Path} from 'react-native-svg';
 
-import {useThemeStore} from '@/hooks';
+import {useThemeStore} from '@/stores';
 import {IconProps} from '@/interfaces';
 
 export const MenuIcon = memo(

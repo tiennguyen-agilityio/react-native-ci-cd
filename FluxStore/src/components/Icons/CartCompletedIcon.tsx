@@ -1,7 +1,7 @@
 import {memo} from 'react';
 import Svg, {Path} from 'react-native-svg';
 
-import {useThemeStore} from '@/hooks';
+import {useThemeStore} from '@/stores';
 import {IconProps} from '@/interfaces';
 
 export const CartCompletedIcon = memo(({width = 110, height = 110, color}: IconProps) => {

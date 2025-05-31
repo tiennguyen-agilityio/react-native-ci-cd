@@ -1,13 +1,13 @@
 import {memo, useMemo} from 'react';
 import {Image, StyleSheet} from 'react-native';
 
-import {useThemeStore} from '@/hooks';
+import {useThemeStore} from '@/stores';
 import {fontSizes, fontWeights, metrics} from '@/themes';
+import {getShortTimeAgo} from '@/utils';
 
 import Flex from '../Flex';
 import Text from '../Text';
 import Rating from '../Rating';
-import {getShortTimeAgo} from '@/utils';
 
 interface ReviewCardProps {
   avatarUrl: string;

@@ -3,7 +3,7 @@ import {TouchableOpacity} from 'react-native';
 import {memo} from 'react';
 
 import {IconProps} from '@/interfaces';
-import {useThemeStore} from '@/hooks';
+import {useThemeStore} from '@/stores';
 
 export const MinusIcon = memo(
   ({width = 6, height = 3, disabled = false, color, style, onPress}: IconProps) => {

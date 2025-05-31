@@ -3,7 +3,7 @@ import {DimensionValue, Image, StyleSheet, TouchableOpacity} from 'react-native'
 
 import {Product} from '@/interfaces';
 import {CURRENCY_UNIT} from '@/constants';
-import {useThemeStore} from '@/hooks';
+import {useThemeStore} from '@/stores';
 import {formatAmount} from '@/utils';
 import {borderRadius, colors, fontSizes, fontWeights} from '@/themes';
 
