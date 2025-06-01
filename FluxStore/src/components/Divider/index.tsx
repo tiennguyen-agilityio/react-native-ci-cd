@@ -1,8 +1,8 @@
 import {memo, useMemo} from 'react';
 import {ColorValue, DimensionValue, View, ViewStyle} from 'react-native';
 
-// Themes
-import {useThemeStore} from '@/hooks';
+// Stores
+import {useThemeStore} from '@/stores';
 
 export interface DividerProps {
   width?: DimensionValue;

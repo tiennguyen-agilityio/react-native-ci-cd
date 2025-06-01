@@ -6,7 +6,7 @@ import OrderCompletedScreen from '../screens/OrderCompleted/index';
 
 const Stack = createNativeStackNavigator<AppStackParamList>();
 
-const CartStack = () => {
+const CartStackNavigator = () => {
   return (
     <Stack.Navigator
       initialRouteName={SCREENS.CART}
@@ -21,4 +21,4 @@ const CartStack = () => {
   );
 };
 
-export default CartStack;
+export default CartStackNavigator;

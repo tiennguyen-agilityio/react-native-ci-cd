@@ -1,7 +1,7 @@
 import {memo} from 'react';
 
-// Hooks
-import {useThemeStore} from '@/hooks';
+// Stores
+import {useThemeStore} from '@/stores';
 
 // Themes
 import {fontSizes} from '@/themes';

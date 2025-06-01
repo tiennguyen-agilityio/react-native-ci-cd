@@ -3,7 +3,7 @@ import {TouchableOpacity} from 'react-native';
 import Svg, {Ellipse, Path} from 'react-native-svg';
 
 import {IconProps} from '@/interfaces';
-import {useThemeStore} from '@/hooks';
+import {useThemeStore} from '@/stores';
 
 export const FilterIcon = memo(
   ({width = 27, height = 27, color, disabled = false, style, onPress}: IconProps) => {

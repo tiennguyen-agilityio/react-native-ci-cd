@@ -4,9 +4,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 
 // Interfaces
 import {Cart} from '@/interfaces';
-
-// Constanst
-import {CART_STORE_KEY} from '@/constants';
+import {STORAGE_KEYS} from '@/constants';
 
 // Utils
 import {calcTotalPrice} from '@/utils';
@@ -28,7 +26,7 @@ const INITIAL_STATE: States = {
   totalPrice: 0,
 };
 
-export const cartStore = create(
+export const useCartStore = create(
   persist<States & Actions>(
     set => ({
       ...INITIAL_STATE,
@@ -63,7 +61,7 @@ export const cartStore = create(
         }),
     }),
     {
-      name: CART_STORE_KEY,
+      name: STORAGE_KEYS.CART,
       storage: createJSONStorage(() => AsyncStorage),
 
       // Ensure totalPrice is correct when data is restored

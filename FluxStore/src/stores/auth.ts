@@ -1,41 +1,42 @@
-// Libs
-import {create} from 'zustand';
-import {persist, createJSONStorage} from 'zustand/middleware';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import {persist, createJSONStorage} from 'zustand/middleware';
+import {createWithEqualityFn} from 'zustand/traditional';
+import {shallow} from 'zustand/shallow';
 
 // Constants
-import {AUTH_STORE_KEY} from '@/constants';
-import {AuthKey} from '@/interfaces';
+import {STORAGE_KEYS} from '@/constants';
 
 type States = {
-  authKey: AuthKey | null;
-  verify_id: string;
+  isAuthenticated?: boolean;
+  authHydrated?: boolean;
 };
 
 type Actions = {
-  setAuthKey: (authKey: AuthKey) => void;
-  removeAuth: () => void;
+  setIsAuthenticated: (isAuthenticated: boolean) => void;
+  setAuthHydrated: (hydrated: boolean) => void;
 };
 
 const INITIAL_STATE: States = {
-  authKey: null,
-  verify_id: '',
+  isAuthenticated: false,
+  authHydrated: false,
 };
 
-export const authStore = create(
+export const useAuthStore = createWithEqualityFn(
   persist<States & Actions>(
     set => ({
       ...INITIAL_STATE,
-      setAuthKey: (authKey: AuthKey) => {
-        set({authKey});
-      },
-      removeAuth: () => {
-        set({...INITIAL_STATE});
+      setAuthHydrated: hydrated => set({authHydrated: hydrated}),
+      setIsAuthenticated: (isAuthenticated: boolean) => {
+        set({isAuthenticated});
       },
     }),
     {
-      name: AUTH_STORE_KEY,
+      name: STORAGE_KEYS.AUTH,
       storage: createJSONStorage(() => AsyncStorage),
+      onRehydrateStorage: () => state => {
+        state?.setAuthHydrated(true);
+      },
     },
   ),
+  shallow,
 );

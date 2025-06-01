@@ -4,8 +4,8 @@ import {StyleSheet, TouchableOpacity} from 'react-native';
 // Interfaces
 import {Category} from '@/interfaces';
 
-// Hooks
-import {useThemeStore} from '@/hooks';
+// Stores
+import {useThemeStore} from '@/stores';
 
 // Components
 import {Flex, Text} from '@/components';

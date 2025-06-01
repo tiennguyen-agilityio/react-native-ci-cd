@@ -1,7 +1,7 @@
 import {memo, useState} from 'react';
 
-// Hooks
-import {useThemeStore} from '@/hooks';
+// Stores
+import {useThemeStore} from '@/stores';
 
 // Components
 import Text from '../Text';

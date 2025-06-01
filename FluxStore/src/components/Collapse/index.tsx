@@ -7,8 +7,10 @@ import Animated, {
   withTiming,
 } from 'react-native-reanimated';
 
-import {useThemeStore} from '@/hooks';
+// Stores
+import {useThemeStore} from '@/stores';
 
+// Components
 import Flex from '../Flex';
 import Text from '../Text';
 import {ChevronIcon} from '../Icons';

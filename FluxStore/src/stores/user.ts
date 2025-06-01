@@ -17,7 +17,7 @@ const INITIAL_STATE: States = {
   user: null,
 };
 
-export const userStore = create<States & Actions>(set => ({
+export const useUserStore = create<States & Actions>(set => ({
   ...INITIAL_STATE,
   setUser: (user: User) => {
     set({user});

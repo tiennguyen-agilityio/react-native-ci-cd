@@ -3,7 +3,7 @@ import {StatusBar} from 'react-native';
 import {SafeAreaView} from 'react-native-safe-area-context';
 
 // Hooks
-import {useThemeStore} from '@/hooks';
+import {useThemeStore} from '@/stores';
 
 // Components
 import Header from '../Header';

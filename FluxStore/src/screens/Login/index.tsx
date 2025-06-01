@@ -12,7 +12,8 @@ import {AppStackScreenProps, LoginPayLoad, SCREENS, User} from '@/interfaces';
 import {ERROR_MESSAGES, SCHEMA} from '@/constants';
 
 // Hooks
-import {useAuth, useScreenTrace, useThemeStore} from '@/hooks';
+import {useAuth, useScreenTrace} from '@/hooks';
+import {useThemeStore} from '@/stores';
 
 // Themes
 import {fontSizes, fontWeights, metrics} from '@/themes';
@@ -28,18 +29,19 @@ import {
   Text,
   FacebookIcon,
 } from '@/components';
-import {userStore} from '@/stores';
+import {useAuthStore, useUserStore} from '@/stores';
 
-type LoginScreenProps = AppStackScreenProps<typeof SCREENS.ORDER_COMPLETED>;
+type LoginScreenProps = AppStackScreenProps<typeof SCREENS.LOGIN>;
 
-const LoginScreen = ({navigation}: LoginScreenProps) => {
+const LoginScreen = () => {
   useScreenTrace(SCREENS.LOGIN);
   const insets = useSafeAreaInsets();
   const {
     theme: {text},
   } = useThemeStore();
 
-  const setUser = userStore(state => state.setUser);
+  const setUser = useUserStore(state => state.setUser);
+  const setIsAuthenticated = useAuthStore(state => state.setIsAuthenticated);
 
   const [errorMessage, setErrorMessage] = useState('');
   const passwordRef = useRef<TextInput>();
@@ -73,9 +75,7 @@ const LoginScreen = ({navigation}: LoginScreenProps) => {
         onSuccess: (users: User[]) => {
           if (users?.length) {
             setUser(users[0]);
-            navigation.navigate(SCREENS.MAIN_TAB, {
-              screen: SCREENS.HOME,
-            });
+            setIsAuthenticated(true);
             reset();
             crashlytics().log('User login success.');
             setErrorMessage('');
@@ -89,7 +89,7 @@ const LoginScreen = ({navigation}: LoginScreenProps) => {
         },
       });
     },
-    [mutate, navigation, reset, setUser],
+    [mutate, reset, setIsAuthenticated, setUser],
   );
 
   return (
@@ -108,34 +108,47 @@ const LoginScreen = ({navigation}: LoginScreenProps) => {
               name="email"
               control={control}
               rules={SCHEMA.email}
-              render={({field: {onChange, ...props}, fieldState: {error}}) => (
-                <Input
-                  {...props}
-                  field="email"
-                  nextField={passwordRef}
-                  placeholder="Email address"
-                  returnKeyType="next"
-                  errorMessage={error?.message}
-                  onChangeText={onChange}
-                  onSubmit={handleFocusNextField}
-                />
-              )}
+              render={({field: {onChange, ...props}, fieldState: {error}}) => {
+                const handleChange = event => {
+                  setErrorMessage('');
+                  onChange(event);
+                };
+                return (
+                  <Input
+                    {...props}
+                    field="email"
+                    nextField={passwordRef}
+                    placeholder="Email address"
+                    returnKeyType="next"
+                    errorMessage={error?.message}
+                    onChangeText={handleChange}
+                    onSubmit={handleFocusNextField}
+                  />
+                );
+              }}
             />
 
             <Controller
               name="password"
               control={control}
               rules={SCHEMA.password}
-              render={({field: {onChange, ref, ...props}, fieldState: {error}}) => (
-                <Input
-                  {...props}
-                  ref={passwordRef}
-                  secureTextEntry
-                  placeholder="Password"
-                  errorMessage={error?.message}
-                  onChangeText={onChange}
-                />
-              )}
+              render={({field: {onChange, ref, ...props}, fieldState: {error}}) => {
+                const handleChange = event => {
+                  setErrorMessage('');
+                  onChange(event);
+                };
+
+                return (
+                  <Input
+                    {...props}
+                    ref={passwordRef}
+                    secureTextEntry
+                    placeholder="Password"
+                    errorMessage={error?.message}
+                    onChangeText={handleChange}
+                  />
+                );
+              }}
             />
           </Flex>
           <Flex marginTop={28} justify="end" align="end">

@@ -6,8 +6,3 @@ export const API_PATH = {
   ORDER: '/orders',
   REVIEW: '/reviews',
 };
-
-export const AUTH_STORE_KEY = 'auth-storage';
-
-export const CART_STORE_KEY = 'cart-storage';
-export const HAS_LAUNCHED_KEY = 'hasLaunched';

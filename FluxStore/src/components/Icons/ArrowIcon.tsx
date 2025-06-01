@@ -3,7 +3,7 @@ import {TouchableOpacity} from 'react-native';
 import Svg, {Path} from 'react-native-svg';
 import Animated, {useAnimatedStyle, withTiming} from 'react-native-reanimated';
 
-import {useThemeStore} from '@/hooks';
+import {useThemeStore} from '@/stores';
 import {DIRECTION, IconProps} from '@/interfaces';
 
 interface ArrowIconProps extends IconProps {

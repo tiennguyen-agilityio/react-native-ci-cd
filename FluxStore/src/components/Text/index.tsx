@@ -10,7 +10,7 @@ import {
 
 // Themes
 import {fontSizes, fontWeights, letterSpacings} from '@/themes';
-import {useThemeStore} from '@/hooks';
+import {useThemeStore} from '@/stores';
 
 type TextVariant = 'heading' | 'title' | 'subTitle' | 'description' | 'default';
 

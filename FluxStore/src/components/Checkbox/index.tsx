@@ -2,8 +2,8 @@ import {memo, useMemo} from 'react';
 import Svg, {Path} from 'react-native-svg';
 import {View, Text, ViewStyle, TouchableOpacity, StyleSheet, TextStyle} from 'react-native';
 
-// Hooks
-import {useThemeStore} from '@/hooks';
+// Stores
+import {useThemeStore} from '@/stores';
 import {colors, fontFamilies, fontSizes} from '@/themes';
 
 const styles = StyleSheet.create({

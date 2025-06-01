@@ -1,7 +1,7 @@
 import {memo, useCallback, useState} from 'react';
 import {StyleSheet, View} from 'react-native';
 
-import {useThemeStore} from '@/hooks';
+import {useThemeStore} from '@/stores';
 import {fontSizes} from '@/themes';
 
 import Text from '../Text';

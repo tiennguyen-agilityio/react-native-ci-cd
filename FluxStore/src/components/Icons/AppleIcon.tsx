@@ -2,8 +2,13 @@ import {memo} from 'react';
 import {TouchableOpacity} from 'react-native';
 import Svg, {Path, Rect} from 'react-native-svg';
 
-import {useThemeStore} from '@/hooks';
+// Interfaces
 import {IconProps} from '@/interfaces';
+
+// Stores
+import {useThemeStore} from '@/stores';
+
+// Themes
 import {colors} from '@/themes';
 
 export const AppleIcon = memo(

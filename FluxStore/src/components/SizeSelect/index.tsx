@@ -1,8 +1,8 @@
 import {memo, useState} from 'react';
 import {StyleSheet, TouchableOpacity} from 'react-native';
 
-// Hooks
-import {useThemeStore} from '@/hooks';
+// Stores
+import {useThemeStore} from '@/stores';
 
 // Components
 import Flex from '../Flex';
