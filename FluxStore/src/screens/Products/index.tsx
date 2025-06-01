@@ -7,8 +7,9 @@ import {INIT_PAGE} from '@/constants';
 // Interfaces
 import {AppStackScreenProps, DIRECTION, Product, SCREENS} from '@/interfaces';
 
-// Hooks
-import {useMedia, useProducts, useScreenTrace, useThemeStore} from '@/hooks';
+// Hooks | Stores
+import {useMedia, useProducts, useScreenTrace} from '@/hooks';
+import {useThemeStore} from '@/stores';
 
 // Themes
 import {metrics} from '@/themes';
@@ -17,7 +18,15 @@ import {metrics} from '@/themes';
 import {getData} from '@/utils';
 
 // Component
-import {ArrowIcon, Flex, MainLayout, ProductCard, ProductCardType, Text} from '@/components';
+import {
+  ArrowIcon,
+  Flex,
+  MainLayout,
+  ProductCard,
+  ProductCardType,
+  Skeleton,
+  Text,
+} from '@/components';
 
 const styles = StyleSheet.create({
   columnWrapperStyle: {
@@ -32,7 +41,8 @@ const ProductsScreen = ({navigation}: LandingScreenProps) => {
   useScreenTrace(SCREENS.PRODUCTS);
 
   const {useFetchProducts} = useProducts();
-  const {data, fetchNextPage, hasNextPage, isFetchingNextPage} = useFetchProducts(INIT_PAGE);
+  const {data, fetchNextPage, hasNextPage, isLoading, isFetchingNextPage} =
+    useFetchProducts(INIT_PAGE);
 
   const pages = useMemo(() => data?.pages || [], [data?.pages]);
   const products = useMemo(
@@ -124,20 +134,28 @@ const ProductsScreen = ({navigation}: LandingScreenProps) => {
             </Flex>
           </TouchableOpacity>
         </Flex>
-        <FlatList
-          data={products}
-          key={numColumns}
-          showsVerticalScrollIndicator={false}
-          initialNumToRender={isTablet ? 12 : 6}
-          numColumns={numColumns}
-          onEndReached={handleLoadMore}
-          keyExtractor={getKeyExtractor}
-          renderItem={renderItemProduct}
-          ItemSeparatorComponent={renderItemSeparatorComponent}
-          getItemLayout={getItemLayout}
-          columnWrapperStyle={styles.columnWrapperStyle}
-          maxToRenderPerBatch={isTablet ? 24 : 10}
-        />
+        {isLoading ? (
+          <Flex flex={1}>
+            {[...Array(12).keys()].map(item => (
+              <Skeleton key={item} height={height} width={width} />
+            ))}
+          </Flex>
+        ) : (
+          <FlatList
+            data={products}
+            key={numColumns}
+            showsVerticalScrollIndicator={false}
+            initialNumToRender={isTablet ? 12 : 6}
+            numColumns={numColumns}
+            onEndReached={handleLoadMore}
+            keyExtractor={getKeyExtractor}
+            renderItem={renderItemProduct}
+            ItemSeparatorComponent={renderItemSeparatorComponent}
+            getItemLayout={getItemLayout}
+            columnWrapperStyle={styles.columnWrapperStyle}
+            maxToRenderPerBatch={isTablet ? 24 : 10}
+          />
+        )}
       </Flex>
     </MainLayout>
   );
