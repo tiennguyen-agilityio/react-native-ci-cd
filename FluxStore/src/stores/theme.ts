@@ -1,42 +1,58 @@
 import {create} from 'zustand';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
-import {THEMES, Theme} from '@/interfaces';
+import {Theme} from '@/interfaces';
 import {darkThemes, lightThemes} from '@/themes';
+import {persist} from 'zustand/middleware';
 import {STORAGE_KEYS} from '@/constants';
 
 interface ThemeState {
   isDark: boolean;
   theme: Theme;
-  initializeTheme: () => Promise<void>;
-  toggleTheme: () => Promise<void>;
+  hasHydrated: boolean;
+  toggleTheme: () => void;
 }
 
-export const useThemeStore = create<ThemeState>((set, get) => ({
-  isDark: false,
-  theme: lightThemes,
-  initializeTheme: async () => {
-    try {
-      const storedTheme = await AsyncStorage.getItem(STORAGE_KEYS.THEME);
-      const isDark = storedTheme === THEMES.DARK;
+export const useThemeStore = create<ThemeState>()(
+  persist(
+    (set, get) => ({
+      isDark: false,
+      hasHydrated: false,
+      theme: lightThemes,
+      toggleTheme: async () => {
+        const current = get().isDark;
+        const newValue = !current;
+        set({
+          isDark: newValue,
+          theme: newValue ? darkThemes : lightThemes,
+        });
+      },
+    }),
+    {
+      name: STORAGE_KEYS.THEME,
+      storage: {
+        getItem: async key => {
+          const json = await AsyncStorage.getItem(key);
 
-      set({isDark});
-      set({theme: isDark ? darkThemes : lightThemes});
-    } catch (error) {
-      console.error('Failed to load theme:', error);
-    }
-  },
-  toggleTheme: async () => {
-    const current = get().isDark;
-    const newValue = !current;
-
-    try {
-      await AsyncStorage.setItem(STORAGE_KEYS.THEME, newValue ? THEMES.DARK : THEMES.LIGHT);
-
-      set({isDark: newValue});
-      set({theme: newValue ? darkThemes : lightThemes});
-    } catch (error) {
-      console.error('Failed to save theme:', error);
-    }
-  },
-}));
+          return json ? JSON.parse(json) : null;
+        },
+        setItem: async (key, value) => {
+          await AsyncStorage.setItem(key, JSON.stringify(value));
+        },
+        removeItem: async key => {
+          await AsyncStorage.removeItem(key);
+        },
+      },
+      // Re-apply theme on rehydrate
+      onRehydrateStorage: () => state => {
+        console.log('----state', state);
+        if (state) {
+          state.theme = state.isDark ? darkThemes : lightThemes;
+          setTimeout(() => {
+            state.hasHydrated = true;
+          }, 0);
+        }
+      },
+    },
+  ),
+);

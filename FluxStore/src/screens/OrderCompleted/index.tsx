@@ -5,10 +5,9 @@ import {useSafeAreaInsets} from 'react-native-safe-area-context';
 // Interfaces
 import {AppStackScreenProps, SCREENS} from '@/interfaces';
 
-// Constants
-
-// Hooks
-import {useThemeStore, useScreenTrace} from '@/hooks';
+// Hooks | Stores
+import {useScreenTrace} from '@/hooks';
+import {useThemeStore} from '@/stores';
 
 // Themes
 import {fontSizes, metrics} from '@/themes';
