@@ -1,4 +1,4 @@
-export * from './init';
+export * from './boostraps';
 export * from './theme';
 export * from './auth';
 export * from './user';

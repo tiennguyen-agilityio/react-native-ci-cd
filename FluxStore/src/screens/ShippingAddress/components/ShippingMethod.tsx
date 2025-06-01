@@ -1,8 +1,8 @@
 import {memo} from 'react';
 import {StyleSheet} from 'react-native';
 
-// Hooks
-import {useThemeStore} from '@/hooks';
+// Stores
+import {useThemeStore} from '@/stores';
 
 // Themes
 import {fontSizes, fontWeights} from '@/themes';

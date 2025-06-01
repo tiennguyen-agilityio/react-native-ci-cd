@@ -1,12 +1,13 @@
-import {memo, useCallback} from 'react';
+import {useCallback} from 'react';
 import {ScrollView} from 'react-native';
 import {useSafeAreaInsets} from 'react-native-safe-area-context';
 
 // Interfaces
-import {AppStackScreenProps, SCREENS} from '@/interfaces';
+import {SCREENS} from '@/interfaces';
 
 // Hooks
 import {useScreenTrace} from '@/hooks';
+import {useBootstrapsStore} from '@/stores';
 
 // Components
 import {Button, Flex} from '@/components';
@@ -15,15 +16,14 @@ import {Carousel} from './components';
 //Themes
 import {colors, metrics} from '@/themes';
 
-type IntroScreenProps = AppStackScreenProps<typeof SCREENS.INTRO>;
-
-const IntroScreen = ({navigation}: IntroScreenProps) => {
+const IntroScreen = () => {
   useScreenTrace(SCREENS.INTRO);
   const insets = useSafeAreaInsets();
+  const {finishBoot} = useBootstrapsStore();
 
   const handleNextStep = useCallback(() => {
-    navigation.navigate(SCREENS.LOGIN);
-  }, [navigation]);
+    finishBoot();
+  }, [finishBoot]);
 
   return (
     <ScrollView>
@@ -50,4 +50,4 @@ const IntroScreen = ({navigation}: IntroScreenProps) => {
   );
 };
 
-export default memo(IntroScreen);
+export default IntroScreen;

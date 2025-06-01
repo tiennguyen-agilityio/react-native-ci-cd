@@ -1,4 +1,4 @@
-import {memo, useCallback} from 'react';
+import {useCallback} from 'react';
 import {ImageBackground, StyleSheet} from 'react-native';
 import {useSafeAreaInsets} from 'react-native-safe-area-context';
 
@@ -69,4 +69,4 @@ const WelcomeScreen = ({navigation}: WelcomeScreenProps) => {
   );
 };
 
-export default memo(WelcomeScreen);
+export default WelcomeScreen;

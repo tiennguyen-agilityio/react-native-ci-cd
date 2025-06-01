@@ -1,6 +1,7 @@
 import {NativeStackScreenProps} from '@react-navigation/native-stack';
 
 export enum SCREENS {
+  AUTH_STACK = 'AuthStack',
   MAIN_TAB = 'MainTab',
   PROFILES_STACK = 'ProfilesStack',
   LOGIN = 'Login',
@@ -19,6 +20,9 @@ export enum SCREENS {
 
 export type AppStackParamList = {
   [SCREENS.MAIN_TAB]: {
+    screen?: SCREENS;
+  };
+  [SCREENS.AUTH_STACK]: {
     screen?: SCREENS;
   };
   [SCREENS.WELCOME]: undefined;

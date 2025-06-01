@@ -1,5 +1,6 @@
 export const STORAGE_KEYS = {
   AUTH: 'auth',
-  FIRST_LOGIN: 'firstLogin',
+  FIRST_LOAD: 'firstLoad',
   THEME: 'theme',
+  CART: 'cart',
 };

@@ -26,9 +26,9 @@ const styles = StyleSheet.create({
   },
 });
 
-type LandingScreenProps = AppStackScreenProps<typeof SCREENS.HOME>;
+type LandingScreenProps = AppStackScreenProps<typeof SCREENS.PRODUCTS>;
 
-const ProductsScreen = ({navigation, route}: LandingScreenProps) => {
+const ProductsScreen = ({navigation}: LandingScreenProps) => {
   useScreenTrace(SCREENS.PRODUCTS);
 
   const {useFetchProducts} = useProducts();

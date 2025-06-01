@@ -7,15 +7,15 @@ import messaging, {FirebaseMessagingTypes} from '@react-native-firebase/messagin
 import Toast from 'react-native-toast-message';
 import perf from '@react-native-firebase/perf';
 
-import {AppStackNavigation} from './AppStackNavigation';
+import {AppStackNavigation} from './AppStackNavigator';
 import {linking} from './Linking';
-// import { getDeviceToken } from '@/utils';
+import {getDeviceToken} from '@/utils';
 
 export const Navigation = () => {
   const queryClient = new QueryClient();
 
   useEffect(() => {
-    // getDeviceToken()
+    getDeviceToken();
 
     const unsubscribe = messaging().onMessage(
       async ({notification}: FirebaseMessagingTypes.RemoteMessage) => {

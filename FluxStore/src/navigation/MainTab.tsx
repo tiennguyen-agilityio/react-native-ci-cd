@@ -5,12 +5,12 @@ import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 // Interfaces
 import {SCREENS, TabBarIcon} from '@/interfaces';
 
-// Hooks
-import {useThemeStore} from '@/hooks';
+// Stores
+import {useThemeStore} from '@/stores';
 
 // Screens || Stack
 import {HomeScreen, ProfileScreen, SearchScreen} from '@/screens';
-import CartStack from './CartStack';
+import CartStack from './CartStackNavigator';
 
 // Components
 import {CartIcon, HomeIcon, SearchIcon, UserIcon} from '@/components';

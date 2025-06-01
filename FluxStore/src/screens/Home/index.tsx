@@ -8,8 +8,8 @@ import {INIT_PAGE} from '@/constants';
 import {AppStackScreenProps, Category, Product, SCREENS} from '@/interfaces';
 
 // Hooks
-import {useProducts, useScreenTrace, useThemeStore} from '@/hooks';
-
+import {useProducts, useScreenTrace} from '@/hooks';
+import {useThemeStore} from '@/stores';
 // Utils
 import {getData} from '@/utils';
 
