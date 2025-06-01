@@ -30,6 +30,7 @@ import {
   WomenIcon,
   PromoBannerType,
   ProductList,
+  Skeleton,
 } from '@/components';
 import {Carousel, Categories} from './components';
 
@@ -67,7 +68,8 @@ const HomeScreen = ({navigation}: HomeScreenProps) => {
   const {theme} = useThemeStore();
 
   const {useFetchProducts} = useProducts();
-  const {data, fetchNextPage, hasNextPage, isFetchingNextPage} = useFetchProducts(INIT_PAGE);
+  const {data, fetchNextPage, hasNextPage, isLoading, isFetchingNextPage} =
+    useFetchProducts(INIT_PAGE);
 
   const pages = useMemo(() => data?.pages || [], [data?.pages]);
   const products = useMemo(
@@ -137,12 +139,23 @@ const HomeScreen = ({navigation}: HomeScreenProps) => {
               />
             </Flex>
           </Flex>
-          <ProductList
-            data={products}
-            productCardType={ProductCardType.Tertiary}
-            onPressItem={handlePressProduct}
-            onLoadMore={handleLoadMoreProduct}
-          />
+
+          <Flex width="100%" height={203}>
+            {isLoading ? (
+              <Flex direction="row" gap={20} paddingHorizontal={metrics.dimensions.xxl}>
+                <Skeleton width={126} height={203} />
+                <Skeleton width={126} height={203} />
+                <Skeleton width={126} height={203} />
+              </Flex>
+            ) : (
+              <ProductList
+                data={products}
+                productCardType={ProductCardType.Tertiary}
+                onPressItem={handlePressProduct}
+                onLoadMore={handleLoadMoreProduct}
+              />
+            )}
+          </Flex>
 
           <Flex marginTop={metrics.dimensions.lg} height={158}>
             <PromoBanner
@@ -172,12 +185,22 @@ const HomeScreen = ({navigation}: HomeScreenProps) => {
               onPress={handleShowAllProduct}
             />
           </Flex>
-          <ProductList
-            data={products}
-            productCardType={ProductCardType.Secondary}
-            onPressItem={handlePressProduct}
-            onLoadMore={handleLoadMoreProduct}
-          />
+
+          <Flex width="100%" height={66}>
+            {isLoading ? (
+              <Flex direction="row" gap={20} paddingHorizontal={metrics.dimensions.xxl}>
+                <Skeleton width={203} height={66} />
+                <Skeleton width={203} height={66} />
+              </Flex>
+            ) : (
+              <ProductList
+                data={products}
+                productCardType={ProductCardType.Secondary}
+                onPressItem={handlePressProduct}
+                onLoadMore={handleLoadMoreProduct}
+              />
+            )}
+          </Flex>
           <Flex
             direction="row"
             align="center"
