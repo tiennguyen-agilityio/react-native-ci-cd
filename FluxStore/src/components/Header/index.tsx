@@ -9,7 +9,7 @@ import {AppStackParamList, DIRECTION, SCREENS} from '@/interfaces';
 // Hooks | Stores
 import {useThemeStore} from '@/stores';
 
-import {useUserStore} from '@/stores';
+import {useAuthStore} from '@/stores';
 
 // Themes
 import {metrics} from '@/themes';
@@ -23,7 +23,7 @@ const Header = () => {
   const navigation =
     useNavigation<NativeStackNavigationProp<AppStackParamList, keyof AppStackParamList>>();
   const route = useRoute();
-  const {user} = useUserStore();
+  const user = useAuthStore(state => state.user);
 
   const {
     theme: {background, text},

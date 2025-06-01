@@ -11,7 +11,7 @@ import {REVIEWS} from '@/mocks';
 import {CURRENCY_UNIT} from '@/constants';
 
 // Hooks | Stores
-import {useCartStore, useThemeStore, useUserStore} from '@/stores';
+import {useCartStore, useThemeStore, useAuthStore} from '@/stores';
 import {useProducts, useScreenTrace} from '@/hooks';
 
 // Utils
@@ -52,8 +52,8 @@ const ProductDetailScreen = ({navigation, route}: ProductDetailScreenProps) => {
   const {useProductDetail} = useProducts();
   const {data: product, isFetched} = useProductDetail(id);
 
-  const {addNewCart} = useCartStore();
-  const {user} = useUserStore();
+  const addNewCart = useCartStore(state => state.addNewCart);
+  const user = useAuthStore(state => state.user);
 
   const {
     name,

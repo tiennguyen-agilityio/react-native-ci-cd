@@ -6,7 +6,7 @@ import {TextInput} from 'react-native';
 import crashlytics from '@react-native-firebase/crashlytics';
 
 // Interfaces
-import {AppStackScreenProps, LoginPayLoad, SCREENS, User} from '@/interfaces';
+import {LoginPayLoad, SCREENS, User} from '@/interfaces';
 
 // Constants
 import {ERROR_MESSAGES, SCHEMA} from '@/constants';
@@ -29,9 +29,7 @@ import {
   Text,
   FacebookIcon,
 } from '@/components';
-import {useAuthStore, useUserStore} from '@/stores';
-
-type LoginScreenProps = AppStackScreenProps<typeof SCREENS.LOGIN>;
+import {useAuthStore} from '@/stores';
 
 const LoginScreen = () => {
   useScreenTrace(SCREENS.LOGIN);
@@ -40,8 +38,10 @@ const LoginScreen = () => {
     theme: {text},
   } = useThemeStore();
 
-  const setUser = useUserStore(state => state.setUser);
-  const setIsAuthenticated = useAuthStore(state => state.setIsAuthenticated);
+  const [setIsAuthenticated, setUser] = useAuthStore(state => [
+    state.setIsAuthenticated,
+    state.setUser,
+  ]);
 
   const [errorMessage, setErrorMessage] = useState('');
   const passwordRef = useRef<TextInput>();
@@ -95,7 +95,7 @@ const LoginScreen = () => {
   return (
     <MainLayout>
       <ScrollView showsVerticalScrollIndicator={false}>
-        <Flex flex={1} paddingHorizontal={metrics.dimensions.xxl} justify="between">
+        <Flex flex={1} paddingTop={30} paddingHorizontal={metrics.dimensions.xxl} justify="between">
           <Text
             variant="heading"
             fontSize={fontSizes.xl}
