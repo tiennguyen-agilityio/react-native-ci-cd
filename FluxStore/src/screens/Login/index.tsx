@@ -13,7 +13,7 @@ import {ERROR_MESSAGES, SCHEMA} from '@/constants';
 
 // Hooks
 import {useAuth, useScreenTrace} from '@/hooks';
-import {useThemeStore} from '@/stores';
+import {useThemeStore, useAuthStore} from '@/stores';
 
 // Themes
 import {fontSizes, fontWeights, metrics} from '@/themes';
@@ -29,7 +29,7 @@ import {
   Text,
   FacebookIcon,
 } from '@/components';
-import {useAuthStore} from '@/stores';
+import {customTrace} from '@/utils';
 
 const LoginScreen = () => {
   useScreenTrace(SCREENS.LOGIN);
@@ -44,10 +44,10 @@ const LoginScreen = () => {
   ]);
 
   const [errorMessage, setErrorMessage] = useState('');
-  const passwordRef = useRef<TextInput>();
+  const passwordRef = useRef<TextInput | null>(null);
 
   const {
-    logIn: {mutate},
+    logIn: {mutate, isPending},
   } = useAuth();
 
   const {
@@ -63,29 +63,34 @@ const LoginScreen = () => {
     mode: 'onBlur',
   });
 
-  const handleFocusNextField = (input: RefObject<TextInput>) => {
-    input.current.focus();
+  const handleFocusNextField = (input: RefObject<TextInput | null>) => {
+    input?.current && input.current.focus();
   };
 
   const handleLogin = useCallback(
-    (data: LoginPayLoad) => {
+    async (data: LoginPayLoad) => {
       crashlytics().log('User login.');
+      const {trace, traceStop} = await customTrace(SCREENS.LOGIN);
 
-      mutate(data, {
-        onSuccess: (users: User[]) => {
+      await mutate(data, {
+        onSuccess: async (users: User[]) => {
           if (users?.length) {
             setUser(users[0]);
             setIsAuthenticated(true);
             reset();
-            crashlytics().log('User login success.');
             setErrorMessage('');
+            trace.putAttribute('login_status', 'success');
+            crashlytics().log('User login success.');
           } else {
             setErrorMessage(ERROR_MESSAGES.LOGIN_FAILED);
           }
+          await traceStop();
         },
-        onError: (error: Error) => {
+        onError: async (error: Error) => {
           setErrorMessage(ERROR_MESSAGES.LOGIN_FAILED);
           crashlytics().recordError(error);
+          trace.putAttribute('login_status', 'failure');
+          await traceStop();
         },
       });
     },
@@ -166,7 +171,7 @@ const LoginScreen = () => {
             <Button
               text="Login"
               width={147}
-              isLoading={isSubmitting}
+              isLoading={isSubmitting || isPending}
               onPress={handleSubmit(handleLogin)}
             />
             <Text fontSize={fontSizes.tiny} color={text.quaternary} fontWeight={200}>

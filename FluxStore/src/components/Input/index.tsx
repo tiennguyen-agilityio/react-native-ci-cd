@@ -27,8 +27,8 @@ export interface InputProps extends TextInputProps {
   label?: string;
   errorMessage?: string;
   isRequired?: boolean;
-  nextField?: RefObject<TextInput>;
-  onSubmit?: (input: RefObject<TextInput>) => void;
+  nextField?: RefObject<TextInput | null>;
+  onSubmit?: (input: RefObject<TextInput | null>) => void;
   onChangeText?: (value: string, field?: string) => void;
   onFocus?: (e: NativeSyntheticEvent<TextInputFocusEventData>) => void;
   onBlur?: (e: NativeSyntheticEvent<TextInputFocusEventData>) => void;
@@ -117,7 +117,7 @@ const Input = ({
   );
 
   const handleSubmitEditing = useCallback(() => {
-    nextField && onSubmit?.(nextField);
+    nextField?.current && onSubmit?.(nextField);
   }, [onSubmit, nextField]);
 
   return (

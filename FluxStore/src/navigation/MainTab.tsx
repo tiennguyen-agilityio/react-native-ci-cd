@@ -1,6 +1,6 @@
-import {ReactNode, useMemo} from 'react';
-import {StyleSheet} from 'react-native';
-import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
+import {ReactNode, useCallback, useMemo} from 'react';
+import {StyleSheet, TouchableOpacity} from 'react-native';
+import {BottomTabBarButtonProps, createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 
 // Interfaces
 import {SCREENS, TabBarIcon} from '@/interfaces';
@@ -72,6 +72,11 @@ const MainTab = () => {
     [background, text],
   );
 
+  const renderTabBarButton = useCallback(
+    (props: BottomTabBarButtonProps) => <TouchableOpacity activeOpacity={1} {...props} />,
+    [],
+  );
+
   return (
     <Tab.Navigator
       initialRouteName={SCREENS.HOME}
@@ -79,6 +84,7 @@ const MainTab = () => {
         headerShown: false,
         tabBarShowLabel: false,
         tabBarIcon: renderTabBarIcon(route.name),
+        tabBarButton: renderTabBarButton,
         tabBarStyle: {
           ...styles.tabBarStyle,
           ...tabBarStyle,

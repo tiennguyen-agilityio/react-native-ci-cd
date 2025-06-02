@@ -140,7 +140,7 @@ const HomeScreen = ({navigation}: HomeScreenProps) => {
             </Flex>
           </Flex>
 
-          <Flex width="100%" height={203}>
+          <Flex width="100%">
             {isLoading ? (
               <Flex direction="row" gap={20} paddingHorizontal={metrics.dimensions.xxl}>
                 <Skeleton width={126} height={203} />
@@ -186,7 +186,7 @@ const HomeScreen = ({navigation}: HomeScreenProps) => {
             />
           </Flex>
 
-          <Flex width="100%" height={66}>
+          <Flex width="100%">
             {isLoading ? (
               <Flex direction="row" gap={20} paddingHorizontal={metrics.dimensions.xxl}>
                 <Skeleton width={203} height={66} />

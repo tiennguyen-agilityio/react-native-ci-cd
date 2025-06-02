@@ -64,24 +64,28 @@ const CartScreen = ({navigation}: CartScreenProps) => {
         <ScrollView showsVerticalScrollIndicator={false}>
           <Flex justify="start" marginTop={24}>
             <Flex flex={1} gap={20} paddingHorizontal={metrics.dimensions.xxl} paddingBottom={20}>
-              {carts?.map(item => {
-                const handleChangeChecked = () => {
-                  updateCartItem({...item, isChecked: !item.isChecked});
-                };
+              {carts?.length ? (
+                carts?.map(item => {
+                  const handleChangeChecked = () => {
+                    updateCartItem({...item, isChecked: !item.isChecked});
+                  };
 
-                const handleChangeQuantity = (value: number) => {
-                  updateCartItem({...item, quantity: value});
-                };
+                  const handleChangeQuantity = (value: number) => {
+                    updateCartItem({...item, quantity: value});
+                  };
 
-                return (
-                  <CartItem
-                    key={item.id}
-                    {...item}
-                    onChangeChecked={handleChangeChecked}
-                    onChangeQuantity={handleChangeQuantity}
-                  />
-                );
-              })}
+                  return (
+                    <CartItem
+                      key={item.id}
+                      {...item}
+                      onChangeChecked={handleChangeChecked}
+                      onChangeQuantity={handleChangeQuantity}
+                    />
+                  );
+                })
+              ) : (
+                <Text>Your Cart Is Empty</Text>
+              )}
             </Flex>
           </Flex>
         </ScrollView>

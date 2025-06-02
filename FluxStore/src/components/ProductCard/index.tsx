@@ -177,6 +177,9 @@ const ProductCard = ({
           }}
           width={imageSize.width as number}
           height={imageSize.height as number}
+          style={{
+            backgroundColor: theme.background.secondary,
+          }}
         />
         {type === ProductCardType.Primary && (
           <Flex style={themeStyles.icon}>

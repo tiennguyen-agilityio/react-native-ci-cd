@@ -72,8 +72,10 @@ const ThemeSwitch = () => {
   );
 
   useEffect(() => {
-    knobX.value = withTiming(index * optionWidth.value, {duration: 200});
-  }, [isDark, index, knobX, optionWidth.value]);
+    setTimeout(() => {
+      knobX.value = withTiming(index * optionWidth.value, {duration: 200});
+    }, 50);
+  }, [isDark]);
 
   const onLayout = (e: LayoutChangeEvent) => {
     optionWidth.value = e.nativeEvent.layout.width / 2;
@@ -94,11 +96,12 @@ const ThemeSwitch = () => {
 
   const handleTap = useCallback(
     (targetIndex: number) => () => {
+      knobX.value = withTiming(targetIndex * optionWidth.value, {duration: 200});
       if ((targetIndex === 1 && !isDark) || (targetIndex === 0 && isDark)) {
         toggleTheme();
       }
     },
-    [isDark, toggleTheme],
+    [isDark, knobX, optionWidth.value, toggleTheme],
   );
 
   const tapLight = Gesture.Tap().onEnd(handleTap(0));
