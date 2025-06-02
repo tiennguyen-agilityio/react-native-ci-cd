@@ -19,6 +19,7 @@ type Actions = {
   addNewCart: (cart: Cart) => void;
   updateCartItem: (cart: Cart) => void;
   removeCartItem: (id: string) => void;
+  clearCart: () => void;
 };
 
 const INITIAL_STATE: States = {
@@ -59,6 +60,7 @@ export const useCartStore = create(
           const carts = state.carts.filter(c => c.id !== id);
           return {carts, totalPrice: calcTotalPrice(carts)};
         }),
+      clearCart: () => set({...INITIAL_STATE}),
     }),
     {
       name: STORAGE_KEYS.CART,

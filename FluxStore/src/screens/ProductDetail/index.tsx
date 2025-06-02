@@ -34,6 +34,7 @@ import {
   HeartIcon,
   Rating,
   SizeSelect,
+  Skeleton,
   Text,
 } from '@/components';
 import {ReviewSection} from './components';
@@ -50,7 +51,7 @@ const ProductDetailScreen = ({navigation, route}: ProductDetailScreenProps) => {
   const {id = ''} = route.params || {};
 
   const {useProductDetail} = useProducts();
-  const {data: product, isFetched} = useProductDetail(id);
+  const {data: product, isLoading} = useProductDetail(id);
 
   const addNewCart = useCartStore(state => state.addNewCart);
   const user = useAuthStore(state => state.user);
@@ -155,7 +156,7 @@ const ProductDetailScreen = ({navigation, route}: ProductDetailScreenProps) => {
   }, []);
 
   const handleAddToCart = useCallback(async () => {
-    const {trace, traceStop} = await customTrace(SCREENS.LOGIN);
+    const {trace, traceStop} = await customTrace(SCREENS.PRODUCT_DETAIL);
     if (product) {
       addNewCart({
         id: product.id,
@@ -178,11 +179,11 @@ const ProductDetailScreen = ({navigation, route}: ProductDetailScreenProps) => {
   }, [product, color, size, navigation, user?.favorites, addNewCart]);
 
   useEffect(() => {
-    if (isFetched) {
+    if (isLoading) {
       setColor(colorsPrd[0]);
       setSize(sizesPrd[0]);
     }
-  }, [isFetched, colorsPrd, sizesPrd]);
+  }, [isLoading, colorsPrd, sizesPrd]);
 
   return (
     <Flex flex={1} position="relative" backgroundColor={background.default} paddingBottom={77}>
@@ -203,13 +204,17 @@ const ProductDetailScreen = ({navigation, route}: ProductDetailScreenProps) => {
           backgroundColor={background.default}
           position="relative"
           marginBottom={insets.bottom + 20}>
-          <Carousel
-            data={images}
-            width={metrics.screenWidth}
-            height={406}
-            dotColor={text.default}
-            renderItem={renderItemCarousel}
-          />
+          {isLoading ? (
+            <Skeleton width={metrics.screenWidth} height={406} />
+          ) : (
+            <Carousel
+              data={images}
+              width={metrics.screenWidth}
+              height={406}
+              dotColor={text.default}
+              renderItem={renderItemCarousel}
+            />
+          )}
           <Flex style={styles.content}>
             <Flex direction="row" justify="between">
               <Flex>

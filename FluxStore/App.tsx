@@ -19,6 +19,19 @@ const App = () => {
   const {bootHydrated} = useBootstrapsStore();
   const {authHydrated} = useAuthStore();
 
+  // const appStartTrace = useRef<ReturnType<any> | null>(null);
+  // const appStartTime = useRef(Date.now());
+
+  // useEffect(() => {
+  //   const startTrace = async () => {
+  //     const trace = await perf().newTrace('app_start_time');
+  //     await trace.start();
+  //     appStartTrace.current = trace;
+  //   };
+
+  //   startTrace();
+  // }, []);
+
   useEffect(() => {
     if (__DEV__) {
       DevSettings.addMenuItem('Toggle Storybook', () => {
@@ -29,6 +42,22 @@ const App = () => {
 
   useEffect(() => {
     if (bootHydrated && authHydrated) {
+      console.log('----bootHydrated', bootHydrated);
+      console.log('----authHydrated', authHydrated);
+      BootSplash.hide({fade: true});
+      // const now = Date.now();
+      // const duration = now - appStartTime.current;
+
+      // const stopTrace = async () => {
+      //   const trace = appStartTrace.current;
+      //   if (trace) {
+      //     trace.putMetric('duration_ms', duration);
+      //     await trace.stop();
+      //     console.log(`🔥 App start trace logged: ${duration}ms`);
+      //   }
+      // };
+
+      // stopTrace();
       BootSplash.hide({fade: true});
     }
   }, [bootHydrated, authHydrated]);
@@ -39,7 +68,7 @@ const App = () => {
     return <StorybookUI />;
   }
 
-  if (!bootHydrated || !authHydrated) {
+  if (!(bootHydrated && authHydrated)) {
     return null;
   }
 
