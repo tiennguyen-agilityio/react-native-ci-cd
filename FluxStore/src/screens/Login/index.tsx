@@ -72,8 +72,8 @@ const LoginScreen = () => {
       crashlytics().log('User login.');
       const {trace, traceStop} = await customTrace(SCREENS.LOGIN);
 
-      await mutate(data, {
-        onSuccess: async (users: User[]) => {
+      mutate(data, {
+        onSuccess: (users: User[]) => {
           if (users?.length) {
             setUser(users[0]);
             setIsAuthenticated(true);
@@ -84,13 +84,13 @@ const LoginScreen = () => {
           } else {
             setErrorMessage(ERROR_MESSAGES.LOGIN_FAILED);
           }
-          await traceStop();
+          traceStop();
         },
-        onError: async (error: Error) => {
+        onError: (error: Error) => {
           setErrorMessage(ERROR_MESSAGES.LOGIN_FAILED);
           crashlytics().recordError(error);
           trace.putAttribute('login_status', 'failure');
-          await traceStop();
+          traceStop();
         },
       });
     },
