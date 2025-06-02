@@ -12,7 +12,9 @@
 		761780ED2CA45674006654EE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 761780EC2CA45674006654EE /* AppDelegate.swift */; };
 		7B986138CB9F4EA2FEE408C6 /* Pods_FluxStore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6468EB7EAC25DAE24394E1A5 /* Pods_FluxStore.framework */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
+		948EC2075BFB4DE4B47EC691 /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 407FBAE1B61E4C4EBB473AB4 /* Colors.xcassets */; };
 		C6974694D860061AAD9B290B /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB81A68108700A75B9A /* PrivacyInfo.xcprivacy */; };
+		C7A01D5693EB48AC84A5A1D0 /* BootSplash.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9C948109E26749A39DEA57CB /* BootSplash.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,9 +26,11 @@
 		32EC2D0D3B2DF8B98463D420 /* Pods-FluxStore.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FluxStore.debug.xcconfig"; path = "Target Support Files/Pods-FluxStore/Pods-FluxStore.debug.xcconfig"; sourceTree = "<group>"; };
 		38558A662DBB619D0057AF26 /* FluxStore.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; name = FluxStore.entitlements; path = FluxStore/FluxStore.entitlements; sourceTree = "<group>"; };
 		38C3675D2DBB39E100781C49 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		407FBAE1B61E4C4EBB473AB4 /* Colors.xcassets */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = folder.assetcatalog; name = Colors.xcassets; path = FluxStore/Colors.xcassets; sourceTree = "<group>"; };
 		6468EB7EAC25DAE24394E1A5 /* Pods_FluxStore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FluxStore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		761780EC2CA45674006654EE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = FluxStore/AppDelegate.swift; sourceTree = "<group>"; };
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = FluxStore/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		9C948109E26749A39DEA57CB /* BootSplash.storyboard */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = BootSplash.storyboard; path = FluxStore/BootSplash.storyboard; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
@@ -52,6 +56,8 @@
 				13B07FB61A68108700A75B9A /* Info.plist */,
 				81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */,
 				13B07FB81A68108700A75B9A /* PrivacyInfo.xcprivacy */,
+				9C948109E26749A39DEA57CB /* BootSplash.storyboard */,
+				407FBAE1B61E4C4EBB473AB4 /* Colors.xcassets */,
 			);
 			name = FluxStore;
 			sourceTree = "<group>";
@@ -169,6 +175,8 @@
 				38C3675E2DBB39E100781C49 /* GoogleService-Info.plist in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
 				C6974694D860061AAD9B290B /* PrivacyInfo.xcprivacy in Resources */,
+				C7A01D5693EB48AC84A5A1D0 /* BootSplash.storyboard in Resources */,
+				948EC2075BFB4DE4B47EC691 /* Colors.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

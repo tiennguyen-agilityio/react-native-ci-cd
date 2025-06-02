@@ -46,8 +46,6 @@ export const useAuthStore = createWithEqualityFn(
         state?.setAuthHydrated(true);
       },
       partialize: state => {
-        console.log('---AsyncStorage', state);
-
         return {
           user: state.user,
           isAuthenticated: state.isAuthenticated,
