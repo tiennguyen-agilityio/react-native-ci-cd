@@ -30,6 +30,7 @@
     "react-fast-compare": "^3.2.2",
     "react-hook-form": "^7.56.4",
     "react-native": "0.79.1",
+    "react-native-bootsplash": "^6.3.8",
     "react-native-config": "^1.5.5",
     "react-native-fast-image": "^8.6.3",
     "react-native-gesture-handler": "^2.25.0",

@@ -36,7 +36,6 @@ export const Navigation = () => {
       // simulate load time
       setTimeout(async () => {
         await trace.stop();
-        console.log('App launch trace ended');
       }, 1500);
     };
 

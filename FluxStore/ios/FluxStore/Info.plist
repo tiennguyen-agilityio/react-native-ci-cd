@@ -34,14 +34,14 @@
 		<true/>
 	</dict>
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string/>
+	<string></string>
 	<key>UIBackgroundModes</key>
 	<array>
-    <string>fetch</string>
-    <string>remote-notification</string>
+		<string>fetch</string>
+		<string>remote-notification</string>
 	</array>
 	<key>UILaunchStoryboardName</key>
-	<string>LaunchScreen</string>
+	<string>BootSplash</string>
 	<key>UIRequiredDeviceCapabilities</key>
 	<array>
 		<string>arm64</string>
@@ -62,6 +62,6 @@
 				<string>fluxstore</string>
 			</array>
 		</dict>
-  </array>
+	</array>
 </dict>
 </plist>

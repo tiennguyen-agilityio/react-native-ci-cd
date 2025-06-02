@@ -1,5 +1,6 @@
 import {useEffect, useState} from 'react';
 import {DevSettings} from 'react-native';
+import BootSplash from 'react-native-bootsplash';
 
 // Stores
 import {useAuthStore, useBootstrapsStore} from '@/stores';
@@ -9,9 +10,6 @@ import {Navigation} from '@/navigation';
 
 // Utils
 import {createNotificationChannel} from '@/utils';
-
-// Components
-import {Flex, Text} from '@/components';
 
 createNotificationChannel();
 
@@ -23,12 +21,17 @@ const App = () => {
 
   useEffect(() => {
     if (__DEV__) {
-      // Toggle Storybook
       DevSettings.addMenuItem('Toggle Storybook', () => {
         setShowStorybook(prev => !prev);
       });
     }
   }, []);
+
+  useEffect(() => {
+    if (bootHydrated && authHydrated) {
+      BootSplash.hide({fade: true});
+    }
+  }, [bootHydrated, authHydrated]);
 
   if (showStorybook) {
     const StorybookUI = require('./.storybook')?.default;
@@ -36,12 +39,8 @@ const App = () => {
     return <StorybookUI />;
   }
 
-  if (!(bootHydrated && authHydrated)) {
-    return (
-      <Flex flex={1}>
-        <Text>Loading</Text>
-      </Flex>
-    );
+  if (!bootHydrated || !authHydrated) {
+    return null;
   }
 
   return <Navigation />;

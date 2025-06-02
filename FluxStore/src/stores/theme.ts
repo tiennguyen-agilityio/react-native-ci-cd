@@ -1,10 +1,10 @@
 import {create} from 'zustand';
+import {persist} from 'zustand/middleware';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 import {Theme} from '@/interfaces';
-import {darkThemes, lightThemes} from '@/themes';
-import {persist} from 'zustand/middleware';
 import {STORAGE_KEYS} from '@/constants';
+import {darkThemes, lightThemes} from '@/themes';
 
 interface ThemeState {
   isDark: boolean;
@@ -43,9 +43,7 @@ export const useThemeStore = create<ThemeState>()(
           await AsyncStorage.removeItem(key);
         },
       },
-      // Re-apply theme on rehydrate
       onRehydrateStorage: () => state => {
-        console.log('----state', state);
         if (state) {
           state.theme = state.isDark ? darkThemes : lightThemes;
           setTimeout(() => {

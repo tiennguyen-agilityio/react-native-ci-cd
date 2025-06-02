@@ -29,17 +29,13 @@ const ShippingAddressScreen = ({navigation}: ShippingAddressProps) => {
   const zipCodeRef = useRef<TextInput>();
   const phoneNumberRef = useRef<TextInput>();
 
-  const handleChangeInput = (value: string, field?: string) => {
-    console.log('value', value, field);
-  };
+  const handleChangeInput = (value: string, field?: string) => {};
 
   const handleFocusNextField = (input: RefObject<TextInput>) => {
     input.current.focus();
   };
 
-  const handleToggleCheckbox = useCallback(() => {
-    console.log('--handleToggleCheckbox');
-  }, []);
+  const handleToggleCheckbox = useCallback(() => {}, []);
 
   const handleSubmit = useCallback(() => {
     navigation.navigate(SCREENS.ORDER_COMPLETED);
