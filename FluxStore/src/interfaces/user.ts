@@ -5,4 +5,12 @@ export interface User {
   password?: string;
   avatar?: string;
   favorites?: string[];
+  firstName: string;
+  lastName: string;
+  country: string;
+  street: string;
+  city: string;
+  state: string;
+  zipCode: string;
+  phoneNumber: string;
 }

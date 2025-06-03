@@ -1,5 +1,5 @@
 import {RefObject, useCallback, useRef} from 'react';
-import {TextInput} from 'react-native';
+import {Platform, TextInput} from 'react-native';
 import {useSafeAreaInsets} from 'react-native-safe-area-context';
 import {KeyboardAwareScrollView} from 'react-native-keyboard-controller';
 import {useForm, Controller} from 'react-hook-form';
@@ -13,7 +13,7 @@ import {fontSizes, metrics} from '@/themes';
 
 // Hooks | Stores
 import {useScreenTrace} from '@/hooks';
-import {useCartStore} from '@/stores';
+import {useAuthStore, useCartStore} from '@/stores';
 
 // Components
 import {Button, Checkbox, Flex, Input, MainLayout, Text} from '@/components';
@@ -30,12 +30,28 @@ type FormData = {
   state?: string;
   zipCode: string;
   phoneNumber: string;
+  fee?: number;
+  isCopyAddress: boolean;
 };
+
+const isAndroid = Platform.OS === 'android';
 
 const ShippingAddressScreen = ({navigation}: ShippingAddressProps) => {
   useScreenTrace(SCREENS.SHIPPING_ADDRESS);
   const insets = useSafeAreaInsets();
   const clearCart = useCartStore(state => state.clearCart);
+  const user = useAuthStore(state => state.user);
+
+  const {
+    firstName = '',
+    lastName = '',
+    country = '',
+    street = '',
+    city = '',
+    state = '',
+    zipCode = '',
+    phoneNumber = '',
+  } = user || {};
 
   const lastNameRef = useRef<TextInput>(null);
   const countryRef = useRef<TextInput>(null);
@@ -45,13 +61,28 @@ const ShippingAddressScreen = ({navigation}: ShippingAddressProps) => {
   const zipCodeRef = useRef<TextInput>(null);
   const phoneNumberRef = useRef<TextInput>(null);
 
-  const {control, handleSubmit} = useForm<FormData>();
+  const {control, formState, getValues, setValue, handleSubmit} = useForm<FormData>({
+    defaultValues: {
+      firstName,
+      lastName,
+      country,
+      street,
+      city,
+      state,
+      zipCode: zipCode.toString(),
+      phoneNumber,
+      fee: 0,
+      isCopyAddress: false,
+    },
+  });
 
   const handleFocusNextField = (input: RefObject<TextInput | null>) => {
     input.current?.focus();
   };
 
-  const handleToggleCheckbox = useCallback(() => {}, []);
+  const handleToggleCheckbox = useCallback(() => {
+    setValue('isCopyAddress', !getValues('isCopyAddress'));
+  }, [getValues, setValue]);
 
   const onSubmit = useCallback(
     (data: FormData) => {
@@ -74,7 +105,7 @@ const ShippingAddressScreen = ({navigation}: ShippingAddressProps) => {
           flex={1}
           marginTop={22}
           paddingHorizontal={metrics.dimensions.lg}
-          paddingBottom={insets.bottom}>
+          paddingBottom={insets.bottom + (isAndroid ? 30 : 0)}>
           <Text variant="description" fontSize={fontSizes.micro}>
             STEP 1
           </Text>
@@ -91,6 +122,7 @@ const ShippingAddressScreen = ({navigation}: ShippingAddressProps) => {
                   isRequired
                   placeholder="First Name"
                   nextField={lastNameRef}
+                  defaultValue={value}
                   value={value}
                   onChangeText={onChange}
                   onSubmit={handleFocusNextField}
@@ -108,7 +140,7 @@ const ShippingAddressScreen = ({navigation}: ShippingAddressProps) => {
                   ref={lastNameRef}
                   placeholder="Last Name"
                   nextField={countryRef}
-                  value={value}
+                  defaultValue={value}
                   onChangeText={onChange}
                   onSubmit={handleFocusNextField}
                 />
@@ -124,7 +156,7 @@ const ShippingAddressScreen = ({navigation}: ShippingAddressProps) => {
                   ref={countryRef}
                   placeholder="Country"
                   nextField={streetRef}
-                  value={value}
+                  defaultValue={value}
                   onChangeText={onChange}
                   onSubmit={handleFocusNextField}
                 />
@@ -140,7 +172,7 @@ const ShippingAddressScreen = ({navigation}: ShippingAddressProps) => {
                   ref={streetRef}
                   placeholder="Street name"
                   nextField={cityRef}
-                  value={value}
+                  defaultValue={value}
                   onChangeText={onChange}
                   onSubmit={handleFocusNextField}
                 />
@@ -156,7 +188,7 @@ const ShippingAddressScreen = ({navigation}: ShippingAddressProps) => {
                   ref={cityRef}
                   placeholder="City"
                   nextField={stateRef}
-                  value={value}
+                  defaultValue={value}
                   onChangeText={onChange}
                   onSubmit={handleFocusNextField}
                 />
@@ -170,7 +202,7 @@ const ShippingAddressScreen = ({navigation}: ShippingAddressProps) => {
                   ref={stateRef}
                   placeholder="State / Province"
                   nextField={zipCodeRef}
-                  value={value}
+                  defaultValue={value}
                   onChangeText={onChange}
                   onSubmit={handleFocusNextField}
                 />
@@ -186,7 +218,7 @@ const ShippingAddressScreen = ({navigation}: ShippingAddressProps) => {
                   ref={zipCodeRef}
                   placeholder="Zip-code"
                   nextField={phoneNumberRef}
-                  value={value}
+                  defaultValue={value}
                   onChangeText={onChange}
                   onSubmit={handleFocusNextField}
                 />
@@ -201,7 +233,7 @@ const ShippingAddressScreen = ({navigation}: ShippingAddressProps) => {
                   isRequired
                   ref={phoneNumberRef}
                   placeholder="Phone Number"
-                  value={value}
+                  defaultValue={value}
                   onChangeText={onChange}
                   onSubmit={handleFocusNextField}
                 />
@@ -209,11 +241,12 @@ const ShippingAddressScreen = ({navigation}: ShippingAddressProps) => {
             />
           </Flex>
           <Flex marginTop={50} paddingTop={25} paddingHorizontal={12}>
-            <ShippingMethod />
+            <ShippingMethod defaultValue={0} onChange={(value: number) => setValue('fee', value)} />
           </Flex>
           <Flex marginTop={20} paddingTop={25} paddingHorizontal={12} gap={20}>
             <Text variant="subTitle">Billing Address</Text>
             <Checkbox
+              selected={getValues('isCopyAddress')}
               label="Copy address data from shipping"
               onValueChange={handleToggleCheckbox}
             />

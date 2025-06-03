@@ -42,8 +42,6 @@ const App = () => {
 
   useEffect(() => {
     if (bootHydrated && authHydrated) {
-      console.log('----bootHydrated', bootHydrated);
-      console.log('----authHydrated', authHydrated);
       BootSplash.hide({fade: true});
       // const now = Date.now();
       // const duration = now - appStartTime.current;

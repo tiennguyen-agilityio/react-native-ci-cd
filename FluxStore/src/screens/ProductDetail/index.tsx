@@ -164,7 +164,7 @@ const ProductDetailScreen = ({navigation, route}: ProductDetailScreenProps) => {
         colors: color,
         sizes: size,
         quantity: 1,
-        isChecked: user?.favorites?.includes(product.id) || false,
+        isChecked: true,
       });
       Toast.show({
         type: 'success',
