@@ -37,22 +37,42 @@ exports[`CartItem should render CartItem component 1`] = `
   }
   testID="flex"
 >
-  <Image
-    resizeMode="cover"
-    source={
-      {
-        "uri": "https://i.ibb.co/SD47BZNp/Mask-Group-1.png",
-      }
-    }
+  <View
     style={
-      {
-        "borderBottomLeftRadius": 20,
-        "borderTopLeftRadius": 20,
-        "height": "100%",
-        "width": 99,
-      }
+      [
+        {
+          "overflow": "hidden",
+        },
+        {
+          "backgroundColor": "#f8f8fa",
+          "borderBottomLeftRadius": 20,
+          "borderTopLeftRadius": 20,
+          "height": "100%",
+          "width": 99,
+        },
+      ]
     }
-  />
+  >
+    <FastImageView
+      defaultSource={null}
+      resizeMode="cover"
+      source={
+        {
+          "priority": "normal",
+          "uri": "https://i.ibb.co/SD47BZNp/Mask-Group-1.png",
+        }
+      }
+      style={
+        {
+          "bottom": 0,
+          "left": 0,
+          "position": "absolute",
+          "right": 0,
+          "top": 0,
+        }
+      }
+    />
+  </View>
   <View
     style={
       [
@@ -605,22 +625,42 @@ exports[`CartItem should render CartItem with isChecked true 1`] = `
   }
   testID="flex"
 >
-  <Image
-    resizeMode="cover"
-    source={
-      {
-        "uri": "https://i.ibb.co/SD47BZNp/Mask-Group-1.png",
-      }
-    }
+  <View
     style={
-      {
-        "borderBottomLeftRadius": 20,
-        "borderTopLeftRadius": 20,
-        "height": "100%",
-        "width": 99,
-      }
+      [
+        {
+          "overflow": "hidden",
+        },
+        {
+          "backgroundColor": "#f8f8fa",
+          "borderBottomLeftRadius": 20,
+          "borderTopLeftRadius": 20,
+          "height": "100%",
+          "width": 99,
+        },
+      ]
     }
-  />
+  >
+    <FastImageView
+      defaultSource={null}
+      resizeMode="cover"
+      source={
+        {
+          "priority": "normal",
+          "uri": "https://i.ibb.co/SD47BZNp/Mask-Group-1.png",
+        }
+      }
+      style={
+        {
+          "bottom": 0,
+          "left": 0,
+          "position": "absolute",
+          "right": 0,
+          "top": 0,
+        }
+      }
+    />
+  </View>
   <View
     style={
       [

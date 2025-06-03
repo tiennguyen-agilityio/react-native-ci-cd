@@ -33,7 +33,6 @@ import {
   Skeleton,
 } from '@/components';
 import {Carousel, Categories} from './components';
-import {useSafeAreaInsets} from 'react-native-safe-area-context';
 import {Platform} from 'react-native';
 
 const CATEGORIES: Category[] = [
@@ -70,7 +69,6 @@ type HomeScreenProps = AppStackScreenProps<typeof SCREENS.HOME>;
 const HomeScreen = ({navigation}: HomeScreenProps) => {
   useScreenTrace(SCREENS.HOME);
   const {theme} = useThemeStore();
-  const insets = useSafeAreaInsets();
 
   const {useFetchProducts} = useProducts();
   const {data, fetchNextPage, hasNextPage, isLoading, isFetchingNextPage} =

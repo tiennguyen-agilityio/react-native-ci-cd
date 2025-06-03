@@ -50,11 +50,17 @@ const ProductsScreen = ({navigation}: LandingScreenProps) => {
     [pages],
   );
 
-  const {isTablet} = useMedia();
+  const {isTablet, width: screenWidth, isPortrait} = useMedia();
   const {theme} = useThemeStore();
 
   const {border} = theme;
-  const numColumns = useMemo(() => (isTablet ? 4 : 2), [isTablet]);
+  const numColumns = useMemo(() => {
+    if (isTablet) {
+      return isPortrait ? 3 : 4;
+    }
+
+    return 2;
+  }, [isTablet, isPortrait]);
 
   const favoritesProduct = useMemo(() => ['3', '4', '7', '10', '13'], []);
 
@@ -71,10 +77,10 @@ const ProductsScreen = ({navigation}: LandingScreenProps) => {
     const spacingItem = 30 * (numColumns - 1);
 
     return {
-      width: (metrics.screenWidth - (spacingPadding * 2 + spacingItem)) / numColumns,
+      width: (screenWidth - (spacingPadding * 2 + spacingItem)) / numColumns,
       height: 273,
     };
-  }, [numColumns]);
+  }, [numColumns, screenWidth]);
 
   const getKeyExtractor = useCallback(({id}: Product) => id, []);
 
@@ -104,9 +110,11 @@ const ProductsScreen = ({navigation}: LandingScreenProps) => {
   );
 
   const renderItemSeparatorComponent = useCallback(
-    () => <Flex width={metrics.dimensions.lg} backgroundColor="red" />,
+    () => <Flex width={metrics.dimensions.lg} />,
     [],
   );
+
+  const renderListEmptyComponent = useCallback(() => <Text>Product Empty</Text>, []);
 
   return (
     <MainLayout>
@@ -151,9 +159,13 @@ const ProductsScreen = ({navigation}: LandingScreenProps) => {
             keyExtractor={getKeyExtractor}
             renderItem={renderItemProduct}
             ItemSeparatorComponent={renderItemSeparatorComponent}
+            ListEmptyComponent={renderListEmptyComponent}
             getItemLayout={getItemLayout}
             columnWrapperStyle={styles.columnWrapperStyle}
             maxToRenderPerBatch={isTablet ? 24 : 10}
+            updateCellsBatchingPeriod={50}
+            windowSize={8}
+            removeClippedSubviews={true}
           />
         )}
       </Flex>

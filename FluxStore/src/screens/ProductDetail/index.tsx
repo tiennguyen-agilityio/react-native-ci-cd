@@ -1,7 +1,8 @@
 import {memo, useCallback, useEffect, useMemo, useState} from 'react';
-import {Image, ScrollView, StyleSheet} from 'react-native';
+import {ScrollView, StyleSheet} from 'react-native';
 import Toast from 'react-native-toast-message';
 import {useSafeAreaInsets} from 'react-native-safe-area-context';
+import FastImage from 'react-native-fast-image';
 
 // Interfaces
 import {AppStackScreenProps, CarouselCard, DIRECTION, SCREENS} from '@/interfaces';
@@ -51,7 +52,7 @@ const ProductDetailScreen = ({navigation, route}: ProductDetailScreenProps) => {
   const {id = ''} = route.params || {};
 
   const {useProductDetail} = useProducts();
-  const {data: product, isLoading} = useProductDetail(id);
+  const {data: product, isLoading, isFetched} = useProductDetail(id);
 
   const addNewCart = useCartStore(state => state.addNewCart);
   const user = useAuthStore(state => state.user);
@@ -116,6 +117,11 @@ const ProductDetailScreen = ({navigation, route}: ProductDetailScreenProps) => {
           shadowRadius: 6,
           elevation: 6,
         },
+        image: {
+          width: metrics.screenWidth,
+          height: 406,
+          backgroundColor: background.tertiary,
+        },
         price: {
           fontFamily: fonts.secondary?.medium || fonts.default.medium,
         },
@@ -136,10 +142,19 @@ const ProductDetailScreen = ({navigation, route}: ProductDetailScreenProps) => {
     [text, background, fonts],
   );
 
-  const renderItemCarousel = useCallback(({image}: CarouselCard) => {
-    const source = typeof image === 'string' ? {uri: image} : image;
-    return <Image source={source} width={metrics.screenWidth} height={406} resizeMode="contain" />;
-  }, []);
+  const renderItemCarousel = useCallback(
+    ({image}: CarouselCard) => (
+      <FastImage
+        style={styles.image}
+        source={{
+          uri: image,
+          priority: FastImage.priority.normal,
+        }}
+        resizeMode={FastImage.resizeMode.contain}
+      />
+    ),
+    [styles.image],
+  );
 
   const handleGoToBack = useCallback(() => {
     navigation.goBack();
@@ -176,14 +191,14 @@ const ProductDetailScreen = ({navigation, route}: ProductDetailScreenProps) => {
         screen: SCREENS.CART,
       });
     }
-  }, [product, color, size, navigation, user?.favorites, addNewCart]);
+  }, [product, color, size]);
 
   useEffect(() => {
-    if (isLoading) {
+    if (isFetched) {
       setColor(colorsPrd[0]);
       setSize(sizesPrd[0]);
     }
-  }, [isLoading, colorsPrd, sizesPrd]);
+  }, [isFetched]);
 
   return (
     <Flex flex={1} position="relative" backgroundColor={background.default} paddingBottom={77}>
@@ -238,14 +253,10 @@ const ProductDetailScreen = ({navigation, route}: ProductDetailScreenProps) => {
             <Flex direction="row" justify="between" marginTop={36}>
               <ColorPicker
                 colors={colorsPrd}
-                defaultValue={colorsPrd[0]}
+                defaultValue={color}
                 onValueChange={handleChangeColor}
               />
-              <SizeSelect
-                sizes={sizesPrd}
-                defaultValue={sizesPrd[0]}
-                onValueChange={handleChangeSizes}
-              />
+              <SizeSelect sizes={sizesPrd} defaultValue={size} onValueChange={handleChangeSizes} />
             </Flex>
             <Flex marginTop={32}>
               <Divider />

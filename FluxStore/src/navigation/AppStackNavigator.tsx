@@ -1,7 +1,5 @@
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 
-// Constants
-
 // Interfaces
 import {AppStackParamList, SCREENS} from '@/interfaces';
 

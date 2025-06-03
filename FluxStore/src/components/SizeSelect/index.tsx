@@ -1,4 +1,4 @@
-import {memo, useState} from 'react';
+import {memo} from 'react';
 import {StyleSheet, TouchableOpacity} from 'react-native';
 
 // Stores
@@ -24,27 +24,21 @@ const SizeSelect = ({sizes, defaultValue = '', onValueChange}: SizeSelectProps) 
   const {
     theme: {text, background},
   } = useThemeStore();
-  const [value, setValue] = useState<string>(defaultValue);
 
   return (
     <Flex>
       <Text style={{color: text.tertiary}}>Size</Text>
       <Flex marginTop={10} direction="row" gap={8}>
         {sizes.map(size => {
-          const isSelected = value === size;
+          const isSelected = defaultValue === size;
           const handleToggleSelect = () => {
-            if (size !== value) {
-              setValue(size);
+            if (size !== defaultValue) {
               onValueChange(size);
             }
           };
 
           return (
-            <TouchableOpacity
-              key={size}
-              disabled={isSelected}
-              onPress={handleToggleSelect}
-              style={styles.item}>
+            <TouchableOpacity key={size} disabled={isSelected} onPress={handleToggleSelect}>
               <Flex
                 justify="center"
                 align="center"

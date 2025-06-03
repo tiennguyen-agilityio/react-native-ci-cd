@@ -1,4 +1,4 @@
-import {useCallback, useMemo} from 'react';
+import {memo, useCallback, useMemo} from 'react';
 import {StyleSheet} from 'react-native';
 import {useNavigation, useRoute} from '@react-navigation/native';
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
@@ -176,4 +176,4 @@ const Header = () => {
   );
 };
 
-export default Header;
+export default memo(Header);

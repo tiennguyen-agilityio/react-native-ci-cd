@@ -1,5 +1,6 @@
-import {memo, useCallback} from 'react';
+import {memo, useCallback, useMemo} from 'react';
 import {FlatList, ListRenderItemInfo} from 'react-native';
+import isEqual from 'react-fast-compare';
 
 // Interfaces
 import {Product} from '@/interfaces';
@@ -26,23 +27,36 @@ const ProductList = ({
 }: ProductListProps) => {
   const getKeyExtractor = useCallback(({id}: Product) => id, []);
 
+  const isTertiary = productCardType === ProductCardType.Tertiary;
+
+  const cardDimensions = useMemo(
+    () => ({
+      width: isTertiary ? 126 : 203,
+      height: isTertiary ? 227 : 66,
+    }),
+    [isTertiary],
+  );
+
   const renderItemProduct = useCallback(
-    ({item}: ListRenderItemInfo<Product>) => {
-      const isTertiaryType = productCardType === ProductCardType.Tertiary;
+    ({item}: ListRenderItemInfo<Product>) => (
+      <ProductCard
+        width={cardDimensions.width}
+        height={cardDimensions.height}
+        item={item}
+        type={productCardType}
+        onPress={() => onPressItem(item)}
+      />
+    ),
+    [cardDimensions, productCardType, onPressItem],
+  );
 
-      const handleViewProductDetail = () => onPressItem(item);
-
-      return (
-        <ProductCard
-          width={isTertiaryType ? 126 : 203}
-          height={isTertiaryType ? 227 : 66}
-          item={item}
-          type={productCardType}
-          onPress={handleViewProductDetail}
-        />
-      );
-    },
-    [onPressItem, productCardType],
+  const getItemLayout = useCallback(
+    (_: any, index: number) => ({
+      length: cardDimensions.width,
+      offset: cardDimensions.width * index,
+      index,
+    }),
+    [cardDimensions.width],
   );
 
   const renderItemSeparatorComponent = useCallback(
@@ -62,8 +76,14 @@ const ProductList = ({
       ItemSeparatorComponent={renderItemSeparatorComponent}
       ListFooterComponent={renderItemSpacingComponent}
       ListHeaderComponent={renderItemSpacingComponent}
+      getItemLayout={getItemLayout}
+      initialNumToRender={8}
+      maxToRenderPerBatch={8}
+      updateCellsBatchingPeriod={50}
+      windowSize={8}
+      removeClippedSubviews
     />
   );
 };
 
-export default memo(ProductList);
+export default memo(ProductList, isEqual);
