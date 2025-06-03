@@ -10,8 +10,8 @@ exports[`Text renders default 1`] = `
         "textAlignVertical": "center",
       },
       {
-        "color": "#222222",
-        "fontFamily": "Primary-Regular",
+        "color": "#737680",
+        "fontFamily": "ProductSansRegular",
         "fontSize": 14,
       },
       {},
@@ -33,8 +33,8 @@ exports[`Text renders with custom color, fontsize 1`] = `
         "textAlignVertical": "center",
       },
       {
-        "color": "#222222",
-        "fontFamily": "Primary-Regular",
+        "color": "#737680",
+        "fontFamily": "ProductSansRegular",
         "fontSize": 14,
       },
       {
@@ -59,8 +59,8 @@ exports[`Text renders with variant description 1`] = `
         "textAlignVertical": "center",
       },
       {
-        "color": "#111111",
-        "fontFamily": "Primary-Regular",
+        "color": "#1d1f22",
+        "fontFamily": "ProductSansRegular",
         "fontSize": 12,
       },
       {},
@@ -82,8 +82,8 @@ exports[`Text renders with variant heading 1`] = `
         "textAlignVertical": "center",
       },
       {
-        "color": "#000000",
-        "fontFamily": "Primary-Bold",
+        "color": "#000",
+        "fontFamily": "ProductSansBold",
         "fontSize": 24,
         "fontWeight": 700,
       },
@@ -106,8 +106,8 @@ exports[`Text renders with variant subTitle 1`] = `
         "textAlignVertical": "center",
       },
       {
-        "color": "#000000",
-        "fontFamily": "Tertiary-Regular",
+        "color": "#000",
+        "fontFamily": "RobotoRegular",
         "fontSize": 16,
         "fontWeight": 700,
       },
@@ -130,8 +130,8 @@ exports[`Text renders with variant title 1`] = `
         "textAlignVertical": "center",
       },
       {
-        "color": "#000000",
-        "fontFamily": "Secondary-Medium",
+        "color": "#000",
+        "fontFamily": "NunitoSemiBold",
         "fontSize": 20,
         "fontWeight": 700,
       },

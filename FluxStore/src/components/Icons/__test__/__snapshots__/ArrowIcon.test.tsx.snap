@@ -92,7 +92,7 @@ exports[`ArrowIcon renders correctly (matches snapshot) 1`] = `
           d="M4.808 5.77L1.093 1.312A.8.8 0 011.708 0h6.584a.8.8 0 01.615 1.312L5.192 5.77a.25.25 0 01-.384 0z"
           fill={
             {
-              "payload": 4278190080,
+              "payload": 4280098594,
               "type": 0,
             }
           }
@@ -200,7 +200,7 @@ exports[`ArrowIcon renders correctly (matches snapshot) with direction Left 1`] 
           d="M4.808 5.77L1.093 1.312A.8.8 0 011.708 0h6.584a.8.8 0 01.615 1.312L5.192 5.77a.25.25 0 01-.384 0z"
           fill={
             {
-              "payload": 4278190080,
+              "payload": 4280098594,
               "type": 0,
             }
           }
@@ -308,7 +308,7 @@ exports[`ArrowIcon renders correctly (matches snapshot) with direction down 1`] 
           d="M4.808 5.77L1.093 1.312A.8.8 0 011.708 0h6.584a.8.8 0 01.615 1.312L5.192 5.77a.25.25 0 01-.384 0z"
           fill={
             {
-              "payload": 4278190080,
+              "payload": 4280098594,
               "type": 0,
             }
           }
@@ -416,7 +416,7 @@ exports[`ArrowIcon renders correctly (matches snapshot) with direction up 1`] = 
           d="M4.808 5.77L1.093 1.312A.8.8 0 011.708 0h6.584a.8.8 0 01.615 1.312L5.192 5.77a.25.25 0 01-.384 0z"
           fill={
             {
-              "payload": 4278190080,
+              "payload": 4280098594,
               "type": 0,
             }
           }
