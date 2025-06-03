@@ -126,12 +126,17 @@ const Button = ({
   const {theme, isDark} = useThemeStore();
 
   const bgButton = useMemo(() => {
+    if (disabled && variant !== 'ghost')
+      return {
+        backgroundColor: theme.background.secondary,
+      };
+
     return variant === 'solid' && isDark
       ? {
           backgroundColor: theme?.primary,
         }
       : null;
-  }, [variant, theme, isDark]);
+  }, [disabled, variant, theme, isDark]);
 
   const textColor = useMemo(() => {
     return variant === 'solid' && isDark

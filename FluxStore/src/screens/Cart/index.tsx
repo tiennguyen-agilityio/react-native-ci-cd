@@ -1,5 +1,5 @@
 import {useCallback, useMemo} from 'react';
-import {StyleSheet} from 'react-native';
+import {Platform, StyleSheet} from 'react-native';
 import {ScrollView} from 'react-native-gesture-handler';
 import {useSafeAreaInsets} from 'react-native-safe-area-context';
 
@@ -33,6 +33,7 @@ const styles = StyleSheet.create({
   },
 });
 
+const isAndroid = Platform.OS === 'android';
 type CartScreenProps = AppStackScreenProps<typeof SCREENS.CART>;
 
 const CartScreen = ({navigation}: CartScreenProps) => {
@@ -40,6 +41,7 @@ const CartScreen = ({navigation}: CartScreenProps) => {
   const insets = useSafeAreaInsets();
 
   const {carts, totalPrice, updateCartItem} = useCartStore();
+
   const {
     theme: {background, text},
   } = useThemeStore();
@@ -49,7 +51,7 @@ const CartScreen = ({navigation}: CartScreenProps) => {
       borderColor: background.default,
       backgroundColor: background.default,
       shadowColor: text.primary,
-      paddingBottom: insets.bottom,
+      paddingBottom: insets.bottom + (isAndroid ? 30 : 0),
     }),
     [background, text, insets],
   );
@@ -111,7 +113,12 @@ const CartScreen = ({navigation}: CartScreenProps) => {
             bottom={-insets.bottom}
             backgroundColor={background.default}
           />
-          <Button size="sm" text="Proceed to checkout" onPress={handleGoToCheckout} />
+          <Button
+            size="sm"
+            disabled={!(carts?.length && totalPrice)}
+            text="Proceed to checkout"
+            onPress={handleGoToCheckout}
+          />
         </Flex>
       </Flex>
     </MainLayout>

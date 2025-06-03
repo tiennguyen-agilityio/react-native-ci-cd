@@ -33,6 +33,8 @@ import {
   Skeleton,
 } from '@/components';
 import {Carousel, Categories} from './components';
+import {useSafeAreaInsets} from 'react-native-safe-area-context';
+import {Platform} from 'react-native';
 
 const CATEGORIES: Category[] = [
   {
@@ -61,11 +63,14 @@ const CATEGORIES: Category[] = [
   },
 ];
 
+const isAndroid = Platform.OS === 'android';
+
 type HomeScreenProps = AppStackScreenProps<typeof SCREENS.HOME>;
 
 const HomeScreen = ({navigation}: HomeScreenProps) => {
   useScreenTrace(SCREENS.HOME);
   const {theme} = useThemeStore();
+  const insets = useSafeAreaInsets();
 
   const {useFetchProducts} = useProducts();
   const {data, fetchNextPage, hasNextPage, isLoading, isFetchingNextPage} =
@@ -114,7 +119,7 @@ const HomeScreen = ({navigation}: HomeScreenProps) => {
   return (
     <MainLayout>
       <ScrollView showsVerticalScrollIndicator={false}>
-        <Flex justify="start" marginTop={32} paddingBottom={70}>
+        <Flex justify="start" marginTop={32} paddingBottom={isAndroid ? 100 : 70}>
           <Flex justify="start" gap={20} paddingHorizontal={metrics.dimensions.xxl}>
             <Categories
               list={CATEGORIES}
