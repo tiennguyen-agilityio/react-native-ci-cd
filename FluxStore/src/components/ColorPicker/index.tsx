@@ -1,4 +1,4 @@
-import {memo, useState} from 'react';
+import {memo} from 'react';
 
 // Stores
 import {useThemeStore} from '@/stores';
@@ -25,17 +25,15 @@ const ColorPicker = ({
   const {
     theme: {text},
   } = useThemeStore();
-  const [value, setValue] = useState<string>(defaultValue);
 
   return (
     <Flex>
       <Text style={{color: text.tertiary}}>Color</Text>
       <Flex marginTop={10} direction="row" gap={8}>
         {colors.map((color, index) => {
-          const isSelected = value.includes(color);
+          const isSelected = defaultValue === color;
           const handleToggleSelect = () => {
-            if (color !== value) {
-              setValue(color);
+            if (color !== defaultValue) {
               onValueChange(color);
             }
           };
