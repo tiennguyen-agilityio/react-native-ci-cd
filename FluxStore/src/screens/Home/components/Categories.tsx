@@ -1,5 +1,6 @@
 import {memo} from 'react';
 import {StyleSheet, TouchableOpacity} from 'react-native';
+import isEqual from 'react-fast-compare';
 
 // Interfaces
 import {Category} from '@/interfaces';
@@ -72,4 +73,4 @@ const Categories = ({list = [], keyActivated = list[0].key, onChange}: Categorie
   );
 };
 
-export default memo(Categories);
+export default memo(Categories, isEqual);

@@ -1,5 +1,6 @@
 import {useCallback, useMemo} from 'react';
-import {Image, ScrollView, StyleSheet} from 'react-native';
+import {ScrollView, StyleSheet} from 'react-native';
+import FastImage from 'react-native-fast-image';
 
 // Stores
 import {useAuthStore, useThemeStore} from '@/stores';
@@ -52,6 +53,9 @@ const ProfileScreen = () => {
         image: {
           borderRadius: 68,
           overflow: 'hidden',
+          width: 68,
+          height: 68,
+          backgroundColor: background.secondary,
         },
       }),
     [border, background, text],
@@ -83,7 +87,14 @@ const ProfileScreen = () => {
             direction="row"
             align="center"
             paddingHorizontal={metrics.dimensions.xxl}>
-            <Image style={styles.image} source={{uri: avatar}} width={68} height={68} />
+            <FastImage
+              style={styles.image}
+              source={{
+                uri: avatar,
+                priority: FastImage.priority.normal,
+              }}
+              resizeMode={FastImage.resizeMode.cover}
+            />
             <Flex marginLeft={20} gap={6}>
               <Text variant="subTitle">{name}</Text>
               <Text>{email}</Text>

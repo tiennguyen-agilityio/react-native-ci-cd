@@ -1,11 +1,6 @@
 import {memo, useMemo} from 'react';
-import {
-  DimensionValue,
-  Image,
-  ImageSourcePropType,
-  StyleSheet,
-  TouchableOpacity,
-} from 'react-native';
+import {DimensionValue, ImageSourcePropType, StyleSheet, TouchableOpacity} from 'react-native';
+import FastImage, {Source} from 'react-native-fast-image';
 
 // Hooks
 import {useThemeStore} from '@/stores';
@@ -132,7 +127,21 @@ const PromoBanner = ({
           </>
         )}
         <Flex justify="center" align="center" position="absolute" top={0} right={0} zIndex={2}>
-          <Image source={image} width={widthImage} height={heightImage} resizeMode="cover" />
+          <FastImage
+            style={{
+              width: widthImage,
+              height: heightImage,
+            }}
+            source={
+              typeof image === 'string'
+                ? {
+                    uri: image,
+                    priority: FastImage.priority.normal,
+                  }
+                : (image as Source)
+            }
+            resizeMode={FastImage.resizeMode.cover}
+          />
         </Flex>
       </Flex>
     </TouchableOpacity>

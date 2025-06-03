@@ -1,5 +1,7 @@
 import {memo, useMemo} from 'react';
-import {Image, StyleSheet} from 'react-native';
+import {StyleSheet} from 'react-native';
+import isEqual from 'react-fast-compare';
+import FastImage from 'react-native-fast-image';
 
 // Interfaces
 import {Cart} from '@/interfaces';
@@ -58,6 +60,7 @@ const CartItem = ({
           height: '100%',
           borderTopLeftRadius: borderRadius.lg,
           borderBottomLeftRadius: borderRadius.lg,
+          backgroundColor: background.tertiary,
         },
         info: {
           flex: 1,
@@ -84,7 +87,14 @@ const CartItem = ({
 
   return (
     <Flex style={styles.wrapper} backgroundColor={background.default}>
-      <Image source={{uri: image}} style={styles.image} resizeMode="cover" />
+      <FastImage
+        style={styles.image}
+        source={{
+          uri: image,
+          priority: FastImage.priority.normal,
+        }}
+        resizeMode={FastImage.resizeMode.cover}
+      />
       <Flex style={styles.info}>
         <Flex flex={1} justify="between">
           <Text variant="title" fontSize={fontSizes.xxs} numberOfLines={1} ellipsizeMode="tail">
@@ -106,4 +116,4 @@ const CartItem = ({
   );
 };
 
-export default memo(CartItem);
+export default memo(CartItem, isEqual);

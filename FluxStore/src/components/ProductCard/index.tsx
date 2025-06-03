@@ -1,5 +1,6 @@
 import {memo, useCallback, useMemo} from 'react';
-import {DimensionValue, Image, StyleSheet, TouchableOpacity} from 'react-native';
+import {DimensionValue, StyleSheet, TouchableOpacity} from 'react-native';
+import FastImage from 'react-native-fast-image';
 
 import {Product} from '@/interfaces';
 import {CURRENCY_UNIT} from '@/constants';
@@ -171,16 +172,19 @@ const ProductCard = ({
       activeOpacity={0.8}
       onPress={handlePressCard}>
       <Flex style={themeStyles.image} position="relative">
-        <Image
+        <FastImage
+          style={{
+            width: imageSize.width,
+            height: imageSize.height,
+            backgroundColor: theme.background.tertiary,
+          }}
           source={{
             uri: image,
+            priority: FastImage.priority.normal,
           }}
-          width={imageSize.width as number}
-          height={imageSize.height as number}
-          style={{
-            backgroundColor: theme.background.secondary,
-          }}
+          resizeMode={FastImage.resizeMode.cover}
         />
+
         {type === ProductCardType.Primary && (
           <Flex style={themeStyles.icon}>
             <HeartIcon isActive={isFavorite} />
