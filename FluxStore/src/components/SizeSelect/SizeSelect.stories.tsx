@@ -15,8 +15,8 @@ type Story = StoryObj<typeof SizeSelect>;
 
 const defaultProps = {
   sizes: SIZES,
-  defaultValue: [SIZES[0]],
-  onValueChange: (colors: string[]) => Alert.alert('Current sizes', colors.join(', ')),
+  defaultValue: SIZES[0],
+  onValueChange: (color: string) => Alert.alert('Current sizes', color),
 };
 
 export const Default: Story = {
