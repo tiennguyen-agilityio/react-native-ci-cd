@@ -3,6 +3,7 @@ import {Meta, StoryObj} from '@storybook/react';
 import {RenderChildren} from '@/utils';
 
 import Flex from '.';
+import {FlexOptions} from '@/interfaces';
 
 const meta: Meta<typeof Flex> = {
   title: 'Components/Flex',
@@ -13,17 +14,22 @@ export default meta;
 
 type Story = StoryObj<typeof Flex>;
 
+const defaultProps = {
+  gap: 5,
+};
+
+const Render = (props: FlexOptions) => {
+  return (
+    <Flex {...defaultProps} {...props}>
+      <RenderChildren />
+    </Flex>
+  );
+};
+
 export const Default: Story = {
-  args: {
-    gap: 5,
-    children: <RenderChildren />,
-  },
+  render: Render,
 };
 
 export const Row: Story = {
-  args: {
-    gap: 5,
-    direction: 'row',
-    children: <RenderChildren />,
-  },
+  render: () => Render({direction: 'row'}),
 };
