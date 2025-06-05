@@ -6,6 +6,8 @@ export const REGEX = {
   CHECK_NUMBER: /.*[0-9].*/,
   CHECK_UPPERCASE: /[A-Z]/,
   CHECK_SYMBOL: /.*[!@#$%^&+=*].*/,
+  PHONE_NUMBER: /^(?:\+84|0)(3[2-9]|5[2689]|7[06-9]|8[1-5]|9[0-9])[0-9]{7}$/,
+  ZIPCODE: /^\d{5}$/,
 };
 
 export const INIT_PAGE = 1;
