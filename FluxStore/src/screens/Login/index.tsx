@@ -44,6 +44,7 @@ const LoginScreen = () => {
   ]);
 
   const [errorMessage, setErrorMessage] = useState('');
+  const emailRef = useRef<TextInput | null>(null);
   const passwordRef = useRef<TextInput | null>(null);
 
   const {
@@ -114,13 +115,14 @@ const LoginScreen = () => {
               control={control}
               rules={SCHEMA.email}
               render={({field: {onChange, ...props}, fieldState: {error}}) => {
-                const handleChange = event => {
+                const handleChange = (value: string) => {
                   setErrorMessage('');
-                  onChange(event);
+                  onChange(value);
                 };
                 return (
                   <Input
                     {...props}
+                    ref={emailRef}
                     field="email"
                     nextField={passwordRef}
                     placeholder="Email address"
@@ -137,10 +139,10 @@ const LoginScreen = () => {
               name="password"
               control={control}
               rules={SCHEMA.password}
-              render={({field: {onChange, ref, ...props}, fieldState: {error}}) => {
-                const handleChange = event => {
+              render={({field: {onChange, ...props}, fieldState: {error}}) => {
+                const handleChange = (value: string) => {
                   setErrorMessage('');
-                  onChange(event);
+                  onChange(value);
                 };
 
                 return (

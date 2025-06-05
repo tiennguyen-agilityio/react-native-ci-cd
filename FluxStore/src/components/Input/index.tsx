@@ -5,6 +5,7 @@ import {
   TextInput,
   TextInputFocusEventData,
   TextInputProps,
+  TouchableWithoutFeedback,
   ViewStyle,
 } from 'react-native';
 import Animated, {useAnimatedStyle, useSharedValue, withTiming} from 'react-native-reanimated';
@@ -58,6 +59,14 @@ const Input = ({
   const styles = useMemo(
     () =>
       StyleSheet.create({
+        label: {
+          position: 'absolute',
+          left: 0,
+          bottom: 0,
+          right: 0,
+          top: 0,
+          zIndex: 1,
+        },
         input: {
           height: 51,
           paddingTop: 25,
@@ -123,20 +132,26 @@ const Input = ({
   return (
     <Flex>
       <Flex position="relative" height={51}>
-        <Animated.View style={animatedStyle}>
-          <Text style={styles.text}>{placeholder}</Text>
-          {isRequired && (
-            <Text
-              style={[
-                styles.text,
-                {
-                  color: errorMessage ? text.error : text.tertiary,
-                },
-              ]}>
-              {` *`}
-            </Text>
-          )}
-        </Animated.View>
+        <TouchableWithoutFeedback
+          onPress={() => {
+            ref?.current?.focus();
+          }}
+          style={styles.label}>
+          <Animated.View style={animatedStyle}>
+            <Text style={styles.text}>{placeholder}</Text>
+            {isRequired && (
+              <Text
+                style={[
+                  styles.text,
+                  {
+                    color: errorMessage ? text.error : text.tertiary,
+                  },
+                ]}>
+                {` *`}
+              </Text>
+            )}
+          </Animated.View>
+        </TouchableWithoutFeedback>
         <TextInput
           testID="input"
           ref={ref}
