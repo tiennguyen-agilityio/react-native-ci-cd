@@ -3,7 +3,7 @@ import {ImageBackground, StyleSheet} from 'react-native';
 import {useSafeAreaInsets} from 'react-native-safe-area-context';
 
 // Interfaces
-import {AppStackScreenProps, SCREENS} from '@/interfaces';
+import {OnboardingScreenProps, SCREENS} from '@/interfaces';
 
 // Hooks
 import {useScreenTrace} from '@/hooks';
@@ -36,9 +36,7 @@ const styles = StyleSheet.create({
   },
 });
 
-type WelcomeScreenProps = AppStackScreenProps<typeof SCREENS.WELCOME>;
-
-const WelcomeScreen = ({navigation}: WelcomeScreenProps) => {
+const WelcomeScreen = ({navigation}: OnboardingScreenProps<typeof SCREENS.WELCOME>) => {
   useScreenTrace(SCREENS.WELCOME);
 
   const insets = useSafeAreaInsets();

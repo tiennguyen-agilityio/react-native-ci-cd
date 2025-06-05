@@ -5,7 +5,7 @@ import {useSafeAreaInsets} from 'react-native-safe-area-context';
 import FastImage from 'react-native-fast-image';
 
 // Interfaces
-import {AppStackScreenProps, CarouselCard, DIRECTION, SCREENS} from '@/interfaces';
+import {CarouselCard, DIRECTION, ProductScreenProps, SCREENS} from '@/interfaces';
 
 // Constants
 import {REVIEWS} from '@/mocks';
@@ -40,9 +40,10 @@ import {
 } from '@/components';
 import {ReviewSection} from './components';
 
-type ProductDetailScreenProps = AppStackScreenProps<typeof SCREENS.PRODUCT_DETAIL>;
-
-const ProductDetailScreen = ({navigation, route}: ProductDetailScreenProps) => {
+const ProductDetailScreen = ({
+  navigation,
+  route,
+}: ProductScreenProps<typeof SCREENS.PRODUCT_DETAIL>) => {
   useScreenTrace(SCREENS.PRODUCT_DETAIL);
 
   const insets = useSafeAreaInsets();
