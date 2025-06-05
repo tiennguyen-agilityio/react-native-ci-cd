@@ -30,7 +30,6 @@ import {
   WomenIcon,
   PromoBannerType,
   ProductList,
-  Skeleton,
 } from '@/components';
 import {Carousel, Categories} from './components';
 import {Platform} from 'react-native';
@@ -144,20 +143,13 @@ const HomeScreen = ({navigation}: HomeScreenProps) => {
           </Flex>
 
           <Flex width="100%">
-            {isLoading ? (
-              <Flex direction="row" gap={20} paddingHorizontal={metrics.dimensions.xxl}>
-                <Skeleton width={126} height={203} />
-                <Skeleton width={126} height={203} />
-                <Skeleton width={126} height={203} />
-              </Flex>
-            ) : (
-              <ProductList
-                data={products}
-                productCardType={ProductCardType.Tertiary}
-                onPressItem={handlePressProduct}
-                onLoadMore={handleLoadMoreProduct}
-              />
-            )}
+            <ProductList
+              data={products}
+              isLoading={isLoading || isFetchingNextPage}
+              productCardType={ProductCardType.Tertiary}
+              onPressItem={handlePressProduct}
+              onLoadMore={handleLoadMoreProduct}
+            />
           </Flex>
 
           <Flex marginTop={metrics.dimensions.lg} height={158}>
@@ -190,19 +182,13 @@ const HomeScreen = ({navigation}: HomeScreenProps) => {
           </Flex>
 
           <Flex width="100%">
-            {isLoading ? (
-              <Flex direction="row" gap={20} paddingHorizontal={metrics.dimensions.xxl}>
-                <Skeleton width={203} height={66} />
-                <Skeleton width={203} height={66} />
-              </Flex>
-            ) : (
-              <ProductList
-                data={products}
-                productCardType={ProductCardType.Secondary}
-                onPressItem={handlePressProduct}
-                onLoadMore={handleLoadMoreProduct}
-              />
-            )}
+            <ProductList
+              data={products}
+              isLoading={isLoading || isFetchingNextPage}
+              productCardType={ProductCardType.Secondary}
+              onPressItem={handlePressProduct}
+              onLoadMore={handleLoadMoreProduct}
+            />
           </Flex>
           <Flex
             direction="row"

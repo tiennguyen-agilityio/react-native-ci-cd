@@ -9,12 +9,13 @@ import {Product} from '@/interfaces';
 import {metrics} from '@/themes';
 
 // Components
-import {Flex, ProductCard, ProductCardType} from '@/components';
+import {Flex, ProductCard, ProductCardType, Skeleton} from '@/components';
 
 interface ProductListProps {
   data: Product[];
   productCardType?: ProductCardType;
   horizontal?: boolean;
+  isLoading?: boolean;
   onPressItem: (item: Product) => void;
   onLoadMore: () => void;
 }
@@ -22,6 +23,7 @@ interface ProductListProps {
 const ProductList = ({
   data,
   productCardType = ProductCardType.Primary,
+  isLoading = false,
   onPressItem,
   onLoadMore,
 }: ProductListProps) => {
@@ -63,6 +65,25 @@ const ProductList = ({
     () => <Flex width={metrics.dimensions.lg} />,
     [],
   );
+
+  const renderListFooterComponent = useMemo(() => {
+    if (isLoading) {
+      return (
+        <Flex
+          direction="row"
+          gap={metrics.dimensions.xl}
+          paddingHorizontal={data?.length ? metrics.dimensions.xl : 0}
+          height={cardDimensions.height}>
+          {[...Array(data?.length ? 1 : 3).keys()].map(item => (
+            <Skeleton key={item} width={cardDimensions.width} height={cardDimensions.height} />
+          ))}
+        </Flex>
+      );
+    }
+
+    return <Flex width={metrics.dimensions.xxl} height={cardDimensions.height} />;
+  }, [isLoading, cardDimensions.height, cardDimensions.width, data?.length]);
+
   const renderItemSpacingComponent = useCallback(() => <Flex width={metrics.dimensions.xxl} />, []);
 
   return (
@@ -74,8 +95,8 @@ const ProductList = ({
       keyExtractor={getKeyExtractor}
       renderItem={renderItemProduct}
       ItemSeparatorComponent={renderItemSeparatorComponent}
-      ListFooterComponent={renderItemSpacingComponent}
       ListHeaderComponent={renderItemSpacingComponent}
+      ListFooterComponent={renderListFooterComponent}
       getItemLayout={getItemLayout}
       initialNumToRender={8}
       maxToRenderPerBatch={8}
