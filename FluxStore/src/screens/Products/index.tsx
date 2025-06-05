@@ -9,7 +9,7 @@ import {AppStackScreenProps, DIRECTION, Product, SCREENS} from '@/interfaces';
 
 // Hooks | Stores
 import {useMedia, useProducts, useScreenTrace} from '@/hooks';
-import {useThemeStore} from '@/stores';
+import {useAuthStore, useThemeStore} from '@/stores';
 
 // Themes
 import {metrics} from '@/themes';
@@ -40,6 +40,8 @@ type LandingScreenProps = AppStackScreenProps<typeof SCREENS.PRODUCTS>;
 const ProductsScreen = ({navigation}: LandingScreenProps) => {
   useScreenTrace(SCREENS.PRODUCTS);
 
+  const user = useAuthStore(state => state.user);
+  const {favorites = []} = user || {};
   const {useFetchProducts} = useProducts();
   const {data, fetchNextPage, hasNextPage, isLoading, isFetchingNextPage} =
     useFetchProducts(INIT_PAGE);
@@ -61,8 +63,6 @@ const ProductsScreen = ({navigation}: LandingScreenProps) => {
 
     return 2;
   }, [isTablet, isPortrait]);
-
-  const favoritesProduct = useMemo(() => ['3', '4', '7', '10', '13'], []);
 
   const handleShowFilter = useCallback(() => {}, []);
 
@@ -100,19 +100,31 @@ const ProductsScreen = ({navigation}: LandingScreenProps) => {
           width={width}
           height={height}
           item={item}
-          isFavorite={favoritesProduct.includes(item.id)}
+          isFavorite={favorites.includes(item.id)}
           type={ProductCardType.Primary}
           onPress={handleViewProductDetail}
         />
       );
     },
-    [width, height, favoritesProduct, navigation],
+    [width, height, favorites, navigation],
   );
 
   const renderItemSeparatorComponent = useCallback(
     () => <Flex width={metrics.dimensions.lg} />,
     [],
   );
+
+  const renderListFooterComponent = useMemo(() => {
+    if (isFetchingNextPage || isLoading) {
+      return (
+        <Flex direction="row" wrap="wrap" justify="between" height={height}>
+          <Skeleton width={width} height={height} />
+          <Skeleton width={width} height={height} />
+        </Flex>
+      );
+    }
+    return null;
+  }, [isLoading, isFetchingNextPage, height, width]);
 
   const renderListEmptyComponent = useCallback(() => <Text>Product Empty</Text>, []);
 
@@ -142,32 +154,26 @@ const ProductsScreen = ({navigation}: LandingScreenProps) => {
             </Flex>
           </TouchableOpacity>
         </Flex>
-        {isLoading ? (
-          <Flex flex={1}>
-            {[...Array(12).keys()].map(item => (
-              <Skeleton key={item} height={height} width={width} />
-            ))}
-          </Flex>
-        ) : (
-          <FlatList
-            data={products}
-            key={numColumns}
-            showsVerticalScrollIndicator={false}
-            initialNumToRender={isTablet ? 12 : 6}
-            numColumns={numColumns}
-            onEndReached={handleLoadMore}
-            keyExtractor={getKeyExtractor}
-            renderItem={renderItemProduct}
-            ItemSeparatorComponent={renderItemSeparatorComponent}
-            ListEmptyComponent={renderListEmptyComponent}
-            getItemLayout={getItemLayout}
-            columnWrapperStyle={styles.columnWrapperStyle}
-            maxToRenderPerBatch={isTablet ? 24 : 10}
-            updateCellsBatchingPeriod={50}
-            windowSize={8}
-            removeClippedSubviews={true}
-          />
-        )}
+
+        <FlatList
+          data={products}
+          key={numColumns}
+          showsVerticalScrollIndicator={false}
+          initialNumToRender={isTablet ? 12 : 6}
+          numColumns={numColumns}
+          onEndReached={handleLoadMore}
+          keyExtractor={getKeyExtractor}
+          renderItem={renderItemProduct}
+          ItemSeparatorComponent={renderItemSeparatorComponent}
+          ListEmptyComponent={renderListEmptyComponent}
+          ListFooterComponent={renderListFooterComponent}
+          getItemLayout={getItemLayout}
+          columnWrapperStyle={styles.columnWrapperStyle}
+          maxToRenderPerBatch={isTablet ? 24 : 10}
+          updateCellsBatchingPeriod={50}
+          windowSize={8}
+          removeClippedSubviews={true}
+        />
       </Flex>
     </MainLayout>
   );
