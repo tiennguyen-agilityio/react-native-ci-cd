@@ -1,8 +1,7 @@
-import {RefObject, useCallback, useRef, useState} from 'react';
-import {Controller, useForm} from 'react-hook-form';
+import {useCallback, useMemo, useState} from 'react';
+import {useForm} from 'react-hook-form';
 import {ScrollView} from 'react-native-gesture-handler';
 import {useSafeAreaInsets} from 'react-native-safe-area-context';
-import {TextInput} from 'react-native';
 import crashlytics from '@react-native-firebase/crashlytics';
 
 // Interfaces
@@ -12,7 +11,7 @@ import {LoginPayLoad, SCREENS, User} from '@/interfaces';
 import {ERROR_MESSAGES, SCHEMA} from '@/constants';
 
 // Hooks
-import {useAuth, useScreenTrace} from '@/hooks';
+import {useAuth, useFocusInput, useScreenTrace} from '@/hooks';
 import {useThemeStore, useAuthStore} from '@/stores';
 
 // Themes
@@ -24,10 +23,10 @@ import {
   Button,
   Flex,
   GoogleIcon,
-  Input,
   MainLayout,
   Text,
   FacebookIcon,
+  ControllerInput,
 } from '@/components';
 import {customTrace} from '@/utils';
 
@@ -44,12 +43,21 @@ const LoginScreen = () => {
   ]);
 
   const [errorMessage, setErrorMessage] = useState('');
-  const emailRef = useRef<TextInput | null>(null);
-  const passwordRef = useRef<TextInput | null>(null);
-
   const {
     logIn: {mutate, isPending},
   } = useAuth();
+
+  const defaultValues = useMemo(
+    () => ({
+      email: '',
+      password: '',
+    }),
+    [],
+  );
+
+  const fields = Object.keys(defaultValues) as (keyof typeof defaultValues)[];
+
+  const {fieldRefs, onFocus} = useFocusInput(fields);
 
   const {
     control,
@@ -57,16 +65,11 @@ const LoginScreen = () => {
     reset,
     formState: {isSubmitting},
   } = useForm<LoginPayLoad>({
-    defaultValues: {
-      email: '',
-      password: '',
-    },
+    defaultValues,
     mode: 'onBlur',
   });
 
-  const handleFocusNextField = (input: RefObject<TextInput | null>) => {
-    input?.current && input.current.focus();
-  };
+  const handleClearErrorMessage = useCallback(() => setErrorMessage(''), []);
 
   const handleLogin = useCallback(
     async (data: LoginPayLoad) => {
@@ -110,52 +113,25 @@ const LoginScreen = () => {
             {`Log into\nyour account`}
           </Text>
           <Flex gap={20} marginTop={48}>
-            <Controller
+            <ControllerInput<LoginPayLoad>
               name="email"
-              control={control}
               rules={SCHEMA.email}
-              render={({field: {onChange, ...props}, fieldState: {error}}) => {
-                const handleChange = (value: string) => {
-                  setErrorMessage('');
-                  onChange(value);
-                };
-                return (
-                  <Input
-                    {...props}
-                    ref={emailRef}
-                    field="email"
-                    nextField={passwordRef}
-                    placeholder="Email address"
-                    returnKeyType="next"
-                    errorMessage={error?.message}
-                    onChangeText={handleChange}
-                    onSubmit={handleFocusNextField}
-                  />
-                );
-              }}
+              inputRef={fieldRefs.email}
+              nextField="password"
+              control={control}
+              placeholder="Email address"
+              clearError={handleClearErrorMessage}
+              onFocusNextInput={onFocus}
             />
 
-            <Controller
+            <ControllerInput<LoginPayLoad>
               name="password"
-              control={control}
               rules={SCHEMA.password}
-              render={({field: {onChange, ...props}, fieldState: {error}}) => {
-                const handleChange = (value: string) => {
-                  setErrorMessage('');
-                  onChange(value);
-                };
-
-                return (
-                  <Input
-                    {...props}
-                    ref={passwordRef}
-                    secureTextEntry
-                    placeholder="Password"
-                    errorMessage={error?.message}
-                    onChangeText={handleChange}
-                  />
-                );
-              }}
+              inputRef={fieldRefs.password}
+              control={control}
+              placeholder="Password"
+              returnKeyType="done"
+              clearError={handleClearErrorMessage}
             />
           </Flex>
           <Flex marginTop={28} justify="end" align="end">

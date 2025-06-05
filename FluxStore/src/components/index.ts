@@ -23,3 +23,4 @@ export {default as Carousel} from './Carousel';
 export {default as Header} from './Header';
 export {default as MainLayout} from './MainLayout';
 export {default as Skeleton} from './Skeleton';
+export {default as ControllerInput} from './ControllerInput';

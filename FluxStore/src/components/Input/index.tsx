@@ -28,8 +28,7 @@ export interface InputProps extends TextInputProps {
   label?: string;
   errorMessage?: string;
   isRequired?: boolean;
-  nextField?: RefObject<TextInput | null>;
-  onSubmit?: (input: RefObject<TextInput | null>) => void;
+  onSubmit?: () => void;
   onChangeText?: (value: string, field?: string) => void;
   onFocus?: (e: NativeSyntheticEvent<TextInputFocusEventData>) => void;
   onBlur?: (e: NativeSyntheticEvent<TextInputFocusEventData>) => void;
@@ -43,7 +42,6 @@ const Input = ({
   editable = true,
   isRequired = false,
   defaultValue,
-  nextField,
   onFocus,
   onBlur,
   onChangeText,
@@ -94,7 +92,7 @@ const Input = ({
     position: 'absolute',
     left: 0,
     bottom: bottom.value,
-    zIndex: 1,
+    zIndex: 2,
   }));
 
   const handleFocus = useCallback(
@@ -126,8 +124,8 @@ const Input = ({
   );
 
   const handleSubmitEditing = useCallback(() => {
-    nextField?.current && onSubmit?.(nextField);
-  }, [onSubmit, nextField]);
+    onSubmit?.();
+  }, [onSubmit]);
 
   return (
     <Flex>

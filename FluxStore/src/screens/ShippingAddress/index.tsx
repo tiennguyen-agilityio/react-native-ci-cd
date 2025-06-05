@@ -1,22 +1,25 @@
-import {RefObject, useCallback, useRef} from 'react';
-import {Platform, TextInput} from 'react-native';
+import {useCallback, useEffect, useMemo, useState} from 'react';
+import {Platform} from 'react-native';
 import {useSafeAreaInsets} from 'react-native-safe-area-context';
 import {KeyboardAwareScrollView} from 'react-native-keyboard-controller';
-import {useForm, Controller} from 'react-hook-form';
+import {FieldErrors, useForm} from 'react-hook-form';
 import Toast from 'react-native-toast-message';
 
 // Interfaces
 import {AppStackScreenProps, SCREENS} from '@/interfaces';
 
+// Constants
+import {SCHEMA} from '@/constants';
+
 // Themes
 import {fontSizes, metrics} from '@/themes';
 
 // Hooks | Stores
-import {useScreenTrace} from '@/hooks';
-import {useAuthStore, useCartStore} from '@/stores';
+import {useFocusInput, useScreenTrace} from '@/hooks';
+import {useAuthStore, useCartStore, useThemeStore} from '@/stores';
 
 // Components
-import {Button, Checkbox, Flex, Input, MainLayout, Text} from '@/components';
+import {Button, Checkbox, ControllerInput, Flex, MainLayout, Text} from '@/components';
 import {ShippingMethod} from './components';
 
 type ShippingAddressProps = AppStackScreenProps<typeof SCREENS.SHIPPING_ADDRESS>;
@@ -41,6 +44,9 @@ const ShippingAddressScreen = ({navigation}: ShippingAddressProps) => {
   const insets = useSafeAreaInsets();
   const clearCart = useCartStore(state => state.clearCart);
   const user = useAuthStore(state => state.user);
+  const text = useThemeStore(state => state.theme.text);
+
+  const [errorMessage, setErrorMessage] = useState('');
 
   const {
     firstName = '',
@@ -53,16 +59,8 @@ const ShippingAddressScreen = ({navigation}: ShippingAddressProps) => {
     phoneNumber = '',
   } = user || {};
 
-  const lastNameRef = useRef<TextInput>(null);
-  const countryRef = useRef<TextInput>(null);
-  const streetRef = useRef<TextInput>(null);
-  const cityRef = useRef<TextInput>(null);
-  const stateRef = useRef<TextInput>(null);
-  const zipCodeRef = useRef<TextInput>(null);
-  const phoneNumberRef = useRef<TextInput>(null);
-
-  const {control, formState, getValues, setValue, handleSubmit} = useForm<FormData>({
-    defaultValues: {
+  const defaultValues = useMemo(
+    () => ({
       firstName,
       lastName,
       country,
@@ -73,16 +71,43 @@ const ShippingAddressScreen = ({navigation}: ShippingAddressProps) => {
       phoneNumber,
       fee: 0,
       isCopyAddress: false,
-    },
+    }),
+    [city, country, firstName, lastName, phoneNumber, state, street, zipCode],
+  );
+
+  const {fieldRefs, onFocus} = useFocusInput(
+    Object.keys(defaultValues) as (keyof typeof defaultValues)[],
+  );
+
+  const {control, getValues, setValue, watch, reset, handleSubmit} = useForm<FormData>({
+    defaultValues,
+    mode: 'onBlur',
   });
 
-  const handleFocusNextField = (input: RefObject<TextInput | null>) => {
-    input.current?.focus();
-  };
+  const isCopyAddress = watch('isCopyAddress');
 
   const handleToggleCheckbox = useCallback(() => {
-    setValue('isCopyAddress', !getValues('isCopyAddress'));
+    const newValue = !getValues('isCopyAddress');
+    setValue('isCopyAddress', newValue);
   }, [getValues, setValue]);
+
+  const handleClearErrorMessage = useCallback(() => setErrorMessage(''), []);
+
+  const handleChangeShippingMethod = useCallback((value: number) => setValue('fee', value), []);
+
+  const handleErrorForm = useCallback(
+    (errors: FieldErrors<FormData>) => {
+      const getFieldsError = Object.keys(errors) as (keyof typeof defaultValues)[];
+
+      const firstFieldError = getFieldsError.filter(
+        key => key !== 'fee' && key !== 'isCopyAddress',
+      )[0];
+      if (getFieldsError?.length && firstFieldError) {
+        fieldRefs[firstFieldError].current.focus();
+      }
+    },
+    [fieldRefs],
+  );
 
   const onSubmit = useCallback(
     (data: FormData) => {
@@ -96,11 +121,18 @@ const ShippingAddressScreen = ({navigation}: ShippingAddressProps) => {
     [navigation, clearCart],
   );
 
+  useEffect(() => {
+    if (user) {
+      reset(defaultValues);
+    }
+  }, [user]);
+
   return (
     <MainLayout>
       <KeyboardAwareScrollView
         showsVerticalScrollIndicator={false}
-        keyboardShouldPersistTaps="handled">
+        keyboardShouldPersistTaps="handled"
+        bottomOffset={20}>
         <Flex
           flex={1}
           marginTop={22}
@@ -113,145 +145,105 @@ const ShippingAddressScreen = ({navigation}: ShippingAddressProps) => {
             Shipping
           </Text>
           <Flex marginTop={42} gap={20}>
-            <Controller
-              control={control}
+            <ControllerInput<FormData>
               name="firstName"
-              rules={{required: true}}
-              render={({field: {onChange, value}}) => (
-                <Input
-                  isRequired
-                  placeholder="First Name"
-                  nextField={lastNameRef}
-                  defaultValue={value}
-                  value={value}
-                  onChangeText={onChange}
-                  onSubmit={handleFocusNextField}
-                />
-              )}
-            />
-            <Controller
+              nextField="lastName"
+              placeholder="First Name"
               control={control}
+              rules={SCHEMA.firstName}
+              inputRef={fieldRefs.firstName}
+              clearError={handleClearErrorMessage}
+              onFocusNextInput={onFocus}
+            />
+            <ControllerInput<FormData>
               name="lastName"
-              rules={{required: true}}
-              render={({field: {onChange, value, ...props}}) => (
-                <Input
-                  {...props}
-                  isRequired
-                  ref={lastNameRef}
-                  placeholder="Last Name"
-                  nextField={countryRef}
-                  defaultValue={value}
-                  onChangeText={onChange}
-                  onSubmit={handleFocusNextField}
-                />
-              )}
-            />
-            <Controller
+              nextField="country"
+              placeholder="Last Name"
               control={control}
+              rules={SCHEMA.lastName}
+              inputRef={fieldRefs.lastName}
+              clearError={handleClearErrorMessage}
+              onFocusNextInput={onFocus}
+            />
+            <ControllerInput<FormData>
               name="country"
-              rules={{required: true}}
-              render={({field: {onChange, value}}) => (
-                <Input
-                  isRequired
-                  ref={countryRef}
-                  placeholder="Country"
-                  nextField={streetRef}
-                  defaultValue={value}
-                  onChangeText={onChange}
-                  onSubmit={handleFocusNextField}
-                />
-              )}
-            />
-            <Controller
+              nextField="street"
+              placeholder="Country"
               control={control}
+              rules={SCHEMA.country}
+              inputRef={fieldRefs.country}
+              clearError={handleClearErrorMessage}
+              onFocusNextInput={onFocus}
+            />
+            <ControllerInput<FormData>
               name="street"
-              rules={{required: true}}
-              render={({field: {onChange, value}}) => (
-                <Input
-                  isRequired
-                  ref={streetRef}
-                  placeholder="Street name"
-                  nextField={cityRef}
-                  defaultValue={value}
-                  onChangeText={onChange}
-                  onSubmit={handleFocusNextField}
-                />
-              )}
-            />
-            <Controller
+              nextField="city"
+              placeholder="Street name"
               control={control}
+              rules={SCHEMA.street}
+              inputRef={fieldRefs.street}
+              clearError={handleClearErrorMessage}
+              onFocusNextInput={onFocus}
+            />
+            <ControllerInput<FormData>
               name="city"
-              rules={{required: true}}
-              render={({field: {onChange, value}}) => (
-                <Input
-                  isRequired
-                  ref={cityRef}
-                  placeholder="City"
-                  nextField={stateRef}
-                  defaultValue={value}
-                  onChangeText={onChange}
-                  onSubmit={handleFocusNextField}
-                />
-              )}
-            />
-            <Controller
+              nextField="state"
+              placeholder="City"
               control={control}
+              rules={SCHEMA.city}
+              inputRef={fieldRefs.city}
+              clearError={handleClearErrorMessage}
+              onFocusNextInput={onFocus}
+            />
+            <ControllerInput<FormData>
               name="state"
-              render={({field: {onChange, value}}) => (
-                <Input
-                  ref={stateRef}
-                  placeholder="State / Province"
-                  nextField={zipCodeRef}
-                  defaultValue={value}
-                  onChangeText={onChange}
-                  onSubmit={handleFocusNextField}
-                />
-              )}
-            />
-            <Controller
+              nextField="zipCode"
+              placeholder="State / Province"
               control={control}
+              rules={SCHEMA.state}
+              inputRef={fieldRefs.state}
+              clearError={handleClearErrorMessage}
+              onFocusNextInput={onFocus}
+            />
+            <ControllerInput<FormData>
               name="zipCode"
-              rules={{required: true}}
-              render={({field: {onChange, value}}) => (
-                <Input
-                  isRequired
-                  ref={zipCodeRef}
-                  placeholder="Zip-code"
-                  nextField={phoneNumberRef}
-                  defaultValue={value}
-                  onChangeText={onChange}
-                  onSubmit={handleFocusNextField}
-                />
-              )}
-            />
-            <Controller
+              nextField="phoneNumber"
+              placeholder="Zip-code"
+              keyboardType="numeric"
               control={control}
+              rules={SCHEMA.zipCode}
+              inputRef={fieldRefs.zipCode}
+              clearError={handleClearErrorMessage}
+              onFocusNextInput={onFocus}
+            />
+            <ControllerInput<FormData>
               name="phoneNumber"
-              rules={{required: true}}
-              render={({field: {onChange, value}}) => (
-                <Input
-                  isRequired
-                  ref={phoneNumberRef}
-                  placeholder="Phone Number"
-                  defaultValue={value}
-                  onChangeText={onChange}
-                  onSubmit={handleFocusNextField}
-                />
-              )}
+              placeholder="Phone Number"
+              keyboardType="numeric"
+              control={control}
+              rules={SCHEMA.phoneNumber}
+              inputRef={fieldRefs.phoneNumber}
+              clearError={handleClearErrorMessage}
+              onFocusNextInput={onFocus}
             />
           </Flex>
           <Flex marginTop={50} paddingTop={25} paddingHorizontal={12}>
-            <ShippingMethod defaultValue={0} onChange={(value: number) => setValue('fee', value)} />
+            <ShippingMethod defaultValue={0} onChange={handleChangeShippingMethod} />
           </Flex>
           <Flex marginTop={20} paddingTop={25} paddingHorizontal={12} gap={20}>
             <Text variant="subTitle">Billing Address</Text>
             <Checkbox
-              selected={getValues('isCopyAddress')}
+              selected={isCopyAddress}
               label="Copy address data from shipping"
               onValueChange={handleToggleCheckbox}
             />
           </Flex>
-          <Button text="Continue to payment" onPress={handleSubmit(onSubmit)} />
+          {errorMessage && <Text color={text.error}>{errorMessage}</Text>}
+          <Button
+            disabled={!user}
+            text="Continue to payment"
+            onPress={handleSubmit(onSubmit, handleErrorForm)}
+          />
         </Flex>
       </KeyboardAwareScrollView>
     </MainLayout>
