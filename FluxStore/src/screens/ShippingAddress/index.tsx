@@ -6,7 +6,7 @@ import {FieldErrors, useForm} from 'react-hook-form';
 import Toast from 'react-native-toast-message';
 
 // Interfaces
-import {AppStackScreenProps, SCREENS} from '@/interfaces';
+import {OrderScreenProps, SCREENS} from '@/interfaces';
 
 // Constants
 import {SCHEMA} from '@/constants';
@@ -21,8 +21,6 @@ import {useAuthStore, useCartStore, useThemeStore} from '@/stores';
 // Components
 import {Button, Checkbox, ControllerInput, Flex, MainLayout, Text} from '@/components';
 import {ShippingMethod} from './components';
-
-type ShippingAddressProps = AppStackScreenProps<typeof SCREENS.SHIPPING_ADDRESS>;
 
 type FormData = {
   firstName: string;
@@ -39,7 +37,7 @@ type FormData = {
 
 const isAndroid = Platform.OS === 'android';
 
-const ShippingAddressScreen = ({navigation}: ShippingAddressProps) => {
+const ShippingAddressScreen = ({navigation}: OrderScreenProps<typeof SCREENS.SHIPPING_ADDRESS>) => {
   useScreenTrace(SCREENS.SHIPPING_ADDRESS);
   const insets = useSafeAreaInsets();
   const clearCart = useCartStore(state => state.clearCart);

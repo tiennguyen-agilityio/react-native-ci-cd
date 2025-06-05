@@ -5,7 +5,7 @@ import {FlatList, ListRenderItemInfo, StyleSheet, TouchableOpacity} from 'react-
 import {INIT_PAGE} from '@/constants';
 
 // Interfaces
-import {AppStackScreenProps, DIRECTION, Product, SCREENS} from '@/interfaces';
+import {DIRECTION, Product, ProductScreenProps, SCREENS} from '@/interfaces';
 
 // Hooks | Stores
 import {useMedia, useProducts, useScreenTrace} from '@/hooks';
@@ -35,9 +35,7 @@ const styles = StyleSheet.create({
   },
 });
 
-type LandingScreenProps = AppStackScreenProps<typeof SCREENS.PRODUCTS>;
-
-const ProductsScreen = ({navigation}: LandingScreenProps) => {
+const ProductsScreen = ({navigation}: ProductScreenProps<typeof SCREENS.PRODUCTS>) => {
   useScreenTrace(SCREENS.PRODUCTS);
 
   const user = useAuthStore(state => state.user);

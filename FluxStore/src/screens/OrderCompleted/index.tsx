@@ -3,7 +3,7 @@ import {ScrollView} from 'react-native-gesture-handler';
 import {useSafeAreaInsets} from 'react-native-safe-area-context';
 
 // Interfaces
-import {AppStackScreenProps, SCREENS} from '@/interfaces';
+import {OrderScreenProps, SCREENS} from '@/interfaces';
 
 // Hooks | Stores
 import {useScreenTrace} from '@/hooks';
@@ -15,9 +15,7 @@ import {fontSizes, metrics} from '@/themes';
 // Components
 import {Button, CartCompletedIcon, Flex, MainLayout, Text} from '@/components';
 
-type OrderCompletedScreenProps = AppStackScreenProps<typeof SCREENS.ORDER_COMPLETED>;
-
-const OrderCompletedScreen = ({navigation}: OrderCompletedScreenProps) => {
+const OrderCompletedScreen = ({navigation}: OrderScreenProps<typeof SCREENS.ORDER_COMPLETED>) => {
   useScreenTrace(SCREENS.ORDER_COMPLETED);
 
   const insets = useSafeAreaInsets();
@@ -27,8 +25,17 @@ const OrderCompletedScreen = ({navigation}: OrderCompletedScreenProps) => {
   } = useThemeStore();
 
   const handleGoToHome = useCallback(() => {
-    navigation.navigate(SCREENS.MAIN_TAB, {
-      screen: SCREENS.HOME,
+    navigation.reset({
+      index: 0,
+      routes: [
+        {
+          name: SCREENS.TABS,
+          state: {
+            index: 0,
+            routes: [{name: SCREENS.HOME}],
+          },
+        },
+      ],
     });
   }, [navigation]);
 

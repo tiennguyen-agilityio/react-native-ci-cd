@@ -5,7 +5,7 @@ import {memo, useCallback, useMemo, useState} from 'react';
 import {INIT_PAGE} from '@/constants';
 
 // Interfaces
-import {AppStackScreenProps, Category, Product, SCREENS} from '@/interfaces';
+import {BottomTabsScreenProps, Category, Product, SCREENS} from '@/interfaces';
 
 // Hooks
 import {useProducts, useScreenTrace} from '@/hooks';
@@ -63,9 +63,7 @@ const CATEGORIES: Category[] = [
 
 const isAndroid = Platform.OS === 'android';
 
-type HomeScreenProps = AppStackScreenProps<typeof SCREENS.HOME>;
-
-const HomeScreen = ({navigation}: HomeScreenProps) => {
+const HomeScreen = ({navigation}: BottomTabsScreenProps<typeof SCREENS.HOME>) => {
   useScreenTrace(SCREENS.HOME);
   const {theme} = useThemeStore();
 
@@ -87,12 +85,17 @@ const HomeScreen = ({navigation}: HomeScreenProps) => {
   }, []);
 
   const handleShowAllProduct = useCallback(() => {
-    navigation.navigate(SCREENS.PRODUCTS);
+    navigation.push(SCREENS.PRODUCT_STACK, {
+      screen: SCREENS.PRODUCTS,
+    });
   }, [navigation]);
 
   const handlePressProduct = useCallback(
     ({id}: Product) => {
-      navigation.navigate(SCREENS.PRODUCT_DETAIL, {id});
+      navigation.push(SCREENS.PRODUCT_STACK, {
+        screen: SCREENS.PRODUCT_DETAIL,
+        params: {id},
+      });
     },
     [navigation],
   );

@@ -1,13 +1,13 @@
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 
 // Interfaces
-import {AppStackParamList, SCREENS} from '@/interfaces';
+import {AuthStackParamList, SCREENS} from '@/interfaces';
 
 // Screens
 import {LoginScreen} from '@/screens';
 
-const AuthStackNavigator = () => {
-  const Stack = createNativeStackNavigator<AppStackParamList>();
+const AuthStack = () => {
+  const Stack = createNativeStackNavigator<AuthStackParamList>();
 
   return (
     <Stack.Navigator
@@ -19,4 +19,4 @@ const AuthStackNavigator = () => {
   );
 };
 
-export default AuthStackNavigator;
+export default AuthStack;

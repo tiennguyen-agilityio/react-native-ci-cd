@@ -3,14 +3,15 @@ import {StyleSheet, TouchableOpacity} from 'react-native';
 import {BottomTabBarButtonProps, createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 
 // Interfaces
-import {SCREENS, TabBarIcon} from '@/interfaces';
+import {SCREENS, TabBarIcon, TabsStackParamList} from '@/interfaces';
 
 // Stores
 import {useThemeStore} from '@/stores';
 
 // Screens || Stack
-import {HomeScreen, ProfileScreen, SearchScreen} from '@/screens';
-import CartStack from './CartStackNavigator';
+import {HomeScreen, SearchScreen} from '@/screens';
+import CartStack from './CartStack';
+import ProfileStack from './ProfileStack';
 
 // Components
 import {CartIcon, HomeIcon, SearchIcon, UserIcon} from '@/components';
@@ -34,7 +35,7 @@ const styles = StyleSheet.create({
   },
 });
 
-const Tab = createBottomTabNavigator();
+const Tabs = createBottomTabNavigator<TabsStackParamList>();
 
 const renderTabBarIcon =
   (screen: string) =>
@@ -58,7 +59,7 @@ const renderTabBarIcon =
     }
   };
 
-const MainTab = () => {
+const TabsStack = () => {
   const {
     theme: {background, text},
   } = useThemeStore();
@@ -78,7 +79,7 @@ const MainTab = () => {
   );
 
   return (
-    <Tab.Navigator
+    <Tabs.Navigator
       initialRouteName={SCREENS.HOME}
       screenOptions={({route}) => ({
         headerShown: false,
@@ -90,18 +91,18 @@ const MainTab = () => {
           ...tabBarStyle,
         },
       })}>
-      <Tab.Screen name={SCREENS.HOME} component={HomeScreen} />
-      <Tab.Screen name={SCREENS.SEARCH} component={SearchScreen} />
-      <Tab.Screen
+      <Tabs.Screen name={SCREENS.HOME} component={HomeScreen} />
+      <Tabs.Screen name={SCREENS.SEARCH} component={SearchScreen} />
+      <Tabs.Screen
         name={SCREENS.CART_STACK}
         component={CartStack}
         options={{
           tabBarStyle: {display: 'none'},
         }}
       />
-      <Tab.Screen name={SCREENS.PROFILE} component={ProfileScreen} />
-    </Tab.Navigator>
+      <Tabs.Screen name={SCREENS.PROFILE_STACK} component={ProfileStack} />
+    </Tabs.Navigator>
   );
 };
 
-export default MainTab;
+export default TabsStack;

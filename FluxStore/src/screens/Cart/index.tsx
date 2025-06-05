@@ -4,7 +4,7 @@ import {ScrollView} from 'react-native-gesture-handler';
 import {useSafeAreaInsets} from 'react-native-safe-area-context';
 
 // Interfaces
-import {AppStackScreenProps, SCREENS} from '@/interfaces';
+import {CartScreenProps, SCREENS} from '@/interfaces';
 
 // Constants
 import {CURRENCY_UNIT} from '@/constants';
@@ -34,9 +34,8 @@ const styles = StyleSheet.create({
 });
 
 const isAndroid = Platform.OS === 'android';
-type CartScreenProps = AppStackScreenProps<typeof SCREENS.CART>;
 
-const CartScreen = ({navigation}: CartScreenProps) => {
+const CartScreen = ({navigation}: CartScreenProps<typeof SCREENS.CART>) => {
   useScreenTrace(SCREENS.CART);
   const insets = useSafeAreaInsets();
 
@@ -57,7 +56,9 @@ const CartScreen = ({navigation}: CartScreenProps) => {
   );
 
   const handleGoToCheckout = useCallback(() => {
-    navigation.navigate(SCREENS.SHIPPING_ADDRESS);
+    navigation.navigate(SCREENS.ORDER_STACK, {
+      screen: SCREENS.SHIPPING_ADDRESS,
+    });
   }, [navigation]);
 
   return (
