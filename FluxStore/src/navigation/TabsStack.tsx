@@ -46,7 +46,6 @@ const renderTabBarIcon =
         return <SearchIcon disabled isActive={focused} />;
 
       case SCREENS.ORDER_STACK:
-      case SCREENS.ORDERS:
         return <CartIcon isActive={focused} disabled />;
 
       case SCREENS.PROFILE_STACK:

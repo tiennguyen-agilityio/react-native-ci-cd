@@ -19,3 +19,10 @@ export const SUCCESS_MESSAGES = {
 export const WARNING_MESSAGES = {
   MODIFIED: 'The information has been modified since the original submissionn',
 };
+
+export const CHANNEL_NOTIFICATION = {
+  DEFAULT: {
+    id: 'default',
+    name: 'Default Notifications',
+  },
+};

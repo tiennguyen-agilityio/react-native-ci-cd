@@ -4,10 +4,15 @@ import perf, {FirebasePerformanceTypes} from '@react-native-firebase/perf';
 
 // Interfaces
 import {SCREENS} from '@/interfaces';
+import {Platform} from 'react-native';
 
 export const useScreenTrace = (screenName: SCREENS) => {
   useFocusEffect(
     useCallback(() => {
+      if (Platform.OS === 'ios') {
+        return;
+      }
+
       let trace: FirebasePerformanceTypes.ScreenTrace | null = null;
 
       const start = async () => {

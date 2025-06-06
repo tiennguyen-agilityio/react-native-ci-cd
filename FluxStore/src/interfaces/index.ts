@@ -8,3 +8,4 @@ export * from './category';
 export * from './carousel';
 export * from './auth';
 export * from './user';
+export * from './deepLink';

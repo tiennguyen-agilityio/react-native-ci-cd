@@ -1,6 +1,8 @@
 import {useEffect, useState} from 'react';
 import {DevSettings} from 'react-native';
 import BootSplash from 'react-native-bootsplash';
+import {getMessaging, setBackgroundMessageHandler} from '@react-native-firebase/messaging';
+import {getApp} from '@react-native-firebase/app';
 
 // Stores
 import {useAuthStore, useBootstrapsStore} from '@/stores';
@@ -13,24 +15,15 @@ import {createNotificationChannel} from '@/utils';
 
 createNotificationChannel();
 
+const messaging = getMessaging(getApp());
+
+setBackgroundMessageHandler(messaging, async () => {});
+
 const App = () => {
   const [showStorybook, setShowStorybook] = useState(false);
 
   const {bootHydrated} = useBootstrapsStore();
   const {authHydrated} = useAuthStore();
-
-  // const appStartTrace = useRef<ReturnType<any> | null>(null);
-  // const appStartTime = useRef(Date.now());
-
-  // useEffect(() => {
-  //   const startTrace = async () => {
-  //     const trace = await perf().newTrace('app_start_time');
-  //     await trace.start();
-  //     appStartTrace.current = trace;
-  //   };
-
-  //   startTrace();
-  // }, []);
 
   useEffect(() => {
     if (__DEV__) {
@@ -42,20 +35,6 @@ const App = () => {
 
   useEffect(() => {
     if (bootHydrated && authHydrated) {
-      BootSplash.hide({fade: true});
-      // const now = Date.now();
-      // const duration = now - appStartTime.current;
-
-      // const stopTrace = async () => {
-      //   const trace = appStartTrace.current;
-      //   if (trace) {
-      //     trace.putMetric('duration_ms', duration);
-      //     await trace.stop();
-      //     console.log(`🔥 App start trace logged: ${duration}ms`);
-      //   }
-      // };
-
-      // stopTrace();
       BootSplash.hide({fade: true});
     }
   }, [bootHydrated, authHydrated]);

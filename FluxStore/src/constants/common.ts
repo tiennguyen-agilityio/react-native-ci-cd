@@ -13,5 +13,3 @@ export const REGEX = {
 export const INIT_PAGE = 1;
 
 export const PAGE_SIZE = 10;
-
-export const DEEP_LINK_PATH_PREFIX = 'fluxstore://';

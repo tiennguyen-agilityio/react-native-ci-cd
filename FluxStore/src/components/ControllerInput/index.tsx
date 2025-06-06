@@ -8,6 +8,7 @@ import Input from '../Input';
 interface ControllerInputProps<T extends FieldValues> extends UseControllerProps<T> {
   inputRef?: RefObject<TextInput | null>;
   nextField?: keyof T;
+  secureTextEntry?: boolean;
   keyboardType?: KeyboardTypeOptions;
   returnKeyType?: ReturnKeyTypeOptions;
   placeholder?: string;
