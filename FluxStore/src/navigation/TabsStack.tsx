@@ -1,5 +1,5 @@
 import {ReactNode, useCallback, useMemo} from 'react';
-import {StyleSheet, TouchableOpacity} from 'react-native';
+import {StyleSheet, TouchableOpacity, TouchableOpacityProps} from 'react-native';
 import {BottomTabBarButtonProps, createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 
 // Interfaces
@@ -10,13 +10,11 @@ import {useThemeStore} from '@/stores';
 
 // Screens || Stack
 import {HomeScreen, SearchScreen} from '@/screens';
-import CartStack from './CartStack';
 import ProfileStack from './ProfileStack';
+import OrderStack from './OrderStack';
 
 // Components
 import {CartIcon, HomeIcon, SearchIcon, UserIcon} from '@/components';
-
-// Themes
 
 const styles = StyleSheet.create({
   tabBarStyle: {
@@ -47,12 +45,11 @@ const renderTabBarIcon =
       case SCREENS.SEARCH:
         return <SearchIcon disabled isActive={focused} />;
 
-      case SCREENS.CART_STACK:
-      case SCREENS.CART:
-      case SCREENS.SHIPPING_ADDRESS:
+      case SCREENS.ORDER_STACK:
+      case SCREENS.ORDERS:
         return <CartIcon isActive={focused} disabled />;
 
-      case SCREENS.PROFILE:
+      case SCREENS.PROFILE_STACK:
         return <UserIcon isActive={focused} disabled />;
       default:
         return null;
@@ -74,7 +71,9 @@ const TabsStack = () => {
   );
 
   const renderTabBarButton = useCallback(
-    (props: BottomTabBarButtonProps) => <TouchableOpacity activeOpacity={1} {...props} />,
+    (props: BottomTabBarButtonProps) => (
+      <TouchableOpacity activeOpacity={1} {...(props as TouchableOpacityProps)} />
+    ),
     [],
   );
 
@@ -93,13 +92,7 @@ const TabsStack = () => {
       })}>
       <Tabs.Screen name={SCREENS.HOME} component={HomeScreen} />
       <Tabs.Screen name={SCREENS.SEARCH} component={SearchScreen} />
-      <Tabs.Screen
-        name={SCREENS.CART_STACK}
-        component={CartStack}
-        options={{
-          tabBarStyle: {display: 'none'},
-        }}
-      />
+      <Tabs.Screen name={SCREENS.ORDER_STACK} component={OrderStack} />
       <Tabs.Screen name={SCREENS.PROFILE_STACK} component={ProfileStack} />
     </Tabs.Navigator>
   );

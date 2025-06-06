@@ -1,11 +1,8 @@
-export {default as LoginScreen} from './Login';
+export * from './Onboarding';
+export * from './Auth';
+export * from './Products';
+export * from './Orders';
 export {default as HomeScreen} from './Home';
 export {default as SearchScreen} from './Search';
 export {default as CartScreen} from './Cart';
-export {default as ShippingAddressScreen} from './ShippingAddress';
-export {default as OrderCompletedScreen} from './OrderCompleted';
 export {default as ProfileScreen} from './Profile';
-export {default as WelcomeScreen} from './Welcome';
-export {default as IntroScreen} from './Intro';
-export {default as ProductsScreen} from './Products';
-export {default as ProductDetailScreen} from './ProductDetail';
