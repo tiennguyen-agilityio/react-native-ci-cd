@@ -23,7 +23,7 @@ const Header = () => {
   const navigation =
     useNavigation<NativeStackNavigationProp<AppStackParamList, keyof AppStackParamList>>();
   const route = useRoute();
-  const user = useAuthStore(state => state.user);
+  const isAuthenticated = useAuthStore(state => state.isAuthenticated);
 
   const {
     theme: {background, text},
@@ -31,17 +31,30 @@ const Header = () => {
   const {name = ''} = route;
 
   const handleShowMenu = useCallback(() => null, []);
+
   const handleShowNotification = useCallback(() => null, []);
+
   const handleGoToBack = useCallback(() => {
     if (navigation.canGoBack()) {
       return navigation.goBack();
-    } else if (user?.id) {
-      return navigation.navigate(SCREENS.MAIN_TAB, {
-        screen: SCREENS.HOME,
+    } else if (isAuthenticated) {
+      return navigation.reset({
+        index: 0,
+        routes: [
+          {
+            name: SCREENS.TABS,
+            state: {
+              index: 0,
+              routes: [{name: SCREENS.HOME}],
+            },
+          },
+        ],
       });
     }
-    return navigation.navigate(SCREENS.LOGIN);
-  }, [navigation, user?.id]);
+    return navigation.navigate(SCREENS.AUTH_STACK, {
+      screen: SCREENS.LOGIN,
+    });
+  }, [navigation, isAuthenticated]);
 
   const handleChangeFavorite = useCallback(() => {
     const {id = ''} = route?.params || {};

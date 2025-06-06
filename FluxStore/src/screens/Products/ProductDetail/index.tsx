@@ -158,7 +158,22 @@ const ProductDetailScreen = ({
   );
 
   const handleGoToBack = useCallback(() => {
-    navigation.goBack();
+    if (navigation?.canGoBack()) {
+      navigation.goBack();
+    } else {
+      navigation.reset({
+        index: 0,
+        routes: [
+          {
+            name: SCREENS.TABS,
+            state: {
+              index: 0,
+              routes: [{name: SCREENS.HOME}],
+            },
+          },
+        ],
+      });
+    }
   }, [navigation]);
 
   const handleChangeFavorite = useCallback(() => {}, []);

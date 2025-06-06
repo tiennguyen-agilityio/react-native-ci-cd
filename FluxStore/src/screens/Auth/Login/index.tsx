@@ -3,6 +3,7 @@ import {useForm} from 'react-hook-form';
 import {ScrollView} from 'react-native-gesture-handler';
 import {useSafeAreaInsets} from 'react-native-safe-area-context';
 import crashlytics from '@react-native-firebase/crashlytics';
+import {Linking} from 'react-native';
 
 // Interfaces
 import {LoginPayLoad, SCREENS, User} from '@/interfaces';
@@ -12,7 +13,7 @@ import {ERROR_MESSAGES, SCHEMA} from '@/constants';
 
 // Hooks
 import {useAuth, useFocusInput, useScreenTrace} from '@/hooks';
-import {useThemeStore, useAuthStore} from '@/stores';
+import {useThemeStore, useAuthStore, useDeepLinkStore} from '@/stores';
 
 // Themes
 import {fontSizes, fontWeights, metrics} from '@/themes';
@@ -36,6 +37,7 @@ const LoginScreen = () => {
   const {
     theme: {text},
   } = useThemeStore();
+  const {pendingDeepLink, setPendingDeepLink} = useDeepLinkStore();
 
   const [setIsAuthenticated, setUser] = useAuthStore(state => [
     state.setIsAuthenticated,
@@ -80,6 +82,10 @@ const LoginScreen = () => {
         onSuccess: (users: User[]) => {
           if (users?.length) {
             setUser(users[0]);
+            if (pendingDeepLink) {
+              Linking.openURL(pendingDeepLink);
+              setPendingDeepLink(null);
+            }
             setIsAuthenticated(true);
             reset();
             setErrorMessage('');
@@ -98,7 +104,7 @@ const LoginScreen = () => {
         },
       });
     },
-    [mutate, reset, setIsAuthenticated, setUser],
+    [mutate, pendingDeepLink, reset, setIsAuthenticated, setPendingDeepLink, setUser],
   );
 
   return (
@@ -130,6 +136,7 @@ const LoginScreen = () => {
               inputRef={fieldRefs.password}
               control={control}
               placeholder="Password"
+              secureTextEntry
               returnKeyType="done"
               clearError={handleClearErrorMessage}
             />
