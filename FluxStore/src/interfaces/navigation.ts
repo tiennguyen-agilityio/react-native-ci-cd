@@ -22,6 +22,7 @@ export enum SCREENS {
   PRODUCT_DETAIL = 'ProductDetail',
 
   ORDER_STACK = 'OrderStack',
+  ORDERS = 'Orders',
   SHIPPING_ADDRESS = 'ShippingAddress',
   ORDER_COMPLETED = 'OrderCompleted',
 
@@ -41,7 +42,7 @@ export type AuthStackParamList = {
 export type TabsStackParamList = {
   [SCREENS.HOME]: undefined;
   [SCREENS.SEARCH]: undefined;
-  [SCREENS.CART_STACK]: undefined;
+  [SCREENS.ORDER_STACK]: undefined;
   [SCREENS.PROFILE_STACK]: undefined;
 };
 
@@ -55,6 +56,7 @@ export type CartStackParamList = {
 };
 
 export type OrderStackParamList = {
+  [SCREENS.ORDERS]: undefined;
   [SCREENS.SHIPPING_ADDRESS]: undefined;
   [SCREENS.ORDER_COMPLETED]: undefined;
 };

@@ -4,7 +4,7 @@ import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {OrderStackParamList, SCREENS} from '@/interfaces';
 
 // Screens
-import {ShippingAddressScreen, OrderCompletedScreen} from '@/screens';
+import {ShippingAddressScreen, OrderCompletedScreen, OrderListScreen} from '@/screens';
 
 const Stack = createNativeStackNavigator<OrderStackParamList>();
 
@@ -14,6 +14,7 @@ const OrderStack = () => {
       screenOptions={{
         headerShown: false,
       }}>
+      <Stack.Screen name={SCREENS.ORDERS} component={OrderListScreen} />
       <Stack.Screen name={SCREENS.SHIPPING_ADDRESS} component={ShippingAddressScreen} />
       <Stack.Screen name={SCREENS.ORDER_COMPLETED} component={OrderCompletedScreen} />
     </Stack.Navigator>
