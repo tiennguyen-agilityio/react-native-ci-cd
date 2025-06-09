@@ -52,7 +52,7 @@ const ProductDetailScreen = ({
   const {id = ''} = route.params || {};
 
   const {useProductDetail} = useProducts();
-  const {data: product, isLoading, isFetched} = useProductDetail(id);
+  const {data: product, isLoading, isFetched, isError} = useProductDetail(id);
 
   const addNewCart = useCartStore(state => state.addNewCart);
   const user = useAuthStore(state => state.user);
@@ -215,6 +215,27 @@ const ProductDetailScreen = ({
       setSize(sizesPrd[0]);
     }
   }, [isFetched]);
+
+  useEffect(() => {
+    if (isError) {
+      Toast.show({
+        type: 'error',
+        text1: 'Loading Product detail failed',
+      });
+      navigation.reset({
+        index: 0,
+        routes: [
+          {
+            name: SCREENS.TABS,
+            state: {
+              index: 0,
+              routes: [{name: SCREENS.HOME}],
+            },
+          },
+        ],
+      });
+    }
+  }, [isError]);
 
   return (
     <Flex flex={1} position="relative" backgroundColor={background.default} paddingBottom={77}>
