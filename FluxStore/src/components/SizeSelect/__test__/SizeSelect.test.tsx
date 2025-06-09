@@ -3,12 +3,6 @@ import {fireEvent, render, screen} from '@testing-library/react-native';
 import {SIZES} from '@/mocks';
 import SizeSelect from '..';
 
-jest.mock('@/utils', () => ({
-  toggleItem: (arr: string[], item: string) => {
-    return arr.includes(item) ? arr.filter(i => i !== item) : [...arr, item];
-  },
-}));
-
 const onValueChange = jest.fn();
 const props = {
   sizes: SIZES,
