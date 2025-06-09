@@ -7,7 +7,7 @@ import {Linking} from 'react-native';
 import {AppStackParamList, SCREENS} from '@/interfaces';
 
 // Constants
-import {CHANNEL_NOTIFICATION, LINKING_URLS} from '@/constants';
+import {CHANNEL_NOTIFICATION, LINKING_URLS, PATH_PREFIX} from '@/constants';
 
 // Stores
 import {useAuthStore, useDeepLinkStore} from '@/stores';
@@ -119,4 +119,30 @@ export const linking: LinkingOptions<AppStackParamList> = {
   },
   subscribe,
   getInitialURL,
+};
+
+export const parseDeepLink = (url: string) => {
+  const regex = new RegExp(`${PATH_PREFIX}([^/]+)\\/?(\\d+)?`);
+  const match = url.match(regex);
+  if (!match) return null;
+
+  const screen = match[1];
+  const id = match[2];
+
+  switch (screen) {
+    case SCREENS.PRODUCTS:
+      return {
+        stack: SCREENS.PRODUCT_STACK,
+        screen: SCREENS.PRODUCTS,
+      };
+
+    case SCREENS.PRODUCT_DETAIL:
+      return {
+        stack: SCREENS.PRODUCT_STACK,
+        screen: SCREENS.PRODUCT_DETAIL,
+        params: {id},
+      };
+    default:
+      return null;
+  }
 };

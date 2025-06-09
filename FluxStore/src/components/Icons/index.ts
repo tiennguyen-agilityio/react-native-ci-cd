@@ -31,3 +31,4 @@ export * from './StarSecondaryIcon';
 export * from './AddressIcon';
 export * from './SunIcon';
 export * from './MoonIcon';
+export * from './ShoppingCartIcon';

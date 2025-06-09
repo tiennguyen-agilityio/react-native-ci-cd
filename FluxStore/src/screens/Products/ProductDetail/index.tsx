@@ -26,7 +26,6 @@ import {
   Button,
   Carousel,
   CartIcon,
-  CartIconType,
   ChevronIcon,
   Collapse,
   ColorPicker,
@@ -69,6 +68,7 @@ const ProductDetailScreen = ({
     sizes: sizesPrd = [],
     description,
   } = product || {};
+  const isFavorite = user?.favorites?.includes(id);
 
   const [color, setColor] = useState(colorsPrd[0]);
   const [size, setSize] = useState(sizesPrd[0]);
@@ -228,7 +228,7 @@ const ProductDetailScreen = ({
         width="100%"
         zIndex={4}>
         <ChevronIcon direction={DIRECTION.LEFT} style={styles.iconBack} onPress={handleGoToBack} />
-        <HeartIcon style={styles.iconBack} onPress={handleChangeFavorite} />
+        <HeartIcon isActive={isFavorite} style={styles.iconBack} onPress={handleChangeFavorite} />
       </Flex>
       <ScrollView showsVerticalScrollIndicator={false}>
         <Flex
@@ -298,7 +298,7 @@ const ProductDetailScreen = ({
           text="Add to cart"
           height={77}
           style={styles.button}
-          startIcon={<CartIcon type={CartIconType.Secondary} />}
+          startIcon={<CartIcon />}
           onPress={handleAddToCart}
         />
       </Flex>

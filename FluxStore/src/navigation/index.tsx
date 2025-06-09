@@ -1,4 +1,5 @@
-import {NavigationContainer} from '@react-navigation/native';
+import {useEffect, useRef} from 'react';
+import {NavigationContainer, useNavigationContainerRef} from '@react-navigation/native';
 import {GestureHandlerRootView} from 'react-native-gesture-handler';
 import {KeyboardProvider} from 'react-native-keyboard-controller';
 import {QueryClient, QueryClientProvider} from '@tanstack/react-query';
@@ -12,7 +13,7 @@ import {AppStackParamList, SCREENS} from '@/interfaces';
 import {linking} from '@/configs';
 
 // Stores
-import {useAuthStore} from '@/stores';
+import {useAuthStore, useDeepLinkStore} from '@/stores';
 import {useBootstrapsStore} from '@/stores';
 
 // Stacks | Screens
@@ -28,14 +29,33 @@ const AppStack = createNativeStackNavigator<AppStackParamList>();
 
 export const Navigation = () => {
   const queryClient = new QueryClient();
+  const navigationRef = useNavigationContainerRef<AppStackParamList>();
 
   const isAuthenticated = useAuthStore(state => state.isAuthenticated);
   const isFirstLoad = useBootstrapsStore(state => state.isFirstLoad);
+  const {pendingDeepLink, setPendingDeepLink} = useDeepLinkStore();
+
+  const hasNavigatedRef = useRef(false);
+
+  useEffect(() => {
+    if (isAuthenticated && pendingDeepLink && navigationRef.isReady() && !hasNavigatedRef.current) {
+      if (pendingDeepLink) {
+        const {stack, screen, params} = pendingDeepLink;
+        if (stack && screen) {
+          navigationRef.navigate(stack, {screen, params});
+        } else {
+          navigationRef.navigate(screen, params);
+        }
+      }
+      hasNavigatedRef.current = true;
+      setPendingDeepLink(null);
+    }
+  }, [isAuthenticated, pendingDeepLink, navigationRef]);
 
   return (
     <QueryClientProvider client={queryClient}>
       <KeyboardProvider>
-        <NavigationContainer linking={linking}>
+        <NavigationContainer linking={linking} ref={navigationRef}>
           <GestureHandlerRootView>
             <AppStack.Navigator
               screenOptions={{
