@@ -14,7 +14,7 @@ import ProfileStack from './ProfileStack';
 import OrderStack from './OrderStack';
 
 // Components
-import {CartIcon, HomeIcon, SearchIcon, UserIcon} from '@/components';
+import {ShoppingCartIcon, HomeIcon, SearchIcon, UserIcon} from '@/components';
 
 const styles = StyleSheet.create({
   tabBarStyle: {
@@ -46,7 +46,7 @@ const renderTabBarIcon =
         return <SearchIcon disabled isActive={focused} />;
 
       case SCREENS.ORDER_STACK:
-        return <CartIcon isActive={focused} disabled />;
+        return <ShoppingCartIcon isActive={focused} disabled />;
 
       case SCREENS.PROFILE_STACK:
         return <UserIcon isActive={focused} disabled />;
