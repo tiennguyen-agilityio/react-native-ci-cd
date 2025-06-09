@@ -130,7 +130,8 @@ const ShippingAddressScreen = ({navigation}: OrderScreenProps<typeof SCREENS.SHI
       <KeyboardAwareScrollView
         showsVerticalScrollIndicator={false}
         keyboardShouldPersistTaps="handled"
-        bottomOffset={20}>
+        bottomOffset={20}
+        extraKeyboardSpace={30}>
         <Flex
           flex={1}
           marginTop={22}

@@ -1,8 +1,8 @@
 import perf from '@react-native-firebase/perf';
 import axios, {AxiosRequestConfig} from 'axios';
+import Config from 'react-native-config';
 
-// const API_URL = 'https://react-native-zce1.onrender.com/';
-const API_URL = 'https://61b189803c954f001722a9e5.mockapi.io/api/';
+const API_URL = Config.API_URL;
 
 const defaultOptions = {
   baseURL: API_URL,

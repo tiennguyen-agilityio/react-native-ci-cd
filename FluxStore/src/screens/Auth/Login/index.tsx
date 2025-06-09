@@ -3,7 +3,6 @@ import {useForm} from 'react-hook-form';
 import {ScrollView} from 'react-native-gesture-handler';
 import {useSafeAreaInsets} from 'react-native-safe-area-context';
 import crashlytics from '@react-native-firebase/crashlytics';
-import {Linking} from 'react-native';
 
 // Interfaces
 import {LoginPayLoad, SCREENS, User} from '@/interfaces';
@@ -82,10 +81,6 @@ const LoginScreen = () => {
         onSuccess: (users: User[]) => {
           if (users?.length) {
             setUser(users[0]);
-            if (pendingDeepLink) {
-              Linking.openURL(pendingDeepLink);
-              setPendingDeepLink(null);
-            }
             setIsAuthenticated(true);
             reset();
             setErrorMessage('');
