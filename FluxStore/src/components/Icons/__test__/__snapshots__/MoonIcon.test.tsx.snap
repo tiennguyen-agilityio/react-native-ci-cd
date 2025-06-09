@@ -1,0 +1,187 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`MoonIcon renders correctly (matches snapshot) 1`] = `
+<View
+  accessibilityState={
+    {
+      "busy": undefined,
+      "checked": undefined,
+      "disabled": false,
+      "expanded": undefined,
+      "selected": undefined,
+    }
+  }
+  accessibilityValue={
+    {
+      "max": undefined,
+      "min": undefined,
+      "now": undefined,
+      "text": undefined,
+    }
+  }
+  accessible={true}
+  collapsable={false}
+  focusable={false}
+  onClick={[Function]}
+  onResponderGrant={[Function]}
+  onResponderMove={[Function]}
+  onResponderRelease={[Function]}
+  onResponderTerminate={[Function]}
+  onResponderTerminationRequest={[Function]}
+  onStartShouldSetResponder={[Function]}
+  style={
+    {
+      "opacity": 1,
+    }
+  }
+  testID="moon-icon"
+>
+  <RNSVGSvgView
+    align="xMidYMid"
+    bbHeight={17}
+    bbWidth={16}
+    fill="none"
+    focusable={false}
+    height={17}
+    meetOrSlice={0}
+    minX={0}
+    minY={0}
+    style={
+      [
+        {
+          "backgroundColor": "transparent",
+          "borderWidth": 0,
+        },
+        {
+          "flex": 0,
+          "height": 17,
+          "width": 16,
+        },
+      ]
+    }
+    vbHeight={17}
+    vbWidth={16}
+    width={16}
+  >
+    <RNSVGGroup
+      fill={null}
+      propList={
+        [
+          "fill",
+        ]
+      }
+    >
+      <RNSVGPath
+        clipRule={0}
+        d="M4.644 3.023a6.417 6.417 0 108.915 8.915 10.087 10.087 0 01-8.915-8.915zm10.023 7.142c.793 0 1.477.7 1.163 1.429A8.252 8.252 0 010 8.332 8.252 8.252 0 014.988.752c.729-.314 1.429.37 1.429 1.163a8.25 8.25 0 008.25 8.25z"
+        fill={
+          {
+            "payload": 4281544750,
+            "type": 0,
+          }
+        }
+        fillRule={0}
+        propList={
+          [
+            "fill",
+            "fillRule",
+          ]
+        }
+      />
+    </RNSVGGroup>
+  </RNSVGSvgView>
+</View>
+`;
+
+exports[`MoonIcon renders correctly (matches snapshot) with isActive true 1`] = `
+<View
+  accessibilityState={
+    {
+      "busy": undefined,
+      "checked": undefined,
+      "disabled": false,
+      "expanded": undefined,
+      "selected": undefined,
+    }
+  }
+  accessibilityValue={
+    {
+      "max": undefined,
+      "min": undefined,
+      "now": undefined,
+      "text": undefined,
+    }
+  }
+  accessible={true}
+  collapsable={false}
+  focusable={false}
+  onClick={[Function]}
+  onResponderGrant={[Function]}
+  onResponderMove={[Function]}
+  onResponderRelease={[Function]}
+  onResponderTerminate={[Function]}
+  onResponderTerminationRequest={[Function]}
+  onStartShouldSetResponder={[Function]}
+  style={
+    {
+      "opacity": 1,
+    }
+  }
+  testID="moon-icon"
+>
+  <RNSVGSvgView
+    align="xMidYMid"
+    bbHeight={17}
+    bbWidth={16}
+    fill="none"
+    focusable={false}
+    height={17}
+    meetOrSlice={0}
+    minX={0}
+    minY={0}
+    style={
+      [
+        {
+          "backgroundColor": "transparent",
+          "borderWidth": 0,
+        },
+        {
+          "flex": 0,
+          "height": 17,
+          "width": 16,
+        },
+      ]
+    }
+    vbHeight={17}
+    vbWidth={16}
+    width={16}
+  >
+    <RNSVGGroup
+      fill={null}
+      propList={
+        [
+          "fill",
+        ]
+      }
+    >
+      <RNSVGPath
+        clipRule={0}
+        d="M4.644 3.023a6.417 6.417 0 108.915 8.915 10.087 10.087 0 01-8.915-8.915zm10.023 7.142c.793 0 1.477.7 1.163 1.429A8.252 8.252 0 010 8.332 8.252 8.252 0 014.988.752c.729-.314 1.429.37 1.429 1.163a8.25 8.25 0 008.25 8.25z"
+        fill={
+          {
+            "payload": 2147483648,
+            "type": 0,
+          }
+        }
+        fillRule={0}
+        propList={
+          [
+            "fill",
+            "fillRule",
+          ]
+        }
+      />
+    </RNSVGGroup>
+  </RNSVGSvgView>
+</View>
+`;

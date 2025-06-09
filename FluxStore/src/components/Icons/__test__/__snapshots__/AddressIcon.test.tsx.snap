@@ -1,0 +1,94 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AddressIcon renders correctly (matches snapshot) 1`] = `
+<View
+  accessibilityState={
+    {
+      "busy": undefined,
+      "checked": undefined,
+      "disabled": false,
+      "expanded": undefined,
+      "selected": undefined,
+    }
+  }
+  accessibilityValue={
+    {
+      "max": undefined,
+      "min": undefined,
+      "now": undefined,
+      "text": undefined,
+    }
+  }
+  accessible={true}
+  collapsable={false}
+  focusable={false}
+  onClick={[Function]}
+  onResponderGrant={[Function]}
+  onResponderMove={[Function]}
+  onResponderRelease={[Function]}
+  onResponderTerminate={[Function]}
+  onResponderTerminationRequest={[Function]}
+  onStartShouldSetResponder={[Function]}
+  style={
+    {
+      "opacity": 1,
+    }
+  }
+  testID="address-icon"
+>
+  <RNSVGSvgView
+    align="xMidYMid"
+    bbHeight={19}
+    bbWidth={15}
+    fill="none"
+    focusable={false}
+    height={19}
+    meetOrSlice={0}
+    minX={0}
+    minY={0}
+    style={
+      [
+        {
+          "backgroundColor": "transparent",
+          "borderWidth": 0,
+        },
+        {
+          "flex": 0,
+          "height": 19,
+          "width": 15,
+        },
+      ]
+    }
+    vbHeight={19}
+    vbWidth={15}
+    width={15}
+  >
+    <RNSVGGroup
+      fill={null}
+      propList={
+        [
+          "fill",
+        ]
+      }
+    >
+      <RNSVGPath
+        clipRule={0}
+        d="M.063 8.028C.063 4.003 3.425.75 7.494.75c4.08 0 7.444 3.253 7.444 7.278 0 2.028-.738 3.911-1.952 5.507a19.306 19.306 0 01-4.849 4.498c-.425.279-.809.3-1.275 0a18.935 18.935 0 01-4.848-4.498C.8 11.94.063 10.056.063 8.028zm4.982.227c0 1.348 1.1 2.409 2.45 2.409s2.46-1.061 2.46-2.41c0-1.337-1.11-2.45-2.46-2.45a2.462 2.462 0 00-2.45 2.45z"
+        fill={
+          {
+            "payload": 2147483648,
+            "type": 0,
+          }
+        }
+        fillRule={0}
+        propList={
+          [
+            "fill",
+            "fillRule",
+          ]
+        }
+      />
+    </RNSVGGroup>
+  </RNSVGSvgView>
+</View>
+`;

@@ -13,7 +13,7 @@ export const WalletIcon = memo(
 
     return (
       <TouchableOpacity
-        testID="logout-icon"
+        testID="wallet-icon"
         activeOpacity={0.8}
         onPress={onPress}
         disabled={disabled}

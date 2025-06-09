@@ -11,7 +11,7 @@ export const SunIcon = memo(
     height = 21,
     color,
     isActive = false,
-    disabled = true,
+    disabled = false,
     style,
     onPress,
   }: IconProps) => {

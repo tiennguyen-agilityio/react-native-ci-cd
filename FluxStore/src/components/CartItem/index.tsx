@@ -39,7 +39,7 @@ const CartItem = ({
   const {
     theme: {background, fonts},
   } = useThemeStore();
-  const {name, image, price} = product;
+  const {name = '', image = '', price = ''} = product || {};
 
   const styles = useMemo(
     () =>
