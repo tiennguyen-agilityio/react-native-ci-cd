@@ -97,10 +97,10 @@ const ProductDetailScreen = ({
           alignItems: 'center',
           shadowColor: text.primary,
           backgroundColor: background.default,
-          shadowOffset: {width: 0, height: 3},
-          shadowOpacity: 0.2,
+          shadowOffset: {width: 0, height: 0},
+          shadowOpacity: 0.4,
           shadowRadius: 6,
-          elevation: 4,
+          elevation: 12,
         },
         content: {
           flex: 1,
@@ -116,12 +116,11 @@ const ProductDetailScreen = ({
           shadowOffset: {width: 0, height: 4},
           shadowOpacity: 0.5,
           shadowRadius: 6,
-          elevation: 6,
+          elevation: 16,
         },
         image: {
           width: metrics.screenWidth,
           height: 406,
-          backgroundColor: background.tertiary,
         },
         price: {
           fontFamily: fonts.secondary?.medium || fonts.default.medium,
@@ -242,6 +241,7 @@ const ProductDetailScreen = ({
       <Flex
         direction="row"
         justify="between"
+        align="center"
         height={44}
         top={insets.top}
         paddingHorizontal={metrics.dimensions.xxl}
