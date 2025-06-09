@@ -82,15 +82,8 @@ exports[`StarSecondaryIcon renders correctly (matches snapshot) 1`] = `
         propList={
           [
             "fill",
-            "stroke",
             "strokeWidth",
           ]
-        }
-        stroke={
-          {
-            "payload": 2147483648,
-            "type": 0,
-          }
         }
         strokeWidth={2}
       />
@@ -181,15 +174,8 @@ exports[`StarSecondaryIcon renders correctly (matches snapshot) with isActive tr
         propList={
           [
             "fill",
-            "stroke",
             "strokeWidth",
           ]
-        }
-        stroke={
-          {
-            "payload": 2147483648,
-            "type": 0,
-          }
         }
         strokeWidth={2}
       />
