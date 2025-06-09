@@ -4,13 +4,11 @@ import Svg, {Path, Rect} from 'react-native-svg';
 
 import {useThemeStore} from '@/stores';
 import {IconProps} from '@/interfaces';
-import {colors} from '@/themes';
 
 export const FacebookIcon = memo(
   ({width = 42, height = 42, disabled = false, style, onPress}: IconProps) => {
     const {
-      isDark,
-      theme: {background},
+      theme: {background, text},
     } = useThemeStore();
 
     return (
@@ -29,7 +27,7 @@ export const FacebookIcon = memo(
             height={41}
             rx={20.5}
             fill={background.default}
-            stroke={isDark ? colors.white[500] : colors.black[700]}
+            stroke={text.primary}
           />
           <Path
             fillRule="evenodd"

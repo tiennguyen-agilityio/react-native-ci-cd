@@ -11,7 +11,7 @@ export const MoonIcon = memo(
     height = 17,
     color,
     isActive = false,
-    disabled = true,
+    disabled = false,
     style,
     onPress,
   }: IconProps) => {

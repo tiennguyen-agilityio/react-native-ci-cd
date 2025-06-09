@@ -1,0 +1,181 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ShoppingCartIcon renders correctly (matches snapshot) 1`] = `
+<View
+  accessibilityState={
+    {
+      "busy": undefined,
+      "checked": undefined,
+      "disabled": false,
+      "expanded": undefined,
+      "selected": undefined,
+    }
+  }
+  accessibilityValue={
+    {
+      "max": undefined,
+      "min": undefined,
+      "now": undefined,
+      "text": undefined,
+    }
+  }
+  accessible={true}
+  collapsable={false}
+  focusable={false}
+  onClick={[Function]}
+  onResponderGrant={[Function]}
+  onResponderMove={[Function]}
+  onResponderRelease={[Function]}
+  onResponderTerminate={[Function]}
+  onResponderTerminationRequest={[Function]}
+  onStartShouldSetResponder={[Function]}
+  style={
+    {
+      "opacity": 1,
+    }
+  }
+  testID="shopping-cart-icon"
+>
+  <RNSVGSvgView
+    align="xMidYMid"
+    bbHeight={23}
+    bbWidth={22}
+    fill="none"
+    focusable={false}
+    height={23}
+    meetOrSlice={0}
+    minX={0}
+    minY={0}
+    style={
+      [
+        {
+          "backgroundColor": "transparent",
+          "borderWidth": 0,
+        },
+        {
+          "flex": 0,
+          "height": 23,
+          "width": 22,
+        },
+      ]
+    }
+    vbHeight={23}
+    vbWidth={22}
+    width={22}
+  >
+    <RNSVGGroup
+      fill={null}
+      propList={
+        [
+          "fill",
+        ]
+      }
+    >
+      <RNSVGPath
+        d="M6.538 5.208v-.52a4.689 4.689 0 019.375 0v.52h1.68c1.4 0 2.618 1.097 2.76 2.492l1.276 12.514a2.424 2.424 0 01-2.437 2.703H3.26c-1.48 0-2.588-1.227-2.437-2.703L2.098 7.7c.142-1.39 1.362-2.492 2.76-2.492h1.68zm0 2.084h-1.68c-.33 0-.654.292-.687.619L2.895 20.425c-.025.249.12.408.365.408h15.932c.242 0 .39-.163.364-.408L18.281 7.911a.724.724 0 00-.687-.62h-1.68v2.084a1.042 1.042 0 11-2.084 0V7.292H8.622v2.083a1.042 1.042 0 11-2.084 0V7.292zm7.292-2.084v-.961c0-1.194-1.166-2.164-2.604-2.164-1.438 0-2.604.97-2.604 2.164v.961h5.208z"
+        fill={
+          {
+            "payload": 4293454060,
+            "type": 0,
+          }
+        }
+        propList={
+          [
+            "fill",
+          ]
+        }
+      />
+    </RNSVGGroup>
+  </RNSVGSvgView>
+</View>
+`;
+
+exports[`ShoppingCartIcon renders correctly (matches snapshot) with isActive true 1`] = `
+<View
+  accessibilityState={
+    {
+      "busy": undefined,
+      "checked": undefined,
+      "disabled": false,
+      "expanded": undefined,
+      "selected": undefined,
+    }
+  }
+  accessibilityValue={
+    {
+      "max": undefined,
+      "min": undefined,
+      "now": undefined,
+      "text": undefined,
+    }
+  }
+  accessible={true}
+  collapsable={false}
+  focusable={false}
+  onClick={[Function]}
+  onResponderGrant={[Function]}
+  onResponderMove={[Function]}
+  onResponderRelease={[Function]}
+  onResponderTerminate={[Function]}
+  onResponderTerminationRequest={[Function]}
+  onStartShouldSetResponder={[Function]}
+  style={
+    {
+      "opacity": 1,
+    }
+  }
+  testID="shopping-cart-icon"
+>
+  <RNSVGSvgView
+    align="xMidYMid"
+    bbHeight={23}
+    bbWidth={22}
+    fill="none"
+    focusable={false}
+    height={23}
+    meetOrSlice={0}
+    minX={0}
+    minY={0}
+    style={
+      [
+        {
+          "backgroundColor": "transparent",
+          "borderWidth": 0,
+        },
+        {
+          "flex": 0,
+          "height": 23,
+          "width": 22,
+        },
+      ]
+    }
+    vbHeight={23}
+    vbWidth={22}
+    width={22}
+  >
+    <RNSVGGroup
+      fill={null}
+      propList={
+        [
+          "fill",
+        ]
+      }
+    >
+      <RNSVGPath
+        d="M6.538 5.208v-.52a4.689 4.689 0 019.375 0v.52h1.68c1.4 0 2.618 1.097 2.76 2.492l1.276 12.514a2.424 2.424 0 01-2.437 2.703H3.26c-1.48 0-2.588-1.227-2.437-2.703L2.098 7.7c.142-1.39 1.362-2.492 2.76-2.492h1.68zm0 2.084h-1.68c-.33 0-.654.292-.687.619L2.895 20.425c-.025.249.12.408.365.408h15.932c.242 0 .39-.163.364-.408L18.281 7.911a.724.724 0 00-.687-.62h-1.68v2.084a1.042 1.042 0 11-2.084 0V7.292H8.622v2.083a1.042 1.042 0 11-2.084 0V7.292zm7.292-2.084v-.961c0-1.194-1.166-2.164-2.604-2.164-1.438 0-2.604.97-2.604 2.164v.961h5.208z"
+        fill={
+          {
+            "payload": 4278190080,
+            "type": 0,
+          }
+        }
+        propList={
+          [
+            "fill",
+          ]
+        }
+      />
+    </RNSVGGroup>
+  </RNSVGSvgView>
+</View>
+`;
