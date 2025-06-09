@@ -1,17 +1,12 @@
 import {render, fireEvent, screen} from '@testing-library/react-native';
 
-import {CartIcon, CartIconType} from '../CartIcon';
+import {CartIcon} from '../CartIcon';
 
 describe('CartIcon', () => {
   const onPress = jest.fn();
 
   it('renders correctly (matches snapshot)', () => {
     const {toJSON} = render(<CartIcon />);
-    expect(toJSON()).toMatchSnapshot();
-  });
-
-  it('renders correctly (matches snapshot) with type Secondary', () => {
-    const {toJSON} = render(<CartIcon type={CartIconType.Secondary} />);
     expect(toJSON()).toMatchSnapshot();
   });
 

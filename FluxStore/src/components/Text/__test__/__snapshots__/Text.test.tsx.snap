@@ -10,8 +10,8 @@ exports[`Text renders default 1`] = `
         "textAlignVertical": "center",
       },
       {
-        "color": "#737680",
-        "fontFamily": "ProductSansRegular",
+        "color": "#222222",
+        "fontFamily": "Primary-Regular",
         "fontSize": 14,
       },
       {},
@@ -33,13 +33,16 @@ exports[`Text renders with custom color, fontsize 1`] = `
         "textAlignVertical": "center",
       },
       {
-        "color": "#737680",
-        "fontFamily": "ProductSansRegular",
+        "color": "#222222",
+        "fontFamily": "Primary-Regular",
         "fontSize": 14,
       },
       {
         "color": "#5ece7b",
         "fontSize": 40,
+        "fontWeight": 500,
+        "lineHeight": 34,
+        "textAlign": "left",
       },
       undefined,
     ]
@@ -59,8 +62,8 @@ exports[`Text renders with variant description 1`] = `
         "textAlignVertical": "center",
       },
       {
-        "color": "#1d1f22",
-        "fontFamily": "ProductSansRegular",
+        "color": "#111111",
+        "fontFamily": "Primary-Regular",
         "fontSize": 12,
       },
       {},
@@ -82,8 +85,8 @@ exports[`Text renders with variant heading 1`] = `
         "textAlignVertical": "center",
       },
       {
-        "color": "#000",
-        "fontFamily": "ProductSansBold",
+        "color": "#000000",
+        "fontFamily": "Primary-Bold",
         "fontSize": 24,
         "fontWeight": 700,
       },
@@ -106,8 +109,8 @@ exports[`Text renders with variant subTitle 1`] = `
         "textAlignVertical": "center",
       },
       {
-        "color": "#000",
-        "fontFamily": "RobotoRegular",
+        "color": "#000000",
+        "fontFamily": "Tertiary-Regular",
         "fontSize": 16,
         "fontWeight": 700,
       },
@@ -130,8 +133,8 @@ exports[`Text renders with variant title 1`] = `
         "textAlignVertical": "center",
       },
       {
-        "color": "#000",
-        "fontFamily": "NunitoSemiBold",
+        "color": "#000000",
+        "fontFamily": "Secondary-Medium",
         "fontSize": 20,
         "fontWeight": 700,
       },
