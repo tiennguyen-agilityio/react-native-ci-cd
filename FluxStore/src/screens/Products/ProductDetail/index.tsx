@@ -1,5 +1,5 @@
 import {memo, useCallback, useEffect, useMemo, useState} from 'react';
-import {ScrollView, StyleSheet} from 'react-native';
+import {Alert, ScrollView, StyleSheet} from 'react-native';
 import Toast from 'react-native-toast-message';
 import {useSafeAreaInsets} from 'react-native-safe-area-context';
 import FastImage from 'react-native-fast-image';
@@ -52,7 +52,7 @@ const ProductDetailScreen = ({
   const {id = ''} = route.params || {};
 
   const {useProductDetail} = useProducts();
-  const {data: product, isLoading, isFetched, isError} = useProductDetail(id);
+  const {data: product, isLoading, isFetched, isError, refetch} = useProductDetail(id);
 
   const addNewCart = useCartStore(state => state.addNewCart);
   const user = useAuthStore(state => state.user);
@@ -156,22 +156,26 @@ const ProductDetailScreen = ({
     [styles.image],
   );
 
+  const handleGoToHome = useCallback(() => {
+    navigation.reset({
+      index: 0,
+      routes: [
+        {
+          name: SCREENS.TABS,
+          state: {
+            index: 0,
+            routes: [{name: SCREENS.HOME}],
+          },
+        },
+      ],
+    });
+  }, []);
+
   const handleGoToBack = useCallback(() => {
     if (navigation?.canGoBack()) {
       navigation.goBack();
     } else {
-      navigation.reset({
-        index: 0,
-        routes: [
-          {
-            name: SCREENS.TABS,
-            state: {
-              index: 0,
-              routes: [{name: SCREENS.HOME}],
-            },
-          },
-        ],
-      });
+      handleGoToHome();
     }
   }, [navigation]);
 
@@ -217,22 +221,20 @@ const ProductDetailScreen = ({
 
   useEffect(() => {
     if (isError) {
-      Toast.show({
-        type: 'error',
-        text1: 'Loading Product detail failed',
-      });
-      navigation.reset({
-        index: 0,
-        routes: [
+      Alert.alert(
+        'Product detail error!',
+        'Oops, looks like there was a problem loading product detail. Go to home screen',
+        [
           {
-            name: SCREENS.TABS,
-            state: {
-              index: 0,
-              routes: [{name: SCREENS.HOME}],
-            },
+            text: 'Yes',
+            onPress: () => handleGoToHome(),
+          },
+          {
+            text: 'Cancel',
+            onPress: () => refetch(),
           },
         ],
-      });
+      );
     }
   }, [isError]);
 
