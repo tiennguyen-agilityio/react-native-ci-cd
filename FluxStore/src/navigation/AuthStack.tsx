@@ -6,17 +6,15 @@ import {AuthStackParamList, SCREENS} from '@/interfaces';
 // Screens
 import {LoginScreen} from '@/screens';
 
-const AuthStack = () => {
-  const Stack = createNativeStackNavigator<AuthStackParamList>();
+const Stack = createNativeStackNavigator<AuthStackParamList>();
 
-  return (
-    <Stack.Navigator
-      screenOptions={{
-        headerShown: false,
-      }}>
-      <Stack.Screen name={SCREENS.LOGIN} component={LoginScreen} />
-    </Stack.Navigator>
-  );
-};
+const AuthStack = () => (
+  <Stack.Navigator
+    screenOptions={{
+      headerShown: false,
+    }}>
+    <Stack.Screen name={SCREENS.LOGIN} component={LoginScreen} />
+  </Stack.Navigator>
+);
 
 export default AuthStack;
