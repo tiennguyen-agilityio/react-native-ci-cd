@@ -38,7 +38,7 @@ const ProductCard = ({
 }: ProductCardProps) => {
   const {isDark, theme} = useThemeStore();
 
-  const {image, name, price, discount, rating, reviewCount} = item;
+  const {image = '', name = '', price = 0, discount = 0, rating = 0, reviewCount = 0} = item || {};
   const isSecondaryType = type === ProductCardType.Secondary;
   const isPrimaryType = type === ProductCardType.Primary;
   const isPTertiaryType = type === ProductCardType.Tertiary;

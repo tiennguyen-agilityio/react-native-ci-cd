@@ -58,15 +58,15 @@ const ProductDetailScreen = ({
   const user = useAuthStore(state => state.user);
 
   const {
-    name,
-    carouselImages,
+    name = '',
+    carouselImages = [],
     price = 0,
-    discount,
+    discount = 0,
     rating = 0,
-    reviewCount,
+    reviewCount = 0,
     colors: colorsPrd = [],
     sizes: sizesPrd = [],
-    description,
+    description = '',
   } = product || {};
   const isFavorite = user?.favorites?.includes(id);
 
