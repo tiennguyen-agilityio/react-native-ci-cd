@@ -38,7 +38,7 @@ const subscribe = (listener: (url: string) => void) => {
         body: remoteMessage.notification.body,
         android: {
           channelId: CHANNEL_NOTIFICATION.DEFAULT.id,
-          smallIcon: 'ic_notification',
+          smallIcon: 'ic_launcher',
           pressAction: {
             id: CHANNEL_NOTIFICATION.DEFAULT.id,
           },

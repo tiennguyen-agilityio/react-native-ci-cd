@@ -3,6 +3,7 @@ import {useForm} from 'react-hook-form';
 import {ScrollView} from 'react-native-gesture-handler';
 import {useSafeAreaInsets} from 'react-native-safe-area-context';
 import crashlytics from '@react-native-firebase/crashlytics';
+import notifee from '@notifee/react-native';
 
 // Interfaces
 import {LoginPayLoad, SCREENS, User} from '@/interfaces';
@@ -78,10 +79,11 @@ const LoginScreen = () => {
       const {trace, traceStop} = await customTrace(SCREENS.LOGIN);
 
       mutate(data, {
-        onSuccess: (users: User[]) => {
+        onSuccess: async (users: User[]) => {
           if (users?.length) {
             setUser(users[0]);
             setIsAuthenticated(true);
+            await notifee.requestPermission();
             reset();
             setErrorMessage('');
             trace.putAttribute('login_status', 'success');
