@@ -27,8 +27,8 @@ const INITIAL_STATE: States = {
   user: null,
 };
 
-export const useAuthStore = createWithEqualityFn(
-  persist<States & Actions>(
+export const useAuthStore = createWithEqualityFn<States & Actions>()(
+  persist(
     set => ({
       ...INITIAL_STATE,
       setAuthHydrated: hydrated => set({authHydrated: hydrated}),
