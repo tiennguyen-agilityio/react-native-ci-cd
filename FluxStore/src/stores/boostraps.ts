@@ -21,8 +21,8 @@ const INITIAL_STATE: States = {
   bootHydrated: false,
 };
 
-export const useBootstrapsStore = createWithEqualityFn(
-  persist<States & Actions>(
+export const useBootstrapsStore = createWithEqualityFn<States & Actions>()(
+  persist(
     set => ({
       ...INITIAL_STATE,
       finishBoot: () => set({isFirstLoad: false}),

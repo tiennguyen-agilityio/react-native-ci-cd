@@ -1,6 +1,7 @@
-import {create} from 'zustand';
+import {createWithEqualityFn} from 'zustand/traditional';
 import {createJSONStorage, persist} from 'zustand/middleware';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import {shallow} from 'zustand/shallow';
 
 // Interfaces
 import {Cart} from '@/interfaces';
@@ -27,8 +28,8 @@ const INITIAL_STATE: States = {
   totalPrice: 0,
 };
 
-export const useCartStore = create(
-  persist<States & Actions>(
+export const useCartStore = createWithEqualityFn<States & Actions>()(
+  persist(
     set => ({
       ...INITIAL_STATE,
       setCarts: (carts: Cart[]) => set({carts}),
@@ -52,7 +53,7 @@ export const useCartStore = create(
             item?.id === id ? {...item, quantity, isChecked} : item,
           );
 
-          return {carts: carts, totalPrice: calcTotalPrice(carts)};
+          return {carts, totalPrice: calcTotalPrice(carts)};
         });
       },
       removeCartItem: (id: string) =>
@@ -74,4 +75,5 @@ export const useCartStore = create(
       },
     },
   ),
+  shallow,
 );

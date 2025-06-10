@@ -22,8 +22,8 @@ setBackgroundMessageHandler(messaging, async () => {});
 const App = () => {
   const [showStorybook, setShowStorybook] = useState(false);
 
-  const {bootHydrated} = useBootstrapsStore();
-  const {authHydrated} = useAuthStore();
+  const bootHydrated = useBootstrapsStore(state => state.bootHydrated);
+  const authHydrated = useAuthStore(state => state.authHydrated);
 
   useEffect(() => {
     if (__DEV__) {
