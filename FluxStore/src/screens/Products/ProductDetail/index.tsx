@@ -1,5 +1,5 @@
 import {memo, useCallback, useEffect, useMemo, useState} from 'react';
-import {Alert, ScrollView, StyleSheet} from 'react-native';
+import {Alert, Platform, ScrollView, StyleSheet} from 'react-native';
 import Toast from 'react-native-toast-message';
 import {useSafeAreaInsets} from 'react-native-safe-area-context';
 import FastImage from 'react-native-fast-image';
@@ -38,6 +38,8 @@ import {
   Text,
 } from '@/components';
 import {ReviewSection} from './components';
+
+const isAndroid = Platform.OS === 'android';
 
 const ProductDetailScreen = ({
   navigation,
@@ -203,6 +205,7 @@ const ProductDetailScreen = ({
       Toast.show({
         type: 'success',
         text1: 'Added to cart',
+        topOffset: insets.top + (isAndroid ? 10 : 0),
       });
       trace.putAttribute('Added to cart', 'success');
       await traceStop();
@@ -210,7 +213,7 @@ const ProductDetailScreen = ({
         screen: SCREENS.CART,
       });
     }
-  }, [product, color, size]);
+  }, [product, color, size, insets.top, isAndroid]);
 
   useEffect(() => {
     if (isFetched) {
