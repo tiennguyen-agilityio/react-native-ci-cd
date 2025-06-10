@@ -130,13 +130,13 @@ export const parseDeepLink = (url: string) => {
   const id = match[2];
 
   switch (screen) {
-    case SCREENS.PRODUCTS:
+    case 'products':
       return {
         stack: SCREENS.PRODUCT_STACK,
         screen: SCREENS.PRODUCTS,
       };
 
-    case SCREENS.PRODUCT_DETAIL:
+    case 'product':
       return {
         stack: SCREENS.PRODUCT_STACK,
         screen: SCREENS.PRODUCT_DETAIL,
