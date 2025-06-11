@@ -13,8 +13,7 @@ import {AppStackParamList, SCREENS} from '@/interfaces';
 import {linking} from '@/configs';
 
 // Stores
-import {useAuthStore, useDeepLinkStore} from '@/stores';
-import {useBootstrapsStore} from '@/stores';
+import {useAuthStore, useDeepLinkStore, useBootstrapsStore} from '@/stores';
 
 // Stacks | Screens
 import OnboardingStack from './OnboardingStack';
@@ -33,7 +32,10 @@ export const Navigation = () => {
 
   const isAuthenticated = useAuthStore(state => state.isAuthenticated);
   const isFirstLoad = useBootstrapsStore(state => state.isFirstLoad);
-  const {pendingDeepLink, setPendingDeepLink} = useDeepLinkStore();
+  const [pendingDeepLink, setPendingDeepLink] = useDeepLinkStore(state => [
+    state.pendingDeepLink,
+    state.setPendingDeepLink,
+  ]);
 
   const hasNavigatedRef = useRef(false);
 
@@ -42,9 +44,9 @@ export const Navigation = () => {
       if (pendingDeepLink) {
         const {stack, screen, params} = pendingDeepLink;
         if (stack && screen) {
-          navigationRef.navigate(stack, {screen, params});
+          navigationRef.navigate(stack as keyof AppStackParamList, {screen, params} as never);
         } else {
-          navigationRef.navigate(screen, params);
+          navigationRef.navigate(screen as keyof AppStackParamList, params as never);
         }
       }
       hasNavigatedRef.current = true;
@@ -53,35 +55,35 @@ export const Navigation = () => {
   }, [isAuthenticated, pendingDeepLink, navigationRef]);
 
   return (
-    <QueryClientProvider client={queryClient}>
-      <KeyboardProvider>
-        <NavigationContainer linking={linking} ref={navigationRef}>
-          <GestureHandlerRootView>
+    <GestureHandlerRootView>
+      <QueryClientProvider client={queryClient}>
+        <KeyboardProvider>
+          <NavigationContainer linking={linking} ref={navigationRef}>
             <AppStack.Navigator
               screenOptions={{
                 headerShown: false,
               }}>
               {isAuthenticated ? (
-                <AppStack.Group>
+                <>
                   <AppStack.Screen name={SCREENS.TABS} component={TabsStack} />
                   <AppStack.Screen name={SCREENS.PRODUCT_STACK} component={ProductStack} />
                   <AppStack.Screen name={SCREENS.CART_STACK} component={CartStack} />
                   <AppStack.Screen name={SCREENS.ORDER_STACK} component={OrderStack} />
                   <AppStack.Screen name={SCREENS.PROFILE_STACK} component={ProfileStack} />
-                </AppStack.Group>
+                </>
               ) : isFirstLoad ? (
-                <AppStack.Group>
+                <>
                   <AppStack.Screen name={SCREENS.ONBOARDING_STACK} component={OnboardingStack} />
                   <AppStack.Screen name={SCREENS.AUTH_STACK} component={AuthStack} />
-                </AppStack.Group>
+                </>
               ) : (
                 <AppStack.Screen name={SCREENS.AUTH_STACK} component={AuthStack} />
               )}
             </AppStack.Navigator>
             <Toast />
-          </GestureHandlerRootView>
-        </NavigationContainer>
-      </KeyboardProvider>
-    </QueryClientProvider>
+          </NavigationContainer>
+        </KeyboardProvider>
+      </QueryClientProvider>
+    </GestureHandlerRootView>
   );
 };

@@ -23,7 +23,7 @@ export const GET = async <T>(url: string, config?: AxiosRequestConfig) => {
     trace.setResponseContentType(response.headers['content-type']);
     await trace.stop();
     return response?.data;
-  } catch (error) {
+  } catch (error: any) {
     trace.setHttpResponseCode(error?.response?.status || 500);
     trace.putAttribute('error', JSON.stringify(trace));
     await trace.stop();
@@ -48,7 +48,7 @@ export const POST = async <T, P>(url: string, payload: P, config?: AxiosRequestC
     await trace.stop();
 
     return response?.data;
-  } catch (error: unknown) {
+  } catch (error: any) {
     trace.setHttpResponseCode(error?.response?.status || 500);
     trace.putAttribute('error', JSON.stringify(trace));
     await trace.stop();
@@ -74,7 +74,7 @@ export const PATCH = async <T, P>(url: string, payload: P, config?: AxiosRequest
     await trace.stop();
 
     return response?.data;
-  } catch (error) {
+  } catch (error: any) {
     trace.setHttpResponseCode(error?.response?.status || 500);
     trace.putAttribute('error', JSON.stringify(trace));
     await trace.stop();
