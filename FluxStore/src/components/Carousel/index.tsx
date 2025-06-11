@@ -98,7 +98,7 @@ const Carousel = ({data = HOME_CAROUSELS, width, height, dotColor, renderItem}: 
       </GestureDetector>
       <Flex position="absolute" bottom={8.5} width="100%" align="center">
         <DotsCarousel
-          length={HOME_CAROUSELS.length}
+          length={data.length}
           currentIndex={currentIndex}
           color={dotColor}
           onDotPress={handleChangeDot}
