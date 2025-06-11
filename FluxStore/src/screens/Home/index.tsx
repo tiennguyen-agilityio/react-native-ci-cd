@@ -1,11 +1,12 @@
+import {Platform, StyleSheet} from 'react-native';
 import {ScrollView} from 'react-native-gesture-handler';
 import {memo, useCallback, useMemo, useState} from 'react';
-
+import FastImage, {Source} from 'react-native-fast-image';
 // Constants
-import {INIT_PAGE} from '@/constants';
+import {HOME_CAROUSELS, INIT_PAGE} from '@/constants';
 
 // Interfaces
-import {BottomTabsScreenProps, Category, Product, SCREENS} from '@/interfaces';
+import {BottomTabsScreenProps, CarouselCard, Category, Product, SCREENS} from '@/interfaces';
 
 // Hooks
 import {useProducts, useScreenTrace} from '@/hooks';
@@ -14,7 +15,7 @@ import {useThemeStore} from '@/stores';
 import {getData} from '@/utils';
 
 // Themes
-import {metrics, fontSizes, Banners} from '@/themes';
+import {metrics, fontSizes, Banners, borderRadius} from '@/themes';
 
 // Component
 import {
@@ -30,9 +31,19 @@ import {
   WomenIcon,
   PromoBannerType,
   ProductList,
+  Carousel,
 } from '@/components';
-import {Carousel, Categories} from './components';
-import {Platform} from 'react-native';
+import {Categories} from './components';
+
+const carouselWidth = metrics.screenWidth - 64;
+
+const styles = StyleSheet.create({
+  image: {
+    width: carouselWidth,
+    height: 168,
+    borderRadius: borderRadius.md,
+  },
+});
 
 const CATEGORIES: Category[] = [
   {
@@ -116,6 +127,17 @@ const HomeScreen = ({navigation}: BottomTabsScreenProps<typeof SCREENS.HOME>) =>
 
   const handleShowAllTopCollection = useCallback(() => {}, []);
 
+  const renderItemCarousel = useCallback(
+    ({image}: CarouselCard) => (
+      <FastImage
+        style={styles.image}
+        source={image as Source}
+        resizeMode={FastImage.resizeMode.cover}
+      />
+    ),
+    [],
+  );
+
   return (
     <MainLayout>
       <ScrollView showsVerticalScrollIndicator={false}>
@@ -126,8 +148,14 @@ const HomeScreen = ({navigation}: BottomTabsScreenProps<typeof SCREENS.HOME>) =>
               keyActivated={categoryKey.key}
               onChange={handleChangeCategory}
             />
-            <Flex height={168}>
-              <Carousel />
+            <Flex height={168} borderRadius={borderRadius.md} overflow="hidden">
+              <Carousel
+                data={HOME_CAROUSELS}
+                width={carouselWidth}
+                height={168}
+                dotColor={text.light}
+                renderItem={renderItemCarousel}
+              />
             </Flex>
             <Flex
               direction="row"
