@@ -112,6 +112,7 @@ const ShippingAddressScreen = ({navigation}: OrderScreenProps<typeof SCREENS.SHI
       Toast.show({
         type: 'success',
         text1: 'Order successfully',
+        topOffset: insets.top + (isAndroid ? 10 : 0),
       });
       clearCart();
       navigation.navigate(SCREENS.ORDER_COMPLETED);

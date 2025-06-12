@@ -1,5 +1,5 @@
 import {ReactNode, useCallback, useMemo} from 'react';
-import {StyleSheet, TouchableOpacity, TouchableOpacityProps} from 'react-native';
+import {Platform, StyleSheet, TouchableOpacity, TouchableOpacityProps} from 'react-native';
 import {BottomTabBarButtonProps, createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 
 // Interfaces
@@ -16,9 +16,11 @@ import OrderStack from './OrderStack';
 // Components
 import {ShoppingCartIcon, HomeIcon, SearchIcon, UserIcon} from '@/components';
 
+const isAndroid = Platform.OS === 'android';
+
 const styles = StyleSheet.create({
   tabBarStyle: {
-    height: 80,
+    height: isAndroid ? 65 : 80,
     paddingTop: 12,
     justifyContent: 'center',
     borderTopLeftRadius: 30,
@@ -29,7 +31,7 @@ const styles = StyleSheet.create({
     shadowOffset: {width: 0, height: 1},
     shadowOpacity: 0.5,
     shadowRadius: 3,
-    elevation: 10,
+    elevation: 6,
   },
 });
 
