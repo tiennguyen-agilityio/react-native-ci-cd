@@ -20,8 +20,7 @@ const ThemeSwitch = () => {
     toggleTheme,
     theme: {text, background},
   } = useThemeStore();
-  const index = isDark ? 1 : 0;
-  const knobX = useSharedValue(index);
+  const knobX = useSharedValue(0);
   const optionWidth = useSharedValue(0);
 
   const styles = useMemo(
@@ -63,27 +62,25 @@ const ThemeSwitch = () => {
           shadowOffset: {width: 0, height: 0},
           shadowRadius: 4,
           elevation: 3,
-          ...(!index && {
-            left: 4,
-          }),
         },
       }),
-    [background, text, index],
+    [background, text],
   );
 
   useEffect(() => {
     setTimeout(() => {
-      knobX.value = withTiming(index * optionWidth.value, {duration: 200});
+      knobX.value = withTiming((isDark ? 1 : 0) * optionWidth.value, {duration: 200});
     }, 50);
   }, [isDark]);
 
   const onLayout = (e: LayoutChangeEvent) => {
     optionWidth.value = e.nativeEvent.layout.width / 2;
-    knobX.value = withTiming(index * optionWidth.value);
+    knobX.value = withTiming((isDark ? 1 : 0) * optionWidth.value);
   };
 
   const knobStyle = useAnimatedStyle(() => ({
     transform: [{translateX: knobX.value}],
+    left: isDark ? 0 : 4,
   }));
 
   const lightTextStyle = useAnimatedStyle(() => ({
@@ -101,11 +98,11 @@ const ThemeSwitch = () => {
         toggleTheme();
       }
     },
-    [isDark, knobX, optionWidth.value, toggleTheme],
+    [isDark],
   );
 
-  const tapLight = Gesture.Tap().onEnd(handleTap(0));
-  const tapDark = Gesture.Tap().onEnd(handleTap(1));
+  const tapLight = Gesture.Tap().runOnJS(true).onEnd(handleTap(0));
+  const tapDark = Gesture.Tap().runOnJS(true).onEnd(handleTap(1));
 
   return (
     <GestureHandlerRootView>
