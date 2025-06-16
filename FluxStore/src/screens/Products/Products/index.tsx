@@ -1,5 +1,6 @@
 import {memo, useCallback, useMemo} from 'react';
-import {FlatList, ListRenderItemInfo, StyleSheet, TouchableOpacity} from 'react-native';
+import {TouchableOpacity} from 'react-native';
+import {FlashList} from '@shopify/flash-list';
 
 // Constants
 import {INIT_PAGE} from '@/constants';
@@ -28,13 +29,6 @@ import {
   Text,
 } from '@/components';
 
-const styles = StyleSheet.create({
-  columnWrapperStyle: {
-    gap: 30,
-    marginBottom: 20,
-  },
-});
-
 const ProductsScreen = ({navigation}: ProductScreenProps<typeof SCREENS.PRODUCTS>) => {
   useScreenTrace(SCREENS.PRODUCTS);
 
@@ -50,17 +44,13 @@ const ProductsScreen = ({navigation}: ProductScreenProps<typeof SCREENS.PRODUCTS
     [pages],
   );
 
-  const {isTablet, width: screenWidth, isPortrait} = useMedia();
+  const {isTablet, width: screenWidth} = useMedia();
   const {theme} = useThemeStore();
 
   const {border} = theme;
   const numColumns = useMemo(() => {
-    if (isTablet) {
-      return isPortrait ? 3 : 4;
-    }
-
-    return 2;
-  }, [isTablet, isPortrait]);
+    return isTablet ? 4 : 2;
+  }, [isTablet]);
 
   const handleShowFilter = useCallback(() => {}, []);
 
@@ -72,7 +62,7 @@ const ProductsScreen = ({navigation}: ProductScreenProps<typeof SCREENS.PRODUCTS
 
   const {width, height} = useMemo(() => {
     const spacingPadding = 32;
-    const spacingItem = 30 * (numColumns - 1);
+    const spacingItem = metrics.dimensions.lg * (numColumns - 1);
 
     return {
       width: (screenWidth - (spacingPadding * 2 + spacingItem)) / numColumns,
@@ -82,34 +72,28 @@ const ProductsScreen = ({navigation}: ProductScreenProps<typeof SCREENS.PRODUCTS
 
   const getKeyExtractor = useCallback(({id}: Product) => id, []);
 
-  const getItemLayout = useCallback(
-    (_, index: number) => ({length: height, offset: height * index, index}),
-    [height],
-  );
+  const handleViewProductDetail = useCallback((item: Product) => {
+    navigation.navigate(SCREENS.PRODUCT_DETAIL, {id: item.id});
+  }, []);
 
   const renderItemProduct = useCallback(
-    ({item}: ListRenderItemInfo<Product>) => {
-      const handleViewProductDetail = () =>
-        navigation.navigate(SCREENS.PRODUCT_DETAIL, {id: item.id});
-
+    ({item, index}: {item: Product; index: number}) => {
+      const isLastColumn = (index + 1) % numColumns === 0;
       return (
-        <ProductCard
-          key={item.id}
-          width={width}
-          height={height}
-          item={item}
-          isFavorite={favorites.includes(item.id)}
-          type={ProductCardType.Primary}
-          onPress={handleViewProductDetail}
-        />
+        <Flex width={width} marginLeft={isLastColumn ? 'auto' : 0} overflow="hidden">
+          <ProductCard
+            key={item.id}
+            width={width}
+            height={height}
+            item={item}
+            isFavorite={favorites.includes(item.id)}
+            type={ProductCardType.Primary}
+            onPress={handleViewProductDetail}
+          />
+        </Flex>
       );
     },
-    [width, height, favorites, navigation],
-  );
-
-  const renderItemSeparatorComponent = useCallback(
-    () => <Flex width={metrics.dimensions.lg} />,
-    [],
+    [width, height, favorites, numColumns, handleViewProductDetail],
   );
 
   const renderListFooterComponent = useMemo(() => {
@@ -124,7 +108,10 @@ const ProductsScreen = ({navigation}: ProductScreenProps<typeof SCREENS.PRODUCTS
     return null;
   }, [isLoading, isFetchingNextPage, height, width]);
 
-  const renderListEmptyComponent = useCallback(() => <Text>Product Empty</Text>, []);
+  const renderListEmptyComponent = useCallback(
+    () => (isLoading ? null : <Text>Product Empty</Text>),
+    [isLoading],
+  );
 
   return (
     <MainLayout>
@@ -153,24 +140,17 @@ const ProductsScreen = ({navigation}: ProductScreenProps<typeof SCREENS.PRODUCTS
           </TouchableOpacity>
         </Flex>
 
-        <FlatList
-          data={products}
-          key={numColumns}
+        <FlashList
           showsVerticalScrollIndicator={false}
-          initialNumToRender={isTablet ? 12 : 6}
+          data={products}
+          extraData={products}
           numColumns={numColumns}
-          onEndReached={handleLoadMore}
+          estimatedItemSize={height}
+          ListFooterComponent={renderListFooterComponent}
+          ListEmptyComponent={renderListEmptyComponent}
           keyExtractor={getKeyExtractor}
           renderItem={renderItemProduct}
-          ItemSeparatorComponent={renderItemSeparatorComponent}
-          ListEmptyComponent={renderListEmptyComponent}
-          ListFooterComponent={renderListFooterComponent}
-          getItemLayout={getItemLayout}
-          columnWrapperStyle={styles.columnWrapperStyle}
-          maxToRenderPerBatch={isTablet ? 24 : 10}
-          updateCellsBatchingPeriod={50}
-          windowSize={8}
-          removeClippedSubviews={true}
+          onEndReached={handleLoadMore}
         />
       </Flex>
     </MainLayout>
