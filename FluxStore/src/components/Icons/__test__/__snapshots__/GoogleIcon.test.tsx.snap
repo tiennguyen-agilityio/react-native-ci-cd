@@ -221,7 +221,7 @@ exports[`GoogleIcon renders correctly (matches snapshot) 1`] = `
         rx={20.5}
         stroke={
           {
-            "payload": 4281541144,
+            "payload": 4280098594,
             "type": 0,
           }
         }

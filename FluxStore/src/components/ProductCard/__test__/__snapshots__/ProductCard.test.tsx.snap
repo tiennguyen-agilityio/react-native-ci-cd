@@ -2815,7 +2815,6 @@ exports[`ProductCard should render type Secondary 1`] = `
       "gap": 8,
       "height": "100%",
       "opacity": 1,
-      "shadowColor": "#000",
       "shadowOffset": {
         "height": 1,
         "width": 0,

@@ -35,7 +35,6 @@ exports[`Dot Component renders correctly with border 1`] = `
           "borderWidth": 5,
           "elevation": 4,
           "height": 34,
-          "shadowColor": "#000",
           "shadowOffset": {
             "height": 3,
             "width": 0,
@@ -88,9 +87,7 @@ exports[`Dot Component renders correctly with no border 1`] = `
       [
         {
           "backgroundColor": "black",
-          "borderColor": "none",
           "borderRadius": "50%",
-          "borderWidth": 0,
           "height": 24,
           "shadowColor": "#000",
           "width": 24,

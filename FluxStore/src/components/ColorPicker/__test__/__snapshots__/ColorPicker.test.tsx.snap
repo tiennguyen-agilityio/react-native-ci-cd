@@ -97,9 +97,7 @@ exports[`ColorPicker Component renders correctly 1`] = `
           [
             {
               "backgroundColor": "black",
-              "borderColor": "none",
               "borderRadius": "50%",
-              "borderWidth": 0,
               "height": 24,
               "shadowColor": "#000",
               "width": 24,
@@ -145,9 +143,7 @@ exports[`ColorPicker Component renders correctly 1`] = `
           [
             {
               "backgroundColor": "red",
-              "borderColor": "none",
               "borderRadius": "50%",
-              "borderWidth": 0,
               "height": 24,
               "shadowColor": "#000",
               "width": 24,
@@ -193,9 +189,7 @@ exports[`ColorPicker Component renders correctly 1`] = `
           [
             {
               "backgroundColor": "blue",
-              "borderColor": "none",
               "borderRadius": "50%",
-              "borderWidth": 0,
               "height": 24,
               "shadowColor": "#000",
               "width": 24,
@@ -318,7 +312,6 @@ exports[`ColorPicker Component renders correctly with defaultIndex 1 1`] = `
               "borderWidth": 5,
               "elevation": 4,
               "height": 34,
-              "shadowColor": "#000",
               "shadowOffset": {
                 "height": 3,
                 "width": 0,
@@ -368,9 +361,7 @@ exports[`ColorPicker Component renders correctly with defaultIndex 1 1`] = `
           [
             {
               "backgroundColor": "red",
-              "borderColor": "none",
               "borderRadius": "50%",
-              "borderWidth": 0,
               "height": 24,
               "shadowColor": "#000",
               "width": 24,
@@ -416,9 +407,7 @@ exports[`ColorPicker Component renders correctly with defaultIndex 1 1`] = `
           [
             {
               "backgroundColor": "blue",
-              "borderColor": "none",
               "borderRadius": "50%",
-              "borderWidth": 0,
               "height": 24,
               "shadowColor": "#000",
               "width": 24,
