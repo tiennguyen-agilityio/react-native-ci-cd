@@ -81,6 +81,7 @@ const ThemeSwitch = () => {
   const knobStyle = useAnimatedStyle(() => ({
     transform: [{translateX: knobX.value}],
     left: isDark ? 0 : 4,
+    right: isDark ? 4 : 0,
   }));
 
   const lightTextStyle = useAnimatedStyle(() => ({

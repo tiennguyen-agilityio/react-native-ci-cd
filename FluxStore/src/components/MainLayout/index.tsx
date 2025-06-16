@@ -1,5 +1,4 @@
 import {ReactNode, memo, useMemo} from 'react';
-import {StatusBar} from 'react-native';
 import {SafeAreaView} from 'react-native-safe-area-context';
 
 // Hooks
@@ -14,7 +13,6 @@ interface MainLayoutProps {
 
 const MainLayout = ({children}: MainLayoutProps) => {
   const {
-    isDark,
     theme: {background},
   } = useThemeStore();
 
@@ -30,10 +28,6 @@ const MainLayout = ({children}: MainLayoutProps) => {
 
   return (
     <SafeAreaView style={styles.wrapper}>
-      <StatusBar
-        backgroundColor={background.default}
-        barStyle={isDark ? 'light-content' : 'dark-content'}
-      />
       <Header />
       {children}
     </SafeAreaView>
