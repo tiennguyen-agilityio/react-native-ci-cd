@@ -112,10 +112,10 @@ const HomeScreen = ({navigation}: BottomTabsScreenProps<typeof SCREENS.HOME>) =>
   );
 
   const handleLoadMoreProduct = useCallback(() => {
-    if (hasNextPage && !isFetchingNextPage) {
+    if (hasNextPage && !isFetchingNextPage && !isLoading) {
       fetchNextPage();
     }
-  }, [fetchNextPage, hasNextPage, isFetchingNextPage]);
+  }, [fetchNextPage, hasNextPage, isLoading, isFetchingNextPage]);
 
   const handlePressCollection = useCallback(() => {}, []);
 

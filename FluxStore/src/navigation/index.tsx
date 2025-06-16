@@ -5,6 +5,7 @@ import {KeyboardProvider} from 'react-native-keyboard-controller';
 import {QueryClient, QueryClientProvider} from '@tanstack/react-query';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import Toast from 'react-native-toast-message';
+import {StatusBar} from 'react-native';
 
 // Interfaces
 import {AppStackParamList, SCREENS} from '@/interfaces';
@@ -13,7 +14,7 @@ import {AppStackParamList, SCREENS} from '@/interfaces';
 import {linking} from '@/configs';
 
 // Stores
-import {useAuthStore, useDeepLinkStore, useBootstrapsStore} from '@/stores';
+import {useAuthStore, useDeepLinkStore, useBootstrapsStore, useThemeStore} from '@/stores';
 
 // Stacks | Screens
 import OnboardingStack from './OnboardingStack';
@@ -29,7 +30,10 @@ const AppStack = createNativeStackNavigator<AppStackParamList>();
 export const Navigation = () => {
   const queryClient = new QueryClient();
   const navigationRef = useNavigationContainerRef<AppStackParamList>();
-
+  const {
+    isDark,
+    theme: {background},
+  } = useThemeStore();
   const isAuthenticated = useAuthStore(state => state.isAuthenticated);
   const isFirstLoad = useBootstrapsStore(state => state.isFirstLoad);
   const [pendingDeepLink, setPendingDeepLink] = useDeepLinkStore(state => [
@@ -57,7 +61,11 @@ export const Navigation = () => {
   return (
     <GestureHandlerRootView>
       <QueryClientProvider client={queryClient}>
-        <KeyboardProvider>
+        <KeyboardProvider statusBarTranslucent navigationBarTranslucent>
+          <StatusBar
+            backgroundColor={background.default}
+            barStyle={isDark ? 'light-content' : 'dark-content'}
+          />
           <NavigationContainer linking={linking} ref={navigationRef}>
             <AppStack.Navigator
               screenOptions={{
