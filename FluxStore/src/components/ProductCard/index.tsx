@@ -1,6 +1,7 @@
 import {memo, useCallback, useMemo} from 'react';
 import {DimensionValue, StyleSheet, TouchableOpacity} from 'react-native';
 import FastImage from 'react-native-fast-image';
+import isEqual from 'react-fast-compare';
 
 import {Product} from '@/interfaces';
 import {CURRENCY_UNIT} from '@/constants';
@@ -212,4 +213,4 @@ const ProductCard = ({
   );
 };
 
-export default memo(ProductCard);
+export default memo(ProductCard, isEqual);
