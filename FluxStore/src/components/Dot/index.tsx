@@ -8,7 +8,6 @@ import Animated, {
 import {Gesture, GestureDetector} from 'react-native-gesture-handler';
 
 // Stores
-import {useThemeStore} from '@/stores';
 
 // Themes
 import {colors} from '@/themes';
@@ -24,8 +23,6 @@ interface DotProps {
 }
 
 const Dot = ({color, hasBorder, size = 34, onSelect}: DotProps) => {
-  const {isDark} = useThemeStore();
-
   const scale = useSharedValue(1);
 
   const rStyle = useAnimatedStyle(() => ({
@@ -38,7 +35,6 @@ const Dot = ({color, hasBorder, size = 34, onSelect}: DotProps) => {
         width: size,
         height: size,
         borderRadius: '50%',
-        shadowColor: isDark ? colors.transparent : colors.black[500],
         borderColor: colors.white[500],
         borderWidth: 5,
         backgroundColor: color,
@@ -55,10 +51,8 @@ const Dot = ({color, hasBorder, size = 34, onSelect}: DotProps) => {
       borderRadius: '50%',
       shadowColor: colors.black[500],
       backgroundColor: color,
-      borderColor: isDark ? colors.black[800] : 'none',
-      borderWidth: isDark ? 1 : 0,
     };
-  }, [color, isDark, hasBorder, size]);
+  }, [color, hasBorder, size]);
 
   const handleSelect = () => {
     'worklet';

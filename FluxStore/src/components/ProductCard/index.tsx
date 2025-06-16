@@ -7,7 +7,7 @@ import {Product} from '@/interfaces';
 import {CURRENCY_UNIT} from '@/constants';
 import {useThemeStore} from '@/stores';
 import {formatAmount} from '@/utils';
-import {borderRadius, colors, fontSizes, fontWeights} from '@/themes';
+import {borderRadius, fontSizes, fontWeights} from '@/themes';
 
 import {HeartIcon} from '../Icons';
 import Text from '../Text';
@@ -37,7 +37,7 @@ const ProductCard = ({
   type = ProductCardType.Primary,
   onPress,
 }: ProductCardProps) => {
-  const {isDark, theme} = useThemeStore();
+  const {theme} = useThemeStore();
 
   const {image = '', name = '', price = 0, discount = 0, rating = 0, reviewCount = 0} = item || {};
   const isSecondaryType = type === ProductCardType.Secondary;
@@ -83,7 +83,6 @@ const ProductCard = ({
             gap: 8,
           }),
           ...(isSecondaryType && {
-            shadowColor: isDark ? colors.transparent : colors.black[500],
             borderColor: theme.border.secondary,
             borderWidth: 1,
             shadowOffset: {width: 0, height: 1},
@@ -142,16 +141,7 @@ const ProductCard = ({
           color: theme.text.primary,
         },
       }),
-    [
-      theme,
-      width,
-      height,
-      isSecondaryType,
-      isDark,
-      imageSize.width,
-      imageSize.height,
-      isPTertiaryType,
-    ],
+    [theme, width, height, isSecondaryType, imageSize.width, imageSize.height, isPTertiaryType],
   );
 
   const {originalPrice, promoPrice} = useMemo(

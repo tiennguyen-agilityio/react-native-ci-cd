@@ -4,13 +4,11 @@ import Svg, {ClipPath, Defs, G, Path, Rect} from 'react-native-svg';
 
 import {useThemeStore} from '@/stores';
 import {IconProps} from '@/interfaces';
-import {colors} from '@/themes';
 
 export const GoogleIcon = memo(
   ({width = 42, height = 42, disabled = false, style, onPress}: IconProps) => {
     const {
-      isDark,
-      theme: {background},
+      theme: {background, text},
     } = useThemeStore();
 
     return (
@@ -65,7 +63,7 @@ export const GoogleIcon = memo(
             height={41}
             rx={20.5}
             fill={background.default}
-            stroke={isDark ? colors.white[500] : colors.black[700]}
+            stroke={text.primary}
           />
           <Defs>
             <ClipPath id="clip0_9200_443">
