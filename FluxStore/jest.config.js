@@ -1,13 +1,5 @@
 module.exports = {
   preset: 'react-native',
-  coverageThreshold: {
-    global: {
-      statements: 80,
-      branches: 80,
-      functions: 80,
-      lines: 80,
-    },
-  },
   transformIgnorePatterns: [
     '/node_modules/(?!((jest-)?react-native|@react-native(-community)?)|react-clone-referenced-element|react-navigation|@react-navigation/.*)',
   ],

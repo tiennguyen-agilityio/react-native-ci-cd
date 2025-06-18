@@ -76,7 +76,7 @@ const CartScreen = ({navigation}: CartScreenProps<typeof SCREENS.CART>) => {
   const getKeyExtractor = useCallback(({id}: Cart) => id, []);
 
   const getItemLayout = useCallback(
-    (_: any, index: number) => ({
+    (_, index: number) => ({
       length: width,
       offset: width * index,
       index,

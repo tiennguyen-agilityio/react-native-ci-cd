@@ -56,9 +56,7 @@ const Header = () => {
     });
   }, [navigation, isAuthenticated]);
 
-  const handleChangeFavorite = useCallback(() => {
-    const {id = ''} = route?.params || {};
-  }, [route]);
+  const handleChangeFavorite = useCallback(() => {}, []);
 
   const styles = useMemo(
     () =>

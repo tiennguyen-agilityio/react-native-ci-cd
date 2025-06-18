@@ -101,7 +101,7 @@ const LoginScreen = () => {
         },
       });
     },
-    [mutate, pendingDeepLink, reset, setIsAuthenticated, setPendingDeepLink, setUser],
+    [mutate, reset, setIsAuthenticated, setUser],
   );
 
   return (

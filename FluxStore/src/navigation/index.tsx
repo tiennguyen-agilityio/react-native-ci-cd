@@ -56,7 +56,7 @@ export const Navigation = () => {
       hasNavigatedRef.current = true;
       setPendingDeepLink(null);
     }
-  }, [isAuthenticated, pendingDeepLink, navigationRef]);
+  }, [isAuthenticated, pendingDeepLink, navigationRef, setPendingDeepLink]);
 
   return (
     <GestureHandlerRootView>

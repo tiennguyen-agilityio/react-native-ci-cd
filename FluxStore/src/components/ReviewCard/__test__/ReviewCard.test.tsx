@@ -9,7 +9,7 @@ describe('ReviewCard', () => {
     name: REVIEWS[0].name,
     rating: REVIEWS[0].rating,
     comment: REVIEWS[0].comment,
-    createdAt: REVIEWS[0].createdAt,
+    createdAt: new Date().getTime(),
   };
 
   it('should render ReviewCard component', () => {

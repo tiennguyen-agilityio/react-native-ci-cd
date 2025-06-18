@@ -21,6 +21,6 @@ export const Default: Story = {
 export const Max: Story = {
   args: {
     max: 5,
-    onChangeValue: (value: number) => {},
+    onChangeValue: () => {},
   },
 };

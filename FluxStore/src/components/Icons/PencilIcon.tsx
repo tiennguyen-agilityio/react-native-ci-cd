@@ -21,9 +21,7 @@ export const PencilIcon = memo(
         <Svg width={width} height={height} viewBox="0 0 16 16" fill="none">
           <Mask
             id="a"
-            style={{
-              maskType: 'luminance',
-            }}
+            maskType="luminance"
             maskUnits="userSpaceOnUse"
             x={1}
             y={1}

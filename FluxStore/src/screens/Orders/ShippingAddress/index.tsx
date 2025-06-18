@@ -91,7 +91,10 @@ const ShippingAddressScreen = ({navigation}: OrderScreenProps<typeof SCREENS.SHI
 
   const handleClearErrorMessage = useCallback(() => setErrorMessage(''), []);
 
-  const handleChangeShippingMethod = useCallback((value: number) => setValue('fee', value), []);
+  const handleChangeShippingMethod = useCallback(
+    (value: number) => setValue('fee', value),
+    [setValue],
+  );
 
   const handleErrorForm = useCallback(
     (errors: FieldErrors<FormData>) => {
@@ -107,18 +110,15 @@ const ShippingAddressScreen = ({navigation}: OrderScreenProps<typeof SCREENS.SHI
     [fieldRefs],
   );
 
-  const onSubmit = useCallback(
-    (data: FormData) => {
-      Toast.show({
-        type: 'success',
-        text1: 'Order successfully',
-        topOffset: insets.top + (isAndroid ? 10 : 0),
-      });
-      clearCart();
-      navigation.navigate(SCREENS.ORDER_COMPLETED);
-    },
-    [navigation, clearCart],
-  );
+  const onSubmit = useCallback(() => {
+    Toast.show({
+      type: 'success',
+      text1: 'Order successfully',
+      topOffset: insets.top + (isAndroid ? 10 : 0),
+    });
+    clearCart();
+    navigation.navigate(SCREENS.ORDER_COMPLETED);
+  }, [navigation, insets.top, clearCart]);
 
   useEffect(() => {
     if (user) {
