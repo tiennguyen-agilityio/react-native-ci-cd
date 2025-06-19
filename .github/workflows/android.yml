@@ -6,6 +6,14 @@ on:
     branches: [feature/ci-cd]
   pull_request:
     branches: [feature/ci-cd]
+  workflow_dispatch:
+    inputs:
+      environment:
+        description: "Select the environment"
+        type: environment
+        required: true
+      # python_complex_number: !!python/complex 1+2j
+      # python_complex_number: "HELLO"
 
 jobs:
   build:
@@ -44,8 +52,8 @@ jobs:
       - name: ⚙️ Set up JDK
         uses: actions/setup-java@v4
         with:
-          distribution: 'temurin'
-          java-version: '17'
+          distribution: "temurin"
+          java-version: "17"
 
       - name: 🧱 Setup Android SDK
         uses: android-actions/setup-android@v3
