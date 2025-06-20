@@ -3,9 +3,9 @@ name: Android CI
 
 on:
   push:
-    branches: [feature/example-ci-cd]
+    branches: [feature/*ci-cd]
   pull_request:
-    branches: [feature/example-ci-cd]
+    branches: [feature/*ci-cd]
 
   workflow_dispatch:
     inputs:
@@ -30,6 +30,10 @@ jobs:
       run:
         working-directory: FluxStore
 
+    outputs:
+      output1: ${{ steps.step1.outputs.test }}
+      output2: ${{ steps.step2.outputs.test }}
+
     steps:
       - name: 📥 Checkout code
         uses: actions/checkout@v4
@@ -39,6 +43,13 @@ jobs:
         with:
           node-version: 20
 
+      - id: step1
+        run: echo "test=hello" >> "$GITHUB_OUTPUT"
+      - id: step2
+        run: echo "test=world" >> "$GITHUB_OUTPUT"
+
+      - name: Get GITHUB_EVENT
+        run: echo "${{github.event_name}} - ${{github.event.inputs.chosen-os}}"
       # - name: 📦 Install Yarn
       #   run: npm install -g yarn
 
@@ -70,14 +81,16 @@ jobs:
       #     name: app-debug.apk
       #     path: FluxStore/android/app/build/outputs/apk/debug/app-debug.apk
   deploy:
-    if: github.repository == 'git@gitlab.asoft-python.com:tien.nguyen/react-native-training.git'
+    if: github.repository == 'tiennguyen-agilityio/react-native-ci-cd'
     needs: build
     name: Deploy
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
+      - env:
+          OUTPUT1: ${{needs.build.outputs.output1}}
+          OUTPUT2: ${{needs.build.outputs.output2}}
+        run: echo "OUTPUT = $OUTPUT1 $OUTPUT2"
 
       - name: 🔍 Show repo repository
         run: echo "REPO = ${{ github.repository }}"
