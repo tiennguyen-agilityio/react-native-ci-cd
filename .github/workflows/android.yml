@@ -87,3 +87,9 @@ jobs:
 
       - name: 🔍 Show repo ref
         run: echo "REPO = ${{ github.ref }}"
+
+      - name: 🔍 Show GITHUB EVENT
+        run: echo "EVENT = ${{ toJson(github.event) }}"
+
+      - name: 🔍 Show secrets.GITHUB_TOKEN
+        run: echo "GITHUB_TOKEN = ${{ secrets.GITHUB_TOKEN }}"
