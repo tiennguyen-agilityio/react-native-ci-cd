@@ -1,0 +1,107 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Dot Component renders correctly with border 1`] = `
+<View
+  style={
+    [
+      {
+        "flexDirection": "column",
+      },
+      {
+        "justifyContent": "center",
+      },
+      {
+        "alignItems": "center",
+      },
+      {
+        "flexWrap": "nowrap",
+      },
+      undefined,
+      {
+        "height": 34,
+        "width": 34,
+      },
+    ]
+  }
+  testID="flex"
+>
+  <View
+    style={
+      [
+        {
+          "backgroundColor": "black",
+          "borderColor": "#fff",
+          "borderRadius": "50%",
+          "borderWidth": 5,
+          "elevation": 4,
+          "height": 34,
+          "shadowOffset": {
+            "height": 3,
+            "width": 0,
+          },
+          "shadowOpacity": 0.2,
+          "shadowRadius": 6,
+          "width": 34,
+        },
+        {
+          "transform": [
+            {
+              "scale": 1,
+            },
+          ],
+        },
+      ]
+    }
+    testID="dot-black"
+  />
+</View>
+`;
+
+exports[`Dot Component renders correctly with no border 1`] = `
+<View
+  style={
+    [
+      {
+        "flexDirection": "column",
+      },
+      {
+        "justifyContent": "center",
+      },
+      {
+        "alignItems": "center",
+      },
+      {
+        "flexWrap": "nowrap",
+      },
+      undefined,
+      {
+        "height": 34,
+        "width": 34,
+      },
+    ]
+  }
+  testID="flex"
+>
+  <View
+    style={
+      [
+        {
+          "backgroundColor": "black",
+          "borderRadius": "50%",
+          "height": 24,
+          "shadowColor": "#000",
+          "width": 24,
+        },
+        {
+          "transform": [
+            {
+              "scale": 1,
+            },
+          ],
+        },
+      ]
+    }
+    testID="dot-black"
+  />
+</View>
+`;

@@ -1,0 +1,201 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`DeleteIcon renders correctly (matches snapshot) 1`] = `
+<View
+  accessibilityState={
+    {
+      "busy": undefined,
+      "checked": undefined,
+      "disabled": false,
+      "expanded": undefined,
+      "selected": undefined,
+    }
+  }
+  accessibilityValue={
+    {
+      "max": undefined,
+      "min": undefined,
+      "now": undefined,
+      "text": undefined,
+    }
+  }
+  accessible={true}
+  collapsable={false}
+  focusable={false}
+  onClick={[Function]}
+  onResponderGrant={[Function]}
+  onResponderMove={[Function]}
+  onResponderRelease={[Function]}
+  onResponderTerminate={[Function]}
+  onResponderTerminationRequest={[Function]}
+  onStartShouldSetResponder={[Function]}
+  style={
+    {
+      "opacity": 1,
+    }
+  }
+  testID="delete-icon"
+>
+  <RNSVGSvgView
+    align="xMidYMid"
+    bbHeight={21}
+    bbWidth={21}
+    fill="none"
+    focusable={false}
+    height={21}
+    meetOrSlice={0}
+    minX={0}
+    minY={0}
+    style={
+      [
+        {
+          "backgroundColor": "transparent",
+          "borderWidth": 0,
+        },
+        {
+          "flex": 0,
+          "height": 21,
+          "width": 21,
+        },
+      ]
+    }
+    vbHeight={21}
+    vbWidth={21}
+    width={21}
+  >
+    <RNSVGGroup
+      fill={null}
+      propList={
+        [
+          "fill",
+        ]
+      }
+    >
+      <RNSVGPath
+        d="M8.75 13.125V10.5M12.25 13.125V10.5M2.625 6.125h15.75v0c-.581 0-.872 0-1.111.06a2 2 0 00-1.454 1.454c-.06.24-.06.53-.06 1.111v4.75c0 1.886 0 2.828-.586 3.414-.586.586-1.528.586-3.414.586h-2.5c-1.886 0-2.828 0-3.414-.586-.586-.586-.586-1.528-.586-3.414V8.75c0-.581 0-.872-.06-1.111a2 2 0 00-1.454-1.454c-.24-.06-.53-.06-1.111-.06v0zM8.81 2.95c.1-.094.319-.176.625-.235.305-.058.68-.09 1.065-.09.385 0 .76.032 1.065.09.306.059.526.141.625.234"
+        fill={
+          {
+            "payload": 4278190080,
+            "type": 0,
+          }
+        }
+        propList={
+          [
+            "stroke",
+            "strokeWidth",
+            "strokeLinecap",
+          ]
+        }
+        stroke={
+          {
+            "payload": 4293454060,
+            "type": 0,
+          }
+        }
+        strokeLinecap={1}
+        strokeWidth={2}
+      />
+    </RNSVGGroup>
+  </RNSVGSvgView>
+</View>
+`;
+
+exports[`DeleteIcon renders correctly (matches snapshot) with isActive 1`] = `
+<View
+  accessibilityState={
+    {
+      "busy": undefined,
+      "checked": undefined,
+      "disabled": false,
+      "expanded": undefined,
+      "selected": undefined,
+    }
+  }
+  accessibilityValue={
+    {
+      "max": undefined,
+      "min": undefined,
+      "now": undefined,
+      "text": undefined,
+    }
+  }
+  accessible={true}
+  collapsable={false}
+  focusable={false}
+  onClick={[Function]}
+  onResponderGrant={[Function]}
+  onResponderMove={[Function]}
+  onResponderRelease={[Function]}
+  onResponderTerminate={[Function]}
+  onResponderTerminationRequest={[Function]}
+  onStartShouldSetResponder={[Function]}
+  style={
+    {
+      "opacity": 1,
+    }
+  }
+  testID="delete-icon"
+>
+  <RNSVGSvgView
+    align="xMidYMid"
+    bbHeight={21}
+    bbWidth={21}
+    fill="none"
+    focusable={false}
+    height={21}
+    meetOrSlice={0}
+    minX={0}
+    minY={0}
+    style={
+      [
+        {
+          "backgroundColor": "transparent",
+          "borderWidth": 0,
+        },
+        {
+          "flex": 0,
+          "height": 21,
+          "width": 21,
+        },
+      ]
+    }
+    vbHeight={21}
+    vbWidth={21}
+    width={21}
+  >
+    <RNSVGGroup
+      fill={null}
+      propList={
+        [
+          "fill",
+        ]
+      }
+    >
+      <RNSVGPath
+        d="M8.75 13.125V10.5M12.25 13.125V10.5M2.625 6.125h15.75v0c-.581 0-.872 0-1.111.06a2 2 0 00-1.454 1.454c-.06.24-.06.53-.06 1.111v4.75c0 1.886 0 2.828-.586 3.414-.586.586-1.528.586-3.414.586h-2.5c-1.886 0-2.828 0-3.414-.586-.586-.586-.586-1.528-.586-3.414V8.75c0-.581 0-.872-.06-1.111a2 2 0 00-1.454-1.454c-.24-.06-.53-.06-1.111-.06v0zM8.81 2.95c.1-.094.319-.176.625-.235.305-.058.68-.09 1.065-.09.385 0 .76.032 1.065.09.306.059.526.141.625.234"
+        fill={
+          {
+            "payload": 4278190080,
+            "type": 0,
+          }
+        }
+        propList={
+          [
+            "stroke",
+            "strokeWidth",
+            "strokeLinecap",
+          ]
+        }
+        stroke={
+          {
+            "payload": 4278190080,
+            "type": 0,
+          }
+        }
+        strokeLinecap={1}
+        strokeWidth={2}
+      />
+    </RNSVGGroup>
+  </RNSVGSvgView>
+</View>
+`;

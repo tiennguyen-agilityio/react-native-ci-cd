@@ -1,0 +1,187 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`WalletIcon renders correctly (matches snapshot) 1`] = `
+<View
+  accessibilityState={
+    {
+      "busy": undefined,
+      "checked": undefined,
+      "disabled": false,
+      "expanded": undefined,
+      "selected": undefined,
+    }
+  }
+  accessibilityValue={
+    {
+      "max": undefined,
+      "min": undefined,
+      "now": undefined,
+      "text": undefined,
+    }
+  }
+  accessible={true}
+  collapsable={false}
+  focusable={false}
+  onClick={[Function]}
+  onResponderGrant={[Function]}
+  onResponderMove={[Function]}
+  onResponderRelease={[Function]}
+  onResponderTerminate={[Function]}
+  onResponderTerminationRequest={[Function]}
+  onStartShouldSetResponder={[Function]}
+  style={
+    {
+      "opacity": 1,
+    }
+  }
+  testID="wallet-icon"
+>
+  <RNSVGSvgView
+    align="xMidYMid"
+    bbHeight={17}
+    bbWidth={19}
+    fill="none"
+    focusable={false}
+    height={17}
+    meetOrSlice={0}
+    minX={0}
+    minY={0}
+    style={
+      [
+        {
+          "backgroundColor": "transparent",
+          "borderWidth": 0,
+        },
+        {
+          "flex": 0,
+          "height": 17,
+          "width": 19,
+        },
+      ]
+    }
+    vbHeight={17}
+    vbWidth={19}
+    width={19}
+  >
+    <RNSVGGroup
+      fill={null}
+      propList={
+        [
+          "fill",
+        ]
+      }
+    >
+      <RNSVGPath
+        clipRule={0}
+        d="M14.548 5.334h3.702c0-2.972-1.781-4.709-4.799-4.709H5.55C2.53.625.75 2.362.75 5.296v6.408c0 2.934 1.781 4.671 4.799 4.671h7.902c3.018 0 4.799-1.736 4.799-4.671v-.273h-3.702c-1.718 0-3.111-1.358-3.111-3.033 0-1.676 1.393-3.034 3.11-3.034v-.03zm0 1.304h3.049c.36 0 .653.286.653.637V9.49a.653.653 0 01-.653.637h-2.98c-.87.011-1.63-.57-1.827-1.396a1.735 1.735 0 01.379-1.445 1.83 1.83 0 011.379-.648zm.132 2.328h.288a.66.66 0 00.669-.652.66.66 0 00-.67-.652h-.287a.67.67 0 00-.473.186.637.637 0 00-.196.459c0 .361.298.655.669.66zM4.896 5.334h4.938a.66.66 0 00.67-.652.66.66 0 00-.67-.652H4.896a.66.66 0 00-.67.644c0 .362.299.656.67.66z"
+        fill={
+          {
+            "payload": 2147483648,
+            "type": 0,
+          }
+        }
+        fillRule={0}
+        propList={
+          [
+            "fill",
+            "fillRule",
+          ]
+        }
+      />
+    </RNSVGGroup>
+  </RNSVGSvgView>
+</View>
+`;
+
+exports[`WalletIcon renders correctly (matches snapshot) with isActive true 1`] = `
+<View
+  accessibilityState={
+    {
+      "busy": undefined,
+      "checked": undefined,
+      "disabled": false,
+      "expanded": undefined,
+      "selected": undefined,
+    }
+  }
+  accessibilityValue={
+    {
+      "max": undefined,
+      "min": undefined,
+      "now": undefined,
+      "text": undefined,
+    }
+  }
+  accessible={true}
+  collapsable={false}
+  focusable={false}
+  onClick={[Function]}
+  onResponderGrant={[Function]}
+  onResponderMove={[Function]}
+  onResponderRelease={[Function]}
+  onResponderTerminate={[Function]}
+  onResponderTerminationRequest={[Function]}
+  onStartShouldSetResponder={[Function]}
+  style={
+    {
+      "opacity": 1,
+    }
+  }
+  testID="wallet-icon"
+>
+  <RNSVGSvgView
+    align="xMidYMid"
+    bbHeight={17}
+    bbWidth={19}
+    fill="none"
+    focusable={false}
+    height={17}
+    meetOrSlice={0}
+    minX={0}
+    minY={0}
+    style={
+      [
+        {
+          "backgroundColor": "transparent",
+          "borderWidth": 0,
+        },
+        {
+          "flex": 0,
+          "height": 17,
+          "width": 19,
+        },
+      ]
+    }
+    vbHeight={17}
+    vbWidth={19}
+    width={19}
+  >
+    <RNSVGGroup
+      fill={null}
+      propList={
+        [
+          "fill",
+        ]
+      }
+    >
+      <RNSVGPath
+        clipRule={0}
+        d="M14.548 5.334h3.702c0-2.972-1.781-4.709-4.799-4.709H5.55C2.53.625.75 2.362.75 5.296v6.408c0 2.934 1.781 4.671 4.799 4.671h7.902c3.018 0 4.799-1.736 4.799-4.671v-.273h-3.702c-1.718 0-3.111-1.358-3.111-3.033 0-1.676 1.393-3.034 3.11-3.034v-.03zm0 1.304h3.049c.36 0 .653.286.653.637V9.49a.653.653 0 01-.653.637h-2.98c-.87.011-1.63-.57-1.827-1.396a1.735 1.735 0 01.379-1.445 1.83 1.83 0 011.379-.648zm.132 2.328h.288a.66.66 0 00.669-.652.66.66 0 00-.67-.652h-.287a.67.67 0 00-.473.186.637.637 0 00-.196.459c0 .361.298.655.669.66zM4.896 5.334h4.938a.66.66 0 00.67-.652.66.66 0 00-.67-.652H4.896a.66.66 0 00-.67.644c0 .362.299.656.67.66z"
+        fill={
+          {
+            "payload": 2147483648,
+            "type": 0,
+          }
+        }
+        fillRule={0}
+        propList={
+          [
+            "fill",
+            "fillRule",
+          ]
+        }
+      />
+    </RNSVGGroup>
+  </RNSVGSvgView>
+</View>
+`;

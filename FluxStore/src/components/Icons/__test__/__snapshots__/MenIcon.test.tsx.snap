@@ -1,0 +1,187 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`MenIcon renders correctly (matches snapshot) 1`] = `
+<View
+  accessibilityState={
+    {
+      "busy": undefined,
+      "checked": undefined,
+      "disabled": false,
+      "expanded": undefined,
+      "selected": undefined,
+    }
+  }
+  accessibilityValue={
+    {
+      "max": undefined,
+      "min": undefined,
+      "now": undefined,
+      "text": undefined,
+    }
+  }
+  accessible={true}
+  collapsable={false}
+  focusable={false}
+  onClick={[Function]}
+  onResponderGrant={[Function]}
+  onResponderMove={[Function]}
+  onResponderRelease={[Function]}
+  onResponderTerminate={[Function]}
+  onResponderTerminationRequest={[Function]}
+  onStartShouldSetResponder={[Function]}
+  style={
+    {
+      "opacity": 1,
+    }
+  }
+  testID="men-icon"
+>
+  <RNSVGSvgView
+    align="xMidYMid"
+    bbHeight={17}
+    bbWidth={17}
+    fill="none"
+    focusable={false}
+    height={17}
+    meetOrSlice={0}
+    minX={0}
+    minY={0}
+    style={
+      [
+        {
+          "backgroundColor": "transparent",
+          "borderWidth": 0,
+        },
+        {
+          "flex": 0,
+          "height": 17,
+          "width": 17,
+        },
+      ]
+    }
+    vbHeight={17}
+    vbWidth={17}
+    width={17}
+  >
+    <RNSVGGroup
+      fill={null}
+      propList={
+        [
+          "fill",
+        ]
+      }
+    >
+      <RNSVGPath
+        clipRule={0}
+        d="M10.322 1.15a.625.625 0 01-.43-.168.56.56 0 01-.177-.407.56.56 0 01.177-.407.625.625 0 01.43-.168h6.071c.161 0 .316.06.43.168A.56.56 0 0117 .575v5.752a.56.56 0 01-.177.407.625.625 0 01-.43.168.625.625 0 01-.43-.168.56.56 0 01-.177-.407V1.964l-5.014 4.75a5.552 5.552 0 011.354 4.071c-.117 1.472-.827 2.845-1.982 3.834a6.272 6.272 0 01-4.225 1.485 6.24 6.24 0 01-4.14-1.683C.676 13.377.04 11.973.001 10.498a5.579 5.579 0 011.567-4.003C2.614 5.401 4.063 4.73 5.616 4.618A6.3 6.3 0 019.914 5.9l5.014-4.75h-4.606zm-4.25 4.602A4.997 4.997 0 002.637 7.1a4.482 4.482 0 00-1.422 3.253c0 1.22.511 2.391 1.422 3.254a4.998 4.998 0 003.435 1.348 4.998 4.998 0 003.434-1.348 4.482 4.482 0 001.423-3.254c0-1.22-.512-2.39-1.423-3.253a4.997 4.997 0 00-3.434-1.348z"
+        fill={
+          {
+            "payload": 4288519581,
+            "type": 0,
+          }
+        }
+        fillRule={0}
+        propList={
+          [
+            "fill",
+            "fillRule",
+          ]
+        }
+      />
+    </RNSVGGroup>
+  </RNSVGSvgView>
+</View>
+`;
+
+exports[`MenIcon renders correctly (matches snapshot) with isActive 1`] = `
+<View
+  accessibilityState={
+    {
+      "busy": undefined,
+      "checked": undefined,
+      "disabled": false,
+      "expanded": undefined,
+      "selected": undefined,
+    }
+  }
+  accessibilityValue={
+    {
+      "max": undefined,
+      "min": undefined,
+      "now": undefined,
+      "text": undefined,
+    }
+  }
+  accessible={true}
+  collapsable={false}
+  focusable={false}
+  onClick={[Function]}
+  onResponderGrant={[Function]}
+  onResponderMove={[Function]}
+  onResponderRelease={[Function]}
+  onResponderTerminate={[Function]}
+  onResponderTerminationRequest={[Function]}
+  onStartShouldSetResponder={[Function]}
+  style={
+    {
+      "opacity": 1,
+    }
+  }
+  testID="men-icon"
+>
+  <RNSVGSvgView
+    align="xMidYMid"
+    bbHeight={17}
+    bbWidth={17}
+    fill="none"
+    focusable={false}
+    height={17}
+    meetOrSlice={0}
+    minX={0}
+    minY={0}
+    style={
+      [
+        {
+          "backgroundColor": "transparent",
+          "borderWidth": 0,
+        },
+        {
+          "flex": 0,
+          "height": 17,
+          "width": 17,
+        },
+      ]
+    }
+    vbHeight={17}
+    vbWidth={17}
+    width={17}
+  >
+    <RNSVGGroup
+      fill={null}
+      propList={
+        [
+          "fill",
+        ]
+      }
+    >
+      <RNSVGPath
+        clipRule={0}
+        d="M10.322 1.15a.625.625 0 01-.43-.168.56.56 0 01-.177-.407.56.56 0 01.177-.407.625.625 0 01.43-.168h6.071c.161 0 .316.06.43.168A.56.56 0 0117 .575v5.752a.56.56 0 01-.177.407.625.625 0 01-.43.168.625.625 0 01-.43-.168.56.56 0 01-.177-.407V1.964l-5.014 4.75a5.552 5.552 0 011.354 4.071c-.117 1.472-.827 2.845-1.982 3.834a6.272 6.272 0 01-4.225 1.485 6.24 6.24 0 01-4.14-1.683C.676 13.377.04 11.973.001 10.498a5.579 5.579 0 011.567-4.003C2.614 5.401 4.063 4.73 5.616 4.618A6.3 6.3 0 019.914 5.9l5.014-4.75h-4.606zm-4.25 4.602A4.997 4.997 0 002.637 7.1a4.482 4.482 0 00-1.422 3.253c0 1.22.511 2.391 1.422 3.254a4.998 4.998 0 003.435 1.348 4.998 4.998 0 003.434-1.348 4.482 4.482 0 001.423-3.254c0-1.22-.512-2.39-1.423-3.253a4.997 4.997 0 00-3.434-1.348z"
+        fill={
+          {
+            "payload": 4294967295,
+            "type": 0,
+          }
+        }
+        fillRule={0}
+        propList={
+          [
+            "fill",
+            "fillRule",
+          ]
+        }
+      />
+    </RNSVGGroup>
+  </RNSVGSvgView>
+</View>
+`;

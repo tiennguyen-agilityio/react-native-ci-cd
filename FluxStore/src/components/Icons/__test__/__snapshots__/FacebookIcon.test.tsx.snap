@@ -1,0 +1,137 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`FaceBookIcon renders correctly (matches snapshot) 1`] = `
+<View
+  accessibilityState={
+    {
+      "busy": undefined,
+      "checked": undefined,
+      "disabled": false,
+      "expanded": undefined,
+      "selected": undefined,
+    }
+  }
+  accessibilityValue={
+    {
+      "max": undefined,
+      "min": undefined,
+      "now": undefined,
+      "text": undefined,
+    }
+  }
+  accessible={true}
+  collapsable={false}
+  focusable={false}
+  onClick={[Function]}
+  onResponderGrant={[Function]}
+  onResponderMove={[Function]}
+  onResponderRelease={[Function]}
+  onResponderTerminate={[Function]}
+  onResponderTerminationRequest={[Function]}
+  onStartShouldSetResponder={[Function]}
+  style={
+    {
+      "opacity": 1,
+    }
+  }
+  testID="facebook-icon"
+>
+  <RNSVGSvgView
+    align="xMidYMid"
+    bbHeight={42}
+    bbWidth={42}
+    fill="none"
+    focusable={false}
+    height={42}
+    meetOrSlice={0}
+    minX={0}
+    minY={0}
+    style={
+      [
+        {
+          "backgroundColor": "transparent",
+          "borderWidth": 0,
+        },
+        {
+          "flex": 0,
+          "height": 42,
+          "width": 42,
+        },
+      ]
+    }
+    vbHeight={42}
+    vbWidth={42}
+    width={42}
+  >
+    <RNSVGGroup
+      fill={null}
+      propList={
+        [
+          "fill",
+        ]
+      }
+    >
+      <RNSVGRect
+        fill={
+          {
+            "payload": 4294967295,
+            "type": 0,
+          }
+        }
+        height={41}
+        opacity={0.14}
+        propList={
+          [
+            "fill",
+            "stroke",
+          ]
+        }
+        rx={20.5}
+        stroke={
+          {
+            "payload": 4280098594,
+            "type": 0,
+          }
+        }
+        width={41}
+        x={0.5}
+        y={0.5}
+      />
+      <RNSVGPath
+        clipRule={0}
+        d="M18.136 31v-9.276H15V17.86h3.136v-3.092c0-3.195 2.051-4.767 4.942-4.767 1.384 0 2.575.102 2.922.147v3.339h-2.005c-1.572 0-1.939.738-1.939 1.819v2.554h3.92l-.784 3.864h-3.136L22.12 31"
+        fill={
+          {
+            "payload": 4281493198,
+            "type": 0,
+          }
+        }
+        fillRule={0}
+        propList={
+          [
+            "fill",
+            "fillRule",
+          ]
+        }
+      />
+      <RNSVGPath
+        clipRule={0}
+        d="M18.136 31v-9.276H15V17.86h3.136v-3.092c0-3.195 2.051-4.767 4.942-4.767 1.384 0 2.575.102 2.922.147v3.339h-2.005c-1.572 0-1.939.738-1.939 1.819v2.554h3.92l-.784 3.864h-3.136L22.12 31"
+        fill={
+          {
+            "payload": 4281493198,
+            "type": 0,
+          }
+        }
+        fillRule={0}
+        propList={
+          [
+            "fill",
+            "fillRule",
+          ]
+        }
+      />
+    </RNSVGGroup>
+  </RNSVGSvgView>
+</View>
+`;

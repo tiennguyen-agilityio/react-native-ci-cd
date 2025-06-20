@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>API_KEY</key>
+	<string>AIzaSyD5VXe6_OfW6cJXjTZ2lI77AHnm1D4rAKc</string>
+	<key>GCM_SENDER_ID</key>
+	<string>665582938112</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.furnitureshop</string>
+	<key>PROJECT_ID</key>
+	<string>furnitueshop-8370</string>
+	<key>STORAGE_BUCKET</key>
+	<string>furnitueshop-8370.firebasestorage.app</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:665582938112:ios:70c2a8f64fd100964410e5</string>
+</dict>
+</plist>

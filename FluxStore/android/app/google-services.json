@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "1086554810515",
+    "project_id": "fluxstore-1074a",
+    "storage_bucket": "fluxstore-1074a.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1086554810515:android:9ecd7a69dbc7ae20330566",
+        "android_client_info": {
+          "package_name": "com.fluxstore"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCPxk1V59d269U6aJFBII7efT9KcZn0ics"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
