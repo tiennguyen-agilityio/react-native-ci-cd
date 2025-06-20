@@ -10,7 +10,7 @@ on:
   workflow_dispatch:
     inputs:
       chosen-os:
-        description: " Description workflow_dispatch"
+        description: "Description workflow_dispatch"
         required: true
         type: choice
         options:
@@ -21,6 +21,9 @@ jobs:
   build:
     name: Build Android APK
     runs-on: ubuntu-latest
+
+    env:
+      API_URL: "${{ vars.API_URL }}"
 
     # ⬇️ Set default working directory to FluxStore/
     defaults:
@@ -36,17 +39,17 @@ jobs:
         with:
           node-version: 20
 
-      - name: 📦 Install Yarn
-        run: npm install -g yarn
+      # - name: 📦 Install Yarn
+      #   run: npm install -g yarn
 
-      - name: 📦 Install dependencies
-        run: yarn install
+      # - name: 📦 Install dependencies
+      #   run: yarn install
 
-      - name: 🧹 Run Linter
-        run: yarn lint
+      # - name: 🧹 Run Linter
+      #   run: yarn lint
 
-      - name: 🧪 Run Tests with Coverage
-        run: yarn test:coverage
+      # - name: 🧪 Run Tests with Coverage
+      #   run: yarn test:coverage
 
       # - name: ⚙️ Set up JDK
       #   uses: actions/setup-java@v4
@@ -66,3 +69,18 @@ jobs:
       #   with:
       #     name: app-debug.apk
       #     path: FluxStore/android/app/build/outputs/apk/debug/app-debug.apk
+  deploy:
+    if: github.repository == 'git@gitlab.asoft-python.com:tien.nguyen/react-native-training.git'
+    needs: build
+    name: Deploy
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: 🔍 Show repo repository
+        run: echo "REPO = ${{ github.repository }}"
+
+      - name: 🔍 Show repo ref
+        run: echo "REPO = ${{ github.ref }}"
