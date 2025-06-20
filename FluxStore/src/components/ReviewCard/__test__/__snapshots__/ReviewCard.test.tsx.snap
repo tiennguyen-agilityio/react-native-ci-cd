@@ -1,0 +1,648 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ReviewCard should render ReviewCard component 1`] = `
+<View
+  style={
+    [
+      {
+        "flexDirection": "column",
+      },
+      {
+        "justifyContent": "flex-start",
+      },
+      {
+        "alignItems": "stretch",
+      },
+      {
+        "flexWrap": "nowrap",
+      },
+      undefined,
+      {
+        "gap": 20,
+      },
+    ]
+  }
+  testID="flex"
+>
+  <View
+    style={
+      [
+        {
+          "flexDirection": "row",
+        },
+        {
+          "justifyContent": "flex-start",
+        },
+        {
+          "alignItems": "center",
+        },
+        {
+          "flexWrap": "nowrap",
+        },
+        undefined,
+        {
+          "gap": 12,
+        },
+      ]
+    }
+    testID="flex"
+  >
+    <Image
+      resizeMode="cover"
+      source={
+        {
+          "uri": "https://i.ibb.co/h1n0FRHn/Ellipse-76.png",
+        }
+      }
+      style={
+        {
+          "borderRadius": 18,
+          "height": 36,
+          "overflow": "hidden",
+          "width": 36,
+        }
+      }
+    />
+    <View
+      style={
+        [
+          {
+            "flexDirection": "column",
+          },
+          {
+            "justifyContent": "flex-start",
+          },
+          {
+            "alignItems": "stretch",
+          },
+          {
+            "flexWrap": "nowrap",
+          },
+          undefined,
+          {
+            "gap": 8,
+          },
+        ]
+      }
+      testID="flex"
+    >
+      <Text
+        style={
+          [
+            {
+              "letterSpacing": 0,
+              "textAlign": "left",
+              "textAlignVertical": "center",
+            },
+            {
+              "color": "#737680",
+              "fontFamily": "ProductSansRegular",
+              "fontSize": 14,
+            },
+            {},
+            {
+              "fontFamily": "ProductSansBold",
+              "fontSize": 13,
+              "fontWeight": 700,
+            },
+          ]
+        }
+      >
+        Jennifer Rose
+      </Text>
+      <View
+        style={
+          {
+            "columnGap": 5,
+            "flexDirection": "row",
+          }
+        }
+      >
+        <View
+          accessibilityState={
+            {
+              "busy": undefined,
+              "checked": undefined,
+              "disabled": false,
+              "expanded": undefined,
+              "selected": undefined,
+            }
+          }
+          accessibilityValue={
+            {
+              "max": undefined,
+              "min": undefined,
+              "now": undefined,
+              "text": undefined,
+            }
+          }
+          accessible={true}
+          collapsable={false}
+          focusable={false}
+          onClick={[Function]}
+          onResponderGrant={[Function]}
+          onResponderMove={[Function]}
+          onResponderRelease={[Function]}
+          onResponderTerminate={[Function]}
+          onResponderTerminationRequest={[Function]}
+          onStartShouldSetResponder={[Function]}
+          style={
+            {
+              "opacity": 1,
+            }
+          }
+          testID="star-icon"
+        >
+          <RNSVGSvgView
+            align="xMidYMid"
+            bbHeight={10}
+            bbWidth={10}
+            fill="none"
+            focusable={false}
+            height={10}
+            meetOrSlice={0}
+            minX={0}
+            minY={0}
+            style={
+              [
+                {
+                  "backgroundColor": "transparent",
+                  "borderWidth": 0,
+                },
+                {
+                  "flex": 0,
+                  "height": 10,
+                  "width": 10,
+                },
+              ]
+            }
+            vbHeight={8}
+            vbWidth={9}
+            width={10}
+          >
+            <RNSVGGroup
+              fill={null}
+              propList={
+                [
+                  "fill",
+                ]
+              }
+            >
+              <RNSVGPath
+                clipRule={0}
+                d="M6.097 2.624a.328.328 0 01-.313-.22L5.058.22a.332.332 0 00-.625 0l-.73 2.18a.328.328 0 01-.313.22H1.025a.32.32 0 00-.311.216.313.313 0 00.117.357l1.92 1.359a.31.31 0 01.118.352L2.137 7.1a.315.315 0 00.166.383.331.331 0 00.34-.03l1.907-1.35a.339.339 0 01.389 0l1.906 1.349a.331.331 0 00.34.03.326.326 0 00.178-.232.315.315 0 00-.011-.15L6.62 4.906a.311.311 0 01.118-.352L8.658 3.2a.313.313 0 00-.002-.516.321.321 0 00-.191-.057l-2.368-.003z"
+                fill={
+                  {
+                    "payload": 4283468411,
+                    "type": 0,
+                  }
+                }
+                fillRule={0}
+                propList={
+                  [
+                    "fill",
+                    "fillRule",
+                  ]
+                }
+              />
+            </RNSVGGroup>
+          </RNSVGSvgView>
+        </View>
+        <View
+          accessibilityState={
+            {
+              "busy": undefined,
+              "checked": undefined,
+              "disabled": false,
+              "expanded": undefined,
+              "selected": undefined,
+            }
+          }
+          accessibilityValue={
+            {
+              "max": undefined,
+              "min": undefined,
+              "now": undefined,
+              "text": undefined,
+            }
+          }
+          accessible={true}
+          collapsable={false}
+          focusable={false}
+          onClick={[Function]}
+          onResponderGrant={[Function]}
+          onResponderMove={[Function]}
+          onResponderRelease={[Function]}
+          onResponderTerminate={[Function]}
+          onResponderTerminationRequest={[Function]}
+          onStartShouldSetResponder={[Function]}
+          style={
+            {
+              "opacity": 1,
+            }
+          }
+          testID="star-icon"
+        >
+          <RNSVGSvgView
+            align="xMidYMid"
+            bbHeight={10}
+            bbWidth={10}
+            fill="none"
+            focusable={false}
+            height={10}
+            meetOrSlice={0}
+            minX={0}
+            minY={0}
+            style={
+              [
+                {
+                  "backgroundColor": "transparent",
+                  "borderWidth": 0,
+                },
+                {
+                  "flex": 0,
+                  "height": 10,
+                  "width": 10,
+                },
+              ]
+            }
+            vbHeight={8}
+            vbWidth={9}
+            width={10}
+          >
+            <RNSVGGroup
+              fill={null}
+              propList={
+                [
+                  "fill",
+                ]
+              }
+            >
+              <RNSVGPath
+                clipRule={0}
+                d="M6.097 2.624a.328.328 0 01-.313-.22L5.058.22a.332.332 0 00-.625 0l-.73 2.18a.328.328 0 01-.313.22H1.025a.32.32 0 00-.311.216.313.313 0 00.117.357l1.92 1.359a.31.31 0 01.118.352L2.137 7.1a.315.315 0 00.166.383.331.331 0 00.34-.03l1.907-1.35a.339.339 0 01.389 0l1.906 1.349a.331.331 0 00.34.03.326.326 0 00.178-.232.315.315 0 00-.011-.15L6.62 4.906a.311.311 0 01.118-.352L8.658 3.2a.313.313 0 00-.002-.516.321.321 0 00-.191-.057l-2.368-.003z"
+                fill={
+                  {
+                    "payload": 4283468411,
+                    "type": 0,
+                  }
+                }
+                fillRule={0}
+                propList={
+                  [
+                    "fill",
+                    "fillRule",
+                  ]
+                }
+              />
+            </RNSVGGroup>
+          </RNSVGSvgView>
+        </View>
+        <View
+          accessibilityState={
+            {
+              "busy": undefined,
+              "checked": undefined,
+              "disabled": false,
+              "expanded": undefined,
+              "selected": undefined,
+            }
+          }
+          accessibilityValue={
+            {
+              "max": undefined,
+              "min": undefined,
+              "now": undefined,
+              "text": undefined,
+            }
+          }
+          accessible={true}
+          collapsable={false}
+          focusable={false}
+          onClick={[Function]}
+          onResponderGrant={[Function]}
+          onResponderMove={[Function]}
+          onResponderRelease={[Function]}
+          onResponderTerminate={[Function]}
+          onResponderTerminationRequest={[Function]}
+          onStartShouldSetResponder={[Function]}
+          style={
+            {
+              "opacity": 1,
+            }
+          }
+          testID="star-icon"
+        >
+          <RNSVGSvgView
+            align="xMidYMid"
+            bbHeight={10}
+            bbWidth={10}
+            fill="none"
+            focusable={false}
+            height={10}
+            meetOrSlice={0}
+            minX={0}
+            minY={0}
+            style={
+              [
+                {
+                  "backgroundColor": "transparent",
+                  "borderWidth": 0,
+                },
+                {
+                  "flex": 0,
+                  "height": 10,
+                  "width": 10,
+                },
+              ]
+            }
+            vbHeight={8}
+            vbWidth={9}
+            width={10}
+          >
+            <RNSVGGroup
+              fill={null}
+              propList={
+                [
+                  "fill",
+                ]
+              }
+            >
+              <RNSVGPath
+                clipRule={0}
+                d="M6.097 2.624a.328.328 0 01-.313-.22L5.058.22a.332.332 0 00-.625 0l-.73 2.18a.328.328 0 01-.313.22H1.025a.32.32 0 00-.311.216.313.313 0 00.117.357l1.92 1.359a.31.31 0 01.118.352L2.137 7.1a.315.315 0 00.166.383.331.331 0 00.34-.03l1.907-1.35a.339.339 0 01.389 0l1.906 1.349a.331.331 0 00.34.03.326.326 0 00.178-.232.315.315 0 00-.011-.15L6.62 4.906a.311.311 0 01.118-.352L8.658 3.2a.313.313 0 00-.002-.516.321.321 0 00-.191-.057l-2.368-.003z"
+                fill={
+                  {
+                    "payload": 4283468411,
+                    "type": 0,
+                  }
+                }
+                fillRule={0}
+                propList={
+                  [
+                    "fill",
+                    "fillRule",
+                  ]
+                }
+              />
+            </RNSVGGroup>
+          </RNSVGSvgView>
+        </View>
+        <View
+          accessibilityState={
+            {
+              "busy": undefined,
+              "checked": undefined,
+              "disabled": false,
+              "expanded": undefined,
+              "selected": undefined,
+            }
+          }
+          accessibilityValue={
+            {
+              "max": undefined,
+              "min": undefined,
+              "now": undefined,
+              "text": undefined,
+            }
+          }
+          accessible={true}
+          collapsable={false}
+          focusable={false}
+          onClick={[Function]}
+          onResponderGrant={[Function]}
+          onResponderMove={[Function]}
+          onResponderRelease={[Function]}
+          onResponderTerminate={[Function]}
+          onResponderTerminationRequest={[Function]}
+          onStartShouldSetResponder={[Function]}
+          style={
+            {
+              "opacity": 1,
+            }
+          }
+          testID="star-icon"
+        >
+          <RNSVGSvgView
+            align="xMidYMid"
+            bbHeight={10}
+            bbWidth={10}
+            fill="none"
+            focusable={false}
+            height={10}
+            meetOrSlice={0}
+            minX={0}
+            minY={0}
+            style={
+              [
+                {
+                  "backgroundColor": "transparent",
+                  "borderWidth": 0,
+                },
+                {
+                  "flex": 0,
+                  "height": 10,
+                  "width": 10,
+                },
+              ]
+            }
+            vbHeight={8}
+            vbWidth={9}
+            width={10}
+          >
+            <RNSVGGroup
+              fill={null}
+              propList={
+                [
+                  "fill",
+                ]
+              }
+            >
+              <RNSVGPath
+                clipRule={0}
+                d="M6.097 2.624a.328.328 0 01-.313-.22L5.058.22a.332.332 0 00-.625 0l-.73 2.18a.328.328 0 01-.313.22H1.025a.32.32 0 00-.311.216.313.313 0 00.117.357l1.92 1.359a.31.31 0 01.118.352L2.137 7.1a.315.315 0 00.166.383.331.331 0 00.34-.03l1.907-1.35a.339.339 0 01.389 0l1.906 1.349a.331.331 0 00.34.03.326.326 0 00.178-.232.315.315 0 00-.011-.15L6.62 4.906a.311.311 0 01.118-.352L8.658 3.2a.313.313 0 00-.002-.516.321.321 0 00-.191-.057l-2.368-.003z"
+                fill={
+                  {
+                    "payload": 4283468411,
+                    "type": 0,
+                  }
+                }
+                fillRule={0}
+                propList={
+                  [
+                    "fill",
+                    "fillRule",
+                  ]
+                }
+              />
+            </RNSVGGroup>
+          </RNSVGSvgView>
+        </View>
+        <View
+          accessibilityState={
+            {
+              "busy": undefined,
+              "checked": undefined,
+              "disabled": false,
+              "expanded": undefined,
+              "selected": undefined,
+            }
+          }
+          accessibilityValue={
+            {
+              "max": undefined,
+              "min": undefined,
+              "now": undefined,
+              "text": undefined,
+            }
+          }
+          accessible={true}
+          collapsable={false}
+          focusable={false}
+          onClick={[Function]}
+          onResponderGrant={[Function]}
+          onResponderMove={[Function]}
+          onResponderRelease={[Function]}
+          onResponderTerminate={[Function]}
+          onResponderTerminationRequest={[Function]}
+          onStartShouldSetResponder={[Function]}
+          style={
+            {
+              "opacity": 1,
+            }
+          }
+          testID="star-icon"
+        >
+          <RNSVGSvgView
+            align="xMidYMid"
+            bbHeight={10}
+            bbWidth={10}
+            fill="none"
+            focusable={false}
+            height={10}
+            meetOrSlice={0}
+            minX={0}
+            minY={0}
+            style={
+              [
+                {
+                  "backgroundColor": "transparent",
+                  "borderWidth": 0,
+                },
+                {
+                  "flex": 0,
+                  "height": 10,
+                  "width": 10,
+                },
+              ]
+            }
+            vbHeight={8}
+            vbWidth={9}
+            width={10}
+          >
+            <RNSVGGroup
+              fill={null}
+              propList={
+                [
+                  "fill",
+                ]
+              }
+            >
+              <RNSVGPath
+                clipRule={0}
+                d="M6.097 2.624a.328.328 0 01-.313-.22L5.058.22a.332.332 0 00-.625 0l-.73 2.18a.328.328 0 01-.313.22H1.025a.32.32 0 00-.311.216.313.313 0 00.117.357l1.92 1.359a.31.31 0 01.118.352L2.137 7.1a.315.315 0 00.166.383.331.331 0 00.34-.03l1.907-1.35a.339.339 0 01.389 0l1.906 1.349a.331.331 0 00.34.03.326.326 0 00.178-.232.315.315 0 00-.011-.15L6.62 4.906a.311.311 0 01.118-.352L8.658 3.2a.313.313 0 00-.002-.516.321.321 0 00-.191-.057l-2.368-.003z"
+                fill={
+                  {
+                    "payload": 4283468411,
+                    "type": 0,
+                  }
+                }
+                fillRule={0}
+                propList={
+                  [
+                    "fill",
+                    "fillRule",
+                  ]
+                }
+              />
+            </RNSVGGroup>
+          </RNSVGSvgView>
+        </View>
+      </View>
+    </View>
+    <View
+      style={
+        [
+          {
+            "flexDirection": "column",
+          },
+          {
+            "justifyContent": "flex-start",
+          },
+          {
+            "alignItems": "stretch",
+          },
+          {
+            "flexWrap": "nowrap",
+          },
+          undefined,
+          {
+            "marginLeft": "auto",
+            "marginRight": 0,
+          },
+        ]
+      }
+      testID="flex"
+    >
+      <Text
+        style={
+          [
+            {
+              "letterSpacing": 0,
+              "textAlign": "left",
+              "textAlignVertical": "center",
+            },
+            {
+              "color": "#737680",
+              "fontFamily": "ProductSansRegular",
+              "fontSize": 14,
+            },
+            {},
+            {
+              "color": "#bebfc4",
+              "fontFamily": "NunitoSemiBold",
+              "fontSize": 11,
+              "fontWeight": 500,
+            },
+          ]
+        }
+      >
+        0m ago
+      </Text>
+    </View>
+  </View>
+  <Text
+    style={
+      [
+        {
+          "letterSpacing": 0,
+          "textAlign": "left",
+          "textAlignVertical": "center",
+        },
+        {
+          "color": "#737680",
+          "fontFamily": "ProductSansRegular",
+          "fontSize": 14,
+        },
+        {},
+        {
+          "color": "#000",
+          "fontSize": 11,
+        },
+      ]
+    }
+  >
+    I love it.  Awesome customer service!! Helped me out with adding an additional item to my order. Thanks again!
+  </Text>
+</View>
+`;

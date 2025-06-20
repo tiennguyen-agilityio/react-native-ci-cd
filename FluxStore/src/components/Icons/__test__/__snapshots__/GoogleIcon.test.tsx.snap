@@ -1,0 +1,305 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`GoogleIcon renders correctly (matches snapshot) 1`] = `
+<View
+  accessibilityState={
+    {
+      "busy": undefined,
+      "checked": undefined,
+      "disabled": false,
+      "expanded": undefined,
+      "selected": undefined,
+    }
+  }
+  accessibilityValue={
+    {
+      "max": undefined,
+      "min": undefined,
+      "now": undefined,
+      "text": undefined,
+    }
+  }
+  accessible={true}
+  collapsable={false}
+  focusable={false}
+  onClick={[Function]}
+  onResponderGrant={[Function]}
+  onResponderMove={[Function]}
+  onResponderRelease={[Function]}
+  onResponderTerminate={[Function]}
+  onResponderTerminationRequest={[Function]}
+  onStartShouldSetResponder={[Function]}
+  style={
+    {
+      "opacity": 1,
+    }
+  }
+  testID="google-icon"
+>
+  <RNSVGSvgView
+    align="xMidYMid"
+    bbHeight={42}
+    bbWidth={42}
+    fill="none"
+    focusable={false}
+    height={42}
+    meetOrSlice={0}
+    minX={0}
+    minY={0}
+    style={
+      [
+        {
+          "backgroundColor": "transparent",
+          "borderWidth": 0,
+        },
+        {
+          "flex": 0,
+          "height": 42,
+          "width": 42,
+        },
+      ]
+    }
+    vbHeight={42}
+    vbWidth={42}
+    width={42}
+  >
+    <RNSVGGroup
+      fill={null}
+      propList={
+        [
+          "fill",
+        ]
+      }
+    >
+      <RNSVGGroup
+        clipPath="clip0_9200_443"
+        fill={
+          {
+            "payload": 4278190080,
+            "type": 0,
+          }
+        }
+      >
+        <RNSVGPath
+          d="M14.827 18.951A6.488 6.488 0 0121 14.5c1.55 0 2.95.55 4.05 1.45l3.2-3.2C26.3 11.05 23.8 10 21 10a10.97 10.97 0 00-9.863 6.096l3.69 2.855z"
+          fill={
+            {
+              "payload": 4293542709,
+              "type": 0,
+            }
+          }
+          propList={
+            [
+              "fill",
+            ]
+          }
+        />
+        <RNSVGPath
+          d="M24.703 26.512c-.999.644-2.268.988-3.703.988a6.488 6.488 0 01-6.163-4.42l-3.703 2.81A10.968 10.968 0 0021 32c2.689 0 5.257-.956 7.181-2.75l-3.477-2.738z"
+          fill={
+            {
+              "payload": 4281641043,
+              "type": 0,
+            }
+          }
+          propList={
+            [
+              "fill",
+            ]
+          }
+        />
+        <RNSVGPath
+          d="M28.181 29.25C30.193 27.373 31.5 24.579 31.5 21c0-.65-.1-1.35-.25-2H21v4.25h5.9c-.29 1.43-1.073 2.536-2.196 3.262l3.477 2.738z"
+          fill={
+            {
+              "payload": 4283076834,
+              "type": 0,
+            }
+          }
+          propList={
+            [
+              "fill",
+            ]
+          }
+        />
+        <RNSVGPath
+          d="M14.837 23.08A6.527 6.527 0 0114.5 21c0-.717.115-1.405.327-2.049l-3.69-2.855A10.94 10.94 0 0010 21c0 1.76.408 3.42 1.134 4.89l3.703-2.81z"
+          fill={
+            {
+              "payload": 4294687749,
+              "type": 0,
+            }
+          }
+          propList={
+            [
+              "fill",
+            ]
+          }
+        />
+      </RNSVGGroup>
+      <RNSVGGroup
+        clipPath="clip1_9200_443"
+        fill={
+          {
+            "payload": 4278190080,
+            "type": 0,
+          }
+        }
+      >
+        <RNSVGPath
+          d="M14.827 18.951A6.488 6.488 0 0121 14.5c1.55 0 2.95.55 4.05 1.45l3.2-3.2C26.3 11.05 23.8 10 21 10a10.97 10.97 0 00-9.863 6.096l3.69 2.855z"
+          fill={
+            {
+              "payload": 4293542709,
+              "type": 0,
+            }
+          }
+          propList={
+            [
+              "fill",
+            ]
+          }
+        />
+        <RNSVGPath
+          d="M24.703 26.512c-.999.644-2.268.988-3.703.988a6.488 6.488 0 01-6.163-4.42l-3.703 2.81A10.968 10.968 0 0021 32c2.689 0 5.257-.956 7.181-2.75l-3.477-2.738z"
+          fill={
+            {
+              "payload": 4281641043,
+              "type": 0,
+            }
+          }
+          propList={
+            [
+              "fill",
+            ]
+          }
+        />
+        <RNSVGPath
+          d="M28.181 29.25C30.193 27.373 31.5 24.579 31.5 21c0-.65-.1-1.35-.25-2H21v4.25h5.9c-.29 1.43-1.073 2.536-2.196 3.262l3.477 2.738z"
+          fill={
+            {
+              "payload": 4283076834,
+              "type": 0,
+            }
+          }
+          propList={
+            [
+              "fill",
+            ]
+          }
+        />
+        <RNSVGPath
+          d="M14.837 23.08A6.527 6.527 0 0114.5 21c0-.717.115-1.405.327-2.049l-3.69-2.855A10.94 10.94 0 0010 21c0 1.76.408 3.42 1.134 4.89l3.703-2.81z"
+          fill={
+            {
+              "payload": 4294687749,
+              "type": 0,
+            }
+          }
+          propList={
+            [
+              "fill",
+            ]
+          }
+        />
+      </RNSVGGroup>
+      <RNSVGRect
+        fill={
+          {
+            "payload": 4294967295,
+            "type": 0,
+          }
+        }
+        height={41}
+        opacity={0.14}
+        propList={
+          [
+            "fill",
+            "stroke",
+          ]
+        }
+        rx={20.5}
+        stroke={
+          {
+            "payload": 4280098594,
+            "type": 0,
+          }
+        }
+        width={41}
+        x={0.5}
+        y={0.5}
+      />
+      <RNSVGDefs>
+        <RNSVGClipPath
+          fill={
+            {
+              "payload": 4278190080,
+              "type": 0,
+            }
+          }
+          name="clip0_9200_443"
+        >
+          <RNSVGPath
+            d="M0 0H22V22H0z"
+            fill={
+              {
+                "payload": 4294967295,
+                "type": 0,
+              }
+            }
+            matrix={
+              [
+                1,
+                0,
+                0,
+                1,
+                10,
+                10,
+              ]
+            }
+            propList={
+              [
+                "fill",
+              ]
+            }
+          />
+        </RNSVGClipPath>
+        <RNSVGClipPath
+          fill={
+            {
+              "payload": 4278190080,
+              "type": 0,
+            }
+          }
+          name="clip1_9200_443"
+        >
+          <RNSVGPath
+            d="M0 0H22V22H0z"
+            fill={
+              {
+                "payload": 4294967295,
+                "type": 0,
+              }
+            }
+            matrix={
+              [
+                1,
+                0,
+                0,
+                1,
+                10,
+                10,
+              ]
+            }
+            propList={
+              [
+                "fill",
+              ]
+            }
+          />
+        </RNSVGClipPath>
+      </RNSVGDefs>
+    </RNSVGGroup>
+  </RNSVGSvgView>
+</View>
+`;

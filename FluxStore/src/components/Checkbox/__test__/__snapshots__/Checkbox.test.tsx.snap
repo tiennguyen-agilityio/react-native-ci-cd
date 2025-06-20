@@ -1,0 +1,490 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Checkbox renders with disabled true 1`] = `
+<View
+  accessibilityState={
+    {
+      "busy": undefined,
+      "checked": undefined,
+      "disabled": true,
+      "expanded": undefined,
+      "selected": undefined,
+    }
+  }
+  accessibilityValue={
+    {
+      "max": undefined,
+      "min": undefined,
+      "now": undefined,
+      "text": undefined,
+    }
+  }
+  accessible={true}
+  collapsable={false}
+  focusable={false}
+  onClick={[Function]}
+  onResponderGrant={[Function]}
+  onResponderMove={[Function]}
+  onResponderRelease={[Function]}
+  onResponderTerminate={[Function]}
+  onResponderTerminationRequest={[Function]}
+  onStartShouldSetResponder={[Function]}
+  style={
+    {
+      "alignItems": "center",
+      "flexDirection": "row",
+      "gap": 14,
+      "marginBottom": 20,
+      "opacity": 1,
+    }
+  }
+>
+  <View
+    style={
+      {
+        "alignItems": "center",
+        "backgroundColor": "transparent",
+        "borderColor": "#bebfc4",
+        "borderWidth": 1,
+        "height": 20,
+        "justifyContent": "center",
+        "width": 20,
+      }
+    }
+  />
+  <Text
+    style={
+      {
+        "color": "#bebfc4",
+        "fontFamily": "ProductSansMedium",
+        "fontSize": 14,
+      }
+    }
+  >
+    Label checkbox
+  </Text>
+</View>
+`;
+
+exports[`Checkbox renders with label 1`] = `
+<View
+  accessibilityState={
+    {
+      "busy": undefined,
+      "checked": undefined,
+      "disabled": false,
+      "expanded": undefined,
+      "selected": undefined,
+    }
+  }
+  accessibilityValue={
+    {
+      "max": undefined,
+      "min": undefined,
+      "now": undefined,
+      "text": undefined,
+    }
+  }
+  accessible={true}
+  collapsable={false}
+  focusable={true}
+  onClick={[Function]}
+  onResponderGrant={[Function]}
+  onResponderMove={[Function]}
+  onResponderRelease={[Function]}
+  onResponderTerminate={[Function]}
+  onResponderTerminationRequest={[Function]}
+  onStartShouldSetResponder={[Function]}
+  style={
+    {
+      "alignItems": "center",
+      "flexDirection": "row",
+      "gap": 14,
+      "marginBottom": 20,
+      "opacity": 1,
+    }
+  }
+>
+  <View
+    style={
+      {
+        "alignItems": "center",
+        "backgroundColor": "transparent",
+        "borderColor": "#bebfc4",
+        "borderWidth": 1,
+        "height": 20,
+        "justifyContent": "center",
+        "width": 20,
+      }
+    }
+  />
+  <Text
+    style={
+      {
+        "color": "#000",
+        "fontFamily": "ProductSansMedium",
+        "fontSize": 14,
+      }
+    }
+  >
+    Label checkbox
+  </Text>
+</View>
+`;
+
+exports[`Checkbox renders with no label 1`] = `
+<View
+  accessibilityState={
+    {
+      "busy": undefined,
+      "checked": undefined,
+      "disabled": false,
+      "expanded": undefined,
+      "selected": undefined,
+    }
+  }
+  accessibilityValue={
+    {
+      "max": undefined,
+      "min": undefined,
+      "now": undefined,
+      "text": undefined,
+    }
+  }
+  accessible={true}
+  collapsable={false}
+  focusable={true}
+  onClick={[Function]}
+  onResponderGrant={[Function]}
+  onResponderMove={[Function]}
+  onResponderRelease={[Function]}
+  onResponderTerminate={[Function]}
+  onResponderTerminationRequest={[Function]}
+  onStartShouldSetResponder={[Function]}
+  style={
+    {
+      "alignItems": "center",
+      "flexDirection": "row",
+      "gap": 14,
+      "marginBottom": 20,
+      "opacity": 1,
+    }
+  }
+>
+  <View
+    style={
+      {
+        "alignItems": "center",
+        "backgroundColor": "transparent",
+        "borderColor": "#bebfc4",
+        "borderWidth": 1,
+        "height": 20,
+        "justifyContent": "center",
+        "width": 20,
+      }
+    }
+  />
+</View>
+`;
+
+exports[`Checkbox renders with selected false 1`] = `
+<View
+  accessibilityState={
+    {
+      "busy": undefined,
+      "checked": undefined,
+      "disabled": false,
+      "expanded": undefined,
+      "selected": undefined,
+    }
+  }
+  accessibilityValue={
+    {
+      "max": undefined,
+      "min": undefined,
+      "now": undefined,
+      "text": undefined,
+    }
+  }
+  accessible={true}
+  collapsable={false}
+  focusable={true}
+  onClick={[Function]}
+  onResponderGrant={[Function]}
+  onResponderMove={[Function]}
+  onResponderRelease={[Function]}
+  onResponderTerminate={[Function]}
+  onResponderTerminationRequest={[Function]}
+  onStartShouldSetResponder={[Function]}
+  style={
+    {
+      "alignItems": "center",
+      "flexDirection": "row",
+      "gap": 14,
+      "marginBottom": 20,
+      "opacity": 1,
+    }
+  }
+>
+  <View
+    style={
+      {
+        "alignItems": "center",
+        "backgroundColor": "transparent",
+        "borderColor": "#bebfc4",
+        "borderWidth": 1,
+        "height": 20,
+        "justifyContent": "center",
+        "width": 20,
+      }
+    }
+  />
+  <Text
+    style={
+      {
+        "color": "#000",
+        "fontFamily": "ProductSansMedium",
+        "fontSize": 14,
+      }
+    }
+  >
+    Label checkbox
+  </Text>
+</View>
+`;
+
+exports[`Checkbox renders with selected true 1`] = `
+<View
+  accessibilityState={
+    {
+      "busy": undefined,
+      "checked": undefined,
+      "disabled": false,
+      "expanded": undefined,
+      "selected": undefined,
+    }
+  }
+  accessibilityValue={
+    {
+      "max": undefined,
+      "min": undefined,
+      "now": undefined,
+      "text": undefined,
+    }
+  }
+  accessible={true}
+  collapsable={false}
+  focusable={true}
+  onClick={[Function]}
+  onResponderGrant={[Function]}
+  onResponderMove={[Function]}
+  onResponderRelease={[Function]}
+  onResponderTerminate={[Function]}
+  onResponderTerminationRequest={[Function]}
+  onStartShouldSetResponder={[Function]}
+  style={
+    {
+      "alignItems": "center",
+      "flexDirection": "row",
+      "gap": 14,
+      "marginBottom": 20,
+      "opacity": 1,
+    }
+  }
+>
+  <View
+    style={
+      {
+        "alignItems": "center",
+        "backgroundColor": "#5ece7b",
+        "borderColor": "#5ece7b",
+        "borderWidth": 1,
+        "height": 20,
+        "justifyContent": "center",
+        "width": 20,
+      }
+    }
+  >
+    <RNSVGSvgView
+      align="xMidYMid"
+      bbHeight={7}
+      bbWidth={9}
+      fill="none"
+      focusable={false}
+      height={7}
+      meetOrSlice={0}
+      minX={0}
+      minY={0}
+      style={
+        [
+          {
+            "backgroundColor": "transparent",
+            "borderWidth": 0,
+          },
+          {
+            "flex": 0,
+            "height": 7,
+            "width": 9,
+          },
+        ]
+      }
+      vbHeight={7}
+      vbWidth={9}
+      width={9}
+    >
+      <RNSVGGroup
+        fill={null}
+        propList={
+          [
+            "fill",
+          ]
+        }
+      >
+        <RNSVGPath
+          d="M3.535 7a.995.995 0 01-.711-.3L.292 4.116a1.037 1.037 0 010-1.442.987.987 0 011.413 0l1.802 1.839L7.262.33A.98.98 0 018.675.273c.408.377.437 1.026.057 1.442L4.275 6.671A.974.974 0 013.554 7h-.019z"
+          fill={
+            {
+              "payload": 4294967295,
+              "type": 0,
+            }
+          }
+          propList={
+            [
+              "fill",
+            ]
+          }
+        />
+      </RNSVGGroup>
+    </RNSVGSvgView>
+  </View>
+  <Text
+    style={
+      {
+        "color": "#000",
+        "fontFamily": "ProductSansMedium",
+        "fontSize": 14,
+      }
+    }
+  >
+    Label checkbox
+  </Text>
+</View>
+`;
+
+exports[`Checkbox renders with selected true, disabled true 1`] = `
+<View
+  accessibilityState={
+    {
+      "busy": undefined,
+      "checked": undefined,
+      "disabled": true,
+      "expanded": undefined,
+      "selected": undefined,
+    }
+  }
+  accessibilityValue={
+    {
+      "max": undefined,
+      "min": undefined,
+      "now": undefined,
+      "text": undefined,
+    }
+  }
+  accessible={true}
+  collapsable={false}
+  focusable={false}
+  onClick={[Function]}
+  onResponderGrant={[Function]}
+  onResponderMove={[Function]}
+  onResponderRelease={[Function]}
+  onResponderTerminate={[Function]}
+  onResponderTerminationRequest={[Function]}
+  onStartShouldSetResponder={[Function]}
+  style={
+    {
+      "alignItems": "center",
+      "flexDirection": "row",
+      "gap": 14,
+      "marginBottom": 20,
+      "opacity": 1,
+    }
+  }
+>
+  <View
+    style={
+      {
+        "alignItems": "center",
+        "backgroundColor": "#bebfc4",
+        "borderColor": "#bebfc4",
+        "borderWidth": 1,
+        "height": 20,
+        "justifyContent": "center",
+        "width": 20,
+      }
+    }
+  >
+    <RNSVGSvgView
+      align="xMidYMid"
+      bbHeight={7}
+      bbWidth={9}
+      fill="none"
+      focusable={false}
+      height={7}
+      meetOrSlice={0}
+      minX={0}
+      minY={0}
+      style={
+        [
+          {
+            "backgroundColor": "transparent",
+            "borderWidth": 0,
+          },
+          {
+            "flex": 0,
+            "height": 7,
+            "width": 9,
+          },
+        ]
+      }
+      vbHeight={7}
+      vbWidth={9}
+      width={9}
+    >
+      <RNSVGGroup
+        fill={null}
+        propList={
+          [
+            "fill",
+          ]
+        }
+      >
+        <RNSVGPath
+          d="M3.535 7a.995.995 0 01-.711-.3L.292 4.116a1.037 1.037 0 010-1.442.987.987 0 011.413 0l1.802 1.839L7.262.33A.98.98 0 018.675.273c.408.377.437 1.026.057 1.442L4.275 6.671A.974.974 0 013.554 7h-.019z"
+          fill={
+            {
+              "payload": 4294967295,
+              "type": 0,
+            }
+          }
+          propList={
+            [
+              "fill",
+            ]
+          }
+        />
+      </RNSVGGroup>
+    </RNSVGSvgView>
+  </View>
+  <Text
+    style={
+      {
+        "color": "#bebfc4",
+        "fontFamily": "ProductSansMedium",
+        "fontSize": 14,
+      }
+    }
+  >
+    Label checkbox
+  </Text>
+</View>
+`;

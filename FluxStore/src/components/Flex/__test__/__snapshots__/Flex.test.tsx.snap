@@ -1,0 +1,220 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Flex should render component 1`] = `
+<View
+  style={
+    [
+      {
+        "flexDirection": "column",
+      },
+      {
+        "justifyContent": "flex-start",
+      },
+      {
+        "alignItems": "stretch",
+      },
+      {
+        "flexWrap": "nowrap",
+      },
+      undefined,
+      {},
+    ]
+  }
+  testID="flex"
+>
+  <Text
+    style={
+      [
+        {
+          "letterSpacing": 0,
+          "textAlign": "left",
+          "textAlignVertical": "center",
+        },
+        {
+          "color": "#737680",
+          "fontFamily": "ProductSansRegular",
+          "fontSize": 14,
+        },
+        {},
+        undefined,
+      ]
+    }
+  >
+    Item 1
+  </Text>
+  <Text
+    style={
+      [
+        {
+          "letterSpacing": 0,
+          "textAlign": "left",
+          "textAlignVertical": "center",
+        },
+        {
+          "color": "#737680",
+          "fontFamily": "ProductSansRegular",
+          "fontSize": 14,
+        },
+        {},
+        undefined,
+      ]
+    }
+  >
+    Item 2
+  </Text>
+</View>
+`;
+
+exports[`Flex should render component with align items stretch 1`] = `
+<View
+  style={
+    [
+      {
+        "flexDirection": "column",
+      },
+      {
+        "justifyContent": "flex-start",
+      },
+      {
+        "alignItems": "stretch",
+      },
+      {
+        "flexWrap": "nowrap",
+      },
+      undefined,
+      {},
+    ]
+  }
+  testID="flex"
+>
+  <Text
+    style={
+      [
+        {
+          "letterSpacing": 0,
+          "textAlign": "left",
+          "textAlignVertical": "center",
+        },
+        {
+          "color": "#737680",
+          "fontFamily": "ProductSansRegular",
+          "fontSize": 14,
+        },
+        {},
+        undefined,
+      ]
+    }
+  >
+    Item 1
+  </Text>
+  <Text
+    style={
+      [
+        {
+          "letterSpacing": 0,
+          "textAlign": "left",
+          "textAlignVertical": "center",
+        },
+        {
+          "color": "#737680",
+          "fontFamily": "ProductSansRegular",
+          "fontSize": 14,
+        },
+        {},
+        undefined,
+      ]
+    }
+  >
+    Item 2
+  </Text>
+</View>
+`;
+
+exports[`Flex should render component with direction row 1`] = `
+<View
+  style={
+    [
+      {
+        "flexDirection": "row",
+      },
+      {
+        "justifyContent": "flex-start",
+      },
+      {
+        "alignItems": "stretch",
+      },
+      {
+        "flexWrap": "nowrap",
+      },
+      undefined,
+      {},
+    ]
+  }
+  testID="flex"
+>
+  <Text
+    style={
+      [
+        {
+          "letterSpacing": 0,
+          "textAlign": "left",
+          "textAlignVertical": "center",
+        },
+        {
+          "color": "#737680",
+          "fontFamily": "ProductSansRegular",
+          "fontSize": 14,
+        },
+        {},
+        undefined,
+      ]
+    }
+  >
+    Item 1
+  </Text>
+  <Text
+    style={
+      [
+        {
+          "letterSpacing": 0,
+          "textAlign": "left",
+          "textAlignVertical": "center",
+        },
+        {
+          "color": "#737680",
+          "fontFamily": "ProductSansRegular",
+          "fontSize": 14,
+        },
+        {},
+        undefined,
+      ]
+    }
+  >
+    Item 2
+  </Text>
+</View>
+`;
+
+exports[`Flex should render component with empty children 1`] = `
+<View
+  style={
+    [
+      {
+        "flexDirection": "column",
+      },
+      {
+        "justifyContent": "flex-start",
+      },
+      {
+        "alignItems": "stretch",
+      },
+      {
+        "flexWrap": "nowrap",
+      },
+      undefined,
+      {},
+    ]
+  }
+  testID="flex"
+/>
+`;

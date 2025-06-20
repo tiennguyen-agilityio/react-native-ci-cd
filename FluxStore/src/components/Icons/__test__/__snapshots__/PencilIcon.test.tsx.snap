@@ -1,0 +1,269 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`PencilIcon renders correctly (matches snapshot) 1`] = `
+<View
+  accessibilityState={
+    {
+      "busy": undefined,
+      "checked": undefined,
+      "disabled": false,
+      "expanded": undefined,
+      "selected": undefined,
+    }
+  }
+  accessibilityValue={
+    {
+      "max": undefined,
+      "min": undefined,
+      "now": undefined,
+      "text": undefined,
+    }
+  }
+  accessible={true}
+  collapsable={false}
+  focusable={false}
+  onClick={[Function]}
+  onResponderGrant={[Function]}
+  onResponderMove={[Function]}
+  onResponderRelease={[Function]}
+  onResponderTerminate={[Function]}
+  onResponderTerminationRequest={[Function]}
+  onStartShouldSetResponder={[Function]}
+  style={
+    {
+      "opacity": 1,
+    }
+  }
+  testID="pencil-icon"
+>
+  <RNSVGSvgView
+    align="xMidYMid"
+    bbHeight={16}
+    bbWidth={16}
+    fill="none"
+    focusable={false}
+    height={16}
+    meetOrSlice={0}
+    minX={0}
+    minY={0}
+    style={
+      [
+        {
+          "backgroundColor": "transparent",
+          "borderWidth": 0,
+        },
+        {
+          "flex": 0,
+          "height": 16,
+          "width": 16,
+        },
+      ]
+    }
+    vbHeight={16}
+    vbWidth={16}
+    width={16}
+  >
+    <RNSVGGroup
+      fill={null}
+      propList={
+        [
+          "fill",
+        ]
+      }
+    >
+      <RNSVGMask
+        fill={
+          {
+            "payload": 4278190080,
+            "type": 0,
+          }
+        }
+        height={14}
+        maskContentUnits={1}
+        maskType={0}
+        maskUnits={1}
+        name="a"
+        width={14}
+        x={1}
+        y={1}
+      >
+        <RNSVGPath
+          clipRule={0}
+          d="M13.974 5.103l-3.077-3.077a.615.615 0 00-.87 0L8.614 3.437l3.948 3.948 1.41-1.411c.241-.24.241-.63 0-.87zm-2.282 3.152L7.745 4.308l-5.719 5.718a.615.615 0 00-.18.435v3.077c0 .34.276.616.616.616h3.076c.164 0 .32-.065.436-.18l5.718-5.72z"
+          fill={
+            {
+              "payload": 4294967295,
+              "type": 0,
+            }
+          }
+          fillRule={0}
+          propList={
+            [
+              "fill",
+              "fillRule",
+            ]
+          }
+        />
+      </RNSVGMask>
+      <RNSVGGroup
+        fill={
+          {
+            "payload": 4278190080,
+            "type": 0,
+          }
+        }
+        mask="a"
+      >
+        <RNSVGPath
+          d="M0 0H16V16H0z"
+          fill={
+            {
+              "payload": 4288519581,
+              "type": 0,
+            }
+          }
+          propList={
+            [
+              "fill",
+            ]
+          }
+        />
+      </RNSVGGroup>
+    </RNSVGGroup>
+  </RNSVGSvgView>
+</View>
+`;
+
+exports[`PencilIcon renders correctly (matches snapshot) with isActive 1`] = `
+<View
+  accessibilityState={
+    {
+      "busy": undefined,
+      "checked": undefined,
+      "disabled": false,
+      "expanded": undefined,
+      "selected": undefined,
+    }
+  }
+  accessibilityValue={
+    {
+      "max": undefined,
+      "min": undefined,
+      "now": undefined,
+      "text": undefined,
+    }
+  }
+  accessible={true}
+  collapsable={false}
+  focusable={false}
+  onClick={[Function]}
+  onResponderGrant={[Function]}
+  onResponderMove={[Function]}
+  onResponderRelease={[Function]}
+  onResponderTerminate={[Function]}
+  onResponderTerminationRequest={[Function]}
+  onStartShouldSetResponder={[Function]}
+  style={
+    {
+      "opacity": 1,
+    }
+  }
+  testID="pencil-icon"
+>
+  <RNSVGSvgView
+    align="xMidYMid"
+    bbHeight={16}
+    bbWidth={16}
+    fill="none"
+    focusable={false}
+    height={16}
+    meetOrSlice={0}
+    minX={0}
+    minY={0}
+    style={
+      [
+        {
+          "backgroundColor": "transparent",
+          "borderWidth": 0,
+        },
+        {
+          "flex": 0,
+          "height": 16,
+          "width": 16,
+        },
+      ]
+    }
+    vbHeight={16}
+    vbWidth={16}
+    width={16}
+  >
+    <RNSVGGroup
+      fill={null}
+      propList={
+        [
+          "fill",
+        ]
+      }
+    >
+      <RNSVGMask
+        fill={
+          {
+            "payload": 4278190080,
+            "type": 0,
+          }
+        }
+        height={14}
+        maskContentUnits={1}
+        maskType={0}
+        maskUnits={1}
+        name="a"
+        width={14}
+        x={1}
+        y={1}
+      >
+        <RNSVGPath
+          clipRule={0}
+          d="M13.974 5.103l-3.077-3.077a.615.615 0 00-.87 0L8.614 3.437l3.948 3.948 1.41-1.411c.241-.24.241-.63 0-.87zm-2.282 3.152L7.745 4.308l-5.719 5.718a.615.615 0 00-.18.435v3.077c0 .34.276.616.616.616h3.076c.164 0 .32-.065.436-.18l5.718-5.72z"
+          fill={
+            {
+              "payload": 4294967295,
+              "type": 0,
+            }
+          }
+          fillRule={0}
+          propList={
+            [
+              "fill",
+              "fillRule",
+            ]
+          }
+        />
+      </RNSVGMask>
+      <RNSVGGroup
+        fill={
+          {
+            "payload": 4278190080,
+            "type": 0,
+          }
+        }
+        mask="a"
+      >
+        <RNSVGPath
+          d="M0 0H16V16H0z"
+          fill={
+            {
+              "payload": 4288519581,
+              "type": 0,
+            }
+          }
+          propList={
+            [
+              "fill",
+            ]
+          }
+        />
+      </RNSVGGroup>
+    </RNSVGGroup>
+  </RNSVGSvgView>
+</View>
+`;

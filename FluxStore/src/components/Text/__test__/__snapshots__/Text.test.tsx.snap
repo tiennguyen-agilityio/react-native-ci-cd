@@ -1,0 +1,148 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Text renders default 1`] = `
+<Text
+  style={
+    [
+      {
+        "letterSpacing": 0,
+        "textAlign": "left",
+        "textAlignVertical": "center",
+      },
+      {
+        "color": "#222222",
+        "fontFamily": "Primary-Regular",
+        "fontSize": 14,
+      },
+      {},
+      undefined,
+    ]
+  }
+>
+  Lorem ipsum dolor sit amet
+</Text>
+`;
+
+exports[`Text renders with custom color, fontsize 1`] = `
+<Text
+  style={
+    [
+      {
+        "letterSpacing": 0,
+        "textAlign": "left",
+        "textAlignVertical": "center",
+      },
+      {
+        "color": "#222222",
+        "fontFamily": "Primary-Regular",
+        "fontSize": 14,
+      },
+      {
+        "color": "#5ece7b",
+        "fontSize": 40,
+        "fontWeight": 500,
+        "lineHeight": 34,
+        "textAlign": "left",
+      },
+      undefined,
+    ]
+  }
+>
+  Lorem ipsum dolor sit amet
+</Text>
+`;
+
+exports[`Text renders with variant description 1`] = `
+<Text
+  style={
+    [
+      {
+        "letterSpacing": 0,
+        "textAlign": "left",
+        "textAlignVertical": "center",
+      },
+      {
+        "color": "#111111",
+        "fontFamily": "Primary-Regular",
+        "fontSize": 12,
+      },
+      {},
+      undefined,
+    ]
+  }
+>
+  Lorem ipsum dolor sit amet
+</Text>
+`;
+
+exports[`Text renders with variant heading 1`] = `
+<Text
+  style={
+    [
+      {
+        "letterSpacing": 0,
+        "textAlign": "left",
+        "textAlignVertical": "center",
+      },
+      {
+        "color": "#000000",
+        "fontFamily": "Primary-Bold",
+        "fontSize": 24,
+        "fontWeight": 700,
+      },
+      {},
+      undefined,
+    ]
+  }
+>
+  Lorem ipsum dolor sit amet
+</Text>
+`;
+
+exports[`Text renders with variant subTitle 1`] = `
+<Text
+  style={
+    [
+      {
+        "letterSpacing": 0,
+        "textAlign": "left",
+        "textAlignVertical": "center",
+      },
+      {
+        "color": "#000000",
+        "fontFamily": "Tertiary-Regular",
+        "fontSize": 16,
+        "fontWeight": 700,
+      },
+      {},
+      undefined,
+    ]
+  }
+>
+  Lorem ipsum dolor sit amet
+</Text>
+`;
+
+exports[`Text renders with variant title 1`] = `
+<Text
+  style={
+    [
+      {
+        "letterSpacing": 0,
+        "textAlign": "left",
+        "textAlignVertical": "center",
+      },
+      {
+        "color": "#000000",
+        "fontFamily": "Secondary-Medium",
+        "fontSize": 20,
+        "fontWeight": 700,
+      },
+      {},
+      undefined,
+    ]
+  }
+>
+  Lorem ipsum dolor sit amet
+</Text>
+`;

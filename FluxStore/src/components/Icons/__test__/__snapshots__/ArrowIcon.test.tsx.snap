@@ -1,0 +1,433 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ArrowIcon renders correctly (matches snapshot) 1`] = `
+<View
+  accessibilityState={
+    {
+      "busy": undefined,
+      "checked": undefined,
+      "disabled": false,
+      "expanded": undefined,
+      "selected": undefined,
+    }
+  }
+  accessibilityValue={
+    {
+      "max": undefined,
+      "min": undefined,
+      "now": undefined,
+      "text": undefined,
+    }
+  }
+  accessible={true}
+  collapsable={false}
+  focusable={false}
+  onClick={[Function]}
+  onResponderGrant={[Function]}
+  onResponderMove={[Function]}
+  onResponderRelease={[Function]}
+  onResponderTerminate={[Function]}
+  onResponderTerminationRequest={[Function]}
+  onStartShouldSetResponder={[Function]}
+  style={
+    {
+      "opacity": 1,
+    }
+  }
+  testID="arrow-icon"
+>
+  <View
+    style={
+      [
+        {
+          "transform": [
+            {
+              "rotate": "270deg",
+            },
+          ],
+        },
+        {
+          "height": 6,
+          "width": 10,
+        },
+      ]
+    }
+  >
+    <RNSVGSvgView
+      align="xMidYMid"
+      bbHeight={6}
+      bbWidth={10}
+      fill="none"
+      focusable={false}
+      height={6}
+      meetOrSlice={0}
+      minX={0}
+      minY={0}
+      style={
+        [
+          {
+            "backgroundColor": "transparent",
+            "borderWidth": 0,
+          },
+          {
+            "flex": 0,
+            "height": 6,
+            "width": 10,
+          },
+        ]
+      }
+      vbHeight={6}
+      vbWidth={10}
+      width={10}
+    >
+      <RNSVGGroup
+        fill={null}
+        propList={
+          [
+            "fill",
+          ]
+        }
+      >
+        <RNSVGPath
+          d="M4.808 5.77L1.093 1.312A.8.8 0 011.708 0h6.584a.8.8 0 01.615 1.312L5.192 5.77a.25.25 0 01-.384 0z"
+          fill={
+            {
+              "payload": 4280098594,
+              "type": 0,
+            }
+          }
+          propList={
+            [
+              "fill",
+            ]
+          }
+        />
+      </RNSVGGroup>
+    </RNSVGSvgView>
+  </View>
+</View>
+`;
+
+exports[`ArrowIcon renders correctly (matches snapshot) with direction Left 1`] = `
+<View
+  accessibilityState={
+    {
+      "busy": undefined,
+      "checked": undefined,
+      "disabled": false,
+      "expanded": undefined,
+      "selected": undefined,
+    }
+  }
+  accessibilityValue={
+    {
+      "max": undefined,
+      "min": undefined,
+      "now": undefined,
+      "text": undefined,
+    }
+  }
+  accessible={true}
+  collapsable={false}
+  focusable={false}
+  onClick={[Function]}
+  onResponderGrant={[Function]}
+  onResponderMove={[Function]}
+  onResponderRelease={[Function]}
+  onResponderTerminate={[Function]}
+  onResponderTerminationRequest={[Function]}
+  onStartShouldSetResponder={[Function]}
+  style={
+    {
+      "opacity": 1,
+    }
+  }
+  testID="arrow-icon"
+>
+  <View
+    style={
+      [
+        {
+          "transform": [
+            {
+              "rotate": "90deg",
+            },
+          ],
+        },
+        {
+          "height": 6,
+          "width": 10,
+        },
+      ]
+    }
+  >
+    <RNSVGSvgView
+      align="xMidYMid"
+      bbHeight={6}
+      bbWidth={10}
+      fill="none"
+      focusable={false}
+      height={6}
+      meetOrSlice={0}
+      minX={0}
+      minY={0}
+      style={
+        [
+          {
+            "backgroundColor": "transparent",
+            "borderWidth": 0,
+          },
+          {
+            "flex": 0,
+            "height": 6,
+            "width": 10,
+          },
+        ]
+      }
+      vbHeight={6}
+      vbWidth={10}
+      width={10}
+    >
+      <RNSVGGroup
+        fill={null}
+        propList={
+          [
+            "fill",
+          ]
+        }
+      >
+        <RNSVGPath
+          d="M4.808 5.77L1.093 1.312A.8.8 0 011.708 0h6.584a.8.8 0 01.615 1.312L5.192 5.77a.25.25 0 01-.384 0z"
+          fill={
+            {
+              "payload": 4280098594,
+              "type": 0,
+            }
+          }
+          propList={
+            [
+              "fill",
+            ]
+          }
+        />
+      </RNSVGGroup>
+    </RNSVGSvgView>
+  </View>
+</View>
+`;
+
+exports[`ArrowIcon renders correctly (matches snapshot) with direction down 1`] = `
+<View
+  accessibilityState={
+    {
+      "busy": undefined,
+      "checked": undefined,
+      "disabled": false,
+      "expanded": undefined,
+      "selected": undefined,
+    }
+  }
+  accessibilityValue={
+    {
+      "max": undefined,
+      "min": undefined,
+      "now": undefined,
+      "text": undefined,
+    }
+  }
+  accessible={true}
+  collapsable={false}
+  focusable={false}
+  onClick={[Function]}
+  onResponderGrant={[Function]}
+  onResponderMove={[Function]}
+  onResponderRelease={[Function]}
+  onResponderTerminate={[Function]}
+  onResponderTerminationRequest={[Function]}
+  onStartShouldSetResponder={[Function]}
+  style={
+    {
+      "opacity": 1,
+    }
+  }
+  testID="arrow-icon"
+>
+  <View
+    style={
+      [
+        {
+          "transform": [
+            {
+              "rotate": "0deg",
+            },
+          ],
+        },
+        {
+          "height": 6,
+          "width": 10,
+        },
+      ]
+    }
+  >
+    <RNSVGSvgView
+      align="xMidYMid"
+      bbHeight={6}
+      bbWidth={10}
+      fill="none"
+      focusable={false}
+      height={6}
+      meetOrSlice={0}
+      minX={0}
+      minY={0}
+      style={
+        [
+          {
+            "backgroundColor": "transparent",
+            "borderWidth": 0,
+          },
+          {
+            "flex": 0,
+            "height": 6,
+            "width": 10,
+          },
+        ]
+      }
+      vbHeight={6}
+      vbWidth={10}
+      width={10}
+    >
+      <RNSVGGroup
+        fill={null}
+        propList={
+          [
+            "fill",
+          ]
+        }
+      >
+        <RNSVGPath
+          d="M4.808 5.77L1.093 1.312A.8.8 0 011.708 0h6.584a.8.8 0 01.615 1.312L5.192 5.77a.25.25 0 01-.384 0z"
+          fill={
+            {
+              "payload": 4280098594,
+              "type": 0,
+            }
+          }
+          propList={
+            [
+              "fill",
+            ]
+          }
+        />
+      </RNSVGGroup>
+    </RNSVGSvgView>
+  </View>
+</View>
+`;
+
+exports[`ArrowIcon renders correctly (matches snapshot) with direction up 1`] = `
+<View
+  accessibilityState={
+    {
+      "busy": undefined,
+      "checked": undefined,
+      "disabled": false,
+      "expanded": undefined,
+      "selected": undefined,
+    }
+  }
+  accessibilityValue={
+    {
+      "max": undefined,
+      "min": undefined,
+      "now": undefined,
+      "text": undefined,
+    }
+  }
+  accessible={true}
+  collapsable={false}
+  focusable={false}
+  onClick={[Function]}
+  onResponderGrant={[Function]}
+  onResponderMove={[Function]}
+  onResponderRelease={[Function]}
+  onResponderTerminate={[Function]}
+  onResponderTerminationRequest={[Function]}
+  onStartShouldSetResponder={[Function]}
+  style={
+    {
+      "opacity": 1,
+    }
+  }
+  testID="arrow-icon"
+>
+  <View
+    style={
+      [
+        {
+          "transform": [
+            {
+              "rotate": "180deg",
+            },
+          ],
+        },
+        {
+          "height": 6,
+          "width": 10,
+        },
+      ]
+    }
+  >
+    <RNSVGSvgView
+      align="xMidYMid"
+      bbHeight={6}
+      bbWidth={10}
+      fill="none"
+      focusable={false}
+      height={6}
+      meetOrSlice={0}
+      minX={0}
+      minY={0}
+      style={
+        [
+          {
+            "backgroundColor": "transparent",
+            "borderWidth": 0,
+          },
+          {
+            "flex": 0,
+            "height": 6,
+            "width": 10,
+          },
+        ]
+      }
+      vbHeight={6}
+      vbWidth={10}
+      width={10}
+    >
+      <RNSVGGroup
+        fill={null}
+        propList={
+          [
+            "fill",
+          ]
+        }
+      >
+        <RNSVGPath
+          d="M4.808 5.77L1.093 1.312A.8.8 0 011.708 0h6.584a.8.8 0 01.615 1.312L5.192 5.77a.25.25 0 01-.384 0z"
+          fill={
+            {
+              "payload": 4280098594,
+              "type": 0,
+            }
+          }
+          propList={
+            [
+              "fill",
+            ]
+          }
+        />
+      </RNSVGGroup>
+    </RNSVGSvgView>
+  </View>
+</View>
+`;
