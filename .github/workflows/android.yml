@@ -35,17 +35,14 @@ jobs:
       - name: 🧹 Run Linter
         run: yarn lint
 
-      - name: 🧪 Run Tests
-        run: yarn test
-
       - name: 🧪 Run Tests with Coverage
         run: yarn test:coverage
 
       - name: ⚙️ Set up JDK
         uses: actions/setup-java@v4
         with:
-          distribution: 'temurin'
-          java-version: '17'
+          distribution: "temurin"
+          java-version: "17"
 
       - name: 🧱 Setup Android SDK
         uses: android-actions/setup-android@v3
