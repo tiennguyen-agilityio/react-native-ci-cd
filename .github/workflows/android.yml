@@ -3,9 +3,9 @@ name: Android CI
 
 on:
   push:
-    branches: [feature/example-ci-cd]
+    branches: [feature/*ci-cd]
   pull_request:
-    branches: [feature/example-ci-cd]
+    branches: [feature/*ci-cd]
 
   workflow_dispatch:
     inputs:
@@ -39,6 +39,9 @@ jobs:
         with:
           node-version: 20
 
+      - name: 🔍 Show chosen-os
+        run: echo "CHOSEN_OS = ${{ github.event.inputs.chosen-os }}"
+
       # - name: 📦 Install Yarn
       #   run: npm install -g yarn
 
@@ -70,7 +73,7 @@ jobs:
       #     name: app-debug.apk
       #     path: FluxStore/android/app/build/outputs/apk/debug/app-debug.apk
   deploy:
-    if: github.repository == 'git@gitlab.asoft-python.com:tien.nguyen/react-native-training.git'
+    if: github.event_name == 'workflow_dispatch'
     needs: build
     name: Deploy
     runs-on: ubuntu-latest
