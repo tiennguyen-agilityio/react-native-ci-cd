@@ -16,16 +16,16 @@ on:
         options:
           - Ubuntu
           - macOS
-env:
-  ENV_SECRET: ${{ secrets.ENV_SECRET}}
-  API_URL: ${{ vars.ENV_API_URL }}
-  NODE_ENV: ${{ vars.NODE_ENV }}
 
 jobs:
-  examples:
-    environment: examples
+  testing:
+    environment: testing
     name: Testing examples
     runs-on: ubuntu-latest
+    env:
+      ENV_SECRET: ${{ secrets.ENV_SECRET}}
+      API_URL: ${{ vars.API_URL }}
+      NODE_ENV: ${{ vars.NODE_ENV }}
     defaults:
       run:
         working-directory: FluxStore
@@ -45,14 +45,55 @@ jobs:
 
       - name: 🔍 Show example secrets
         run: |
-          echo "ENV_SECRET = ${{ secrets.ENV_SECRET}} - ${{ vars.ENV_SECRET}}"
-          echo "API_URL = ${{ vars.ENV_API_URL}} - ${{ secrets.ENV_API_URL}} "
-          echo "NODE_ENV = ${{ vars.ENV_API_URL}} -  ${{ secrets.ENV_API_URL}}"
+          echo "ENV_SECRET = ${{ secrets.ENV_SECRET}}"
+          echo "API_URL = ${{ vars.ENV_API_URL}}"
+          echo "NODE_ENV = ${{ vars.ENV_API_URL}}"
 
-  build:
-    environment: build
+  build-dev:
+    needs: testing
+    environment: build-dev
     name: Build Android APK
     runs-on: ubuntu-latest
+
+    env:
+      ENV_SECRET: ${{ secrets.ENV_SECRET}}
+      API_URL: ${{ vars.API_URL }}
+      NODE_ENV: ${{ vars.NODE_ENV }}
+    # ⬇️ Set default working directory to FluxStore/
+    defaults:
+      run:
+        working-directory: FluxStore
+
+    steps:
+      - name: 📥 Checkout code
+        uses: actions/checkout@v4
+
+      - name: 🟢 Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: 🔍 Show chosen-os DEV
+        run: |
+          echo "CHOSEN_OS = ${{ github.event.inputs.chosen-os }}"
+          echo "EVENT_NAME = ${{ github.event_name }}"
+
+      - name: 🔍 Show Build info DEV
+        run: |
+          echo "ENV_SECRET = ${{ secrets.ENV_SECRET}}"
+          echo "API_URL = ${{ vars.ENV_API_URL}}"
+          echo "NODE_ENV = ${{ vars.ENV_API_URL}}"
+
+  build-prod:
+    needs: testing
+    environment: build-prod
+    name: Build Android APK
+    runs-on: ubuntu-latest
+
+    env:
+      ENV_SECRET: ${{ secrets.ENV_SECRET}}
+      API_URL: ${{ vars.API_URL }}
+      NODE_ENV: ${{ vars.NODE_ENV }}
 
     # ⬇️ Set default working directory to FluxStore/
     defaults:
@@ -68,43 +109,28 @@ jobs:
         with:
           node-version: 20
 
-      - name: 🔍 Show chosen-os
-        run: echo "CHOSEN_OS = ${{ github.event.inputs.chosen-os }}"
+      - name: 🔍 Show chosen-os PROD
+        run: |
+          echo "CHOSEN_OS = ${{ github.event.inputs.chosen-os }}"
+          echo "EVENT_NAME = ${{ github.event_name }}"
 
-      - name: 🔍 Show EVENT_NAME
-        run: echo "EVENT_NAME = ${{ github.event_name }}"
-
-      - name: 🔍 Show build API_URL - ENV_SECRET
-        run: echo "API_URL = $API_URL -- ENV_SECRET = $ENV_SECRET "
-
-      - name: 🔍 Show secrets build
-        run: echo "ENV_SECRET = ${{ secrets.ENV_SECRET}} -- ENV_API_URL = ${{ secrets.ENV_API_URL}}"
-
+      - name: 🔍 Show Build info PROD
+        run: |
+          echo "ENV_SECRET = ${{ secrets.ENV_SECRET}}"
+          echo "API_URL = ${{ vars.ENV_API_URL}}"
+          echo "NODE_ENV = ${{ vars.ENV_API_URL}}"
   deploy:
-    if: github.event_name == 'workflow_dispatch'
-    needs: build
-    environment: production
+    if: github.event_name == 'workflow_dispatch' || vars.NODE_ENV == 'build-prod'
+    needs: build-prod
+    environment: build-prod
     name: Deploy
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
-
-      - name: 🔍 Show repo repository
-        run: echo "REPO = ${{ github.repository }}"
-
-      - name: 🔍 Show repo ref
-        run: echo "REPO = ${{ github.ref }}"
-
-      - name: 🔍 Show GITHUB EVENT
-        run: echo "EVENT = ${{ toJson(github.event) }}"
-
-      - name: 🔍 Show API_URL
-        run: echo "API_URL = ${{ secrets.API_URL}}"
-
-      - name: 🔍 Show NODE_ENV
-        run: echo "NODE_ENV = $NODE_ENV"
-
+      - name: 🔍 Show Deploy info
+        run: |
+          echo "ENV_SECRET = ${{ secrets.ENV_SECRET}}"
+          echo "API_URL = ${{ vars.ENV_API_URL}}"
+          echo "NODE_ENV = ${{ vars.ENV_API_URL}}"
       - name: 🔍 Show secrets.GITHUB_TOKEN
         run: echo "GITHUB_TOKEN = ${{ secrets.GITHUB_TOKEN }}"
