@@ -43,16 +43,10 @@ jobs:
           echo "ENV_SECRET = $ENV_SECRET"
           echo "NODE_ENV = $NODE_ENV"
 
-      - name: 🔍 Show example secrets
-        run: |
-          echo "ENV_SECRET = ${{ secrets.ENV_SECRET}}"
-          echo "API_URL = ${{ vars.ENV_API_URL}}"
-          echo "NODE_ENV = ${{ vars.ENV_API_URL}}"
-
   build-dev:
     needs: testing
     environment: build-dev
-    name: Build Android APK
+    name: Build Development Android APK
     runs-on: ubuntu-latest
 
     env:
@@ -80,14 +74,15 @@ jobs:
 
       - name: 🔍 Show Build info DEV
         run: |
-          echo "ENV_SECRET = ${{ secrets.ENV_SECRET}}"
-          echo "API_URL = ${{ vars.ENV_API_URL}}"
-          echo "NODE_ENV = ${{ vars.ENV_API_URL}}"
+          echo "ENV_SECRET = $ENV_SECRET"
+          echo "API_URL = $API_URL"
+          echo "NODE_ENV = $NODE_ENV"
 
   build-prod:
+    if: github.event_name == 'workflow_dispatch'
     needs: testing
     environment: build-prod
-    name: Build Android APK
+    name: Build Production Android APK
     runs-on: ubuntu-latest
 
     env:
@@ -116,21 +111,23 @@ jobs:
 
       - name: 🔍 Show Build info PROD
         run: |
-          echo "ENV_SECRET = ${{ secrets.ENV_SECRET}}"
-          echo "API_URL = ${{ vars.ENV_API_URL}}"
-          echo "NODE_ENV = ${{ vars.ENV_API_URL}}"
+          echo "ENV_SECRET = $ENV_SECRET"
+          echo "API_URL = $API_URL"
+          echo "NODE_ENV = $NODE_ENV"
   deploy:
-    if: github.event_name == 'workflow_dispatch' || vars.NODE_ENV == 'build-prod'
     needs: build-prod
     environment: build-prod
     name: Deploy
     runs-on: ubuntu-latest
-
+    env:
+      ENV_SECRET: ${{ secrets.ENV_SECRET}}
+      API_URL: ${{ vars.API_URL }}
+      NODE_ENV: ${{ vars.NODE_ENV }}
     steps:
       - name: 🔍 Show Deploy info
         run: |
-          echo "ENV_SECRET = ${{ secrets.ENV_SECRET}}"
-          echo "API_URL = ${{ vars.ENV_API_URL}}"
-          echo "NODE_ENV = ${{ vars.ENV_API_URL}}"
+          echo "ENV_SECRET = $ENV_SECRET"
+          echo "API_URL = $API_URL"
+          echo "NODE_ENV = $NODE_ENV"
       - name: 🔍 Show secrets.GITHUB_TOKEN
         run: echo "GITHUB_TOKEN = ${{ secrets.GITHUB_TOKEN }}"
