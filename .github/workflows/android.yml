@@ -16,14 +16,43 @@ on:
         options:
           - Ubuntu
           - macOS
+env:
+  ENV_SECRET: ${{ secrets.ENV_SECRET}}
+  API_URL: ${{ vars.ENV_API_URL }}
+  NODE_ENV: ${{ vars.NODE_ENV }}
 
 jobs:
+  examples:
+    environment: examples
+    name: Testing examples
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: FluxStore
+    steps:
+      - name: 📥 Checkout code
+        uses: actions/checkout@v4
+
+      - name: 🟢 Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: 🔍 Show example env
+        run: |
+          echo "API_URL = $API_URL"
+          echo "ENV_SECRET = $ENV_SECRET"
+          echo "NODE_ENV = $NODE_ENV"
+
+      - name: 🔍 Show example secrets
+        run: |
+          echo "ENV_SECRET = ${{ secrets.ENV_SECRET}} - ${{ vars.ENV_SECRET}}"
+          echo "API_URL = ${{ vars.ENV_API_URL}} - ${{ secrets.ENV_API_URL}} "
+          echo "NODE_ENV = ${{ vars.ENV_API_URL}} -  ${{ secrets.ENV_API_URL}}"
+
   build:
+    environment: build
     name: Build Android APK
     runs-on: ubuntu-latest
-
-    env:
-      API_URL: "${{ vars.API_URL }}"
 
     # ⬇️ Set default working directory to FluxStore/
     defaults:
@@ -42,39 +71,19 @@ jobs:
       - name: 🔍 Show chosen-os
         run: echo "CHOSEN_OS = ${{ github.event.inputs.chosen-os }}"
 
-      # - name: 📦 Install Yarn
-      #   run: npm install -g yarn
+      - name: 🔍 Show EVENT_NAME
+        run: echo "EVENT_NAME = ${{ github.event_name }}"
 
-      # - name: 📦 Install dependencies
-      #   run: yarn install
+      - name: 🔍 Show build API_URL - ENV_SECRET
+        run: echo "API_URL = $API_URL -- ENV_SECRET = $ENV_SECRET "
 
-      # - name: 🧹 Run Linter
-      #   run: yarn lint
+      - name: 🔍 Show secrets build
+        run: echo "ENV_SECRET = ${{ secrets.ENV_SECRET}} -- ENV_API_URL = ${{ secrets.ENV_API_URL}}"
 
-      # - name: 🧪 Run Tests with Coverage
-      #   run: yarn test:coverage
-
-      # - name: ⚙️ Set up JDK
-      #   uses: actions/setup-java@v4
-      #   with:
-      #     distribution: "temurin"
-      #     java-version: "17"
-
-      # - name: 🧱 Setup Android SDK
-      #   uses: android-actions/setup-android@v3
-
-      # - name: 🏗️ Build Debug APK
-      #   run: ./gradlew assembleDebug
-      #   working-directory: FluxStore/android
-
-      # - name: 📤 Upload APK
-      #   uses: actions/upload-artifact@v4
-      #   with:
-      #     name: app-debug.apk
-      #     path: FluxStore/android/app/build/outputs/apk/debug/app-debug.apk
   deploy:
     if: github.event_name == 'workflow_dispatch'
     needs: build
+    environment: production
     name: Deploy
     runs-on: ubuntu-latest
 
@@ -90,6 +99,12 @@ jobs:
 
       - name: 🔍 Show GITHUB EVENT
         run: echo "EVENT = ${{ toJson(github.event) }}"
+
+      - name: 🔍 Show API_URL
+        run: echo "API_URL = ${{ secrets.API_URL}}"
+
+      - name: 🔍 Show NODE_ENV
+        run: echo "NODE_ENV = $NODE_ENV"
 
       - name: 🔍 Show secrets.GITHUB_TOKEN
         run: echo "GITHUB_TOKEN = ${{ secrets.GITHUB_TOKEN }}"
