@@ -1,4 +1,3 @@
-# .github/workflows/android.yml
 name: Android CI
 
 on:
@@ -18,42 +17,18 @@ on:
           - macOS
 
 jobs:
-  testing:
-    environment: testing
-    name: Testing examples
+  build:
+    name: Build APK (${{ github.event.inputs.chosen-os }})
     runs-on: ubuntu-latest
-    env:
-      ENV_SECRET: ${{ secrets.ENV_SECRET}}
-      API_URL: ${{ vars.API_URL }}
-      NODE_ENV: ${{ vars.NODE_ENV }}
-    defaults:
-      run:
-        working-directory: FluxStore
-    steps:
-      - name: 📥 Checkout code
-        uses: actions/checkout@v4
-
-      - name: 🟢 Set up Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: 20
-      - name: 🔍 Show example env
-        run: |
-          echo "API_URL = $API_URL"
-          echo "ENV_SECRET = $ENV_SECRET"
-          echo "NODE_ENV = $NODE_ENV"
-
-  build-dev:
-    needs: testing
-    environment: build-dev
-    name: Build Development Android APK
-    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        environment: ${{ github.event.inputs.chosen-os }}
 
     env:
-      ENV_SECRET: ${{ secrets.ENV_SECRET}}
+      NODE_ENV: ${{ matrix.environment }}
+      ENV_SECRET: ${{ secrets.ENV_SECRET }}
       API_URL: ${{ vars.API_URL }}
-      NODE_ENV: ${{ vars.NODE_ENV }}
-    # ⬇️ Set default working directory to FluxStore/
+
     defaults:
       run:
         working-directory: FluxStore
@@ -67,67 +42,55 @@ jobs:
         with:
           node-version: 20
 
-      - name: 🔍 Show chosen-os DEV
+      - name: 📦 Install Yarn
+        run: npm install -g yarn
+
+      - name: 📦 Install dependencies
+        run: yarn install
+
+      - name: 🧪 Print Environment Info
         run: |
-          echo "CHOSEN_OS = ${{ github.event.inputs.chosen-os }}"
-          echo "EVENT_NAME = ${{ github.event_name }}"
+          echo "NODE_ENV=$NODE_ENV"
+          echo "API_URL=$API_URL"
+          echo "ENV_SECRET=$ENV_SECRET"
 
-      - name: 🔍 Show Build info DEV
+      - name: 📄 Write .env file
+        run: echo "API_URL=$API_URL" > .env
+
+      - name: ⚙️ Setup Android SDK
+        uses: android-actions/setup-android@v3
+
+      - name: 🏗️ Build Debug APK
         run: |
-          echo "ENV_SECRET = $ENV_SECRET"
-          echo "API_URL = $API_URL"
-          echo "NODE_ENV = $NODE_ENV"
+          cd android
+          ./gradlew assembleDebug
 
-  build-prod:
-    if: github.event_name == 'workflow_dispatch'
-    needs: testing
-    environment: build-prod
-    name: Build Production Android APK
-    runs-on: ubuntu-latest
-
-    env:
-      ENV_SECRET: ${{ secrets.ENV_SECRET}}
-      API_URL: ${{ vars.API_URL }}
-      NODE_ENV: ${{ vars.NODE_ENV }}
-
-    # ⬇️ Set default working directory to FluxStore/
-    defaults:
-      run:
-        working-directory: FluxStore
-
-    steps:
-      - name: 📥 Checkout code
-        uses: actions/checkout@v4
-
-      - name: 🟢 Set up Node.js
-        uses: actions/setup-node@v4
+      - name: 📤 Upload Debug APK
+        uses: actions/upload-artifact@v4
         with:
-          node-version: 20
+          name: app-debug-${{ matrix.environment }}.apk
+          path: FluxStore/android/app/build/outputs/apk/debug/app-debug.apk
 
-      - name: 🔍 Show chosen-os PROD
-        run: |
-          echo "CHOSEN_OS = ${{ github.event.inputs.chosen-os }}"
-          echo "EVENT_NAME = ${{ github.event_name }}"
-
-      - name: 🔍 Show Build info PROD
-        run: |
-          echo "ENV_SECRET = $ENV_SECRET"
-          echo "API_URL = $API_URL"
-          echo "NODE_ENV = $NODE_ENV"
   deploy:
-    needs: build-prod
-    environment: build-prod
-    name: Deploy
+    name: Deploy to Firebase (prod only)
+    if: github.event.inputs.chosen-os == 'macOS'
+    needs: build
     runs-on: ubuntu-latest
+
     env:
-      ENV_SECRET: ${{ secrets.ENV_SECRET}}
-      API_URL: ${{ vars.API_URL }}
-      NODE_ENV: ${{ vars.NODE_ENV }}
+      FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
+      FIREBASE_APP_ID: ${{ secrets.FIREBASE_APP_ID }}
+
     steps:
-      - name: 🔍 Show Deploy info
+      - name: 📥 Checkout code
+        uses: actions/checkout@v4
+
+      - name: 🚀 Install Firebase CLI
+        run: npm install -g firebase-tools
+
+      - name: 📤 Upload APK to Firebase App Distribution
         run: |
-          echo "ENV_SECRET = $ENV_SECRET"
-          echo "API_URL = $API_URL"
-          echo "NODE_ENV = $NODE_ENV"
-      - name: 🔍 Show secrets.GITHUB_TOKEN
-        run: echo "GITHUB_TOKEN = ${{ secrets.GITHUB_TOKEN }}"
+          firebase appdistribution:distribute FluxStore/android/app/build/outputs/apk/debug/app-debug.apk \
+            --app $FIREBASE_APP_ID \
+            --token $FIREBASE_TOKEN \
+            --groups testers
