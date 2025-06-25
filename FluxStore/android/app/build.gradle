@@ -7,6 +7,9 @@ if (keystorePropertiesFile.exists()) {
     println "⚠️ Warning: key.properties not found. Skipping release signing config."
 }
 
+def versionCodeFromCI = project.hasProperty("VERSION_CODE") ? project.VERSION_CODE.toInteger() : 1
+def versionNameFromCI = project.hasProperty("VERSION_NAME") ? project.VERSION_NAME : "1.0"
+
 apply plugin: "com.android.application"
 apply plugin: "org.jetbrains.kotlin.android"
 apply plugin: "com.facebook.react"
@@ -95,8 +98,8 @@ android {
         applicationId "com.fluxstore"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
-        versionCode 8
-        versionName "1.7"
+        versionCode versionCodeFromCI
+        versionName versionNameFromCI
     }
     signingConfigs {
         debug {

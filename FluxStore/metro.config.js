@@ -12,6 +12,8 @@ const defaultConfig = getDefaultConfig(__dirname);
 const config = {};
 // set your own config here 👆
 
+console.log('------ NODE_ENV --------', process.env.NODE_ENV);
+
 const finalConfig = mergeConfig(defaultConfig, config);
 
 module.exports = withStorybook(finalConfig, {

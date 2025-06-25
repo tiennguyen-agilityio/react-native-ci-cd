@@ -3,9 +3,9 @@ name: Android CI
 
 on:
   push:
-    branches: [feature/*ci-cd]
+    branches: [main, feature/*ci-cd]
   pull_request:
-    branches: [feature/*ci-cd]
+    branches: [main, feature/*ci-cd]
 
   workflow_dispatch:
     inputs:
@@ -74,15 +74,15 @@ jobs:
         with:
           node-version: 20
 
-      # - name: Cache yarn dependencies
-      #   uses: actions/cache@v4
-      #   with:
-      #     path: |
-      #       ~/.cache/yarn
-      #       **/node_modules
-      #     key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
-      #     restore-keys: |
-      #       ${{ runner.os }}-yarn-
+      - name: Cache yarn dependencies
+        uses: actions/cache@v4
+        with:
+          path: |
+            ~/.cache/yarn
+            **/node_modules
+          key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-yarn-
 
       - name: 📦 Install Yarn
         run: npm install -g yarn
@@ -150,42 +150,23 @@ jobs:
           distribution: "temurin"
           cache: gradle
 
-      # - name: Cache yarn dependencies
-      #   uses: actions/cache@v4
-      #   with:
-      #     path: |
-      #       ~/.cache/yarn
-      #       **/node_modules
-      #     key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
-      #     restore-keys: |
-      #       ${{ runner.os }}-yarn-
+      - name: Cache yarn dependencies
+        uses: actions/cache@v4
+        with:
+          path: |
+            ~/.cache/yarn
+            **/node_modules
+          key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-yarn-
 
       - name: 📦 Install Yarn
-        run: npm install -g yarn
-
-      - name: 🧹 Clean node_modules
         run: |
-          rm -rf node_modules
-
-      - name: 🧹 Check Yarn version
-        run: yarn -v
+          npm install -g yarn
+          yarn -v
 
       - name: 📦 Install dependencies
         run: NODE_ENV=development yarn install --frozen-lockfile
-
-      - name: 🧪 Debug metro-config installation
-        run: |
-          echo "Check metro-config in node_modules:"
-          ls -la node_modules/@react-native/metro-config || echo "❌ NOT FOUND"
-          yarn list --pattern @react-native/metro-config || echo "❌ Not listed in yarn"
-
-      - name: 🧪 Check metro-config installed
-        run: |
-          if [ ! -d "node_modules/@react-native/metro-config" ]; then
-            echo "❌ metro-config not found!"
-            exit 1
-          fi
-          echo "✅ metro-config exists"
 
       - name: 🧪 Print Environment Info
         run: |
@@ -228,7 +209,7 @@ jobs:
           retention-days: 1
 
   deploy:
-    needs: [build-prod]
+    needs: build-prod
     # if: github.event_name == 'workflow_dispatch'
     environment: build-prod
     name: Deploy to Firebase
