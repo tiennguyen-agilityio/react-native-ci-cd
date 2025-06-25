@@ -17,7 +17,6 @@ on:
           - Ubuntu
           - macOS
 env:
-  ENV_SECRET: ${{ secrets.ENV_SECRET}}
   FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
   FIREBASE_APP_ID: ${{ secrets.FIREBASE_APP_ID }}
   GOOGLE_APPLICATION_CREDENTIALS_JSON: ${{ secrets.GOOGLE_APPLICATION_CREDENTIALS_JSON }}
@@ -44,7 +43,6 @@ jobs:
       - name: 🔍 Show example env
         run: |
           echo "API_URL = $API_URL"
-          echo "ENV_SECRET = $ENV_SECRET"
           echo "NODE_ENV = $NODE_ENV"
           echo "FIREBASE_TOKEN = $FIREBASE_TOKEN"
           echo "FIREBASE_APP_ID = $FIREBASE_APP_ID"
@@ -73,16 +71,6 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 20
-
-      - name: Cache yarn dependencies
-        uses: actions/cache@v4
-        with:
-          path: |
-            ~/.cache/yarn
-            **/node_modules
-          key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
-          restore-keys: |
-            ${{ runner.os }}-yarn-
 
       - name: 📦 Install Yarn
         run: npm install -g yarn
@@ -136,6 +124,14 @@ jobs:
       - name: 📥 Checkout code
         uses: actions/checkout@v4
 
+      - name: 🔢 Generate versionCode & versionName
+        id: versioning
+        run: |
+          VERSION_CODE=$(git rev-list --count HEAD)
+          VERSION_NAME="1.0.${VERSION_CODE}"
+          echo "VERSION_CODE=$VERSION_CODE" >> $GITHUB_ENV
+          echo "VERSION_NAME=$VERSION_NAME" >> $GITHUB_ENV
+
       - name: 🟢 Set up Node.js
         uses: actions/setup-node@v4
         with:
@@ -150,16 +146,6 @@ jobs:
           distribution: "temurin"
           cache: gradle
 
-      - name: Cache yarn dependencies
-        uses: actions/cache@v4
-        with:
-          path: |
-            ~/.cache/yarn
-            **/node_modules
-          key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
-          restore-keys: |
-            ${{ runner.os }}-yarn-
-
       - name: 📦 Install Yarn
         run: |
           npm install -g yarn
@@ -167,18 +153,6 @@ jobs:
 
       - name: 📦 Install dependencies
         run: NODE_ENV=development yarn install --frozen-lockfile
-
-      - name: 🧪 Print Environment Info
-        run: |
-          echo "NODE_ENV=$NODE_ENV"
-          echo "API_URL=$API_URL"
-          echo "ENV_SECRET=$ENV_SECRET"
-          echo "FIREBASE_TOKEN=$FIREBASE_TOKEN"
-          echo "FIREBASE_APP_ID=$FIREBASE_APP_ID"
-          echo "GOOGLE_APPLICATION_CREDENTIALS_JSON=$GOOGLE_APPLICATION_CREDENTIALS_JSON"
-          echo "KEYSTORE_PASSWORD = $KEYSTORE_PASSWORD"
-          echo "KEY_ALIAS = $KEY_ALIAS"
-          echo "KEY_PASSWORD = $KEY_PASSWORD"
 
       - name: 📄 Write .env file
         run: echo "API_URL=$API_URL" > .env
@@ -199,7 +173,9 @@ jobs:
       - name: 🏗️ Build Release APK
         run: |
           cd android
-          ./gradlew assembleRelease
+          ./gradlew assembleRelease \
+            -PVERSION_CODE=$VERSION_CODE \
+            -PVERSION_NAME=$VERSION_NAME
 
       - name: 📤 Upload Release APK
         uses: actions/upload-artifact@v4
