@@ -1,19 +1,23 @@
 const {getDefaultConfig, mergeConfig} = require('@react-native/metro-config');
 const path = require('path');
-
-let config = {};
+const withStorybook = require('@storybook/react-native/metro/withStorybook');
 const defaultConfig = getDefaultConfig(__dirname);
 
-const isCI = process.env.CI === 'true' || process.env.NODE_ENV === 'production';
+/**
+ * Metro configuration
+ * https://reactnative.dev/docs/metro
+ *
+ * @type {import('metro-config').MetroConfig}
+ */
+const config = {};
+// set your own config here 👆
 
-if (isCI) {
-  // just use regular metro config for CI
-  module.exports = mergeConfig(defaultConfig, config);
-} else {
-  const withStorybook = require('@storybook/react-native/metro/withStorybook');
-  const finalConfig = mergeConfig(defaultConfig, config);
-  module.exports = withStorybook(finalConfig, {
-    enabled: true,
-    configPath: path.resolve(__dirname, './.storybook'),
-  });
-}
+const finalConfig = mergeConfig(defaultConfig, config);
+
+module.exports = withStorybook(finalConfig, {
+  // Set to false to remove storybook specific options
+  // you can also use a env variable to set this
+  enabled: true,
+  // Path to your storybook config
+  configPath: path.resolve(__dirname, './.storybook'),
+});

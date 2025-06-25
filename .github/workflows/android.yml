@@ -74,15 +74,15 @@ jobs:
         with:
           node-version: 20
 
-      - name: Cache yarn dependencies
-        uses: actions/cache@v4
-        with:
-          path: |
-            ~/.cache/yarn
-            **/node_modules
-          key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
-          restore-keys: |
-            ${{ runner.os }}-yarn-
+      # - name: Cache yarn dependencies
+      #   uses: actions/cache@v4
+      #   with:
+      #     path: |
+      #       ~/.cache/yarn
+      #       **/node_modules
+      #     key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
+      #     restore-keys: |
+      #       ${{ runner.os }}-yarn-
 
       - name: 📦 Install Yarn
         run: npm install -g yarn
@@ -122,7 +122,7 @@ jobs:
 
   build-prod:
     needs: testing
-    if: github.event_name == 'workflow_dispatch'
+    # if: github.event_name == 'workflow_dispatch'
     environment: build-prod
     name: Build Production Android APK
     runs-on: ubuntu-latest
@@ -140,22 +140,52 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 20
+          cache: "yarn"
+          cache-dependency-path: ./FluxStore/yarn.lock
 
-      - name: Cache yarn dependencies
-        uses: actions/cache@v4
+      - name: Set up JDK 17
+        uses: actions/setup-java@v4
         with:
-          path: |
-            ~/.cache/yarn
-            **/node_modules
-          key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
-          restore-keys: |
-            ${{ runner.os }}-yarn-
+          java-version: "17"
+          distribution: "temurin"
+          cache: gradle
+
+      # - name: Cache yarn dependencies
+      #   uses: actions/cache@v4
+      #   with:
+      #     path: |
+      #       ~/.cache/yarn
+      #       **/node_modules
+      #     key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
+      #     restore-keys: |
+      #       ${{ runner.os }}-yarn-
 
       - name: 📦 Install Yarn
         run: npm install -g yarn
 
+      - name: 🧹 Clean node_modules
+        run: |
+          rm -rf node_modules
+
+      - name: 🧹 Check Yarn version
+        run: yarn -v
+
       - name: 📦 Install dependencies
-        run: yarn install
+        run: NODE_ENV=development yarn install --frozen-lockfile
+
+      - name: 🧪 Debug metro-config installation
+        run: |
+          echo "Check metro-config in node_modules:"
+          ls -la node_modules/@react-native/metro-config || echo "❌ NOT FOUND"
+          yarn list --pattern @react-native/metro-config || echo "❌ Not listed in yarn"
+
+      - name: 🧪 Check metro-config installed
+        run: |
+          if [ ! -d "node_modules/@react-native/metro-config" ]; then
+            echo "❌ metro-config not found!"
+            exit 1
+          fi
+          echo "✅ metro-config exists"
 
       - name: 🧪 Print Environment Info
         run: |
@@ -172,7 +202,7 @@ jobs:
       - name: 📄 Write .env file
         run: echo "API_URL=$API_URL" > .env
 
-      - name: 🔐 Decode Keystore & Create keystore.properties
+      - name: 🔐 Decode Keystore & Create key.properties
         run: |
           echo "$KEYSTORE_BASE64" | base64 -d > android/app/my-release-key.keystore
           cat <<EOF > android/key.properties
@@ -199,7 +229,7 @@ jobs:
 
   deploy:
     needs: [build-prod]
-    if: github.event_name == 'workflow_dispatch'
+    # if: github.event_name == 'workflow_dispatch'
     environment: build-prod
     name: Deploy to Firebase
     runs-on: ubuntu-latest
