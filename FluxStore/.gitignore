@@ -69,6 +69,7 @@ yarn-error.log
 # testing
 /coverage
 .storybook/storybook.requires.ts
+/android/key.properties
 
 # Yarn
 .yarn/*
