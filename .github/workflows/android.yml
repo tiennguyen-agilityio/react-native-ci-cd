@@ -45,7 +45,7 @@ jobs:
     if: inputs.environment != 'production'
     environment: development
     name: Build Development Android APK
-    runs-on: ${{ inputs.runnerType }}
+    runs-on: ${{ inputs.runnerType || 'ubuntu-latest' }}
 
     # ⬇️ Set default working directory to FluxStore/
     defaults:
@@ -80,17 +80,6 @@ jobs:
 
       - name: 🧪 Run testing
         run: yarn test
-
-      - name: 🧪 Print Environment Info
-        run: |
-          echo "NODE_ENV=$NODE_ENV"
-          echo "API_URL=$API_URL"
-          echo "FIREBASE_TOKEN=$FIREBASE_TOKEN"
-          echo "FIREBASE_APP_ID=$FIREBASE_APP_ID"
-          echo "GOOGLE_APPLICATION_CREDENTIALS_JSON = $GOOGLE_APPLICATION_CREDENTIALS_JSON"
-          echo "KEYSTORE_PASSWORD = $KEYSTORE_PASSWORD"
-          echo "KEY_ALIAS = $KEY_ALIAS"
-          echo "KEY_PASSWORD = $KEY_PASSWORD"
 
       - name: 📄 Write .env file
         run: echo "API_URL=$API_URL" > .env
