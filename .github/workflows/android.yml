@@ -41,6 +41,8 @@ env:
   NODE_ENV: ${{ vars.NODE_ENV }}
   VERSION_CODE: ${{ vars.VERSION_CODE }}
   VERSION_NAME: ${{ vars.VERSION_NAME }}
+  SLACK_BOT_TOKEN: ${{ vars.SLACK_BOT_TOKEN }}
+  SLACK_CHANNEL_ID: ${{ vars.SLACK_CHANNEL_ID}}
 
 jobs:
   build-dev:
@@ -100,6 +102,19 @@ jobs:
           name: app-debug.apk
           path: FluxStore/android/app/build/outputs/apk/debug/app-debug.apk
           retention-days: 5
+          overwrite: true
+
+      - name: 📣 Send Slack Message Build Debug
+        if: success() || failure()
+        uses: slackapi/slack-github-action@v1.24.0
+        with:
+          channel-id: ${{ vars.SLACK_CHANNEL_ID }}
+          payload: |
+            {
+              "text": "${{ job.status == 'success' && ':white_check_mark: *Build Debug Succeeded!* :rocket:' || ':x: *Build Debug Failed!* :fire:' }}\n• Repo: `${{ github.repository }}`\n• Branch: `${{ github.ref_name }}`\n• Actor: `${{ github.actor }}`"
+            }
+        env:
+          SLACK_BOT_TOKEN: ${{ vars.SLACK_BOT_TOKEN }}
 
   build-prod:
     if: github.event_name == 'workflow_dispatch' && inputs.environment == 'production'
@@ -169,6 +184,18 @@ jobs:
           retention-days: 5
           overwrite: true
 
+      - name: 📣 Send Slack Message Build Release
+        if: success() || failure()
+        uses: slackapi/slack-github-action@v1.24.0
+        with:
+          channel-id: ${{ vars.SLACK_CHANNEL_ID }}
+          payload: |
+            {
+              "text": "${{ job.status == 'success' && ':white_check_mark: *Build Release Succeeded!* :rocket:' || ':x: *Build Release Failed!* :fire:' }}\n• Repo: `${{ github.repository }}`\n• Branch: `${{ github.ref_name }}`\n• Actor: `${{ github.actor }}`"
+            }
+        env:
+          SLACK_BOT_TOKEN: ${{ vars.SLACK_BOT_TOKEN }}
+
   deploy:
     needs: build-prod
     if: github.event_name == 'workflow_dispatch' && inputs.environment == 'production'
@@ -199,3 +226,32 @@ jobs:
           firebase appdistribution:distribute app-release.apk \
             --app $FIREBASE_APP_ID \
             --groups testers
+
+      - name: 📣 Send Slack Message Deploy
+        if: success() || failure()
+        uses: slackapi/slack-github-action@v1.24.0
+        with:
+          channel-id: ${{ vars.SLACK_CHANNEL_ID }}
+          payload: |
+            {
+              "text": "${{ job.status == 'success' && ':white_check_mark: *Deploy Succeeded!* :rocket:' || ':x: *Deploy Failed!* :fire:' }}\n• Repo: `${{ github.repository }}`\n• Branch: `${{ github.ref_name }}`\n• Actor: `${{ github.actor }}`"
+            }
+        env:
+          SLACK_BOT_TOKEN: ${{ vars.SLACK_BOT_TOKEN }}
+  notify:
+    if: github.event_name == 'pull_request'
+    environment: ${{inputs.environment || 'development'}}
+    name: 📣 Slack Notification
+    runs-on: ${{ inputs.runnerType || 'ubuntu-latest' }}
+
+    steps:
+      - name: 📣 Send Slack Message Pull Request
+        uses: slackapi/slack-github-action@v1.24.0
+        with:
+          channel-id: ${{ vars.SLACK_CHANNEL_ID }}
+          payload: |
+            {
+              "text": ":bell: *Pull request opened by ${{ github.event.pull_request.user.login }}*\n• PR Title: `${{ github.event.pull_request.title }}`\n• PR #: #${{ github.event.pull_request.number }}\n• Branch: `${{ github.head_ref }}` → `${{ github.base_ref }}`\n• Action: `${{ github.event.action }}`\n• URL: <${{ github.event.pull_request.html_url }}|View Pull Request>"
+            }
+        env:
+          SLACK_BOT_TOKEN: ${{ vars.SLACK_BOT_TOKEN }}
